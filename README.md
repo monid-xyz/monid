@@ -1,2 +1,2 @@
 # monid
-DNS for monad
+Domain Naming Service for the Monad Blockchain

@@ -12,9 +12,9 @@ export const SITE_URL_SHORT = 'monid.xyz';
 export const VID_IMAGE_API = 'https://img.monid.xyz/api/';
 export const SITE_TITLE = 'MONID';
 export const SITE_DESCRIPTION =
-  'Decentralized Link in bio Tool on the Monad Blockchain';
+  'Monad Naming Service And Decentralized Link in bio Tool on Monad Blockchain';
 export const SITE_FULL_DESCRIPTION =
-  'monid empowers you to build a personalized, decentralized page that showcases your links, content, and digital presence. Leveraging the power of the Monad Blockchain and .mon domains, monid offers a self-sovereign alternative to centralized link management tools.';
+  'MONID empowers you to build a personalized, decentralized page that showcases your links, content, and digital presence. Leveraging the power of the Monad Blockchain and .mon domains, monid offers a self-sovereign alternative to centralized link management tools.';
 export const NFT_IMAGE_URL = 'https://ipfs.io/ipfs/QmUvfedgHDXdiMsq5nfLPGLQrR4QAYXHzR5SETBZQ6RGyd';
 export const SITE_MANAGE_URL = 'https://venomid.tools/';
 export const SITE_PROFILE_URL = 'https://venomid.link/';
