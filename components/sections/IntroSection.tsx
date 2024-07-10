@@ -387,7 +387,7 @@ const TiltCard = () => {
             <Flex gap={[3,4,6]} justify={'center'} align={'center'} p={6}>
               <DomainName name={'sam.mon'} avatar={'https://ipfs.io/ipfs/QmcPjQqieVvNmKxQmWPkJ7HfJvY2GkrvtGEvzEzAuohMrD/sam.mon.svg'} size={['md','lg']}/>
               <LinkIcon type="RiArrowLeftRightLine" size={24} />
-              <AccountAddress address="0xD2D12....001CE" chain="monad" size={['md','lg']}/>
+              <AccountAddress address="0xD2D12 .... 001CE" chain="monad" size={['md','lg']}/>
             </Flex>
           </GridItem>
           <GridItem>
