@@ -1,18 +1,20 @@
 :root {
---darkGradient: radial-gradient(
-  farthest-corner at 60% 55%,
-  #100117 10%,
-  #140122 45%, 
-  #1b0128 60%,
-  #130123 90%
+  --darkGradient: radial-gradient(
+  at 30% 45%, 
+  #170f38 10%,
+  #2c1845 35%,
+  #25173e 55%,
+  #2e244f 80%,
+  #2e2459 90%
 );
 
-  --lightGradient: radial-gradient(
-  farthest-corner at 60% 55%,
-  #c8ccd0 10%,
-  #c9cdd0 45%,
-  #c6c6c8 60%,
-  #cfd1d3 90%
+
+--lightGradient: radial-gradient(
+  at 40% 30%,
+  #d6d1e6 10%,
+  #dedaed 35%,
+  #d3d0e5 55%,
+  #e5e2f0 80%
 );
 
 --lightLinearGradient: linear-gradient(
@@ -113,6 +115,24 @@ body,
 div {
   scrollbar-color: #19191b #383838 !important;
   scrollbar-width: thin !important;
+}
+
+
+
+@-webkit-keyframes MonidBg {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes MonidBg {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes MonidBg {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 iframe {
@@ -316,3 +336,4 @@ em-emoji-picker {
   display: flex;
   margin: 8px;
 }
+

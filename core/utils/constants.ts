@@ -16,10 +16,10 @@ export const SITE_DESCRIPTION =
 export const SITE_FULL_DESCRIPTION =
   'MONID empowers you to build a personalized, decentralized page that showcases your links, content, and digital presence. Leveraging the power of the Monad Blockchain and .mon domains, monid offers a self-sovereign alternative to centralized link management tools.';
 export const NFT_IMAGE_URL = 'https://ipfs.io/ipfs/QmUvfedgHDXdiMsq5nfLPGLQrR4QAYXHzR5SETBZQ6RGyd';
-export const SITE_MANAGE_URL = 'https://venomid.tools/';
-export const SITE_PROFILE_URL = 'https://venomid.link/';
-export const ZEALY_URL = 'https://zealy.io/c/venomid/';
-export const AVATAR_API_URL = 'https://venomid.link/api/avatar?name=';
+export const SITE_MANAGE_URL = 'https://monid.xyz/';
+export const SITE_PROFILE_URL = 'https://monid.xyz/';
+export const ZEALY_URL = 'https://zealy.io/c/monid_xyz/';
+export const AVATAR_API_URL = 'https://monid.xyz/api/avatar?name=';
 export const VENOMSCAN_NFT = 'https://venomscan.com/accounts/';
 export const VENOMSCAN_TX = 'https://venomscan.com/transactions/';
 export const VENTORY_NFT = 'https://ventory.gg/nft/';
@@ -104,24 +104,24 @@ export const TWITTER_ME = 'https://api.twitter.com/2/users/me';
 export const TWITTER_SCOPES = ['tweet.read', 'users.read', 'offline.access'];
 export const TWITTER_FOLLOW_URL = 'https://twitter.com/intent/user?screen_name=monid_xyz';
 export const TWITTER_RETWEET_URL =
-  'https://twitter.com/intent/retweet?tweet_id=1750574775158624742';
-export const ZEALY_USERS_API = 'https://api.zealy.io/communities/venomid/users';
+  '';
+export const ZEALY_USERS_API = '';
 export const IPFS_IO_URL = 'https://ipfs.io/ipfs/';
 
 export const SOCIAL_TWITTER = 'monid_xyz';
 export const TWITTER_URL = 'https://twitter.com/';
-export const DISCORD_URL = 'https://discord.gg/XPwdhCAMXQ';
-export const GITHUB_URL = 'https://github.com/venomid-network';
+export const DISCORD_URL = 'https://discord.monid.xyz/';
+export const GITHUB_URL = 'https://github.com/monid-xyz';
 export const TELEGRAM_URL = 'https://t.me/monid_xyz';
 export const DOCS_URL = 'https://docs.monid.xyz/developer-docs/overview';
 export const ROADMAP_URL = 'https://docs.monid.xyz/overview/roadmap';
 export const GUIDES_URL = 'https://docs.monid.xyz/guides/overview';
-export const GRINDING_URL = 'https://venom.grinding.today/product/venomid';
-export const MEDIUM_URL = 'https://medium.com/@venomidapp';
-export const YLIDE_URL = 'https://hub.ylide.io/project/venom_id/discussion';
-export const YOUTUBE_URL = 'https://www.youtube.com/@VenomID_Network';
+export const GRINDING_URL = '';
+export const MEDIUM_URL = 'https://medium.com/@monid_xyz';
+export const YLIDE_URL = '';
+export const YOUTUBE_URL = 'https://www.youtube.com/@monid_xyz';
 export const OPENSEA_URL = 'https://opensea.io/assets/';
-export const FAUCET_URL = 'https://venom.network/faucet';
+export const FAUCET_URL = 'https://monad.xyz/';
 
 export const MARKETPLACE_URLS_COLLECTION: any = {
   venomtestnet: 'https://testnet.ventory.gg/collection/',
@@ -490,42 +490,57 @@ export const VARIATIONS_VIDS = [
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/anon.mon.svg',
     vid: 'boo.mon',
+    address: '0xD2D....001CE',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/luc.mon.svg',
+    address: '0xD2D....01ED2',
     vid: 'luc.mon',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/john.mon.svg',
+    address: '0xD2D....01ECE',
     vid: 'john.mon',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/anony.mon.svg',
+    address: '0xD2D....00101C',
     vid: 'alice.mon',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/dark.mon.svg',
+    address: '0xD2D....001CE',
     vid: 'alex.mon',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/col.mon.svg',
+    address: '0xD2D....00112',
     vid: 'sara.mon',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/pun.mon.svg',
+    address: '0xD2D....D212E',
     vid: 'mary.mon',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/joe.mon.svg',
+    address: '0xD2D....D2D12',
     vid: 'joe.mon',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/dark.mon.svg',
+    address: '0xD2D....001CE',
     vid: 'dark.mon',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/sam.mon.svg',
+    address: '0xD2D....D21CE',
     vid: 'sam.mon',
+  },
+  {
+    avatar: 'https://ipfs.io/ipfs/QmTQqf3ge2SvpgeBAucDtfxExE3zMci6hfMrqZmLJXVCm6/ben.mon.svg',
+    address: '0xD2D....D2EF3',
+    vid: 'ben.mon',
   },
 ];
 
@@ -557,7 +572,7 @@ export const LINK_VARIATIONS = [
     {
       type: 'simple link',
       title: 'Youtube Channel',
-      url: 'https://www.youtube.com/@Venomid_network',
+      url: 'https://www.youtube.com/@monid_xyz',
       styles: {
         icon: 'RiYoutubeFill',
         size: 'md',
@@ -631,10 +646,10 @@ export const SOCIALS_VARIATIONS = [
     whatsapp: '#',
   },
   {
-    twitter: 'https://twitter.com/Venomid_network',
-    ylide: 'https://hub.ylide.io/project/venom_id/discussion',
-    medium: 'https://medium.com/@venomidapp',
-    zealy: 'https://zealy.io/c/venomid/questboard',
+    twitter: 'https://twitter.com/monid_xyz',
+    ylide: '',
+    medium: 'https://medium.com/@monid_xyz',
+    zealy: 'https://zealy.io/c/monid_xyz/questboard',
     telegram: 'https://t.me/monid_xyz',
   },
   {
@@ -647,9 +662,9 @@ export const SOCIALS_VARIATIONS = [
   {
     telegram: 'https://t.me/monid_xyz',
     ylide: 'https://hub.ylide.io/project/venom_id/discussion',
-    zealy: 'https://zealy.io/c/venomid/questboard',
-    github: 'https://github.com/sam-shariat/venomid-link',
-    youtube: 'https://www.youtube.com/@VenomID_Network',
+    zealy: 'https://zealy.io/c/monid_xyz/questboard',
+    github: 'https://github.com/sam-shariat/monid_xyz',
+    youtube: 'https://www.youtube.com/@monid_xyz',
   },
   {
     facebook: '#',
@@ -846,57 +861,4 @@ export const SOCIAL_URLS: any = {
   whatsapp: 'wa.me/',
   phone: 'tel:',
   email: 'mailto:',
-};
-
-export const WINNERS: {
-  [key: string]: {
-    title: string;
-    sent: string;
-    domain: string;
-    slug: string;
-    link: string;
-    tweet: string;
-    challenge: string;
-    prize_img: string;
-    prizes: string[];
-    image: string;
-    screenImage: string;
-    winners: any[];
-    status: string;
-  };
-} = {
-  staxavatarchallenge: {
-    title: 'STAX Avatar Challenge',
-    sent: '10',
-    domain: 'stax.venom',
-    slug: 'stax-avatar-challenge',
-    link: 'STAX COIN FLIP',
-    tweet: 'https://twitter.com/Venomid_network/status/1792241267428192357',
-    challenge:
-      'Set STAX NFT as your avatar on your .venom domain ID and save your avatar, you can use the static stax image if you do not own a stax nft! (full guides in the tweet)',
-    prize_img:
-      'https://ipfs.io/ipfs/QmRFe5HjkmjEoE7P77zzq4QKqzGP5fDivwCiDZ9ci4zb7Y/photo_2024-03-26_22-24-00.jpg',
-    prizes: ['10 STAX NFTS', '60 .venom Domains'],
-    image: 'staxavatarchallenge.jpg',
-    screenImage: 'staxavatarchallenge.png',
-    winners: WINNERS_STAX_AVATAR_CHALLENGE,
-    status: 'Winners Announced',
-  },
-  punksavatarchallenge: {
-    title: 'Punks Avatar Challenge',
-    sent: '10',
-    domain: 'punks.venom',
-    slug: 'punks-avatar-challenge',
-    link: 'Venom-Punks.Com',
-    tweet: 'https://twitter.com/Venomid_network/status/1779553947612774631',
-    challenge:
-      'Set venom-punks image as your avatar on your .venom domain ID and save your avatar! (full guides in the tweet)',
-    prize_img:
-      'https://ipfs.io/ipfs/QmdwW8egQuQAYsEYgdz1coTExinMrjfheAYHm4PxX6stJB/punks.venom.png',
-    prizes: ['10 PUNK NFTS', '30 .venom Domains'],
-    image: 'punksavatarchallenge.jpg',
-    screenImage: 'punksavatarchallenge.png',
-    winners: WINNERS_PUNKS_AVATAR_CHALLENGE,
-    status: 'Winners Announced',
-  },
 };

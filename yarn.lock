@@ -12007,6 +12007,11 @@ react-is@^16.13.1, react-is@^16.7.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-parallax-tilt@^1.7.232:
+  version "1.7.232"
+  resolved "https://registry.yarnpkg.com/react-parallax-tilt/-/react-parallax-tilt-1.7.232.tgz#1087b181e7c823fbfbdc5224a716fbe73ff44e1a"
+  integrity sha512-wGfrjuzqmS9382UE6YRGTMQEEvEDt1Ldk2YD2x4aUc4obU+ddZ3/Fb8GQYdIEGjAoB9FYJM4LEamAfPeSiu3PQ==
+
 react-player@^2.13.0:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/react-player/-/react-player-2.16.0.tgz#89070700b03f5a5ded9f0b3165d4717390796481"

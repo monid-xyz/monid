@@ -208,27 +208,7 @@ export default function Header() {
                     </PopoverHeader>
                     <PopoverBody>
                       <SimpleGrid columns={2} py={2} gap={2}>
-                        <NextLink href={'/what'} passHref>
-                          <Button
-                            variant="ghost"
-                            colorScheme={pathname === '/what' ? 'venom' : 'gray'}
-                            onClick={onClose}
-                            width="100%"
-                            justifyContent="left">
-                            {t('What & Why')}
-                          </Button>
-                        </NextLink>
-                        <NextLink href={'/usecase'} passHref>
-                          <Button
-                            onClick={onClose}
-                            variant="ghost"
-                            colorScheme={pathname === '/usecase' ? 'venom' : 'gray'}
-                            width="100%"
-                            justifyContent="left">
-                            {t('Use Case')}
-                          </Button>
-                        </NextLink>
-                        <NextLink href={'/community'} passHref>
+                      <NextLink href={'/community'} passHref>
                           <Button
                             onClick={onClose}
                             variant="ghost"
@@ -248,6 +228,27 @@ export default function Header() {
                             {t('Litepaper')}
                           </Button>
                         </NextLink>
+                        {/* <NextLink href={'/what'} passHref>
+                          <Button
+                            variant="ghost"
+                            colorScheme={pathname === '/what' ? 'venom' : 'gray'}
+                            onClick={onClose}
+                            width="100%"
+                            justifyContent="left">
+                            {t('What & Why')}
+                          </Button>
+                        </NextLink>
+                        <NextLink href={'/usecase'} passHref>
+                          <Button
+                            onClick={onClose}
+                            variant="ghost"
+                            colorScheme={pathname === '/usecase' ? 'venom' : 'gray'}
+                            width="100%"
+                            justifyContent="left">
+                            {t('Use Case')}
+                          </Button>
+                        </NextLink>
+                        
 
                         <NextLink href={'/ecosystem'} passHref>
                         
@@ -270,7 +271,7 @@ export default function Header() {
                           <Button variant="ghost" width="100%" justifyContent="left">
                             {t('Guides')}
                           </Button>
-                        </Link>
+                        </Link> */}
                         
 
                         <NextLink href={'/terms'} passHref>

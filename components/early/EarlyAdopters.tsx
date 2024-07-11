@@ -495,9 +495,12 @@ export default function EarlyAdopters() {
           //   ),
           // }}
           //color={'white'}
+          rounded={'2xl'}
+          variant={'border'}
+          colorScheme={colorMode === 'light' ? 'light' : 'light'}
           h={'120px'}>
           <Flex gap={[3, 4]} alignItems={'center'} justify={'center'}>
-            <LinkIcon type="RiVerifiedBadgeLine" size={small ? '46' : '36'} />
+            <LinkIcon type="RiUserStarLine" size={small ? '46' : '36'} />
             <Stack gap={1} justify={'left'}>
             <Text fontWeight={'bold'} display={'flex'} flex={1} fontSize={['xl', '2xl']}>
               Early Adopters Program

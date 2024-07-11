@@ -30,7 +30,7 @@ export default function Footer() {
               //zealy: ZEALY_URL,
               //ylide: YLIDE_URL,
               medium: MEDIUM_URL,
-              youtube: YOUTUBE_URL,
+              //youtube: YOUTUBE_URL,
               github: GITHUB_URL,
             },
           }}

@@ -14,7 +14,7 @@ import { LinkIcon } from 'components/logos';
   export default function AccountAddress({ address, chain , size }: Props) {
     const { colorMode } = useColorMode();
     return (
-        <Flex gap={3} align={'center'} border={'1px solid #77777750'} rounded={'full'} bg={colorMode === 'light' ? 'white' : 'black'}>
+        <Flex gap={3} align={'center'} border='3px solid black' position='relative' boxShadow='1px 1px 0px 0px black, 2px 2px 0px 0px black, 3px 3px 0px 0px black' rounded={'full'} bg={colorMode === 'light' ? 'white' : 'blackAlpha.500'}>
         <Avatar color='white' bgGradient={'linear(to-r, var(--base1), var(--base2))'} icon={<LinkIcon type={chain} color='#fff'/>} rounded={'full'} size={size}/>
           <Text
             fontWeight={'semibold'}

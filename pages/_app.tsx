@@ -40,10 +40,6 @@ function MyApp({ Component, pageProps }: AppProps) {
             zerionWallet(),
             coinbaseWallet(),
           ]}
-          authConfig={{
-            authUrl: '/api/auth',
-            domain: process.env.NEXT_PUBLIC_SITE_URL || 'localhost:3000',
-          }}
           clientId={process.env.NEXT_PUBLIC_THIRDWEB_ID}>
           <Layout>
             <motion.div

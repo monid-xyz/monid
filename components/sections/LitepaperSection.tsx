@@ -285,9 +285,9 @@ export default function LitepaperSection() {
               <Text fontWeight={'bold'} fontSize={'2xl'} mt={4}>
                 {t('RoadMap03')}
               </Text>
-              <Text fontWeight="normal" fontSize={'lg'}>
+              {/* <Text fontWeight="normal" fontSize={'lg'}>
                 {t('RoadMap31')}
-              </Text>
+              </Text> */}
               <Text fontWeight="normal" fontSize={'lg'} id="RoadMap04">
                 {t('RoadMap32')}
               </Text>
@@ -298,9 +298,9 @@ export default function LitepaperSection() {
               <Text fontWeight={'bold'} fontSize={'2xl'} mt={4}>
                 {t('RoadMap04')}
               </Text>
-              <Text fontWeight="normal" fontSize={'lg'}>
+              {/* <Text fontWeight="normal" fontSize={'lg'}>
                 {t('RoadMap41')}
-              </Text>
+              </Text> */}
               <Text fontWeight="normal" fontSize={'lg'} id="RoadMap05">
                 {t('RoadMap42')}
               </Text>
@@ -319,6 +319,9 @@ export default function LitepaperSection() {
               </Text>
               <Text fontWeight="normal" fontSize={'lg'}>
                 {t('RoadMap53')}
+              </Text>
+              <Text fontWeight={'bold'} fontSize={'2xl'} mt={4}>
+                {t('Phase 6: To Be Announced ...')}
               </Text>
             </Stack>
             <Stack my={6}>

@@ -16,6 +16,8 @@ import {
   Heading,
   useMediaQuery,
   Center,
+  AvatarGroup,
+  Avatar,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import {
@@ -34,7 +36,7 @@ import { render } from '@react-email/render';
 import ContributionsMail from 'components/mail/Contribution';
 import sendEmail from 'core/utils/sendEmail';
 import ShareButtons from 'components/Profile/ShareButtons';
-import { DISCORD_URL, SITE_URL, YLIDE_URL, ZEALY_URL } from 'core/utils/constants';
+import { DISCORD_URL, SITE_URL, TELEGRAM_URL, VARIATIONS_VIDS, YLIDE_URL, ZEALY_URL } from 'core/utils/constants';
 import WaitlistMail from 'components/mail/Waitlist';
 import ImageBox from 'components/claiming/ImageBox';
 import EarlyAdopters from 'components/early/EarlyAdopters';
@@ -63,7 +65,7 @@ export default function CommunitySection() {
       <Box>
         <Container
           as="main"
-          maxW="container.lg"
+          maxW="container.md"
           display="grid"
           flexDir={'column'}
           justifyContent={'center'}
@@ -74,23 +76,29 @@ export default function CommunitySection() {
             <Flex
               align={'center'}
               justify={'center'}
-              gap={8}
+              gap={12}
               my={20}
-              flexDir={['column', 'column', 'column', 'row']}>
+              flexDir={['column', 'column', 'column']}>
               <Stack>
                 <Heading
                   fontSize={['4xl', '5xl', '6xl']}
                   fontWeight={'bold'}
-                  textAlign={['center', 'center', 'center', 'left']}>
+                  textAlign={['center', 'center', 'center']}>
                   {t('community')}
                 </Heading>
                 <Text
                   fontSize={['xl', '2xl', '3xl']}
-                  textAlign={['center', 'center', 'center', 'left']}>
-                  Collaborate, Innovate, and Share
+                  textAlign={['center', 'center', 'center']}>
+                  synergize. progress. and earn
                 </Text>
               </Stack>
-              <ImageBox srcUrl="/screens/contribute.png" animation />
+              <AvatarGroup size={['lg','xl']}>
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[0].avatar} />
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[1].avatar} />
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[8].avatar} />
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[9].avatar} />
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[10].avatar} />
+              </AvatarGroup>
             </Flex>
 
             <Flex flexDirection={'column'} w={'100%'} gap={6} my={12}>
@@ -106,6 +114,9 @@ export default function CommunitySection() {
                 href={DISCORD_URL}
                 target="_blank"
                 gap={6}
+                variant={'border'}
+                rounded={'xl'}
+                colorScheme={colorMode === 'light' ? 'venomAlpha' : 'venom'}
                 flexDir={['column', 'column', 'row']}
                 justifyContent={['center', 'center', 'start']}>
                 <Flex align={'center'} gap={4}>
@@ -123,7 +134,7 @@ export default function CommunitySection() {
                     flexDirection={['column', 'column', 'row']}
                     gap={2}
                     align={['center', 'center', 'start']}>
-                    <Text>Say gm To MONID Family! </Text>
+                    <Text>Say gMonad to the fam. </Text>
                     <Text>Get Support, Ask Questions</Text>
                   </Flex>
                   <Text fontWeight={'normal'}> Get early access to perks!</Text>
@@ -169,20 +180,23 @@ export default function CommunitySection() {
                 gap={6}
                 as={Link}
                 isDisabled={true}
-                href={ZEALY_URL}
+                href={TELEGRAM_URL}
                 style={{ textDecoration: 'none' }}
                 target="_blank"
+                variant={'border'}
+                rounded={'xl'}
+                colorScheme={colorMode === 'light' ? 'telegram' : 'telegram'}
                 flexDir={['column', 'column', 'row']}
                 justifyContent={['center', 'center', 'start']}>
                 <Flex align={'center'} gap={4}>
-                  <LinkIcon type="zealy" size={notMobile ? '70' : '40'} />
+                  <LinkIcon type="telegram" size={notMobile ? '70' : '40'} />
                   <Text display={['block', 'block', 'none']} fontSize={'xl'}>
-                    Zealy Community
+                    Telegram Community
                   </Text>
                 </Flex>
-                <Flex flexDirection={'column'} align={['center', 'center', 'start']} gap={2}>
+                <Flex flexDirection={'column'} align={['center', 'center', 'start']} gap={2} >
                   <Text display={['none', 'none', 'block']} fontSize={'xl'}>
-                    Zealy Community ( Soon )
+                    Telegram Community ( Soon )
                   </Text>
                   <Flex
                     fontWeight={'normal'}
@@ -190,9 +204,9 @@ export default function CommunitySection() {
                     gap={2}
                     align={['center', 'center', 'start']}>
                     <Text>Explore our simple Quests!</Text>
-                    <Text>We are temporarily closed!</Text>
+                    <Text>Stay Active and Hyped!</Text>
                   </Flex>
-                  <Text fontWeight={'normal'}>We'll be back soon!</Text>
+                  <Text fontWeight={'normal'}>Earn Rewards As you Go!</Text>
                 </Flex>
               </Button>
 

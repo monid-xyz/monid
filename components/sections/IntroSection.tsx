@@ -26,6 +26,7 @@ import { useTranslate } from 'core/lib/hooks/use-translate';
 import { Avatar, Links, Socials } from 'components/Profile';
 import Wallets from 'components/Profile/Wallets';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import Tilt from 'react-parallax-tilt';
 
 import {
   bgColorAtom,
@@ -61,7 +62,7 @@ import {
   useVelocity,
 } from 'framer-motion';
 import TextCard from 'components/claiming/TextCard';
-import { LinkIcon } from 'components/logos';
+import { LinkIcon, LogoIcon } from 'components/logos';
 import DomainName from 'components/features/DomainName';
 import AccountAddress from 'components/features/AccountAddress';
 import { wrap } from '@motionone/utils';
@@ -214,20 +215,30 @@ export default function IntroSection() {
 const TiltCard = () => {
   
   return (
-    <motion.div>
+    <Tilt
+    glareEnable={true}
+    glareMaxOpacity={0.15}
+    glareBorderRadius='16px'
+
+    glarePosition="all"
+    scale={1.05}>
           <Center
                 rounded={'2xl'}
                 w={'100%'}
                 borderBottomRadius={0}
                 px={4}
                 py={2}
+                gap={4}
                 transition={'"all 1s ease"'}
-                justifyContent={'space-between'}
                 bgColor={useColorModeValue('light.600', 'dark.600')}>
                 <Button as={Link} href={`https://monid.xyz/${vid}`} target='_blank' variant={'outline'} gap={2} display={'flex'} rounded={'full'}>
                 <LinkIcon type='RiExternalLinkLine' size={20} /> monid.xyz/{vid}
                 </Button>
                 <HStack gap={2} >
+                <motion.div
+                    animate={{ scale: [1, 1.5, 1] }} // Scale animation
+                    transition={{ duration: 1.5, repeat: Infinity }} // Animation duration and loop
+                  >
                   <IconButton
                     aria-label="next-vid-slider"
                     variant={'ghost'}
@@ -237,6 +248,7 @@ const TiltCard = () => {
                     }}>
                     <LinkIcon type='RiArrowRightDoubleLine' size={28} />
                   </IconButton>
+                  </motion.div>
                   {/* <FaCircle /> */}
                 </HStack>
               </Center>
@@ -291,9 +303,10 @@ const TiltCard = () => {
                   }}>
                   <Flex as={lightMode ? LightMode : DarkMode} w={'100%'} flexDir={'column'}>
                     <HStack gap={4}>
-                      <Box maxW={notMobile ? '160px' : '100px'}>
+                      <Box maxW={notMobile ? '160px' : '100px'} className='inner-element-parent'>
                       
                         <Avatar
+                          className='inner-element'
                           url={avatar}
                           alt={'MONID avatar image'}
                           shape={avatarShape}
@@ -351,7 +364,7 @@ const TiltCard = () => {
                 </motion.div>
               </Center>
       
-    </motion.div>
+    </Tilt>
   );
 };
 
@@ -381,7 +394,7 @@ const TiltCard = () => {
           <GridItem
             display={'flex'}
             justifyContent={'center'}
-            bg={colorMode === 'light' ? 'whiteAlpha.600' : 'blackAlpha.200'}
+            bg={colorMode === 'light' ? 'whiteAlpha.600' : 'blackAlpha.300'}
             rounded={'2xl'}
             border={'1px solid #77777750'}>
             <Flex gap={[3,4,6]} justify={'center'} align={'center'} p={6}>
@@ -400,24 +413,25 @@ const TiltCard = () => {
           </GridItem>
         </SimpleGrid>
       </Container>
-      <Flex minW={'100%'} width={'100%'} flexDirection={'column'} gap={[8,12,16]} pb={20} opacity={.7}>
+      <Container
+        maxW="100%"
+        bg={lightMode ? 'blackAlpha.300' : 'blackAlpha.500'}
+        px={0}
+        display="grid"
+        placeContent="center"
+        gap={12}
+        h={'100vh'}
+        placeItems="center"
+        color={colorMode === 'light' ? 'white' : 'white'}
+        py={36}>
+          <Heading textAlign={'center'} px={4}>Early Adopters Program</Heading>
+          <Text fontSize={'xl'} fontWeight={'bold'} textAlign={'center'} px={4}>First 5000 Users who Register .MON are garaunteed to mint a 1:1 NFT on Monad Blockchain</Text>
+      <Flex minW={'100%'} width={'100%'} flexDirection={'column'} gap={[8,12,16]} opacity={.7}>
         <Parallax baseVelocity={-0.25}>
           <Flex gap={[4,6,8]}>
-            {VARIATIONS_VIDS.map((vid)=> <DomainName name={vid.vid} avatar={vid.avatar} size={['md','lg','xl']} key={`VenomID-${vid.vid}`}/>)}
+            {VARIATIONS_VIDS.map((vid)=> <DomainName address={vid.address} name={vid.vid} avatar={vid.avatar} size={['md','lg','xl']} key={`VenomID-${vid.vid}`}/>)}
           </Flex>
         </Parallax>
-        <Parallax baseVelocity={+0.25}>
-          {/* <Flex gap={8}>
-            
-          {VARIATIONS.map((vid)=> <DomainName name={vid.vid} avatar={vid.avatar} size={['md','lg','xl']} key={`VenomID-${vid.vid}`}/>)}
-          </Flex> */}
-          <Flex gap={[4,6,8]}>
-            {VARIATIONS_VIDS.map((vid)=> <DomainName name={vid.vid} avatar={vid.avatar} size={['md','lg','xl']} key={`VenomID-${vid.vid}`}/>)}
-          </Flex>
-
-          
-        </Parallax>
-
         {/* <Parallax baseVelocity={+2}>
            
           <Flex gap={[4,6,8]}>
@@ -427,6 +441,26 @@ const TiltCard = () => {
           
         </Parallax> */}
       </Flex>
+      <Button
+                  as={Link}
+                  href="\community"
+                  style={{ textDecoration: 'none' }}
+                  py={4}
+                  w={['xs','sm','md']}
+                  justifyContent={'center'}
+                  gap={2}
+                  color={'white'}
+                  rounded={'full'}
+                  colorScheme={colorMode === 'light' ? 'venom' : 'venom'}
+                  variant={'border'}
+                  height={['56px', '64px']}
+                  size={'lg'}>
+                  <LinkIcon type='RiUserStarLine' />
+                  <Text fontWeight={'bold'} fontSize={['lg', 'xl']}>
+                    Early Adopter Program
+                  </Text>
+                </Button>
+      </Container>
       <Container
         ref={win}
         maxW="container.xl"
@@ -463,12 +497,10 @@ const TiltCard = () => {
                   width={'100%'}
                   py={4}
                   justifyContent={'center'}
-                  borderColor={'blackAlpha.300'}
-                  colorScheme={colorMode === 'light' ? 'venom' : 'dark'}
-                  border={'1px solid #77777777'}
+                  colorScheme={colorMode === 'light' ? 'light' : 'light'}
                   gap={2}
                   rounded={'full'}
-                  variant={'outline'}
+                  variant={'border'}
                   height={['56px', '64px']}
                   size={'lg'}>
                   <LinkIcon type="RiFileList3Line" size={notMobile ? '32' : '24'} />
@@ -476,39 +508,13 @@ const TiltCard = () => {
                     Litepaper (Beta)
                   </Text>
                 </Button>
-                <Button
-                  as={Link}
-                  href="\community"
-                  style={{ textDecoration: 'none' }}
-                  width={'100%'}
-                  py={4}
-                  justifyContent={'center'}
-                  gap={2}
-                  color={'white'}
-                  bgGradient={'linear(to-r, var(--base1), var(--base2))'}
-                  _hover={{
-                    bgGradient:
-                      colorMode === 'light'
-                        ? 'linear(to-r, var(--base0), var(--bluevenom0))'
-                        : 'linear(to-r, var(--base0), var(--bluevenom0))',
-                  }}
-                  rounded={'full'}
-                  variant={'ghost'}
-                  height={['56px', '64px']}
-                  size={'lg'}>
-                  <LinkIcon type="RiVerifiedBadgeLine" size={notMobile ? '32' : '24'} />
-                  <Text fontWeight={'bold'} fontSize={['lg', 'xl']}>
-                    Early Adopter Program
-                  </Text>
-                </Button>
+                
               </Stack>
             </Stack>
           </GridItem>
           <GridItem colSpan={3} display={'flex'} justifyContent={'center'}>
             <Flex w={['100%', '100%', 'container.sm']} flexDir={'column'}>
-            {/* <ReactTilt settings={{base : 'window', scale: 1.05}}> */}
             <TiltCard />
-              {/* </ReactTilt> */}
             </Flex>
           </GridItem>
         </Grid>

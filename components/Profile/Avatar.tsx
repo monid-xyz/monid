@@ -14,6 +14,7 @@ interface Props {
   my?: number | string;
   maxH?: number | string;
   shadow?: string;
+  className?: string;
 }
 const Avatar = ({
   url,
@@ -24,7 +25,8 @@ const Avatar = ({
   my,
   shadow,
   nft,
-  maxH
+  maxH,
+  className
 }: Props) => {
 
   const [avatarUrl, setAvatarUrl] = useState<string>(url);
@@ -64,6 +66,8 @@ const Avatar = ({
             }
           : {}
       }
+
+      
       drag={!nodrag}
       dragDirectionLock={!nodrag}
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
@@ -74,6 +78,7 @@ const Avatar = ({
       key={avatarUrl && avatarUrl.length > 10 ? avatarUrl : '/logos/baseavatar.png'}
       src={avatarUrl && avatarUrl.length > 10 ? avatarUrl : '/logos/baseavatar.png'}
       width="100%"
+      className={className}
       maxH={maxH ? maxH : 'auto'}
       boxShadow={shadow ? shadow : 'none'}
       my={my ? my : 4}

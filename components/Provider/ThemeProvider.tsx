@@ -39,6 +39,9 @@ const ThemeProvider = ({ children }: IThemeProvider) => {
     global: (props: ThemeExtension) => ({
       body: {
         bg: mode('var(--lightGradient)', 'var(--darkGradient)')(props),
+        bgSize: '1000% 1000%',
+        animation: ' MonidBg 10s ease infinite',
+
       },
     }),
   };
