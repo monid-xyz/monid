@@ -43,7 +43,6 @@ import EarlyAdopters from 'components/early/EarlyAdopters';
 import ContributionSection from 'components/contribution/ContributionSection';
 import MintNft from 'components/early/MintNft';
 import NextLink from 'next/link';
-import ChallengesSection from 'components/challenges/ChallengesSection';
 
 export default function CommunitySection() {
   const { colorMode } = useColorMode();
