@@ -72,7 +72,7 @@ export default function Header() {
 
   return (
     <>
-      {!notMobile && (
+      
         <Center px={[4, 4, 0]} fontSize={'lg'} py={2} bgGradient={'linear(to-r, var(--base), var(--base0))'} color={'white'}>
           {/* <NextLink href="/community" passHref>
                   <Button
@@ -87,7 +87,7 @@ export default function Header() {
                   Monad Testnet is Coming ...
                 
         </Center>
-      )}
+      
       <Box
         as="nav"
         position={'relative'}
