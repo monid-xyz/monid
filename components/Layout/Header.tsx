@@ -84,7 +84,7 @@ export default function Header() {
                     <ImageBox srcUrl="/screens/contribute.png" size={'46px'} />
                     Community
                   </Button></NextLink> */}
-                  ONCHAIN is the Next ONLINE
+                  Monad Testnet is Coming ...
                 
         </Center>
       )}

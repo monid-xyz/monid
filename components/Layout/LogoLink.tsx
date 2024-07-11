@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 
 export default function LogoLink() {
   const lightMode = useColorMode().colorMode === 'light';
-  const [small] = useMediaQuery('(min-width: 480px)');
+  const [small] = useMediaQuery('(min-width: 460px)');
   return (
     <Flex flexGrow={1} width={'100%'}>
     <NextLink href="/" passHref>
