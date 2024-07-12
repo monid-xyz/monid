@@ -408,7 +408,7 @@ export const VARIATIONS = [
     title: 'Jonathan',
     WalletButtons: true,
     subtitle: 'Investigator',
-    vid: 'jonathon.mon',
+    vid: 'jonathan.mon',
   },
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/sam.mon.svg',
