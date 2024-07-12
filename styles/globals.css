@@ -164,13 +164,13 @@ div::-webkit-scrollbar-thumb {
   color: var(--dark);
   background-color: var(--white);
   border-radius: 12px;
-  font-family: 'Poppins', sans-serif !important /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */;
+  font-family: 'Montserrat', sans-serif !important /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */;
 }
 
 .tour,
 .introjs-tooltipReferenceLayer * {
   color: #161618;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
   font-weight: 500;
   font-size: large;
 }

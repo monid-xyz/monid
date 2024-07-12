@@ -456,9 +456,9 @@ export default function EarlyAdopters() {
 
   return (
     <Accordion
-      allowToggle
+      //allowToggle
       allowMultiple={false}
-      //defaultIndex={[0]}
+      defaultIndex={[0]}
       // onChange={(e) => {
       //   if(e === 0){
       //     onOpen();
@@ -712,7 +712,7 @@ export default function EarlyAdopters() {
               rounded={'lg'}
               fontSize={'xl'}>
                 <Text textAlign={'center'} w={'100%'}>
-              The MONID Early Adopter program is open for the first 5000 registered .mon domains!
+              The first 5000 registered .mon domain owners will be garaunteed a Unique Avatar NFT with future utility!
               </Text>
             </Flex>
              {/* {minteds && minteds?.length > 0 && <Text textAlign={'center'} fontSize={'xl'} fontWeight={'bold'}>Your OAT(s)</Text>}

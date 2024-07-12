@@ -4,6 +4,7 @@ import { mode } from '@chakra-ui/theme-tools';
 import { useAtomValue } from 'jotai';
 import { fontAtom, localeAtom } from 'core/atoms';
 import { Direction, Locale } from 'translations';
+import '@fontsource/montserrat';
 import '@fontsource/poppins';
 import '@fontsource/lato';
 import '@fontsource/pixelify-sans';
@@ -27,8 +28,8 @@ const ThemeProvider = ({ children }: IThemeProvider) => {
   };
 
   const fonts = {
-    heading: `'Poppins', sans-serif`,
-    body: `'Poppins', sans-serif`,
+    heading: `'Montserrat', sans-serif`,
+    body: `'Montserrat', sans-serif`,
   };
 
   const components = {

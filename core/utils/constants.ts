@@ -392,7 +392,7 @@ export const BUTTON_BG_COLORS = [
 ];
 export const BUTTON_ROUNDS = ['none', 'md', 'full'];
 export const BUTTON_VARIANTS = ['solid', 'outline', 'pop', 'border', 'border2', 'fill'];
-export const FONTS = ['Poppins', 'Lato', 'Pixelify Sans', 'Space Mono', 'Playfair Display', 'Jost'];
+export const FONTS = ['Montserrat','Poppins', 'Lato', 'Pixelify Sans', 'Space Mono', 'Playfair Display', 'Jost'];
 
 export const VARIATIONS = [
   {

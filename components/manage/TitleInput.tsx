@@ -58,7 +58,7 @@ export default function TitleInput() {
           <Stack gap={4}>
             <InputGroup size="lg" minWidth="xs" borderColor="gray" className="title">
               <InputLeftElement
-                fontFamily={'poppins'}
+                fontFamily={'montserrat'}
                 fontWeight={'bold'}
                 fontSize={'20px'}
                 w={'104px'}
@@ -75,7 +75,7 @@ export default function TitleInput() {
             </InputGroup>
             <InputGroup size="lg" minWidth="xs" borderColor="gray" className="subtitle">
               <InputLeftElement
-                fontFamily={'poppins'}
+                fontFamily={'montserrat'}
                 fontWeight={'bold'}
                 fontSize={'16px'}
                 w={'104px'}
