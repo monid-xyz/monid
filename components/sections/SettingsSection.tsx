@@ -27,7 +27,7 @@ import { useTranslate } from 'core/lib/hooks/use-translate';
 import Logo from 'components/logos/Logo';
 import { sleep, truncAddress } from 'core/utils';
 import { sql } from '@vercel/postgres';
-import { ConnectButton } from 'components/venomConnect';
+import { ConnectWalletButton } from 'components/venomConnect';
 import {
   primaryNameAtom,
   venomContractAtom,
@@ -92,7 +92,7 @@ function SettingsSection() {
         {!isConnected ? (
           <Center my={8} flexDirection="column">
             <Text my={4}>{t('venomWalletConnect')}</Text>
-            <ConnectButton />
+            <ConnectWalletButton />
           </Center>
         ) : <Stack gap={10} width={'100%'} pb={12}>
         <Flex

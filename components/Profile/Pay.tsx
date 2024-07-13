@@ -38,18 +38,9 @@ import {
 } from 'core/atoms';
 import { LinkIcon } from 'components/logos';
 import QRCode from 'react-qr-code';
-import {
-  ConnectWallet,
-  useSDK,
-  useAddress,
-  useConnect as useThirdWebConnect,
-  metamaskWallet,
-} from '@thirdweb-dev/react';
 import { FaBitcoin, FaEthereum } from 'react-icons/fa';
 import { Styles } from 'types';
 import { getColor } from 'core/utils';
-
-const metamaskConfig = metamaskWallet();
 
 interface Props {
   title: string;
@@ -74,44 +65,31 @@ export default function Pay({ title, content, style }: Props) {
   const [isPaying, setisPaying] = useState(false);
   const [paySuccessful, setpaySuccessful] = useState(false);
 
-  const ethAddressFromWallet = useAddress();
-  const connectWithThirdweb = useThirdWebConnect();
   const [_open, _setOpen] = useAtom(openModalAtom);
 
   useEffect(() => {
     _setOpen(isOpen)
   }, [isOpen]);
 
-  useEffect(() => {
-    if (autoEth && ethAddressFromWallet) {
-      setAutoEth(false);
-    }
-  }, [autoEth, ethAddressFromWallet]);
 
   const [value, setValue] = useState(1);
   const ethuri = `ethereum:${eth}?value=${value * 1e18}&gas=42000`;
 
   const btcuri = `bitcoin:${btc}?amount=${value}&label=payment`;
 
-  const sdk = useSDK();
   
   const payEth = async () => {
-    if (sdk?.wallet.isConnected()) {
+    if (connected) {
       try {
-        setisPaying(true);
-        setpaySuccessful(false);
-        const txResult = await sdk.wallet.transfer(String(eth), value);
-        if (txResult.receipt.confirmations > 0) {
-          setpaySuccessful(true);
-          setisPaying(false);
-        }
+        //setisPaying(true);
+        //setpaySuccessful(false);
+        
       } catch (e) {
         setpaySuccessful(false);
         setisPaying(false);
       }
     } else {
-      await connectWithThirdweb(metamaskConfig);
-      setAutoEth(true);
+      
     }
   };
 
@@ -169,7 +147,7 @@ export default function Pay({ title, content, style }: Props) {
                         colorScheme="green"
                         size={'lg'}
                         isLoading={isPaying}>
-                        {sdk?.wallet.isConnected() ? 'Pay' : `Connect Wallet`}
+                        {connected ? 'Pay' : `Connect Wallet`}
                       </Button>
                       {paySuccessful && !isPaying && <Text color="green">{success}</Text>}
                       <Text>or Scan the QR Code below</Text>

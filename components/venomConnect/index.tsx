@@ -1,3 +1,3 @@
-import ConnectButton from './ConnectButton';
+import ConnectWalletButton from './ConnectButton';
 
-export { ConnectButton }
+export { ConnectWalletButton }

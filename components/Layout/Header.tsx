@@ -35,7 +35,7 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { localeAtom, colorModeAtom, isConnectedAtom } from 'core/atoms';
-import { ConnectButton } from 'components/venomConnect';
+import { ConnectWalletButton } from 'components/venomConnect';
 import { useAtom, useAtomValue } from 'jotai';
 import { RiMoonFill, RiSunFill, RiMenu2Fill, RiCloseFill } from 'react-icons/ri';
 import { Locale } from 'translations';
@@ -107,24 +107,40 @@ export default function Header() {
         <Container maxW="100%" p={[3, 4, 4, 4, 8]}>
           <Flex justifyContent="space-between">
             <LogoLink />
-            {/*<HStack gap={1}>
+            <HStack gap={1}>
               
               {notMobile && (
-                <NextLink href={home ? '#w&w' : '/#w&w'} passHref>
-                  <Button variant="ghost" color="default">
-                    {t('w&w')}
-                  </Button>
+                <NextLink href={'/community'} passHref>
+                  <Button
+                            onClick={onClose}
+                            variant="ghost"
+                            colorScheme={pathname === '/community' ? 'venom' : 'gray'}
+                            width="100%"
+                            justifyContent="left">
+                            {t('Community')}
+                          </Button>
                 </NextLink>
               )}
 
               {notMobile && (
-                <NextLink href={home ? '#ns' : '/#ns'} passHref>
-                  <Button variant="ghost">{t('naming')}</Button>
+                 <NextLink href={'/litepaper'} passHref>
+                  <Button
+                            onClick={onClose}
+                            variant="ghost"
+                            colorScheme={pathname === '/litepaper' ? 'venom' : 'gray'}
+                            width="100%"
+                            justifyContent="left">
+                            {t('Litepaper')}
+                          </Button>
                 </NextLink>
               )}
+
+              </HStack>
+
+              {/*
               {notMobile && (
-                <NextLink href={'/litepaper'} passHref>
-                  <Button variant="ghost">{t('litepaper')}</Button>
+               <NextLink href={home ? '#ns' : '/#ns'} passHref>
+                  <Button variant="ghost">{t('naming')}</Button>
                 </NextLink>
               )}
 
@@ -303,7 +319,7 @@ export default function Header() {
                 </Portal>
               </Popover>
 
-              <ConnectButton />
+              <ConnectWalletButton />
               {/* {notMobile && (
                 <Menu>
                   <MenuButton as={Button}>{locale.toUpperCase()}</MenuButton>

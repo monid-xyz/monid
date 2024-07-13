@@ -89,7 +89,7 @@ import Prize from 'components/features/Prize';
 import RRRItem from 'components/features/RRRItem';
 import ImageBox from 'components/claiming/ImageBox';
 import { invalidUsernameMessage, isValidUsername, sleep, truncAddress } from 'core/utils';
-import { ConnectButton } from 'components/venomConnect';
+import { ConnectWalletButton } from 'components/venomConnect';
 import MintSuccessModal from 'components/claiming/MintSuccessModal';
 import Winner from 'components/raffle/Winner';
 import { isValidName } from 'ethers/lib/utils';

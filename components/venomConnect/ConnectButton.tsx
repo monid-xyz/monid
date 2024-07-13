@@ -49,22 +49,46 @@ import {
   networkAtom,
 } from 'core/atoms';
 import {
-  ConnectWallet,
-  useAddress,
-  useBalance,
-  useChain,
-  useConnectionStatus,
-  useSwitchChain,
-} from '@thirdweb-dev/react';
-import getVid from 'core/utils/getVid';
-//import { createWeb3Name } from '@web3-name-sdk/core';
-import Link from 'next/link';
-//import { lookupName } from 'vid-sdk';
+  ConnectButton ,
+  darkTheme,
+  lightTheme
+} from "thirdweb/react";
+import {
+  createWallet,
+  walletConnect,
+  inAppWallet
+} from "thirdweb/wallets";
+import { createThirdwebClient } from "thirdweb";
 
-export default function ConnectButton() {
+const client = createThirdwebClient({
+  clientId: process.env.NEXT_PUBLIC_THIRDWEB_ID,
+} as any);
+
+const wallets = [
+  createWallet("io.metamask"),
+  //createWallet("com.coinbase.wallet"),
+  walletConnect(),
+  inAppWallet({
+    auth: {
+      options: [
+        "email",
+        "google",
+        "apple",
+        "facebook",
+        "phone",
+      ],
+    },
+  }),
+  //createWallet("com.trustwallet.app"),
+  //createWallet("io.zerion.wallet"),
+  //createWallet("me.rainbow"),
+  //createWallet("app.phantom"),
+];
+
+export default function ConnectWalletButton() {
   const [notMobile] = useMediaQuery('(min-width: 800px)');
   const [small] = useMediaQuery('(min-width: 480px)');
-  const colorMode = useColorMode().colorMode;
+  const lightMode = useColorMode().colorMode === 'light';
   //const web3Name = createWeb3Name();
   const [network, setNetwork] = useAtom(networkAtom);
   //const ethAddress = useAtomValue(ethAtom);
@@ -102,7 +126,47 @@ export default function ConnectButton() {
   return (
     <>
       <Box>
-      <ConnectWallet
+      <ConnectButton
+        client={client}
+        wallets={wallets}
+        theme={ lightMode ? lightTheme({
+          colors: {
+            accentText: "#7951e9",
+            accentButtonBg: "#7951e9",
+            modalBg: "#fdfcfd",
+            dropdownBg: "#fdfcfd",
+            primaryButtonBg: "#7951e9",
+            primaryText: "#1a1523",
+          } as any}) : darkTheme({
+            colors: {
+              accentText: "#946eff",
+              accentButtonBg: "#946eff",
+              modalBg: "#2e244f",
+              dropdownBg: "#2e244f",
+              primaryButtonBg: "#ededef",
+              primaryText: "#ededef",
+              primaryButtonText: "#7951e9",
+            },
+          } as any)}
+        connectButton={{ label: "Connect" }}
+        connectModal={{
+          size: "wide",
+          titleIcon:
+            "https://monid.xyz/monidxyz.svg",
+          welcomeScreen: {
+            img: {
+              src: "https://monid.xyz/monidxyz.svg",
+              width: 150,
+              height: 150,
+            },
+          },
+          termsOfServiceUrl:
+            "https://monid.xyz/terms",
+          privacyPolicyUrl:
+            "https://monid.xyz/privacy",
+        }}
+      />
+      {/* <ConnectWallet
                 theme={colorMode}
                 btnTitle="Connect"
                 modalTitle="Connect Wallet"
@@ -136,7 +200,7 @@ export default function ConnectButton() {
                   title: 'Decentralize your online identity',
                 }}
                 modalSize={notMobile ? 'wide' : 'compact'}
-              />
+              /> */}
       </Box>
     </>
   );

@@ -89,7 +89,7 @@ import {
   TARGET_ETH_RECORD_ID,
   STYLES_RECORD_ID,
 } from 'core/utils/constants';
-import { ConnectButton } from 'components/venomConnect';
+import { ConnectWalletButton } from 'components/venomConnect';
 import { useStorageUpload } from '@thirdweb-dev/react';
 import AddModal from 'components/manage/AddModal';
 import ShareButton from 'components/manage/Share';
@@ -815,7 +815,7 @@ const ManagePage: NextPage = () => {
       ) : (
         <Center my={8} flexDirection="column" minH="100vh">
           <Text my={4}>Please Connect Your Venom Wallet</Text>
-          <ConnectButton />
+          <ConnectWalletButton />
         </Center>
       )}
     </>

@@ -36,18 +36,9 @@ import { capFirstLetter, getColor, truncAddress } from 'core/utils';
 import { LinkIcon } from 'components/logos';
 import QRCode from 'react-qr-code';
 
-import {
-  ConnectWallet,
-  useSDK,
-  useAddress,
-  useConnect as useThirdWebConnect,
-  metamaskWallet,
-} from '@thirdweb-dev/react';
 import { DONATE_VALUES } from 'core/utils/constants';
 import WalletLink from './WalletLink';
 import { Styles } from 'types';
-
-const metamaskConfig = metamaskWallet();
 
 interface Props {
   title: string;
@@ -97,15 +88,6 @@ export default function Donate({ title, content, style }: Props) {
     
   }, [isOpen]);
 
-  const ethAddressFromWallet = useAddress();
-  const connectWithThirdweb = useThirdWebConnect();
-
-  useEffect(() => {
-    if (autoEth && ethAddressFromWallet) {
-      setAutoEth(false);
-    }
-  }, [autoEth, ethAddressFromWallet]);
-
   const [value, setValue] = useState('1 VENOM');
   const ethuri = `ethereum:${eth}?value=${
     Number(value.slice(0, value.indexOf(' '))) * 1e18
@@ -113,28 +95,20 @@ export default function Donate({ title, content, style }: Props) {
 
   const btcuri = `bitcoin:${btc}?amount=${value.slice(0, value.indexOf(' '))}&label=donation`;
 
-    const sdk = useSDK();
-
+  
   const donate = async () => {
     if (value.includes('ETH')) {
-      if (sdk?.wallet.isConnected()) {
+      if (connected) {
         try {
           setIsDonating(true);
           setDonateSuccessful(false);
-          const txResult = await sdk.wallet.transfer(
-            String(eth),
-            value.slice(0, value.indexOf(' '))
-          );
-          if (txResult.receipt.confirmations > 0) {
-            setDonateSuccessful(true);
-            setIsDonating(false);
-          }
+          
         } catch (e) {
           setDonateSuccessful(false);
           setIsDonating(false);
         }
       } else {
-        await connectWithThirdweb(metamaskConfig);
+       
         setAutoEth(true);
       }
     }
@@ -200,7 +174,7 @@ export default function Donate({ title, content, style }: Props) {
                         variant={variant}
                         size={'lg'}
                         isLoading={isDonating}>
-                        {sdk?.wallet.isConnected() ? title : `Connect Wallet`}
+                        {connected ? title : `Connect Wallet`}
                       </Button>
                       {donateSuccessful && !isDonating && <Text color="green">{success}</Text>}
                       <Text>or scan the QR Code below</Text>
