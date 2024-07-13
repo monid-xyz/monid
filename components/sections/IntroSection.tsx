@@ -73,6 +73,7 @@ export default function IntroSection() {
   let progressTimer: any;
   const { t } = useTranslate();
   const [notMobile] = useMediaQuery('(min-width: 769px)');
+  const [small] = useMediaQuery('(min-width: 580px)');
   const { colorMode } = useColorMode();
   const [buttonBg, setButtonBg] = useAtom(buttonBgColorAtom);
   const [variant, setVariant] = useAtom(variantAtom);
@@ -397,9 +398,9 @@ const TiltCard = () => {
             bg={colorMode === 'light' ? 'whiteAlpha.600' : 'blackAlpha.300'}
             rounded={'2xl'}
             border={'1px solid #77777750'}>
-            <Flex gap={[3,4,6]} justify={'center'} align={'center'} p={6}>
+            <Flex gap={[6,6,6]} flexDirection={[!small ? 'column' : 'row']} justify={'center'} align={'center'} p={6}>
               <DomainName name={'sam.mon'} avatar={'https://ipfs.io/ipfs/QmcPjQqieVvNmKxQmWPkJ7HfJvY2GkrvtGEvzEzAuohMrD/sam.mon.svg'} size={['md','lg']}/>
-              <LinkIcon type="RiArrowLeftRightLine" size={24} />
+              <LinkIcon type={!small ? "RiArrowUpDownLine" : "RiArrowLeftRightLine"} size={!small ? 30 : 64} />
               <AccountAddress address="0xD2D12 .... 001CE" chain="monad" size={['md','lg']}/>
             </Flex>
           </GridItem>

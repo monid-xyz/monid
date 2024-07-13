@@ -16,14 +16,15 @@ import { LinkIcon } from 'components/logos';
   export default function DomainName({ name, avatar , size = 'lg',address = undefined}: Props) {
     const { colorMode } = useColorMode();
     return (
-        <Flex gap={3} align={'center'} border='3px solid black' position='relative' boxShadow='1px 1px 0px 0px black, 2px 2px 0px 0px black, 3px 3px 0px 0px black' rounded={'full'} bg={colorMode === 'light' ? 'white' : 'blackAlpha.500'}>
+        <Flex w={'100%'} gap={3} align={'center'} border='3px solid black' position='relative' boxShadow='1px 1px 0px 0px black, 2px 2px 0px 0px black, 3px 3px 0px 0px black' rounded={'full'} bg={colorMode === 'light' ? 'white' : 'blackAlpha.500'}>
         <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={avatar} size={size}/>
-        <Stack pr={6} gap={0}>
+        <Stack w={'100%'} pr={address ? 6 : 0} gap={0}>
           <Text
             fontWeight={'semibold'}
-            textAlign={'left'}
+            textAlign={'center'}
+            w={'100%'}
             cursor={'default'}
-            pr={5}
+            pr={address ? 5 : 4}
             fontSize={size}
             bgGradient={
               colorMode === 'light'
