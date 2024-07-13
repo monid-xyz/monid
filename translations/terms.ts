@@ -613,20 +613,20 @@ const terms: Terms = {
     fa: "Tokenomics",
   },
   TokenomicsDetails: {
-    en: "MONID will use a token-based economy to incentivize and reward users for participating in the platform. The total supply of MON token is 100 million, and it will be distributed over a period of 36 months. Token distribution will be as follows :",
-    fa: "MONID will use a token-based economy to incentivize and reward users for participating in the platform. The total supply of MON token is 100 million, and it will be distributed over a period of 36 months. Token distribution will be as follows :",
+    en: "MONID will use a token-based economy to incentivize and reward users for participating in the platform. More info will be announced in the future",
+    fa: "MONID will use a token-based economy to incentivize and reward users for participating in the platform. More info will be announced in the future",
   },
   TokenomicsDetails1: {
-    en: "Airdrop: 35% of the tokens will be airdropped to the community, rewarding early adopters and users who contribute to the platform's growth.",
-    fa: "Airdrop: 35% of the tokens will be airdropped to the community, rewarding early adopters and users who contribute to the platform's growth.",
+    en: "Airdrop: % of the tokens will be airdropped to the community, rewarding early adopters and users who contribute to the platform's growth.",
+    fa: "Airdrop: % of the tokens will be airdropped to the community, rewarding early adopters and users who contribute to the platform's growth.",
   },
   TokenomicsDetails2: {
-    en: "Contributors: 25% of the tokens will be shared among the main contributors, including developers, designers, and content creators who help build and maintain the platform.",
-    fa: "Contributors: 25% of the tokens will be shared among the main contributors, including developers, designers, and content creators who help build and maintain the platform.",
+    en: "Contributors: % of the tokens will be shared among the main contributors, including developers, designers, and content creators who help build and maintain the platform.",
+    fa: "Contributors: % of the tokens will be shared among the main contributors, including developers, designers, and content creators who help build and maintain the platform.",
   },
   TokenomicsDetails3: {
-    en: "Treasury: 40% of the tokens will be held in the treasury for the DAO and community, enabling the community to govern and fund initiatives that benefit the platform and its users.",
-    fa: "Treasury: 40% of the tokens will be held in the treasury for the DAO and community, enabling the community to govern and fund initiatives that benefit the platform and its users.",
+    en: "Treasury: % of the tokens will be held in the treasury for the DAO and community, enabling the community to govern and fund initiatives that benefit the platform and its users.",
+    fa: "Treasury: % of the tokens will be held in the treasury for the DAO and community, enabling the community to govern and fund initiatives that benefit the platform and its users.",
   },
   TokenomicsDetails4: {
     en: "The MON token economics aim to foster the growth and sustainability of the MONID ecosystem. Token holders can participate in platform governance, including voting on proposals, protocol upgrades, and the allocation of treasury funds. The DAO structure ensures that the community has a voice in decision-making processes, promoting decentralization and inclusivity.",

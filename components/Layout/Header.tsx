@@ -32,38 +32,48 @@ import {
   PopoverBody,
   PopoverFooter,
   SimpleGrid,
-} from '@chakra-ui/react';
-import NextLink from 'next/link';
-import { localeAtom, colorModeAtom, isConnectedAtom } from 'core/atoms';
-import { ConnectWalletButton } from 'components/venomConnect';
-import { useAtom, useAtomValue } from 'jotai';
-import { RiMoonFill, RiSunFill, RiMenu2Fill, RiCloseFill } from 'react-icons/ri';
-import { Locale } from 'translations';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { useTranslate } from 'core/lib/hooks/use-translate';
-import { LinkIcon, Logo , Base } from 'components/logos';
-import Footer from './Footer';
-import LogoLink from './LogoLink';
-import { DOCS_URL, GRINDING_URL, GUIDES_URL, ROADMAP_URL } from 'core/utils/constants';
-import { motion } from 'framer-motion';
-import ImageBox from 'components/claiming/ImageBox';
-import Monad from 'components/logos/Monad';
+} from "@chakra-ui/react";
+import NextLink from "next/link";
+import { localeAtom, colorModeAtom, isConnectedAtom } from "core/atoms";
+import { ConnectWalletButton } from "components/venomConnect";
+import { useAtom, useAtomValue } from "jotai";
+import {
+  RiMoonFill,
+  RiSunFill,
+  RiMenu2Fill,
+  RiCloseFill,
+} from "react-icons/ri";
+import { Locale } from "translations";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useTranslate } from "core/lib/hooks/use-translate";
+import { LinkIcon, Logo, Base } from "components/logos";
+import Footer from "./Footer";
+import LogoLink from "./LogoLink";
+import {
+  DOCS_URL,
+  GRINDING_URL,
+  GUIDES_URL,
+  ROADMAP_URL,
+} from "core/utils/constants";
+import { motion } from "framer-motion";
+import ImageBox from "components/claiming/ImageBox";
+import Monad from "components/logos/Monad";
 export default function Header() {
   const [colorM, setColorM] = useAtom(colorModeAtom);
   const { colorMode, toggleColorMode } = useColorMode();
-  const lightMode = useColorMode().colorMode === 'light';
-  const [notMobile] = useMediaQuery('(min-width: 992px)');
-  const [small] = useMediaQuery('(min-width: 420px)');
+  const lightMode = useColorMode().colorMode === "light";
+  const [notMobile] = useMediaQuery("(min-width: 992px)");
+  const [small] = useMediaQuery("(min-width: 420px)");
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
   const { pathname } = useRouter();
-  const home = pathname === '/' ? true : false;
+  const home = pathname === "/" ? true : false;
   const { t } = useTranslate();
   const isConnected = useAtomValue(isConnectedAtom);
-  const dashboard = pathname === '/manage' ? true : false;
+  const dashboard = pathname === "/manage" ? true : false;
 
   useEffect(() => {
-    if (!pathname.includes('nftAddress')) {
+    if (!pathname.includes("nftAddress")) {
       if (colorMode !== colorM) {
         toggleColorMode();
       }
@@ -72,9 +82,14 @@ export default function Header() {
 
   return (
     <>
-      
-        <Center px={[4, 4, 0]} fontSize={'lg'} py={2} bgGradient={'linear(to-r, var(--base), var(--base0))'} color={'white'}>
-          {/* <NextLink href="/community" passHref>
+      <Center
+        px={[4, 4, 0]}
+        fontSize={"lg"}
+        py={2}
+        bgGradient={"linear(to-r, var(--base), var(--base0))"}
+        color={"white"}
+      >
+        {/* <NextLink href="/community" passHref>
                   <Button
                     variant="ghost"
                     rounded={'full'}
@@ -84,19 +99,18 @@ export default function Header() {
                     <ImageBox srcUrl="/screens/contribute.png" size={'46px'} />
                     Community
                   </Button></NextLink> */}
-                  Monad Testnet is Coming ...
-                
-        </Center>
-      
+        Monad Testnet is Coming ...
+      </Center>
+
       <Box
         as="nav"
-        position={'relative'}
-        top={['0px']}
+        position={"relative"}
+        top={["0px"]}
         zIndex={1000}
         px={0}
         m={0}
-        width={'100%'}
-        placeItems={'center'}
+        width={"100%"}
+        placeItems={"center"}
 
         // backgroundColor={colorMode === 'dark' ? 'blackAlpha.200' : 'auto'}
         // backdropFilter="auto"
@@ -108,36 +122,36 @@ export default function Header() {
           <Flex justifyContent="space-between">
             <LogoLink />
             <HStack gap={1}>
-              
               {notMobile && (
-                <NextLink href={'/community'} passHref>
+                <NextLink href={"/community"} passHref>
                   <Button
-                            onClick={onClose}
-                            variant="ghost"
-                            colorScheme={pathname === '/community' ? 'venom' : 'gray'}
-                            width="100%"
-                            justifyContent="left">
-                            {t('Community')}
-                          </Button>
+                    onClick={onClose}
+                    variant="ghost"
+                    colorScheme={pathname === "/community" ? "venom" : "gray"}
+                    width="100%"
+                    justifyContent="left"
+                  >
+                    {t("Community")}
+                  </Button>
                 </NextLink>
               )}
 
               {notMobile && (
-                 <NextLink href={'/litepaper'} passHref>
+                <NextLink href={"/litepaper"} passHref>
                   <Button
-                            onClick={onClose}
-                            variant="ghost"
-                            colorScheme={pathname === '/litepaper' ? 'venom' : 'gray'}
-                            width="100%"
-                            justifyContent="left">
-                            {t('Litepaper')}
-                          </Button>
+                    onClick={onClose}
+                    variant="ghost"
+                    colorScheme={pathname === "/litepaper" ? "venom" : "gray"}
+                    width="100%"
+                    justifyContent="left"
+                  >
+                    {t("Litepaper")}
+                  </Button>
                 </NextLink>
               )}
+            </HStack>
 
-              </HStack>
-
-              {/*
+            {/*
               {notMobile && (
                <NextLink href={home ? '#ns' : '/#ns'} passHref>
                   <Button variant="ghost">{t('naming')}</Button>
@@ -170,14 +184,22 @@ export default function Header() {
 
               {isConnected && (
                 <NextLink href="/manage" passHref>
-                  <Button variant="ghost" rounded={'full'} gap={2} isActive={dashboard} size={['md','md','lg']}>
+                  <Button
+                    variant="ghost"
+                    rounded={"full"}
+                    gap={2}
+                    isActive={dashboard}
+                    size={["md", "md", "lg"]}
+                  >
                     <LinkIcon
                       type="RiApps2Line"
                       size={24}
-                      color={dashboard ? 'var(--base1)' : 'inherit'}
+                      color={dashboard ? "var(--base1)" : "inherit"}
                     />
                     {notMobile && (
-                      <Text color={dashboard ? 'var(--base1)' : 'default'}>{t('My Names')}</Text>
+                      <Text color={dashboard ? "var(--base1)" : "default"}>
+                        {t("My Names")}
+                      </Text>
                     )}
                   </Button>
                 </NextLink>
@@ -189,26 +211,29 @@ export default function Header() {
                     aria-label="venomid-mobile-menu"
                     variant="ghost"
                     mx={0}
-                    rounded={'xl'}
-                    size={['md', 'lg']}>
+                    rounded={"xl"}
+                    size={["md", "lg"]}
+                  >
                     <LinkIcon type="RiMenuLine" size={22} />
                   </IconButton>
                 </PopoverTrigger>
                 <Portal>
                   <PopoverContent
-                    rounded={'2xl'}
+                    rounded={"2xl"}
                     zIndex={10000}
                     mt={2}
-                    bg={lightMode ? 'var(--white)' : 'var(--dark)'}>
+                    bg={lightMode ? "var(--white)" : "var(--dark)"}
+                  >
                     <PopoverHeader
-                      justifyContent={'space-between'}
-                      display={'flex'}
-                      alignItems={'center'}
+                      justifyContent={"space-between"}
+                      display={"flex"}
+                      alignItems={"center"}
                       p={4}
-                      px={6}>
+                      px={6}
+                    >
                       <Flex gap={3}>
                         <Monad />
-                        <Text fontWeight={'bold'} cursor={'default'}>
+                        <Text fontWeight={"bold"} cursor={"default"}>
                           Monad Mainnet
                         </Text>
                       </Flex>
@@ -216,7 +241,7 @@ export default function Header() {
                         variant="ghost"
                         aria-label="theme"
                         onClick={() => {
-                          setColorM(lightMode ? 'dark' : 'light');
+                          setColorM(lightMode ? "dark" : "light");
                           toggleColorMode();
                         }}
                         icon={lightMode ? <RiMoonFill /> : <RiSunFill />}
@@ -224,24 +249,30 @@ export default function Header() {
                     </PopoverHeader>
                     <PopoverBody>
                       <SimpleGrid columns={2} py={2} gap={2}>
-                      <NextLink href={'/community'} passHref>
+                        <NextLink href={"/community"} passHref>
                           <Button
                             onClick={onClose}
                             variant="ghost"
-                            colorScheme={pathname === '/community' ? 'venom' : 'gray'}
+                            colorScheme={
+                              pathname === "/community" ? "venom" : "gray"
+                            }
                             width="100%"
-                            justifyContent="left">
-                            {t('Community')}
+                            justifyContent="left"
+                          >
+                            {t("Community")}
                           </Button>
                         </NextLink>
-                        <NextLink href={'/litepaper'} passHref>
+                        <NextLink href={"/litepaper"} passHref>
                           <Button
                             onClick={onClose}
                             variant="ghost"
-                            colorScheme={pathname === '/litepaper' ? 'venom' : 'gray'}
+                            colorScheme={
+                              pathname === "/litepaper" ? "venom" : "gray"
+                            }
                             width="100%"
-                            justifyContent="left">
-                            {t('Litepaper')}
+                            justifyContent="left"
+                          >
+                            {t("Litepaper")}
                           </Button>
                         </NextLink>
                         {/* <NextLink href={'/what'} passHref>
@@ -288,26 +319,31 @@ export default function Header() {
                             {t('Guides')}
                           </Button>
                         </Link> */}
-                        
 
-                        <NextLink href={'/terms'} passHref>
+                        <NextLink href={"/terms"} passHref>
                           <Button
                             onClick={onClose}
                             variant="ghost"
-                            colorScheme={pathname === '/terms' ? 'venom' : 'gray'}
+                            colorScheme={
+                              pathname === "/terms" ? "venom" : "gray"
+                            }
                             width="100%"
-                            justifyContent="left">
-                            {t('Terms of Use')}
+                            justifyContent="left"
+                          >
+                            {t("Terms of Use")}
                           </Button>
                         </NextLink>
-                        <NextLink href={'/privacy'} passHref>
+                        <NextLink href={"/privacy"} passHref>
                           <Button
                             onClick={onClose}
                             variant="ghost"
-                            colorScheme={pathname === '/privacy' ? 'venom' : 'gray'}
+                            colorScheme={
+                              pathname === "/privacy" ? "venom" : "gray"
+                            }
                             width="100%"
-                            justifyContent="left">
-                            {t('Privacy Policy')}
+                            justifyContent="left"
+                          >
+                            {t("Privacy Policy")}
                           </Button>
                         </NextLink>
                       </SimpleGrid>

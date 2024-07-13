@@ -208,7 +208,7 @@ export default function LitepaperSection() {
                 {t('Tokenomics')}
               </Text>
               <Flex
-                flexDir={['column', 'column', 'column', 'column', 'row']}
+                flexDir={['column', 'column', 'column', 'column']}
                 gap={8}
                 justify={'center'}
                 align={'center'}>
@@ -216,7 +216,7 @@ export default function LitepaperSection() {
                   <Text fontWeight="normal" fontSize={'lg'}>
                     {t('TokenomicsDetails')}
                   </Text>
-                  <Text fontWeight="normal" fontSize={'lg'}>
+                  {/* <Text fontWeight="normal" fontSize={'lg'}>
                     {t('TokenomicsDetails1')}
                   </Text>
                   <Text fontWeight="normal" fontSize={'lg'}>
@@ -224,9 +224,9 @@ export default function LitepaperSection() {
                   </Text>
                   <Text fontWeight="normal" fontSize={'lg'}>
                     {t('TokenomicsDetails3')}
-                  </Text>
+                  </Text> */}
                 </Stack>
-                <Box
+                {/* <Box
                   w={[
                     'container.xs',
                     'container.xs',
@@ -235,7 +235,7 @@ export default function LitepaperSection() {
                     'container.lg',
                   ]}>
                   <Pie data={data} />
-                </Box>
+                </Box> */}
               </Flex>
               <Text fontWeight="normal" fontSize={'lg'} id="Governance" mt={8}>
                 {t('TokenomicsDetails4')}

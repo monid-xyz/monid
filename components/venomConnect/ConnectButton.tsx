@@ -140,9 +140,10 @@ export default function ConnectWalletButton() {
           } as any}) : darkTheme({
             colors: {
               accentText: "#946eff",
+              secondaryText: '#999999',
               accentButtonBg: "#946eff",
-              modalBg: "#2e244f",
-              dropdownBg: "#2e244f",
+              modalBg: "#322a4b",
+              dropdownBg: "#322a4b",
               primaryButtonBg: "#ededef",
               primaryText: "#ededef",
               primaryButtonText: "#7951e9",
