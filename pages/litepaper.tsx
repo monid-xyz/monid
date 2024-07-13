@@ -16,13 +16,13 @@ const Litepaper: NextPage = () => {
         <meta name="twitter:description" content={des} />
         <meta
           name="twitter:image"
-          content={`${SITE_OGS_URL}litepaperog.jpg`}
+          content={`${SITE_OGS_URL}litepaper.jpg`}
         />
         <meta name="og:title" content={title} />
         <meta name="og:description" content={des} />
         <meta
           name="og:image"
-          content={`${SITE_OGS_URL}litepaperog.jpg`}
+          content={`${SITE_OGS_URL}litepaper.jpg`}
         />
         <link rel="icon" type="image/png" href="/logos/monid.png" />
       </Head>
