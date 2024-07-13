@@ -6,19 +6,7 @@ import {
   Text,
   Center,
   Stack,
-  useColorMode,
-  IconButton,
-  Flex,
-  Menu,
-  MenuButton,
-  MenuList,
-  Tooltip,
-  LinkBox,
-  LinkOverlay,
-  useClipboard,
-  Avatar,
-  Icon,
-  MenuDivider,
+  useColorMode
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
@@ -29,7 +17,6 @@ import {
   SIGN_MESSAGE,
   SITE_URL,
 } from 'core/utils/constants';
-import { sleep, truncAddress, capFirstLetter, isValidSignHash, getCurrentDateUnix } from 'core/utils';
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import VenomAbi from 'abi/Collection.abi.json';
 import RootAbi from 'abi/Root.abi.json';
@@ -41,11 +28,6 @@ import {
 } from 'react-icons/ri';
 import LogoIcon from '../logos/LogoIcon';
 import {
-  connectedAccountAtom,
-  earlyAdopterContractAtom,
-  ethAtom,
-  ethPrimaryNameAtom,
-  isConnectedAtom,
   networkAtom,
 } from 'core/atoms';
 import {

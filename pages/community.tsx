@@ -6,7 +6,7 @@ import CommunitySection from 'components/sections/CommunitySection';
 
 const Community: NextPage = () => {
   const title = "MONID Community";
-  const des = "Collaborate, Innovate, and Share";
+  const des = "Synergize. Progress. and Earn";
   return (
     <>
     <Seo title={title} description={des} />
