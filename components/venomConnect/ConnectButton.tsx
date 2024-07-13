@@ -40,11 +40,8 @@ import {
   walletConnect,
   inAppWallet
 } from "thirdweb/wallets";
-import { createThirdwebClient } from "thirdweb";
+import { client } from '.';
 
-const client = createThirdwebClient({
-  clientId: process.env.NEXT_PUBLIC_THIRDWEB_ID,
-} as any);
 
 const wallets = [
   createWallet("io.metamask"),

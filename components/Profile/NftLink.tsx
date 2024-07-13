@@ -17,10 +17,11 @@ import {
   MARKETPLACE_URLS,
 } from 'core/utils/constants';
 import { RiExternalLinkLine } from 'react-icons/ri';
-import { ThirdwebNftMedia, ThirdwebNftMediaProps } from '@thirdweb-dev/react';
+import { MediaRenderer, MediaRendererProps } from "thirdweb/react";
 import { Styles } from 'types';
 import { buttonBgColorAtom, lightModeAtom, roundAtom, variantAtom } from 'core/atoms';
 import { useAtomValue } from 'jotai';
+import { client } from 'components/venomConnect';
 interface Props {
   url: string;
   title: string;
@@ -45,12 +46,15 @@ const NftLink = ({ url, title, link, address, styles, alt, loading, color }: Pro
 
   //// console.log(url,title, link, address, alt)
   let _nftAddress = '';
-  let metadata: ThirdwebNftMediaProps['metadata'] | undefined;
+  let metadata: any;
+  let src: string | undefined;
   if (network?.includes('venom')) {
     _nftAddress = address;
   } else {
     _nftAddress = address !== 'undefined' ? JSON.parse(address).address : '';
     metadata = address !== 'undefined' ? JSON.parse(address).metadata : {};
+    src = metadata.external_url;
+    console.log(metadata)
   }
 
   const nftAddress = _nftAddress;
@@ -68,7 +72,6 @@ const NftLink = ({ url, title, link, address, styles, alt, loading, color }: Pro
           width={'100%'}
           bgColor={lightMode ? 'blackAlpha.200' : 'whiteAlpha.200'}>
           <>
-            {type === 'normal' ? (
               <Image
                 borderRadius={size !== 'lg' ? 0 : round === 'none' ? 0 : round === 'md' ? 8 : 16}
                 borderLeftRadius={round === 'none' ? 0 : round === 'md' ? 8 : 16}
@@ -80,27 +83,6 @@ const NftLink = ({ url, title, link, address, styles, alt, loading, color }: Pro
                 alt={alt ? alt : title + ' NFT'}
                 textAlign={'center'}
               />
-            ) : metadata ? (
-              <ThirdwebNftMedia
-                metadata={metadata}
-                width={size !== 'lg' ? (size === 'md' ? '200px' : '100px') : '100%'}
-                height={size !== 'lg' ? (size === 'md' ? '200px' : '100px') : '320px'}
-                controls={false}
-                style={{ borderRadius: round === 'none' ? 0 : round === 'md' ? 8 : 16 }}
-              />
-            ) : (
-              <Image
-                borderRadius={size !== 'lg' ? 0 : round === 'none' ? 0 : round === 'md' ? 8 : 16}
-                borderLeftRadius={round === 'none' ? 0 : round === 'md' ? 8 : 16}
-                objectFit={'cover'}
-                src={url}
-                width={size !== 'lg' ? (size === 'md' ? '50%' : '100px') : '100%'}
-                height={size !== 'lg' ? (size === 'md' ? '200' : '100px') : 'auto'}
-                boxShadow="0 0 10px #00000030"
-                alt={alt ? alt : title + ' NFT'}
-                textAlign={'center'}
-              />
-            )}
             <Stack p={4} justifyContent="center" width={'100%'}>
               <Stack>
                 <Text fontSize={size === 'lg' ? 'xl' : size === 'md' ? 'lg' : 'md'}>{title}</Text>

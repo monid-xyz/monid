@@ -712,7 +712,7 @@ export default function EarlyAdopters() {
               rounded={'lg'}
               fontSize={'xl'}>
                 <Text textAlign={'center'} w={'100%'}>
-              The first 5000 registered .mon domain owners will be garaunteed a Unique Avatar NFT with future utility!
+              The first 5000 registered .mon domain owners will be guaranteed a Unique Avatar NFT with future utility!
               </Text>
             </Flex>
              {/* {minteds && minteds?.length > 0 && <Text textAlign={'center'} fontSize={'xl'} fontWeight={'bold'}>Your OAT(s)</Text>}

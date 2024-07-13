@@ -8,6 +8,7 @@ export const DOMAIN_REGISTER_FEE = 1;
 export const MINT_DATE = 'Feb 03, 2024 18:00 UTC';
 export const MINT_MESSAGE = 'Final Phase of venom testnet minting will start on';
 export const SITE_URL = 'https://monid.xyz/';
+export const SITE_OGS_URL = 'https://monid.xyz/ogs/';
 export const SITE_URL_SHORT = 'monid.xyz';
 export const VID_IMAGE_API = 'https://img.monid.xyz/api/';
 export const SITE_TITLE = 'MONID';
@@ -413,7 +414,7 @@ export const VARIATIONS = [
   {
     avatar: 'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/sam.mon.svg',
     avatarShape: 'circle',
-    bg: BG_IMAGES[3].bg,
+    bg: BG_IMAGES[1].bg,
     lightMode: BG_IMAGES[3].lightMode,
     buttonBg: BUTTON_BG_COLORS[1],
     variant: BUTTON_VARIANTS[1],
@@ -427,7 +428,7 @@ export const VARIATIONS = [
     avatar:
       'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/anony.mon.svg',
     avatarShape: 'circle',
-    bg: BG_IMAGES[8].bg,
+    bg: BG_IMAGES[6].bg,
     lightMode: BG_IMAGES[8].lightMode,
     buttonBg: BUTTON_BG_COLORS[1],
     variant: BUTTON_VARIANTS[5],
@@ -458,8 +459,8 @@ export const VARIATIONS = [
     avatar:
       'https://ipfs.io/ipfs/QmNpdhihDxWCykpci1EJPA4VJTo7TTKH4NnZJStbN1MVqC/rain.mon.svg',
     avatarShape: 'round',
-    bg: BG_COLORS[10].color,
-    lightMode: BG_COLORS[10].lightMode,
+    bg: BG_COLORS[7].color,
+    lightMode: BG_COLORS[7].lightMode,
     buttonBg: BUTTON_BG_COLORS[1],
     variant: BUTTON_VARIANTS[3],
     round: BUTTON_ROUNDS[0],
@@ -581,13 +582,13 @@ export const LINK_VARIATIONS = [
   ],
   [
     {
-      content:
-        '{"address":"0xa342f5D851E866E18ff98F351f2c6637f4478dB5/55464657044963196816950587289035428064568320970692304673817341489687665059844","metadata":{"name":"Bat Country Convertible","sandbox":{"creator":"0x7a9fe22691c811ea339d9b73150e6911a5343dca","creator_profile_url":"https://www.sandbox.game/en/users/sandboxgame/cfb94ffd-e3b9-4681-850c-95a4c3e65f2f/","classification":{"type":"Entity","theme":"None","categories":["Vehicle","Monster","Horror"]},"version":2,"voxel_model":"ipfs://bafybeihx2ovxcebflt7dp7x3kftwbzfscgivh33sfqrekudqsm3n3c22rq/bat-country-convertible.vxc"},"description":"He who makes a beast of himself gets rid of the pain of being a man.","image":"ipfs://bafybeihx2ovxcebflt7dp7x3kftwbzfscgivh33sfqrekudqsm3n3c22rq/bat-country-convertible.png","external_url":"https://www.sandbox.game/en/assets/bat-country-convertible/6ac21f68-db45-4e85-9e1c-26dfabd5d0fc/","animation_url":"ipfs://bafybeihx2ovxcebflt7dp7x3kftwbzfscgivh33sfqrekudqsm3n3c22rq/bat-country-convertible.gltf"}}',
-      image: 'https://nft-cdn.alchemy.com/eth-mainnet/c4d71c82a77944cd4f82e39e88d2a2b7',
-      styles: { size: 'lg', network: 'ethereum', scanLink: false, type: 'complex' },
-      title: 'Bat Country Convertible',
-      type: 'nft link',
-      url: '',
+      type: 'simple link',
+      title: 'Telegram Bot',
+      url: 'https://t.me/@monid_xyz_bot',
+      styles: {
+        icon: 'RiTelegramFill',
+        size: 'md',
+      },
     },
   ],
   [

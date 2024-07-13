@@ -232,7 +232,7 @@ const TiltCard = () => {
                 gap={4}
                 transition={'"all 1s ease"'}
                 bgColor={useColorModeValue('light.600', 'dark.600')}>
-                <Button as={Link} href={`https://monid.xyz/${vid}`} target='_blank' variant={'outline'} gap={2} display={'flex'} rounded={'full'}>
+                <Button variant={'outline'} gap={2} display={'flex'} rounded={'full'}>
                 <LinkIcon type='RiExternalLinkLine' size={20} /> monid.xyz/{vid}
                 </Button>
                 <HStack gap={2} >
@@ -426,7 +426,7 @@ const TiltCard = () => {
         color={colorMode === 'light' ? 'white' : 'white'}
         py={36}>
           <Heading textAlign={'center'} px={4}>Early Adopters Program</Heading>
-          <Text fontSize={'xl'} fontWeight={'bold'} textAlign={'center'} px={4}>First 5000 Users who Register .MON are garaunteed to mint a 1:1 NFT on Monad Blockchain</Text>
+          <Text fontSize={'xl'} fontWeight={'bold'} textAlign={'center'} px={4}>First 5000 Users who Register .MON are guaranteed to mint a 1:1 NFT on Monad Blockchain</Text>
       <Flex minW={'100%'} width={'100%'} flexDirection={'column'} gap={[8,12,16]} opacity={.7}>
         <Parallax baseVelocity={-0.25}>
           <Flex gap={[4,6,8]}>
