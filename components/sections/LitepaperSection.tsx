@@ -22,6 +22,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function LitepaperSection() {
   const { t } = useTranslate();
+  const lightMode = useColorMode().colorMode === 'light';
   const [ready, setReady] = useState(false);
   const [notMobile] = useMediaQuery('(min-width: 769px)');
   const data = {
@@ -256,10 +257,10 @@ export default function LitepaperSection() {
               <Text fontWeight={'bold'} fontSize={'3xl'} my={4}>
                 {t('RoadMap')}
               </Text>
-              <Text fontWeight={'bold'} fontSize={'2xl'} mt={4}>
+              <Text fontWeight={'bold'} fontSize={'2xl'} mt={4} color={lightMode ? 'var(--base)' : 'var(--base00)'}>
                 {t('RoadMap01')}
               </Text>
-              <Text fontWeight="normal" fontSize={'lg'}>
+              <Text fontWeight="normal" fontSize={'lg'} color={lightMode ? 'var(--base)' : 'var(--base00)'}>
                 {t('RoadMap11')}
               </Text>
               <Text fontWeight="normal" fontSize={'lg'} id="RoadMap02">
