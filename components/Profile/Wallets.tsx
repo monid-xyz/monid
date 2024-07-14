@@ -49,7 +49,7 @@ export default function Wallets({ json, color, onlyIcons }: Props) {
             item.key && (
               <AnimateOpacity delay={(ind * 0.2) + 2}>
               <WalletLink
-                key={`item-${item.key}`}
+                key={`item-${item.key}-${item.value?.slice(4)}`}
                 title={capFirstLetter(item.key)}
                 onlyIcon={_onlyIcons}
                 color={color ? color : undefined}

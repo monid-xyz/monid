@@ -445,13 +445,13 @@ export const VARIATIONS = [
     avatarShape: 'hex',
     bg: BG_IMAGES[5].bg,
     lightMode: BG_IMAGES[5].lightMode,
-    buttonBg: BUTTON_BG_COLORS[4],
+    buttonBg: BUTTON_BG_COLORS[1],
     variant: BUTTON_VARIANTS[2],
     round: BUTTON_ROUNDS[1],
     font: FONTS[2],
     title: '0xLuc',
     subtitle: 'Crypto Enthusiast',
-    WalletButtons: false,
+    WalletButtons: true,
     socialButtons: false,
     vid: '0xluc.mon',
   },
@@ -468,7 +468,7 @@ export const VARIATIONS = [
     title: 'Sam',
     subtitle: 'Blockchain Dev',
     vid: 'sam.mon',
-    WalletButtons: false,
+    WalletButtons: true,
   },
   {
     avatar:
@@ -547,27 +547,8 @@ export const VARIATIONS_VIDS = [
 
 export const LINK_VARIATIONS = [
   [
-    {
-      type: 'donate button',
-      title: 'Buy me a coffee',
-      content: 'Thank you very much for your donation',
-      styles: {
-        monad: '0:4bc69a8c3889adee39f6f1e3b2353c86f960c9b835e93397a2015a62a4823765',
-        eth: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
-        btc: 'tb1qshvfpzfa0p46gztp00jwccf0c4kdfac72lmuz7',
-      },
-    },
   ],
   [
-    {
-      type: 'payment button',
-      title: 'Make A Payment',
-      content: 'Thank you very much for your Payment',
-      styles: {
-        monad: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
-        btc: 'tb1qshvfpzfa0p46gztp00jwccf0c4kdfac72lmuz7',
-      },
-    }
   ],
   [
     {
@@ -600,15 +581,6 @@ export const LINK_VARIATIONS = [
       content: '',
       styles: {
         size: 'sm',
-      },
-    },
-    {
-      type: 'donate button',
-      title: 'Buy me a coffee',
-      content: 'Thank you very much for your donation',
-      styles: {
-        eth: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
-        btc: 'tb1qshvfpzfa0p46gztp00jwccf0c4kdfac72lmuz7',
       },
     },
     {
@@ -650,7 +622,7 @@ export const SOCIALS_VARIATIONS = [
     twitter: 'https://twitter.com/monid_xyz',
     ylide: '',
     medium: 'https://medium.com/@monid_xyz',
-    zealy: 'https://zealy.io/c/monid_xyz/questboard',
+    zealy: 'https://zealy.io/c/#',
     telegram: 'https://t.me/monid_xyz',
   },
   {
@@ -662,10 +634,9 @@ export const SOCIALS_VARIATIONS = [
   },
   {
     telegram: 'https://t.me/monid_xyz',
-    ylide: 'https://hub.ylide.io/project/venom_id/discussion',
-    zealy: 'https://zealy.io/c/monid_xyz/questboard',
+    zealy: 'https://zealy.io/c/#',
     github: 'https://github.com/sam-shariat/monid_xyz',
-    youtube: 'https://www.youtube.com/@monid_xyz',
+    youtube: '#',
   },
   {
     facebook: '#',
@@ -685,21 +656,22 @@ export const SOCIALS_VARIATIONS = [
 export const WALLETS_VARIATIONS = [
   {
     monad: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
-    ethereum: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
     bitcoin: 'tb1qshvfpzfa0p46gztp00jwccf0c4kdfac72lmuz7',
   },
   {
+    ethereum: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
+  },
+  {
+    solana: 'BfiZDeHXzuz8pz5EGM6eUv1B1hLsGJQPRoxqYsBRKW3i',
+  },
+  {
     monad: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
   },
   {
-    arbitrum: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
+    tron: 'TR22H7PLMm1BUaGfhmfnPY7VLEhG2U6y3t',
   },
   {
-    monad: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
-  },
-  {},
-  {
-    monad: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
+    binance: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
   },
 ];
 
@@ -855,7 +827,7 @@ export const SOCIAL_URLS: any = {
   applemusic: 'music.apple.com/profile/',
   clubhouse: 'joinclubhouse.com/',
   etsy: 'etsy.com/shop/',
-  discord: 'discord.gg/',
+  discord: 'discord:',
   skype: 'skype:',
   slack: 'slack.com/',
   telegram: 't.me/',

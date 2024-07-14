@@ -21,6 +21,8 @@ import {
   Link,
   Center,
   Spinner,
+  AvatarGroup,
+  Avatar,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import ImageBox from 'components/claiming/ImageBox';
@@ -48,6 +50,7 @@ import {
   SITE_URL,
   TWITTER_FOLLOW_URL,
   TWITTER_RETWEET_URL,
+  VARIATIONS_VIDS,
   VENTORY_NFT_V1_ADDRESS,
   VENTORY_NFT_V2_ADDRESS,
   ZEALY_URL,
@@ -706,11 +709,19 @@ export default function EarlyAdopters() {
               align={'center'}
               //bg={colorMode === 'light' ? 'blackAlpha.100' : 'whiteAlpha.100'}
               p={4}
+              flexDirection={'column'}
               textAlign={'center'}
               w={'100%'}
-              gap={2}
+              gap={8}
               rounded={'lg'}
               fontSize={'xl'}>
+                <AvatarGroup size={['lg','xl']}>
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[0].avatar} />
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[1].avatar} />
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[8].avatar} />
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[9].avatar} />
+              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[10].avatar} />
+              </AvatarGroup>
                 <Text textAlign={'center'} w={'100%'}>
               The first 5000 registered .mon domain owners will be guaranteed a Unique Avatar NFT with future utility!
               </Text>

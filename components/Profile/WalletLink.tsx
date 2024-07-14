@@ -68,6 +68,7 @@ export default function WalletLink({ title, url, onlyIcon, color }: Props) {
           justifyContent={'space-between'}
           rounded={round}
           variant={variant}
+          key={'wallet-button-'+title+url.slice(2)}
           colorScheme={buttonBg}
           fontFamily={font}
           color={

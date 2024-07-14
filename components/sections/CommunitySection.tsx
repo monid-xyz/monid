@@ -91,13 +91,7 @@ export default function CommunitySection() {
                   synergize. progress. and earn
                 </Text>
               </Stack>
-              <AvatarGroup size={['lg','xl']}>
-              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[0].avatar} />
-              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[1].avatar} />
-              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[8].avatar} />
-              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[9].avatar} />
-              <Avatar color='white' icon={<LinkIcon type='RiUserLine' size={22} color='#ffffff'/>} rounded={'full'} src={VARIATIONS_VIDS[10].avatar} />
-              </AvatarGroup>
+              
             </Flex>
 
             <Flex flexDirection={'column'} w={'100%'} gap={6} my={12}>
@@ -178,7 +172,6 @@ export default function CommunitySection() {
                 size={'lg'}
                 gap={6}
                 as={Link}
-                isDisabled={true}
                 href={TELEGRAM_URL}
                 style={{ textDecoration: 'none' }}
                 target="_blank"
@@ -190,12 +183,12 @@ export default function CommunitySection() {
                 <Flex align={'center'} gap={4}>
                   <LinkIcon type="telegram" size={notMobile ? '70' : '40'} />
                   <Text display={['block', 'block', 'none']} fontSize={'xl'}>
-                    Telegram Community
+                    Telegram Bot
                   </Text>
                 </Flex>
                 <Flex flexDirection={'column'} align={['center', 'center', 'start']} gap={2} >
                   <Text display={['none', 'none', 'block']} fontSize={'xl'}>
-                    Telegram Community ( Soon )
+                    Telegram Bot ( Soon )
                   </Text>
                   <Flex
                     fontWeight={'normal'}
@@ -203,7 +196,7 @@ export default function CommunitySection() {
                     gap={2}
                     align={['center', 'center', 'start']}>
                     <Text>Explore our simple Quests!</Text>
-                    <Text>Stay Active and Hyped!</Text>
+                    <Text>Stay Active on the community!</Text>
                   </Flex>
                   <Text fontWeight={'normal'}>Earn Rewards As you Go!</Text>
                 </Flex>

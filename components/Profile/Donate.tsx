@@ -47,7 +47,6 @@ interface Props {
 }
 
 export default function Donate({ title, content, style }: Props) {
-  const venom = style?.venom;
   const eth = style?.eth;
   const btc = style?.btc;
   const success = content;
@@ -58,9 +57,7 @@ export default function Donate({ title, content, style }: Props) {
   const font = useAtomValue(fontAtom);
   const variant = useAtomValue(variantAtom);
   const buttonBg = useAtomValue(buttonBgColorAtom);
-  const connected = useAtomValue(isConnectedAtom);
   const [comment,setComment] = useState<string | undefined>();
-  const [autoEth, setAutoEth] = useState(false);
   const [isDonating, setIsDonating] = useState(false);
   const [donateSuccessful, setDonateSuccessful] = useState(false);
   const [_open, _setOpen] = useAtom(openModalAtom);
@@ -95,10 +92,9 @@ export default function Donate({ title, content, style }: Props) {
 
   const btcuri = `bitcoin:${btc}?amount=${value.slice(0, value.indexOf(' '))}&label=donation`;
 
-  
   const donate = async () => {
     if (value.includes('ETH')) {
-      if (connected) {
+      //
         try {
           setIsDonating(true);
           setDonateSuccessful(false);
@@ -107,10 +103,9 @@ export default function Donate({ title, content, style }: Props) {
           setDonateSuccessful(false);
           setIsDonating(false);
         }
-      } else {
+      //} else {
        
-        setAutoEth(true);
-      }
+      //}
     }
   };
 
@@ -132,7 +127,7 @@ export default function Donate({ title, content, style }: Props) {
             <LinkIcon type="donate" line color={lightMode ? 'var(--dark1)' : 'var(--white)'} />
             <Text px={2} w={'100%'} textAlign={'center'}>{title}</Text>
           </Button>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered key={'donate-box-'+title}>
         <ModalOverlay bg="blackAlpha.500" backdropFilter="auto" backdropBlur={'6px'} />
         <ModalContent bg={colorMode === 'dark' ? 'var(--dark1)' : 'var(--white)'} fontFamily={font} color={lightMode ? 'var(--dark1)' : 'white'}>
           <ModalHeader>{title}</ModalHeader>
@@ -174,7 +169,7 @@ export default function Donate({ title, content, style }: Props) {
                         variant={variant}
                         size={'lg'}
                         isLoading={isDonating}>
-                        {connected ? title : `Connect Wallet`}
+                        {title}
                       </Button>
                       {donateSuccessful && !isDonating && <Text color="green">{success}</Text>}
                       <Text>or scan the QR Code below</Text>
