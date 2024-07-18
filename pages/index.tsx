@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <link rel="shortcut icon" href="/favicon.ico?v=0.0.2"/>
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007bff"/>
         <meta name="apple-mobile-web-app-title" content="MONID"/>
-        <meta name="application-name" content="MONID"/>
+        <meta name="application-name" content="Monad ID"/>
         <meta name="msapplication-TileColor" content="#007bff"/>
         <meta name="theme-color" content="#007bff"/>
 
