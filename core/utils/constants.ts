@@ -11,11 +11,11 @@ export const SITE_URL = 'https://monid.xyz/';
 export const SITE_OGS_URL = 'https://monid.xyz/ogs/';
 export const SITE_URL_SHORT = 'monid.xyz';
 export const VID_IMAGE_API = 'https://img.monid.xyz/api/';
-export const SITE_TITLE = 'MONID';
+export const SITE_TITLE = 'Monad ID';
 export const SITE_DESCRIPTION =
   'Monad Naming Service And Decentralized Link in bio Tool on Monad Blockchain';
 export const SITE_FULL_DESCRIPTION =
-  'MONID empowers you to build a personalized, decentralized page that showcases your links, content, and digital presence. Leveraging the power of the Monad Blockchain and .mon domains, monid offers a self-sovereign alternative to centralized link management tools.';
+  'Monad ID empowers you to build a personalized, decentralized page that showcases your links, content, and digital presence. Leveraging the power of the Monad Blockchain and .mon domains, monid offers a self-sovereign alternative to centralized link management tools.';
 export const NFT_IMAGE_URL = 'https://ipfs.io/ipfs/QmUvfedgHDXdiMsq5nfLPGLQrR4QAYXHzR5SETBZQ6RGyd';
 export const SITE_MANAGE_URL = 'https://monid.xyz/';
 export const SITE_PROFILE_URL = 'https://monid.xyz/';
