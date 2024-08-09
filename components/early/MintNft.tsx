@@ -140,8 +140,8 @@ import {
                       <Flex justify={'center'} gap={8} align={'center'} w={'100%'} flexDirection={['column','column','row']}>
                         <ImageBox srcUrl={EARLY_ADOPTER_IMAGES['spring'].src} size={[240]} rounded='lg' />
                         <Stack gap={4}>
-                        <Text>MONID Spring Burst NFT</Text>
-                        {mintedStrings?.includes('MONID Spring Burst NFT') && <Badge colorScheme='green' zIndex={1000} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
+                        <Text>Monad ID Spring Burst NFT</Text>
+                        {mintedStrings?.includes('Monad ID Spring Burst NFT') && <Badge colorScheme='green' zIndex={1000} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
                         <Button
                           w={'100%'}
                           isDisabled={isMinting || isConfirming}
@@ -159,7 +159,7 @@ import {
                               ? 'linear(to-r, var(--base1), var(--base2))'
                               : 'linear(to-r, var(--base2), var(--bluevenom2))'
                           }>
-                          {mintedStrings?.includes('MONID Spring Burst NFT')
+                          {mintedStrings?.includes('Monad ID Spring Burst NFT')
                             ? 'Minted. View on explorer'
                             : 'Mint'}
                         </Button>

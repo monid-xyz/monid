@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=0.0.2"/>
         <link rel="shortcut icon" href="/favicon.ico?v=0.0.2"/>
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007bff"/>
-        <meta name="apple-mobile-web-app-title" content="MONID"/>
+        <meta name="apple-mobile-web-app-title" content="Monad ID"/>
         <meta name="application-name" content="Monad ID"/>
         <meta name="msapplication-TileColor" content="#007bff"/>
         <meta name="theme-color" content="#007bff"/>
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
       </Head>
       <Seo />
       <IntroSection />
-      {/* <ClaimSection /> */}
+
       {/* <EarlyAdopterSection /> */}
       {/* <IntroSection />
       <FeaturesSection /> */}

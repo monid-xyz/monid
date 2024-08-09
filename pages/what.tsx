@@ -5,7 +5,7 @@ import { Seo } from 'components/Layout/Seo';
 import IntroSection from 'components/sections/IntroSection';
 
 const What: NextPage = () => {
-  const title = "What is MONID";
+  const title = "What is Monad ID";
   const des = "Domain Names for Venom Blockchain";
   return (
     <>

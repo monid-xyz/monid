@@ -66,6 +66,7 @@ import { LinkIcon, LogoIcon } from "components/logos";
 import DomainName from "components/features/DomainName";
 import AccountAddress from "components/features/AccountAddress";
 import { wrap } from "@motionone/utils";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 export default function IntroSection() {
   let changeTimer: any;
@@ -113,8 +114,8 @@ export default function IntroSection() {
     scrollYProgress,
     [0, 1],
     [
-      colorMode === "light" ? "#13131300" : "#dbdbdb00",
-      colorMode === "light" ? "#131313ff" : "#dbdbdbdd",
+      colorMode === "light" ? "#946eff00" : "#946eff00",
+      colorMode === "light" ? "#25173eff" : "#d3d0e5dd",
     ]
   );
   useAnimationFrame((_t, delta) => {
@@ -241,21 +242,21 @@ export default function IntroSection() {
             <LinkIcon type="RiExternalLinkLine" size={20} /> monid.xyz/{vid}
           </Button>
           <HStack gap={2}>
-            <motion.div
-              animate={{ scale: [1, 1.5, 1] }} // Scale animation
-              transition={{ duration: 1.5, repeat: Infinity }} // Animation duration and loop
+            <Button variant={'ghost'} onClick={change} p={0}>
+            <CountdownCircleTimer
+              isPlaying
+              duration={10}
+              size={34}
+              strokeWidth={6}
+              colors={["#c1aaff", "#946eff", "#7951e9", "#6343bb"]}
+              colorsTime={[10, 6, 3, 0]}
+              onComplete={() => {
+                change();
+                return { shouldRepeat: true, delay: 1 };
+              }}
             >
-              <IconButton
-                aria-label="next-vid-slider"
-                variant={"ghost"}
-                onClick={() => {
-                  change();
-                  //setTimer(0);
-                }}
-              >
-                <LinkIcon type="RiArrowRightDoubleLine" size={28} />
-              </IconButton>
-            </motion.div>
+              {({ remainingTime }) => <LinkIcon type="RiArrowRightSLine" size={'18px'}/>}
+            </CountdownCircleTimer></Button>
             {/* <FaCircle /> */}
           </HStack>
         </Center>
@@ -322,7 +323,7 @@ export default function IntroSection() {
                   <Avatar
                     className="inner-element"
                     url={avatar}
-                    alt={"MONID avatar image"}
+                    alt={"Monad ID avatar image"}
                     shape={avatarShape}
                     shadow="none"
                   />
@@ -414,7 +415,7 @@ export default function IntroSection() {
           <GridItem
             display={"flex"}
             justifyContent={"center"}
-            bg={colorMode === "light" ? "whiteAlpha.600" : "blackAlpha.300"}
+            bg={colorMode === "light" ? "whiteAlpha.600" : "whiteAlpha.200"}
             rounded={"2xl"}
             border={"1px solid #77777750"}
           >
@@ -565,27 +566,27 @@ export default function IntroSection() {
                 {t("watis2")}
               </Text>
               <Stack gap={6}>
-              <NextLink href={"\litepaper"} passHref>
-                <Button
-                  style={{ textDecoration: "none" }}
-                  width={"100%"}
-                  py={4}
-                  justifyContent={"center"}
-                  colorScheme={colorMode === "light" ? "light" : "light"}
-                  gap={2}
-                  rounded={"full"}
-                  variant={"border"}
-                  height={["56px", "64px"]}
-                  size={"lg"}
-                >
-                  <LinkIcon
-                    type="RiFileList3Line"
-                    size={notMobile ? "32" : "24"}
-                  />
-                  <Text fontWeight={"bold"} fontSize={["lg", "xl"]}>
-                    Litepaper (Beta)
-                  </Text>
-                </Button>
+                <NextLink href={"litepaper"} passHref>
+                  <Button
+                    style={{ textDecoration: "none" }}
+                    width={"100%"}
+                    py={4}
+                    justifyContent={"center"}
+                    colorScheme={colorMode === "light" ? "light" : "light"}
+                    gap={2}
+                    rounded={"full"}
+                    variant={"border"}
+                    height={["56px", "64px"]}
+                    size={"lg"}
+                  >
+                    <LinkIcon
+                      type="RiFileList3Line"
+                      size={notMobile ? "32" : "24"}
+                    />
+                    <Text fontWeight={"bold"} fontSize={["lg", "xl"]}>
+                      Litepaper (Beta)
+                    </Text>
+                  </Button>
                 </NextLink>
               </Stack>
             </Stack>

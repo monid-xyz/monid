@@ -4,7 +4,7 @@ type Terms = {
 
 const terms: Terms = {
   title: {
-    en: 'MONID',
+    en: 'Monad ID',
     fa: 'ونوم آی دی',
   },
   wnw: {
@@ -16,7 +16,7 @@ const terms: Terms = {
     fa: 'چِ و چرا',
   },
   features: {
-    en: 'why MONID?',
+    en: 'why Monad ID?',
     fa: 'چرا ونوم آی دی ؟',
   },
   feature1: {
@@ -64,7 +64,7 @@ const terms: Terms = {
     fa: 'دارایی قابل معامله',
   },
   feature6d: {
-    en: 'Unlock the potential value of your MONID as a tradable digital asset.',
+    en: 'Unlock the potential value of your Monad ID as a tradable digital asset.',
     fa: 'ارزش پتانسیلی ونوم آی دی خود را به عنوان دارایی دیجیتال قابل معامله مشخص کنید.',
   },
   feature7: {
@@ -92,16 +92,16 @@ const terms: Terms = {
     fa: ' توان مندی کاربران برای داشتن کنترل و استقلال در حضور آنلاین خود.',
   },
   wat: {
-    en: 'what is MONID',
+    en: 'what is Monad ID',
     fa: 'ونوم آی دی چیست ؟',
   },
   watis: {
-    en:"MONID is a domain naming system for Monad Blockchain which provide users the ability to assign human-readable names to Monad addresses and other resources",
+    en:"Monad ID is a domain naming system for Monad Blockchain which provide users the ability to assign human-readable names to Monad addresses and other resources",
     //en: 'vid(s) are domain names within the Base network empowering you to organize and exhibit your assets and links in a personalized landing page.',
     fa: 'یک پلتفرم غیرمتمرکز برای مدیریت و نمایش تمام لینک ها ، شبکه های اجتماعی و کیف پول های شما',
   },
   wat2: {
-    en: 'MONID Profile',
+    en: 'Monad ID Profile',
     fa: 'پروفایل ونوم آی دی',
   },
   watis2: {
@@ -121,7 +121,7 @@ const terms: Terms = {
     fa: 'در یک لینک ساده با تنظیمات سفارشی شما',
   },
   why: {
-    en: 'why MONID ?',
+    en: 'why Monad ID ?',
     fa: 'چرا ونوم آی دی ؟',
   },
   ns: {
@@ -157,8 +157,8 @@ const terms: Terms = {
     fa: 'لینک',
   },
   GraphicDesigner: {
-    en: 'You will be responsible for creating visually captivating and on-brand designs for our decentralized platform. Your role will involve designing various marketing materials such as branding assets, social media graphics, website visuals, and promotional materials. You will collaborate closely with the marketing team to translate marketing concepts into compelling visual representations. Your keen eye for detail and creativity will contribute to enhancing the overall visual identity and user experience of MONID.',
-    fa: 'شما مسئول طراحی های جذاب و متناسب با برند برای پلتفرم غیرمتمرکز ما خواهید بود. نقش شما شامل طراحی انواع مواد تبلیغاتی مانند عناصر برندینگ، گرافیک های شبکه های اجتماعی، تصاویر وبسایت و مواد تبلیغاتی است. شما به صورت نزدیک با تیم بازاریابی همکاری خواهید کرد تا مفاهیم بازاریابی را به تصاویری جذاب تبدیل کنید. چشم بینا و خلاقیت شما به بهبود هویت بصری و تجربه کاربری کلی MONID کمک خواهد کرد.'
+    en: 'You will be responsible for creating visually captivating and on-brand designs for our decentralized platform. Your role will involve designing various marketing materials such as branding assets, social media graphics, website visuals, and promotional materials. You will collaborate closely with the marketing team to translate marketing concepts into compelling visual representations. Your keen eye for detail and creativity will contribute to enhancing the overall visual identity and user experience of Monad ID.',
+    fa: 'شما مسئول طراحی های جذاب و متناسب با برند برای پلتفرم غیرمتمرکز ما خواهید بود. نقش شما شامل طراحی انواع مواد تبلیغاتی مانند عناصر برندینگ، گرافیک های شبکه های اجتماعی، تصاویر وبسایت و مواد تبلیغاتی است. شما به صورت نزدیک با تیم بازاریابی همکاری خواهید کرد تا مفاهیم بازاریابی را به تصاویری جذاب تبدیل کنید. چشم بینا و خلاقیت شما به بهبود هویت بصری و تجربه کاربری کلی Monad ID کمک خواهد کرد.'
   },
   InvestmentNFT: {
     en: 'You will have the opportunity to support our vision and contribute to the development and growth of the platform. You will be given the opportunity to purchase and HOLD an Investment NFT, which entitles you to a significant portion of the MON token distribution. A total of 900 NFTs will be available, and the minting fee for each NFT is set at 0.1 ETH.',
@@ -181,15 +181,15 @@ const terms: Terms = {
     fa: "شما به توسعه قراردادهایهوشمند از زبان Solidity برای پلتفرم غیرمتمرکز ما می‌پردازید. مسئولیت‌های شما شامل طراحی، پیاده‌سازی و تست قراردادهای هوشمند، امنیت و بهینه‌سازی آنها برای اطمینان از عملکرد صحیح و قابلیت مقیاس‌پذیری است. همچنین، همکاری با تیم توسعه دیگر برای ارتقاء و بهبود پلتفرم و اجزای مرتبط با آن نیز در وظایف شما قرار می‌گیرد."
   },
   Partnership: {
-    en: "Join MONID as a Partnership Contributor and help us forge valuable connections. Leverage your network to identify strategic partnerships, facilitate collaborations, and expand our ecosystem. Contribute to the growth of MONID by fostering meaningful relationships with like-minded projects and individuals.",
-    fa: 'به عنوان یک مشارکت‌کننده شراکتی به MONID بپیوندید و به ما در ایجاد ارتباطات ارزشمند کمک کنید. از شبکه خود بهره ببرید تا شراکت‌های استراتژیک را شناسایی کرده، همکاری‌ها را تسهیل کنید و اکوسیستم ما را گسترش دهید. با پروژه‌ها و افرادی که از همان اندیشه‌ها و اهداف ما پیروی می‌کنند، روابط معنی‌داری برقرار کرده و به رشد MONID کمک کنید.'
+    en: "Join Monad ID as a Partnership Contributor and help us forge valuable connections. Leverage your network to identify strategic partnerships, facilitate collaborations, and expand our ecosystem. Contribute to the growth of Monad ID by fostering meaningful relationships with like-minded projects and individuals.",
+    fa: 'به عنوان یک مشارکت‌کننده شراکتی به Monad ID بپیوندید و به ما در ایجاد ارتباطات ارزشمند کمک کنید. از شبکه خود بهره ببرید تا شراکت‌های استراتژیک را شناسایی کرده، همکاری‌ها را تسهیل کنید و اکوسیستم ما را گسترش دهید. با پروژه‌ها و افرادی که از همان اندیشه‌ها و اهداف ما پیروی می‌کنند، روابط معنی‌داری برقرار کرده و به رشد Monad ID کمک کنید.'
   },
   ContentCreator: {
-    en: 'You will be responsible for producing engaging and informative content to promote our decentralized platform. Your role will involve creating compelling blog articles, social media posts, video content, and other forms of digital media. You will collaborate with the marketing team to develop content strategies that effectively communicate the value and benefits of MONID to our target audience.',
-    fa: 'شما مسئول تولید محتوای جذاب و آموزنده برای ترویج پلتفرم غیرمتمرکز ما خواهید بود. نقش شما شامل ایجاد مقالات بلاگ جذاب، ارسال‌های رسانه‌های اجتماعی، محتوای ویدیویی و سایر اشکال رسانه‌های دیجیتال است. شما با تیم بازاریابی همکاری خواهید کرد تا استراتژی‌های محتوا را توسعه داده و به طور موثر ارزش و مزایای MONID را به مخاطبان هدف ما انتقال دهید.'
+    en: 'You will be responsible for producing engaging and informative content to promote our decentralized platform. Your role will involve creating compelling blog articles, social media posts, video content, and other forms of digital media. You will collaborate with the marketing team to develop content strategies that effectively communicate the value and benefits of Monad ID to our target audience.',
+    fa: 'شما مسئول تولید محتوای جذاب و آموزنده برای ترویج پلتفرم غیرمتمرکز ما خواهید بود. نقش شما شامل ایجاد مقالات بلاگ جذاب، ارسال‌های رسانه‌های اجتماعی، محتوای ویدیویی و سایر اشکال رسانه‌های دیجیتال است. شما با تیم بازاریابی همکاری خواهید کرد تا استراتژی‌های محتوا را توسعه داده و به طور موثر ارزش و مزایای Monad ID را به مخاطبان هدف ما انتقال دهید.'
   },
   MarketingManager: {
-    en: 'You will be responsible for developing and executing marketing strategies to promote our decentralized platform. Your role will involve conducting market research, identifying target audiences, creating and managing marketing campaigns, and analyzing campaign performance. You will collaborate with cross-functional teams to ensure consistent brand messaging and drive user acquisition and engagement. Your creativity and strategic thinking will play a vital role in expanding the reach and impact of MONID in the market.',
+    en: 'You will be responsible for developing and executing marketing strategies to promote our decentralized platform. Your role will involve conducting market research, identifying target audiences, creating and managing marketing campaigns, and analyzing campaign performance. You will collaborate with cross-functional teams to ensure consistent brand messaging and drive user acquisition and engagement. Your creativity and strategic thinking will play a vital role in expanding the reach and impact of Monad ID in the market.',
     fa: 'شما مسئول برندینگ و استراتژی بازاریابی برای پلتفرم غیرمتمرکز ما خواهید بود. وظایف شما شامل توسعه استراتژی های بازاریابی، تحلیل بازار، تحقیق و بررسی رقابت، مدیریت رویدادها و کمپین های تبلیغاتی و برندینگ کلی پروژه است. شما به صورت نزدیک با تیم طراحی و توسعه همکاری خواهید کرد تا استراتژی های بازاریابی را به عملیات واقعی تبدیل کنید.'
   },
   CommunityManager: {
@@ -249,11 +249,11 @@ const terms: Terms = {
     fa: 'بخش مدیریت',
   },
   apiLinkButton: {
-    en: 'MONID Developer Docs',
+    en: 'Monad ID Developer Docs',
     fa: 'مستندات API',
   },
   apiDescription: {
-    en: 'The initial step in supporting MONID in your application is enabling your application to understand MON names and accept them wherever a Monad address is required.',
+    en: 'The initial step in supporting Monad ID in your application is enabling your application to understand MON names and accept them wherever a Monad address is required.',
     fa: 'گام اولیه در پشتیبانی از ونوم آی دی در برنامه شما این است که برنامه شما را قادر می سازد تا نام های MON را بفهمد و آنها را در هر جایی که نیاز به آدرس است بپذیرد.',
   },
   profileLink: {
@@ -269,15 +269,15 @@ const terms: Terms = {
     fa: 'پروفایل سفارشی شما در بلاکچین ونوم',
   },
   linkWebsiteButton: {
-    en: 'MONID profile',
+    en: 'Monad ID profile',
     fa: 'پروفایل ونوم',
   },
   linkDemoWebsiteButton: {
-    en: 'MONID Demo link',
+    en: 'Monad ID Demo link',
     fa: 'پروفایل ونوم دمو',
   },
   linkNotFound: {
-    en: `You Don't own a MONID `,
+    en: `You Don't own a Monad ID `,
     fa: 'شما ونوم آی دی ندارید',
   },
   roadmap: {
@@ -293,27 +293,31 @@ const terms: Terms = {
     fa: 'فاز اول',
   },
   roadmapPhase11: {
-    en: `Launch on Testnet`,
+    en: `Deploy Contracts on Arbitrum Sepolia`,
     fa: 'لانچ در تست نت',
   },
   roadmapPhase12: {
-    en: `Platform Beta Testing`,
+    en: `Deploy Metadata Service`,
     fa: 'تست پلتفرم',
   },
   roadmapPhase13: {
-    en: `MONID API/SDK(s)`,
-    fa: 'MONID API/SDK(s)',
-  },
-  roadmapPhase16: {
-    en: `Investor Event Program`,
-    fa: 'برگذاری ایونت سرمایه گذاری',
-  },
-  roadmapPhase15: {
-    en: `Contribution Event`,
-    fa: 'برگذاری ایونت مشارکت',
+    en: `Deploy Subgraph`,
+    fa: 'Monad ID API/SDK(s)',
   },
   roadmapPhase14: {
-    en: `Publishing Litepaper`,
+    en: `Deploy JS Library (EnsJS)`,
+    fa: 'برگذاری ایونت سرمایه گذاری',
+  },
+  roadmapPhase16: {
+    en: `Complete Domain Manager App`,
+    fa: 'برگذاری ایونت مشارکت',
+  },
+  roadmapPhase17: {
+    en: `Update Profile Customizer`,
+    fa: 'انتشار لایت پیپر',
+  },
+  roadmapPhase15: {
+    en: `Apply to Mach1 Builder Program`,
     fa: 'انتشار لایت پیپر',
   },
   roadmapPhase2: {
@@ -321,27 +325,27 @@ const terms: Terms = {
     fa: 'فاز دوم',
   },
   roadmapPhase21: {
-    en: `Resource Verification`,
+    en: `Gather Feedback`,
     fa: 'قابلیت اعتبارسنجی منابع',
   },
   roadmapPhase22: {
-    en: `Base Passport NFT`,
+    en: `Early Adopters NFT (Testnet)`,
     fa: 'ان اف تی ونوم پاسپورت',
   },
   roadmapPhase25: {
-    en: `Baseid.Site`,
+    en: `Monad ID DAO`,
     fa: 'لانچ ونوم آی دی دات سایت',
   },
   roadmapPhase24: {
-    en: `MONID DAO`,
+    en: `Launch Community Bot`,
     fa: 'سازمان غیر متمرکز اتوماتیک یا DAO',
   },
   roadmapPhase23: {
-    en: `MONID on Arbitrum`,
+    en: `Monad ID on Monad Testnet`,
     fa: 'ونوم آی دی در آربیتروم',
   },
   roadmapPhase26: {
-    en: `More In Progress ...`,
+    en: `More TBA`,
     fa: 'به زودی ...',
   },
   about: {
@@ -378,6 +382,10 @@ const terms: Terms = {
   },
   confirmInWallet: {
     en: `Please confirm the transaction in your wallet to continue`,
+    fa: 'لطفا تراکنش را در کیف پول خود تایید کنید',
+  },
+  submitedTransaction: {
+    en: `Transaction Submitted. Please wait for the Confirmation`,
     fa: 'لطفا تراکنش را در کیف پول خود تایید کنید',
   },
   mintingFee: {
@@ -469,7 +477,7 @@ const terms: Terms = {
     fa: 'دامنه با موفقیت ثبت شد',
   },
   mintSuccessMsg: {
-    en: 'MONID Registered Successfully',
+    en: 'Monad ID Registered Successfully',
     fa: 'ونوم آی دی با موفقیت مینت شد',
   },
   onlyLinks: {
@@ -485,7 +493,7 @@ const terms: Terms = {
     fa: 'دامنه های ما',
   },
   testnetNotice: {
-    en: 'MONID is live on Base Testnet !',
+    en: 'Monad ID is live on Base Testnet !',
     fa: 'ونوم آی دی در شبکه تست نت ونوم در حال اجرا است',
   },
   zealyCommunity: {
@@ -497,12 +505,12 @@ const terms: Terms = {
     fa: 'تا در ایردراپ شرکت کنید',
   },
   litepaperIntroduction: {
-    en: 'MONID is a decentralized platform built on the Monad Blockchain that allows users to efficiently manage and showcase their virtual assets in a single customizable page. This whitepaper provides a comprehensive overview of the MONID project, its objectives, key features, target audience, and tokenomics.',
-    fa: 'MONID is a decentralized platform built on the Monad Blockchain that allows users to efficiently manage and showcase their virtual assets in a single customizable page. This whitepaper provides a comprehensive overview of the MONID project, its objectives, key features, target audience, and tokenomics.',
+    en: 'Monad ID is a decentralized platform built on the Monad Blockchain that allows users to efficiently manage and showcase their virtual assets in a single customizable page. This whitepaper provides a comprehensive overview of the Monad ID project, its objectives, key features, target audience, and tokenomics.',
+    fa: 'Monad ID is a decentralized platform built on the Monad Blockchain that allows users to efficiently manage and showcase their virtual assets in a single customizable page. This whitepaper provides a comprehensive overview of the Monad ID project, its objectives, key features, target audience, and tokenomics.',
   },
   projectOverview: {
-    en: 'MONID aims to address the challenges faced by individuals and businesses in managing and promoting their virtual assets across multiple platforms. By leveraging the decentralized nature of the Monad Blockchain, MONID provides a secure and transparent solution for users to consolidate and exhibit their digital presence.',
-    fa: 'MONID aims to address the challenges faced by individuals and businesses in managing and promoting their virtual assets across multiple platforms. By leveraging the decentralized nature of the Monad Blockchain, MONID provides a secure and transparent solution for users to consolidate and exhibit their digital presence.',
+    en: 'Monad ID aims to address the challenges faced by individuals and businesses in managing and promoting their virtual assets across multiple platforms. By leveraging the decentralized nature of the Monad Blockchain, Monad ID provides a secure and transparent solution for users to consolidate and exhibit their digital presence.',
+    fa: 'Monad ID aims to address the challenges faced by individuals and businesses in managing and promoting their virtual assets across multiple platforms. By leveraging the decentralized nature of the Monad Blockchain, Monad ID provides a secure and transparent solution for users to consolidate and exhibit their digital presence.',
   },
   overview: {
     en: 'Project Overview',
@@ -513,108 +521,108 @@ const terms: Terms = {
     fa: 'Objectives and Key Features',
   },
   objectivesAndFeatures: {
-    en: 'The primary objective of MONID is to empower users by offering them a decentralized platform with customizable profiles to showcase their virtual assets. The key features of MONID include decentralization, customizable pages, NFT integrations, unified links, a naming service, blockchain identity verification, tradeable assets, transparency, analytics, and user empowerment through DAO governance.',
-    fa: 'The primary objective of MONID is to empower users by offering them a decentralized platform with customizable profiles to showcase their virtual assets. The key features of MONID include decentralization, customizable pages, NFT integrations, unified links, a naming service, blockchain identity verification, tradeable assets, transparency, analytics, and user empowerment through DAO governance.',
+    en: 'The primary objective of Monad ID is to empower users by offering them a decentralized platform with customizable profiles to showcase their virtual assets. The key features of Monad ID include decentralization, customizable pages, NFT integrations, unified links, a naming service, blockchain identity verification, tradeable assets, transparency, analytics, and user empowerment through DAO governance.',
+    fa: 'The primary objective of Monad ID is to empower users by offering them a decentralized platform with customizable profiles to showcase their virtual assets. The key features of Monad ID include decentralization, customizable pages, NFT integrations, unified links, a naming service, blockchain identity verification, tradeable assets, transparency, analytics, and user empowerment through DAO governance.',
   },
   target: {
     en: 'Target Audience',
     fa: 'Target Audience',
   },
   targetAudience: {
-    en: 'MONID caters to a broad range of individuals and businesses, including content creators, artists, influencers, entrepreneurs, brands, and professionals seeking to streamline the management and promotion of their virtual assets. The platform provides a user-friendly interface and robust functionality suitable for both beginners and experienced users.',
-    fa: 'MONID caters to a broad range of individuals and businesses, including content creators, artists, influencers, entrepreneurs, brands, and professionals seeking to streamline the management and promotion of their virtual assets. The platform provides a user-friendly interface and robust functionality suitable for both beginners and experienced users.',
+    en: 'Monad ID caters to a broad range of individuals and businesses, including content creators, artists, influencers, entrepreneurs, brands, and professionals seeking to streamline the management and promotion of their virtual assets. The platform provides a user-friendly interface and robust functionality suitable for both beginners and experienced users.',
+    fa: 'Monad ID caters to a broad range of individuals and businesses, including content creators, artists, influencers, entrepreneurs, brands, and professionals seeking to streamline the management and promotion of their virtual assets. The platform provides a user-friendly interface and robust functionality suitable for both beginners and experienced users.',
   },
   vision: {
     en: 'Project Vision',
     fa: 'Project Vision',
   },
   projectVision: {
-    en: 'The vision of MONID is to revolutionize the management and showcasing of virtual assets by providing a decentralized platform that fosters transparency, user control, and seamless integration across various asset types. MONID aims to become the go-to platform for individuals and businesses to curate and present their digital presence to the world.',
-    fa: 'The vision of MONID is to revolutionize the management and showcasing of virtual assets by providing a decentralized platform that fosters transparency, user control, and seamless integration across various asset types. MONID aims to become the go-to platform for individuals and businesses to curate and present their digital presence to the world.',
+    en: 'The vision of Monad ID is to revolutionize the management and showcasing of virtual assets by providing a decentralized platform that fosters transparency, user control, and seamless integration across various asset types. Monad ID aims to become the go-to platform for individuals and businesses to curate and present their digital presence to the world.',
+    fa: 'The vision of Monad ID is to revolutionize the management and showcasing of virtual assets by providing a decentralized platform that fosters transparency, user control, and seamless integration across various asset types. Monad ID aims to become the go-to platform for individuals and businesses to curate and present their digital presence to the world.',
   },
   mainFeatures: {
     en: 'Main Features',
     fa: 'Main Features',
   },
   DecentralizedFeature: {
-    en: 'MONID is built on the Monad Blockchain, which is a decentralized and scalable blockchain platform. This means that users can be confident that their data is safe and secure.',
-    fa: 'MONID is built on the Monad Blockchain, which is a decentralized and scalable blockchain platform. This means that users can be confident that their data is safe and secure.',
+    en: 'Monad ID is built on the Monad Blockchain, which is a decentralized and scalable blockchain platform. This means that users can be confident that their data is safe and secure.',
+    fa: 'Monad ID is built on the Monad Blockchain, which is a decentralized and scalable blockchain platform. This means that users can be confident that their data is safe and secure.',
   },
   customizableFeature: {
-    en: 'Users can customize their MONID page to match their individual style and needs. This includes choosing a theme, adding a profile picture and bio, and selecting which virtual assets to display.',
-    fa: 'Users can customize their MONID page to match their individual style and needs. This includes choosing a theme, adding a profile picture and bio, and selecting which virtual assets to display.',
+    en: 'Users can customize their Monad ID page to match their individual style and needs. This includes choosing a theme, adding a profile picture and bio, and selecting which virtual assets to display.',
+    fa: 'Users can customize their Monad ID page to match their individual style and needs. This includes choosing a theme, adding a profile picture and bio, and selecting which virtual assets to display.',
   },
   nftIntegrations: {
     en: 'NFT Integrations',
     fa: 'NFT Integrations',
   },
   nftIntegrationsFeature: {
-    en: 'MONID supports the integration of NFTs from various blockchains. This allows users to showcase their NFT collections on their MONID page.',
-    fa: 'MONID supports the integration of NFTs from various blockchains. This allows users to showcase their NFT collections on their MONID page.',
+    en: 'Monad ID supports the integration of NFTs from various blockchains. This allows users to showcase their NFT collections on their Monad ID page.',
+    fa: 'Monad ID supports the integration of NFTs from various blockchains. This allows users to showcase their NFT collections on their Monad ID page.',
   },
   UnifiedLinks: {
     en: 'Unified Links',
     fa: 'Unified Links',
   },
   UnifiedLinksFeature: {
-    en: "MONID provides users with a single, unified link that they can share with others. This link will take people to the user's MONID page, where they can see all of their virtual assets in one place.",
-    fa: "MONID provides users with a single, unified link that they can share with others. This link will take people to the user's MONID page, where they can see all of their virtual assets in one place.",
+    en: "Monad ID provides users with a single, unified link that they can share with others. This link will take people to the user's Monad ID page, where they can see all of their virtual assets in one place.",
+    fa: "Monad ID provides users with a single, unified link that they can share with others. This link will take people to the user's Monad ID page, where they can see all of their virtual assets in one place.",
   },
   NamingService: {
     en: 'Naming Service',
     fa: 'Naming Service',
   },
   NamingServiceFeature: {
-    en: "MONID offers a naming service on the Monad Blockchain. This allows users to create a human-readable name for their Monad address, which makes it easier to remember and share.",
-    fa: "MONID offers a naming service on the Monad Blockchain. This allows users to create a human-readable name for their Monad address, which makes it easier to remember and share.",
+    en: "Monad ID offers a naming service on the Monad Blockchain. This allows users to create a human-readable name for their Monad address, which makes it easier to remember and share.",
+    fa: "Monad ID offers a naming service on the Monad Blockchain. This allows users to create a human-readable name for their Monad address, which makes it easier to remember and share.",
   },
   BlockchainIdentity: {
     en: "Blockchain Identity",
     fa: "Blockchain Identity",
   },
   BlockchainIdentityFeature: {
-    en: "MONID provides users with a blockchain identity that can be used to verify their identity and authenticate transactions.",
-    fa: "MONID provides users with a blockchain identity that can be used to verify their identity and authenticate transactions.",
+    en: "Monad ID provides users with a blockchain identity that can be used to verify their identity and authenticate transactions.",
+    fa: "Monad ID provides users with a blockchain identity that can be used to verify their identity and authenticate transactions.",
   },
   TradeableAsset: {
     en: "Tradeable Asset",
     fa: "Tradeable Asset",
   },
   TradeableAssetFeature: {
-    en: "MONID pages can be traded as NFTs. This allows users to buy and sell their pages, and to speculate on their value.",
-    fa: "MONID pages can be traded as NFTs. This allows users to buy and sell their pages, and to speculate on their value.",
+    en: "Monad ID pages can be traded as NFTs. This allows users to buy and sell their pages, and to speculate on their value.",
+    fa: "Monad ID pages can be traded as NFTs. This allows users to buy and sell their pages, and to speculate on their value.",
   },
   Transparency: {
     en: "Transparency",
     fa: "Transparency",
   },
   TransparencyFeature: {
-    en: "MONID is a transparent platform that allows users to see all of the transactions that have occurred on the platform. This helps to build trust and confidence in the platform.",
-    fa: "MONID is a transparent platform that allows users to see all of the transactions that have occurred on the platform. This helps to build trust and confidence in the platform.",
+    en: "Monad ID is a transparent platform that allows users to see all of the transactions that have occurred on the platform. This helps to build trust and confidence in the platform.",
+    fa: "Monad ID is a transparent platform that allows users to see all of the transactions that have occurred on the platform. This helps to build trust and confidence in the platform.",
   },
   DAO: {
     en: "User Empowerment & DAO",
     fa: "User Empowerment & DAO",
   },
   DAOFeature: {
-    en: "MONID is a user-empowered platform that is governed by a DAO. This means that users have a say in the future of the platform and can help to shape its development.",
-    fa: "MONID is a user-empowered platform that is governed by a DAO. This means that users have a say in the future of the platform and can help to shape its development.",
+    en: "Monad ID is a user-empowered platform that is governed by a DAO. This means that users have a say in the future of the platform and can help to shape its development.",
+    fa: "Monad ID is a user-empowered platform that is governed by a DAO. This means that users have a say in the future of the platform and can help to shape its development.",
   },
   Analytics: {
     en: "Analytics",
     fa: "Analytics",
   },
   AnalyticsFeature: {
-    en: "MONID provides users with detailed analytics about their page views, visitors, and interactions. This information can be used to track the performance of the page and to make improvements.",
-    fa: "MONID provides users with detailed analytics about their page views, visitors, and interactions. This information can be used to track the performance of the page and to make improvements.",
+    en: "Monad ID provides users with detailed analytics about their page views, visitors, and interactions. This information can be used to track the performance of the page and to make improvements.",
+    fa: "Monad ID provides users with detailed analytics about their page views, visitors, and interactions. This information can be used to track the performance of the page and to make improvements.",
   },
   Tokenomics: {
     en: "Tokenomics",
     fa: "Tokenomics",
   },
   TokenomicsDetails: {
-    en: "MONID will use a token-based economy to incentivize and reward users for participating in the platform. More info will be announced in the future",
-    fa: "MONID will use a token-based economy to incentivize and reward users for participating in the platform. More info will be announced in the future",
+    en: "Monad ID will use a token-based economy to incentivize and reward users for participating in the platform. More info will be announced in the future",
+    fa: "Monad ID will use a token-based economy to incentivize and reward users for participating in the platform. More info will be announced in the future",
   },
   TokenomicsDetails1: {
     en: "Airdrop: % of the tokens will be airdropped to the community, rewarding early adopters and users who contribute to the platform's growth.",
@@ -629,8 +637,8 @@ const terms: Terms = {
     fa: "Treasury: % of the tokens will be held in the treasury for the DAO and community, enabling the community to govern and fund initiatives that benefit the platform and its users.",
   },
   TokenomicsDetails4: {
-    en: "The MON token economics aim to foster the growth and sustainability of the MONID ecosystem. Token holders can participate in platform governance, including voting on proposals, protocol upgrades, and the allocation of treasury funds. The DAO structure ensures that the community has a voice in decision-making processes, promoting decentralization and inclusivity.",
-    fa: "The MON token economics aim to foster the growth and sustainability of the MONID ecosystem. Token holders can participate in platform governance, including voting on proposals, protocol upgrades, and the allocation of treasury funds. The DAO structure ensures that the community has a voice in decision-making processes, promoting decentralization and inclusivity.",
+    en: "The MON token economics aim to foster the growth and sustainability of the Monad ID ecosystem. Token holders can participate in platform governance, including voting on proposals, protocol upgrades, and the allocation of treasury funds. The DAO structure ensures that the community has a voice in decision-making processes, promoting decentralization and inclusivity.",
+    fa: "The MON token economics aim to foster the growth and sustainability of the Monad ID ecosystem. Token holders can participate in platform governance, including voting on proposals, protocol upgrades, and the allocation of treasury funds. The DAO structure ensures that the community has a voice in decision-making processes, promoting decentralization and inclusivity.",
   },
   Governance: {
     en: "Governance",
@@ -649,8 +657,8 @@ const terms: Terms = {
     fa: "Phase 1: Beta Development and Testing",
   },
   RoadMap11: {
-    en: "Develop core features of MONID",
-    fa: "Develop core features of MONID",
+    en: "Develop core features of Monad ID",
+    fa: "Develop core features of Monad ID",
   },
   RoadMap12: {
     en: "Conduct extensive testing",
@@ -665,8 +673,8 @@ const terms: Terms = {
     fa: "Phase 2: Platform Launch and Iteration",
   },
   RoadMap21: {
-    en: "Launch MONID on the Monad Blockchain",
-    fa: "Launch MONID on the Monad Blockchain",
+    en: "Launch Monad ID on the Monad Blockchain",
+    fa: "Launch Monad ID on the Monad Blockchain",
   },
   RoadMap22: {
     en: "Continuously iterate and improve the platform based on user feedback and market demands",
@@ -685,8 +693,8 @@ const terms: Terms = {
     fa: "Integrate with the Arbitrum blockchain to leverage its scalability and cost efficiency.",
   },
   RoadMap32: {
-    en: "Develop and publish SDKs and APIs for MONID to support third-party developers in building complementary applications and integrations.",
-    fa: "Develop and publish SDKs and APIs for MONID to support third-party developers in building complementary applications and integrations.",
+    en: "Develop and publish SDKs and APIs for Monad ID to support third-party developers in building complementary applications and integrations.",
+    fa: "Develop and publish SDKs and APIs for Monad ID to support third-party developers in building complementary applications and integrations.",
   },
   RoadMap33: {
     en: "Incorporate new asset types and expand platform functionality based on user feedback and emerging trends.",
@@ -701,8 +709,8 @@ const terms: Terms = {
     fa: "Organize an Investor NFT Program event to raise funds and engage with investors and distribute funds raised from the event following the specified tokenomics plan.",
   },
   RoadMap42: {
-    en: "Establish the MONID DAO to facilitate decentralized governance and decision-making.",
-    fa: "Establish the MONID DAO to facilitate decentralized governance and decision-making.",
+    en: "Establish the Monad ID DAO to facilitate decentralized governance and decision-making.",
+    fa: "Establish the Monad ID DAO to facilitate decentralized governance and decision-making.",
   },
   RoadMap43: {
     en: "Enable token holders to vote on proposals, protocol upgrades, and treasury fund allocations.",
@@ -721,24 +729,24 @@ const terms: Terms = {
     fa: "Continuously expand and enhance the platform based on user needs and emerging technologies.",
   },
   RoadMap53: {
-    en: "Explore strategic partnerships and collaborations to further enrich the MONID ecosystem.",
-    fa: "Explore strategic partnerships and collaborations to further enrich the MONID ecosystem.",
+    en: "Explore strategic partnerships and collaborations to further enrich the Monad ID ecosystem.",
+    fa: "Explore strategic partnerships and collaborations to further enrich the Monad ID ecosystem.",
   },  
   litepaperNote1: {
-    en: "Please note that this document serves as a litepaper for MONID and is currently in beta version. It provides a condensed overview of the project and its roadmap. We acknowledge that additional details and comprehensive information will be included in the full whitepaper, which will be released in the future.",
-    fa: "Please note that this document serves as a litepaper for MONID and is currently in beta version. It provides a condensed overview of the project and its roadmap. We acknowledge that additional details and comprehensive information will be included in the full whitepaper, which will be released in the future.",
+    en: "Please note that this document serves as a litepaper for Monad ID and is currently in beta version. It provides a condensed overview of the project and its roadmap. We acknowledge that additional details and comprehensive information will be included in the full whitepaper, which will be released in the future.",
+    fa: "Please note that this document serves as a litepaper for Monad ID and is currently in beta version. It provides a condensed overview of the project and its roadmap. We acknowledge that additional details and comprehensive information will be included in the full whitepaper, which will be released in the future.",
   },  
   litepaperNote2: {
-    en: "The litepaper outlines the key features, phases, and objectives of MONID during this beta stage. However, please be aware that as we continue to gather user feedback and iterate on the platform, certain aspects may be added, modified, or refined in the final version.",
-    fa: "The litepaper outlines the key features, phases, and objectives of MONID during this beta stage. However, please be aware that as we continue to gather user feedback and iterate on the platform, certain aspects may be added, modified, or refined in the final version.",
+    en: "The litepaper outlines the key features, phases, and objectives of Monad ID during this beta stage. However, please be aware that as we continue to gather user feedback and iterate on the platform, certain aspects may be added, modified, or refined in the final version.",
+    fa: "The litepaper outlines the key features, phases, and objectives of Monad ID during this beta stage. However, please be aware that as we continue to gather user feedback and iterate on the platform, certain aspects may be added, modified, or refined in the final version.",
   },  
   litepaperNote3: {
-    en: "At MONID, we believe that the community is the most important aspect of our platform. As we continue to develop and refine MONID, we highly value the feedback, engagement, and contributions from our community members. Your input will play a crucial role in shaping the future of MONID.",
-    fa: "At MONID, we believe that the community is the most important aspect of our platform. As we continue to develop and refine MONID, we highly value the feedback, engagement, and contributions from our community members. Your input will play a crucial role in shaping the future of MONID.",
+    en: "At Monad ID, we believe that the community is the most important aspect of our platform. As we continue to develop and refine Monad ID, we highly value the feedback, engagement, and contributions from our community members. Your input will play a crucial role in shaping the future of Monad ID.",
+    fa: "At Monad ID, we believe that the community is the most important aspect of our platform. As we continue to develop and refine Monad ID, we highly value the feedback, engagement, and contributions from our community members. Your input will play a crucial role in shaping the future of Monad ID.",
   },  
   litepaperNote4: {
-    en: "We appreciate your understanding and support as we work together with our community to build a robust and innovative platform. Together, we will unlock the full potential of MONID.",
-    fa: "We appreciate your understanding and support as we work together with our community to build a robust and innovative platform. Together, we will unlock the full potential of MONID.",
+    en: "We appreciate your understanding and support as we work together with our community to build a robust and innovative platform. Together, we will unlock the full potential of Monad ID.",
+    fa: "We appreciate your understanding and support as we work together with our community to build a robust and innovative platform. Together, we will unlock the full potential of Monad ID.",
   },  
   tableOfContent: {
     en: "Table Of Content",
@@ -781,16 +789,16 @@ const terms: Terms = {
     fa: "Enter Subtitle"
   },
   guideStep8:{
-    en: "Design Your MONID",
-    fa: "Design Your MONID"
+    en: "Design Your Monad ID",
+    fa: "Design Your Monad ID"
   },
   guideStep9:{
-    en: "Save Your MONID",
-    fa: "Save Your MONID"
+    en: "Save Your Monad ID",
+    fa: "Save Your Monad ID"
   },
   guideStep10:{
-    en: "Share Your MONID",
-    fa: "Share Your MONID"
+    en: "Share Your Monad ID",
+    fa: "Share Your Monad ID"
   },
   guideStepComplete:{
     en: "All Set 👍",

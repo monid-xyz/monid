@@ -58,6 +58,7 @@
   --rbase2: #0063cc;
   --rbase3: #004fa3;
 
+  --base000: #c1aaff;
   --base00: #946eff;
   --base0: #7951e9;
   --base1: #6343bb;
@@ -65,6 +66,13 @@
   --base: #544ba2;
   --base3: #393087;
 
+  --venom00: #99f0c4;
+  --venom0: #2bb673;
+  --venom: #1d7c4e;
+  --venom1: #27aa6b;
+  --venom2: #239960;
+  --venom3: #228a58;
+  
   --bluevenom00: #5cabff;
   --bluevenom0: #5cabff;
   --bluevenom1: #5cabff;

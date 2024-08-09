@@ -39,7 +39,7 @@ import {
     return (
       <Html>
         <Head />
-        <Preview>Congrats! You have been added to the waitlist of the Investment NFT at MONID</Preview>
+        <Preview>Congrats! You have been added to the waitlist of the Investment NFT at Monad ID</Preview>
         <Body style={main}>
           <Container style={container}>
             <Section style={logo}>
@@ -94,13 +94,13 @@ import {
               <Text style={paragraph}>
                 Have questions? Please contact{' '}
                 <Link href={TELEGRAM_URL} style={link}>
-                  MONID Support
+                  Monad ID Support
                 </Link>
               </Text>
               <Text style={paragraph}>
                 Thanks,
                 <br />
-                MONID Support Team
+                Monad ID Support Team
               </Text>
             </Section>
           </Container>
@@ -119,7 +119,7 @@ import {
               </Column>
             </Row>
             <Text style={{ textAlign: 'center', color: '#706a7b' }}>
-              © 2023 MONID, All Rights Reserved
+              © 2023 Monad ID, All Rights Reserved
             </Text>
           </Section>
         </Body>

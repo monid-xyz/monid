@@ -5,7 +5,7 @@ import { Seo } from 'components/Layout/Seo';
 import CommunitySection from 'components/sections/CommunitySection';
 
 const Community: NextPage = () => {
-  const title = "MONID Community";
+  const title = "Monad ID Community";
   const des = "Synergize. Progress. and Earn";
   return (
     <>

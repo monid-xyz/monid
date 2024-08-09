@@ -30,16 +30,16 @@ import {
   useToast,
   ButtonGroup,
   InputLeftAddon,
-} from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import {
   RiAddFill,
   RiArrowLeftLine,
   RiCheckLine,
   RiFileCopy2Line,
   RiUploadCloudLine,
-} from 'react-icons/ri';
-import { useAtom, useAtomValue } from 'jotai';
+} from "react-icons/ri";
+import { useAtom, useAtomValue } from "jotai";
 import {
   addLinkContentAtom,
   addLinkImageAtom,
@@ -54,12 +54,12 @@ import {
   openAddAtom,
   openAddLinkAtom,
   useLineIconsAtom,
-} from 'core/atoms';
-import { capFirstLetter } from 'core/utils';
-import { useStorageUpload } from '@thirdweb-dev/react';
-import { LinkIcon } from 'components/logos';
-import { ImageLink, Link } from 'components/Profile';
-import AddNFTAvatar from './AddNFTAvatar';
+} from "core/atoms";
+import { capFirstLetter } from "core/utils";
+import { useStorageUpload } from "@thirdweb-dev/react";
+import { LinkIcon } from "components/logos";
+import { ImageLink, Link } from "components/Profile";
+import AddNFTAvatar from "./AddNFTAvatar";
 import {
   AVAILABLE_LINKS,
   EXAMPLE_LINK_URLS,
@@ -67,19 +67,19 @@ import {
   OPENSEA_URL,
   VENOMART_NFT,
   VENTORY_NFT,
-} from 'core/utils/constants';
-import { LinkType, Styles } from 'types';
-import NftLink from 'components/Profile/NftLink';
-import SelectSizeButton from './SelectSizeButton';
-import Donate from 'components/Profile/Donate';
-import EthAddressInput from './EthAddressInput';
-import BtcAddressInput from './‌‌BtcAddressInput';
-import Pay from 'components/Profile/Pay';
-import WalletInput from './WalletInput';
-import IconPicker from './IconPicker';
-import ManageSimpleLink from './ManageSimpleLink';
-import ManageUpload from './ManageUpload';
-import ManageDonate from './ManageDonate';
+} from "core/utils/constants";
+import { LinkType, Styles } from "types";
+import NftLink from "components/Profile/NftLink";
+import SelectSizeButton from "./SelectSizeButton";
+import Donate from "components/Profile/Donate";
+import EthAddressInput from "./EthAddressInput";
+import BtcAddressInput from "./‌‌BtcAddressInput";
+import Pay from "components/Profile/Pay";
+import WalletInput from "./WalletInput";
+import IconPicker from "./IconPicker";
+import ManageSimpleLink from "./ManageSimpleLink";
+import ManageUpload from "./ManageUpload";
+import ManageDonate from "./ManageDonate";
 
 export default function AddLinkButton() {
   const useLineIcons = useAtomValue(useLineIconsAtom);
@@ -95,16 +95,16 @@ export default function AddLinkButton() {
   const btcAddress = useAtomValue(btcAtom);
   const { colorMode } = useColorMode();
   const [linksArray, setLinksArray] = useAtom(linksArrayAtom);
-  const [notMobile] = useMediaQuery('(min-width: 800px)');
-  const [type, setType] = useState('');
+  const [notMobile] = useMediaQuery("(min-width: 800px)");
+  const [type, setType] = useState("");
   const [_back, _setBack] = useAtom(openAddAtom);
-  const [title, setTitle] = useState('');
-  const [url, setUrl] = useState('');
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [image, setImage] = useState('');
-  const [content, setContent] = useState('');
+  const [image, setImage] = useState("");
+  const [content, setContent] = useState("");
   const [styles, setStyles] = useState<Styles>({});
-  const reg = AVAILABLE_LINKS.find((e) => e.type === type)?.reg ?? '';
+  const reg = AVAILABLE_LINKS.find((e) => e.type === type)?.reg ?? "";
   const toast = useToast();
 
   useEffect(() => {
@@ -117,7 +117,7 @@ export default function AddLinkButton() {
       setStyles(_styles);
       onOpen();
     } else {
-      _setType('');
+      _setType("");
     }
   }, [_open]);
 
@@ -131,16 +131,16 @@ export default function AddLinkButton() {
         content,
         styles,
       },
-      ...linksArray
+      ...linksArray,
     ];
 
     setLinksArray(_newLinksArray);
     //// console.log(_newLinksArray);
-    setType('');
-    setTitle('');
-    setImage('');
-    setUrl('');
-    setContent('');
+    setType("");
+    setTitle("");
+    setImage("");
+    setUrl("");
+    setContent("");
     setStyles({});
     _setOpen(false);
     onClose();
@@ -150,37 +150,36 @@ export default function AddLinkButton() {
     _setOpen(isOpen);
   }, [isOpen]);
 
-  
   const addLink = (item: LinkType) => {
     if (item?.av) {
-      setTitle('');
-      setUrl('');
-      setImage('');
+      setTitle("");
+      setUrl("");
+      setImage("");
 
       switch (item.type) {
-        case 'donate':
-        case 'pay':
+        case "donate":
+        case "pay":
           setStyles({
-            size: 'md',
+            size: "md",
             venom: venomAddress,
             eth: ethAddress,
             btc: btcAddress,
           });
           break;
 
-        case 'simple link':
+        case "simple link":
           setStyles({
-            size: 'md',
-            icon: 'RiLinksLine'
+            size: "md",
+            icon: "RiLinksLine",
           });
           break;
 
         default:
-          setStyles({ size: 'md' });
+          setStyles({ size: "md" });
           break;
       }
 
-      setContent('');
+      setContent("");
       _setOpen(false);
       setType(item.type);
     }
@@ -190,31 +189,55 @@ export default function AddLinkButton() {
     <>
       <Button
         onClick={() => {
-          setType('');
+          setType("");
           onOpen();
         }}
-        gap={2}>
-        <RiAddFill size="28" />
-        <Text fontWeight="bold">Add New</Text>
+        flexDir={"column"}
+        gap={4}
+        variant={"border"}
+        rounded={"xl"}
+        height={100}
+      >
+        Add NFT, Link, Image, Video or Document
+        <Flex gap={2}>
+          <LinkIcon type="text" line={useLineIcons} />
+          <LinkIcon type="simple link" line={useLineIcons} />
+          <LinkIcon type="nft link" line={useLineIcons} color="dark" />
+          <LinkIcon type="youtube video" line={useLineIcons} />
+          <Text fontSize={"xl"}>+8</Text>
+        </Flex>
       </Button>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior="inside" size={['full','full','lg']}>
-        <ModalOverlay bg="blackAlpha.700" backdropFilter="auto" backdropBlur={'6px'} />
-        <ModalContent bg={colorMode === 'dark' ? 'var(--dark1)' : 'var(--white)'}>
-          <ModalHeader display="flex" gap={2} alignItems={'center'}>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+        scrollBehavior="inside"
+        size={["full", "full", "lg"]}
+      >
+        <ModalOverlay
+          bg="blackAlpha.700"
+          backdropFilter="auto"
+          backdropBlur={"6px"}
+        />
+        <ModalContent
+          bg={colorMode === "dark" ? "var(--dark1)" : "var(--white)"}
+        >
+          <ModalHeader display="flex" gap={2} alignItems={"center"}>
             <IconButton
-              variant={'ghost'}
+              variant={"ghost"}
               aria-label="back-to-add-modal"
               onClick={() => {
-                if(!type){
+                if (!type) {
                   _setBack(true);
                   onClose();
                 } else {
-                  setType('');
+                  setType("");
                 }
-              }}>
-              <RiArrowLeftLine size={'28'} />
-            </IconButton>{' '}
-            Add New {type ? capFirstLetter(type) : ''}
+              }}
+            >
+              <RiArrowLeftLine size={"28"} />
+            </IconButton>{" "}
+            Add New {type ? capFirstLetter(type) : ""}
             <ModalCloseButton />
           </ModalHeader>
 
@@ -225,7 +248,7 @@ export default function AddLinkButton() {
                   <>
                     <InputGroup size="lg" minWidth="xs" borderColor="gray">
                       <Input
-                        isDisabled={type === ''}
+                        isDisabled={type === ""}
                         value={title}
                         variant="filled"
                         placeholder={`Enter ${capFirstLetter(type)} Title`}
@@ -236,17 +259,23 @@ export default function AddLinkButton() {
                   </>
                 )}
 
-                {(type.includes('link') ||
-                  type.includes('video') ||
-                  type.includes('tweet') ||
-                  type.includes('soundcloud')) && (
-                  <ManageSimpleLink type={type} url={url} setUrl={setUrl} styles={styles} setStyles={setStyles} />
-                )}                
+                {(type.includes("link") ||
+                  type.includes("video") ||
+                  type.includes("tweet") ||
+                  type.includes("soundcloud")) && (
+                  <ManageSimpleLink
+                    type={type}
+                    url={url}
+                    setUrl={setUrl}
+                    styles={styles}
+                    setStyles={setStyles}
+                  />
+                )}
 
-                {(type.includes('youtube') ||
-                  type.includes('tweet') ||
-                  type.includes('soundcloud')) &&
-                  RegExp(reg, 'i').test(url) && (
+                {(type.includes("youtube") ||
+                  type.includes("tweet") ||
+                  type.includes("soundcloud")) &&
+                  RegExp(reg, "i").test(url) && (
                     <Link
                       type={type}
                       title={title}
@@ -257,13 +286,19 @@ export default function AddLinkButton() {
                     />
                   )}
 
-                {(type.includes('image') || type.includes('pdf')) && (
-                 <ManageUpload type={type} setUrl={setUrl} setImage={setImage} galleryItems={6} image={image} />
+                {(type.includes("image") || type.includes("pdf")) && (
+                  <ManageUpload
+                    type={type}
+                    setUrl={setUrl}
+                    setImage={setImage}
+                    galleryItems={6}
+                    image={image}
+                  />
                 )}
 
-                {(type.includes('simple link') ||
-                  type.includes('image') ||
-                  type.includes('pdf')) && (
+                {(type.includes("simple link") ||
+                  type.includes("image") ||
+                  type.includes("pdf")) && (
                   <>
                     {/* <SelectSizeButton
                       options={[true, false]}
@@ -275,7 +310,25 @@ export default function AddLinkButton() {
                       <Link
                         type={type}
                         title={title ? title : capFirstLetter(type)}
-                        icon={<LinkIcon type={type === 'simple link' ? String(styles.icon) : type} line={useLineIcons} size={String(styles?.icon).includes(IPFS_IMAGE_URI) ? styles?.size : styles?.size === 'sm' ? '24' : styles?.size === 'md' ? '28' : '36'} />}
+                        icon={
+                          <LinkIcon
+                            type={
+                              type === "simple link"
+                                ? String(styles.icon)
+                                : type
+                            }
+                            line={useLineIcons}
+                            size={
+                              String(styles?.icon).includes(IPFS_IMAGE_URI)
+                                ? styles?.size
+                                : styles?.size === "sm"
+                                ? "24"
+                                : styles?.size === "md"
+                                ? "28"
+                                : "36"
+                            }
+                          />
+                        }
                         url={url}
                         image={image}
                         styles={styles}
@@ -284,47 +337,65 @@ export default function AddLinkButton() {
                   </>
                 )}
 
-                {type.indexOf('nft') >= 0 && (
+                {type.indexOf("nft") >= 0 && (
                   <>
                     <AddNFTAvatar defaultType="nft" key="add-nft-modal" />
                     {content && (
                       <>
                         <SelectSizeButton
-                          options={['sm', 'md', 'lg']}
+                          options={["sm", "md", "lg"]}
                           value={String(styles?.size)}
-                          setValue={(e: any) => setStyles({ ...styles, size: e })}
+                          setValue={(e: any) =>
+                            setStyles({ ...styles, size: e })
+                          }
                           title="Size"
                         />
                         <SelectSizeButton
                           options={[true, false]}
                           value={String(styles?.scanLink)}
-                          setValue={(e: any) => setStyles({ ...styles, scanLink: e })}
+                          setValue={(e: any) =>
+                            setStyles({ ...styles, scanLink: e })
+                          }
                           title="Explorer Link"
                         />
-                        <Flex gap={2} width={'100%'}>
-                          {String(styles.network).includes('venom') ? (
+                        <Flex gap={2} width={"100%"}>
+                          {String(styles.network).includes("venom") ? (
                             <Button
                               flexGrow={1}
-                              variant={url.includes(VENTORY_NFT) ? 'outline' : 'solid'}
+                              variant={
+                                url.includes(VENTORY_NFT) ? "outline" : "solid"
+                              }
                               onClick={() =>
-                                setUrl(url.length > 0 ? '' : VENTORY_NFT + String(content))
-                              }>
-                              {url.length > 0 ? 'Remove Link To Ventory' : 'Link To Ventory'}
+                                setUrl(
+                                  url.length > 0
+                                    ? ""
+                                    : VENTORY_NFT + String(content)
+                                )
+                              }
+                            >
+                              {url.length > 0
+                                ? "Remove Link To Ventory"
+                                : "Link To Ventory"}
                             </Button>
                           ) : (
                             <Button
                               flexGrow={1}
-                              variant={url.includes(OPENSEA_URL) ? 'outline' : 'solid'}
+                              variant={
+                                url.includes(OPENSEA_URL) ? "outline" : "solid"
+                              }
                               onClick={() =>
                                 setUrl(
                                   url.length > 0
-                                    ? ''
+                                    ? ""
                                     : OPENSEA_URL +
                                         styles.network +
                                         JSON.parse(String(content)).address
                                 )
-                              }>
-                              {url.length > 0 ? 'Remove Link To Opensea' : 'Link To Opensea'}
+                              }
+                            >
+                              {url.length > 0
+                                ? "Remove Link To Opensea"
+                                : "Link To Opensea"}
                             </Button>
                           )}
                         </Flex>
@@ -335,32 +406,42 @@ export default function AddLinkButton() {
                           styles={styles}
                           address={String(content)}
                           alt={title}
-                          color={colorMode === 'light' ? 'dark' : 'white'}
+                          color={colorMode === "light" ? "dark" : "white"}
                         />
                       </>
                     )}
                   </>
                 )}
 
-                {type.indexOf('text') >= 0 && (
+                {type.indexOf("text") >= 0 && (
                   <Textarea
                     minWidth="xs"
                     my={2}
                     rows={5}
                     maxLength={500}
-                    placeholder={'Simple Text ...'}
+                    placeholder={"Simple Text ..."}
                     size="lg"
-                    bg={colorMode === 'dark' ? 'whiteAlpha.100' : 'blackAlpha.100'}
+                    bg={
+                      colorMode === "dark" ? "whiteAlpha.100" : "blackAlpha.100"
+                    }
                     variant="outline"
                     border="none"
-                    resize={'none'}
+                    resize={"none"}
                     value={content}
                     onChange={(e) => setContent(e.currentTarget.value)}
                   />
                 )}
 
-                {(type.includes('donate') || type.includes('pay')) && (
-                    <ManageDonate title={title} type={type} content={String(content)} setContent={setContent} setStyles={setStyles} styles={styles ? styles : {}} preview/>
+                {(type.includes("donate") || type.includes("pay")) && (
+                  <ManageDonate
+                    title={title}
+                    type={type}
+                    content={String(content)}
+                    setContent={setContent}
+                    setStyles={setStyles}
+                    styles={styles ? styles : {}}
+                    preview
+                  />
                 )}
               </Stack>
             ) : (
@@ -370,21 +451,23 @@ export default function AddLinkButton() {
                     item !== undefined && (
                       <Button
                         gap={4}
-                        fontWeight={'bold'}
-                        fontSize={'xl'}
+                        fontWeight={"bold"}
+                        fontSize={"xl"}
                         key={item?.type}
-                        justifyContent={'left'}
-                        size={'lg'}
-                        height={'64px'}
-                        onClick={() => addLink(item)}>
-                        {item.av && <LinkIcon type={item.type} line={useLineIcons} />}
+                        justifyContent={"left"}
+                        size={"lg"}
+                        height={"64px"}
+                        onClick={() => addLink(item)}
+                      >
+                        {item.av && (
+                          <LinkIcon type={item.type} line={useLineIcons} />
+                        )}
                         {!item?.av && (
                           <Badge variant="solid" colorScheme="gray" p={1.5}>
                             Soon
                           </Badge>
                         )}
                         {capFirstLetter(item.type)}
-                        
                       </Button>
                     )
                 )}
@@ -392,23 +475,25 @@ export default function AddLinkButton() {
             )}
           </ModalBody>
           {type && (
-            <ModalFooter gap={2} justifyContent={'left'}>
+            <ModalFooter gap={2} justifyContent={"left"}>
               <Button
                 color="white"
                 bgColor="var(--base1)"
-                isDisabled={type === undefined || title === ''}
+                isDisabled={type === undefined || title === ""}
                 onClick={() => {
-                  if (new RegExp(reg, 'i').test(url)) {
+                  if (new RegExp(reg, "i").test(url)) {
                     addToLinks();
                   } else {
                     toast({
-                      status: 'warning',
-                      title: 'Invalid URL',
-                      description: 'Please enter the url in the required format',
+                      status: "warning",
+                      title: "Invalid URL",
+                      description:
+                        "Please enter the url in the required format",
                       duration: 3000,
                     });
                   }
-                }}>
+                }}
+              >
                 Add
               </Button>
               <Button onClick={onClose}>Close</Button>

@@ -29,6 +29,9 @@ import {
 } from 'core/atoms';
 import { capFirstLetter } from 'core/utils';
 import { LinkIcon } from 'components/logos';
+import AddWalletButton from './AddWalletButton';
+import AddLinkButton from './AddLinkButton';
+import AddSocialButton from './AddSocialButton';
 
 export default function AddModal({ type = 'square' }: { type: 'square' | 'full' }) {
   const { colorMode } = useColorMode();
@@ -72,9 +75,9 @@ export default function AddModal({ type = 'square' }: { type: 'square' | 'full' 
           Add
         </Button>
       ) : (
-        <Button gap={2} onClick={onOpen} className="add" w={'100%'} size={'lg'}>
+        <Button variant={'border'} rounded={'xl'} gap={2} onClick={onOpen} className="add" w={'100%'} size={'lg'}>
           <RiAddLine size={'28px'} />
-          Add
+          Add To Profile
         </Button>
       )}
       <Modal isOpen={isOpen} onClose={onClose} isCentered size={'lg'}>
@@ -84,59 +87,9 @@ export default function AddModal({ type = 'square' }: { type: 'square' | 'full' 
           <ModalCloseButton />
           <ModalBody>
             <Stack gap={2}>
-              <Button
-                onClick={() => {
-                  _setOpenAddWallet(true);
-                  onClose();
-                }}
-                flexDir={'column'}
-                gap={4}
-                height={100}>
-                Wallet Address
-                <Flex gap={2} alignItems={'center'}>
-                  <LinkIcon type="venom" line={useLineIcons} />
-                  <LinkIcon type="ethereum" line={useLineIcons} />
-                  <LinkIcon type="bitcoin" line={useLineIcons} />
-                  <LinkIcon type="solana" line={useLineIcons} />
-                  <Text fontSize={'xl'}>+6</Text>
-                </Flex>
-              </Button>
-              <Button
-                onClick={() => {
-                  _setType('');
-                  _setOpenAddLink(true);
-                  onClose();
-                }}
-                flexDir={'column'}
-                gap={4}
-                height={100}>
-                NFT, Link, Image, Video or Document
-                <Flex gap={2}>
-                  <LinkIcon type="text" line={useLineIcons} />
-                  <LinkIcon type="simple link" line={useLineIcons} />
-                  <LinkIcon type="nft link" line={useLineIcons} />
-                  <LinkIcon type="youtube video" line={useLineIcons} />
-                  <Text fontSize={'xl'}>+8</Text>
-                </Flex>
-              </Button>
-              <Button
-                onClick={() => {
-                  _setType('');
-                  _setOpenAddSocial(true);
-                  onClose();
-                }}
-                flexDir={'column'}
-                gap={4}
-                height={100}>
-                Social Media Links
-                <Flex gap={2} alignItems={'center'}>
-                  <LinkIcon type="twitter" line={useLineIcons} />
-                  <LinkIcon type="email" line={useLineIcons} />
-                  <LinkIcon type="github" line={useLineIcons} />
-                  <LinkIcon type="whatsapp" line={useLineIcons} />
-                  <Text fontSize={'xl'}>+28</Text>
-                </Flex>
-              </Button>
+              <AddWalletButton />
+              <AddLinkButton />
+              <AddSocialButton />
             </Stack>
           </ModalBody>
           <ModalFooter justifyContent={'center'} fontSize={'xs'}>

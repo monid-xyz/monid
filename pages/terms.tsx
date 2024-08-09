@@ -7,7 +7,7 @@ import { Box, Container, Flex, Heading, Stack, Text, useColorModeValue } from '@
 
 const Terms: NextPage = () => {
   const title = 'Terms of Use';
-  const des = 'MONID Terms of Use';
+  const des = 'Monad ID Terms of Use';
   return (
     <>
       <Seo title={title} description={des} />
@@ -37,27 +37,27 @@ const Terms: NextPage = () => {
                 Terms of Use
               </Heading>
               <Text><strong>
-                Acceptance of Terms: </strong>By accessing and using the MONID website, you agree to be
+                Acceptance of Terms: </strong>By accessing and using the Monad ID website, you agree to be
                 bound by these Terms of Use.
               </Text>
               <Text>
-                Service Description: MONID is a decentralized platform built on the Base
+                Service Description: Monad ID is a decentralized platform built on the Base
                 blockchain that allows users to manage and showcase their virtual assets in a
                 customizable page. The platform provides a secure and transparent solution for
                 consolidating and exhibiting digital presence.
               </Text>
               <Text>
                 User Responsibilities: You are solely responsible for the content you create and
-                share on MONID. You agree not to use the service for any illegal or unauthorized
+                share on Monad ID. You agree not to use the service for any illegal or unauthorized
                 purposes and to comply with all applicable laws and regulations.
               </Text>
               <Text>
-                Intellectual Property: MONID retains all rights to its intellectual property,
+                Intellectual Property: Monad ID retains all rights to its intellectual property,
                 including trademarks, logos, and website content. You may not use or reproduce any
-                of MONID's intellectual property without prior written permission.
+                of Monad ID's intellectual property without prior written permission.
               </Text>
               <Text>
-                Limitation of Liability: MONID is not liable for any damages or losses resulting
+                Limitation of Liability: Monad ID is not liable for any damages or losses resulting
                 from your use of the service. We do not guarantee the availability, accuracy, or
                 reliability of the website, and we reserve the right to modify or discontinue the
                 service at any time.

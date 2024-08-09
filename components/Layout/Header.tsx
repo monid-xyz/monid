@@ -32,6 +32,7 @@ import {
   PopoverBody,
   PopoverFooter,
   SimpleGrid,
+  LightMode,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { localeAtom, colorModeAtom, isConnectedAtom } from "core/atoms";
@@ -50,14 +51,6 @@ import { useTranslate } from "core/lib/hooks/use-translate";
 import { LinkIcon, Logo, Base } from "components/logos";
 import Footer from "./Footer";
 import LogoLink from "./LogoLink";
-import {
-  DOCS_URL,
-  GRINDING_URL,
-  GUIDES_URL,
-  ROADMAP_URL,
-} from "core/utils/constants";
-import { motion } from "framer-motion";
-import ImageBox from "components/claiming/ImageBox";
 import Monad from "components/logos/Monad";
 export default function Header() {
   const [colorM, setColorM] = useAtom(colorModeAtom);
@@ -67,7 +60,7 @@ export default function Header() {
   const [small] = useMediaQuery("(min-width: 420px)");
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
   const { pathname } = useRouter();
-  const home = pathname === "/" ? true : false;
+  const app = pathname.includes("/app") ? true : false;
   const { t } = useTranslate();
   const isConnected = useAtomValue(isConnectedAtom);
   const dashboard = pathname === "/manage" ? true : false;
@@ -104,8 +97,8 @@ export default function Header() {
 
       <Box
         as="nav"
-        position={"relative"}
-        top={["0px"]}
+        position={app ? "absolute" : "relative"}
+        top={app ? ["40px"] : 0}
         zIndex={1000}
         px={0}
         m={0}
@@ -119,7 +112,7 @@ export default function Header() {
         // borderBottomColor={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
       >
         <Container maxW="100%" p={[3, 4, 4, 4, 8]}>
-          <Flex justifyContent="space-between">
+          <Flex justifyContent="space-between" gap={[0, 0, 2]}>
             <LogoLink />
             <HStack gap={1}>
               {notMobile && (
@@ -137,7 +130,7 @@ export default function Header() {
               )}
 
               {notMobile && (
-                <NextLink href={"/litepaper"} passHref>
+                <NextLink href={"/roadmap"} passHref>
                   <Button
                     onClick={onClose}
                     variant="ghost"
@@ -145,7 +138,7 @@ export default function Header() {
                     width="100%"
                     justifyContent="left"
                   >
-                    {t("Litepaper")}
+                    {t("Roadmap")}
                   </Button>
                 </NextLink>
               )}
@@ -164,7 +157,7 @@ export default function Header() {
                 </NextLink>
               )} 
             </HStack>*/}
-            <HStack dir="ltr">
+            <HStack dir="ltr" gap={[0, 1, 2]}>
               {/* {notMobile && (
                 
                   <NextLink href="/community" passHref>
@@ -186,21 +179,12 @@ export default function Header() {
                 <NextLink href="/manage" passHref>
                   <Button
                     variant="ghost"
-                    rounded={"full"}
-                    gap={2}
+                    colorScheme={dashboard ? "venom" : "gray"}
                     isActive={dashboard}
-                    size={["md", "md", "lg"]}
+                    gap={2}
                   >
-                    <LinkIcon
-                      type="RiApps2Line"
-                      size={24}
-                      color={dashboard ? "var(--base1)" : "inherit"}
-                    />
-                    {notMobile && (
-                      <Text color={dashboard ? "var(--base1)" : "default"}>
-                        {t("My Names")}
-                      </Text>
-                    )}
+                    <LinkIcon type="RiApps2Line" size={24} />
+                    {notMobile && <Text>{t("My Names")}</Text>}
                   </Button>
                 </NextLink>
               )}
@@ -355,7 +339,25 @@ export default function Header() {
                 </Portal>
               </Popover>
 
-              <ConnectWalletButton />
+              {dashboard || app ? (
+                <ConnectWalletButton />
+              ) : (
+                <NextLink href={"/app"} passHref>
+                  <LightMode>
+                  <Button
+                  rounded={'full'}
+                    onClick={onClose}
+                    variant="solid"
+                    height={'47px'}
+                    fontSize={'medium'}
+                    colorScheme={"venom"}
+                    width={["168px", "192px"]}
+                  >
+                    {t("Enter App")}
+                  </Button>
+                  </LightMode>
+                </NextLink>
+              )}
               {/* {notMobile && (
                 <Menu>
                   <MenuButton as={Button}>{locale.toUpperCase()}</MenuButton>

@@ -21,20 +21,14 @@ import { capFirstLetter, truncAddress } from 'core/utils';
 import { Base } from 'components/logos';
 import EthAddressInput from './EthAddressInput';
 import { FaEthereum } from 'react-icons/fa';
-import { useAddress } from '@thirdweb-dev/react';
+import { useActiveAccount } from 'thirdweb/react';
 
 export default function NetworkModal() {
   const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [network, setNetwork] = useAtom(nftsNetworkAtom);
-  const eth = useAtomValue(ethAtom);
+  const eth = useActiveAccount()?.address;
   const venom = useAtomValue(addressAtom);
-
-  useEffect(() => {
-    if (!eth) {
-      setNetwork('venom');
-    }
-  }, [eth]);
 
   return (
     <>
@@ -44,7 +38,7 @@ export default function NetworkModal() {
         color="white"
         bgColor={'black'}
         hasArrow>
-        <Button variant={'solid'} gap={2} onClick={onOpen}>
+        <Button variant={'border'} gap={2} onClick={onOpen} rounded={'xl'}>
           Network : {capFirstLetter(network)}
           <RiShuffleLine size={'24px'} />
         </Button>
@@ -70,13 +64,13 @@ export default function NetworkModal() {
                   <Text fontSize={'sm'} color={'gray'}>{`NFTs of ${truncAddress(venom)}`}</Text>
                 </Stack>
               </Button>
-              {eth.length < 30 && (
+              {!eth && (
                 <Stack my={2}>
                   <Text>Connect your Ethereum address to pick from NFTs</Text>
                   <EthAddressInput />
                 </Stack>
               )}
-              {eth.length > 30 && <Button
+              {eth && <Button
                 colorScheme={network.includes('ethereum') ? 'green' : 'gray'}
                 gap={2}
                 height={'80px'}

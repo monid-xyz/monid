@@ -8,6 +8,11 @@ function isValidUsername(name: string) {
   return nameRegex.test(name);
 }
 
+function getRandomBytes32(): `0x${string}` {
+  return `0x${crypto.getRandomValues(new Uint8Array(32))
+    .reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '')}`;
+}
+
 const formatDateDifference = (date:Date) => {
   const now = new Date();
   const targetDate = new Date(date);
@@ -46,4 +51,4 @@ const formatDateDifference = (date:Date) => {
 };
 
 
-export { truncAddress, isValidUsername, formatDateDifference } 
+export { truncAddress, isValidUsername, formatDateDifference, getRandomBytes32 } 

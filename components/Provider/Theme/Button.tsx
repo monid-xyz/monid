@@ -51,14 +51,14 @@ const borderVariant = defineStyle((props) => {
     },
 
     _hover: {
-      bg: `${c}.600`,
+      bg: `${c}.400`,
       _dark: {
         bg: `${c}.300`,
       },
     },
 
     _active: {
-      bg: `${c}.700`,
+      bg: `${c}.500`,
       boxShadow: 'none',
       top: '4px',
       left: '4px',

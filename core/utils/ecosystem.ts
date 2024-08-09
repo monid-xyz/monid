@@ -17,7 +17,7 @@ export const ECOSYSTEM_APPS = [
         categories: [
             'Collection', 'Utility'
         ],
-        description:'2222 Image Wallpapers usable on the MONID Platform',
+        description:'2222 Image Wallpapers usable on the Monad ID Platform',
         domain: 'rrrafle.venom',
         image: 'rrrafle.venom',
         link: 'https://monid.xyz/rrraffle',

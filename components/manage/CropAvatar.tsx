@@ -33,10 +33,11 @@ import {
 } from 'core/atoms';
 
 import { RiAddLine, RiZoomInLine } from 'react-icons/ri';
-import { useStorageUpload } from '@thirdweb-dev/react';
 import { MAX_FILE_UPLOAD, SITE_URL, SITE_URL_SHORT } from 'core/utils/constants';
 import { Avatar } from 'components/Profile';
 import AvatarEditorJs from './AvatarEditorJs';
+import { client, fleekSdk } from 'components/venomConnect';
+import { upload } from "thirdweb/storage";
 
 export default function CropAvatar() {
   const [progress, setProgress] = useState({ progress: 0, total: 0 });
@@ -49,15 +50,17 @@ export default function CropAvatar() {
   const [zoomValue, setZoomValue] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
   const cropRef = useRef(null);
-  const {
-    mutateAsync: upload,
-    isLoading: isSaving,
-    isSuccess
-  } = useStorageUpload({
-    onProgress(event) {
-      setProgress(event);
-    },
-  });
+  
+
+  // const {
+  //   mutateAsync: upload,
+  //   isLoading: isSaving,
+  //   isSuccess
+  // } = useStor({
+  //   onProgress(event) {
+  //     setProgress(event);
+  //   },
+  // });
   const toast = useToast();
 
   useEffect(() => {
@@ -144,11 +147,21 @@ export default function CropAvatar() {
       }
 
       try {
+        setIsLoading(true)
         const formData = [e];
-        const uris = await upload({ data: formData });
-        setAvatar('https://ipfs.io/ipfs/' + uris[0].slice(7));
+        //const uris = await upload({ client, files: formData});
+        const uri = await fleekSdk.storage().uploadFile({
+          file: e,
+          onUploadProgress: (event)=> {setProgress({progress: event.loadedSize, total: Number(event.totalSize)})},
+
+        });
+        setAvatar('https://ipfs.io/ipfs/' + uri.pin.cid);
+        setIsLoading(false)
+
       } catch (error) {
         alert('Error sending File to IPFS: ');
+        setIsLoading(false)
+
         //// console.log(error);
       }
     }
@@ -205,7 +218,7 @@ export default function CropAvatar() {
             )}
           </ModalBody>
           <ModalFooter gap={4}>
-            {progress.total === 0 && !isSaving ? (
+            {progress.total === 0 && !isLoading ? (
               <Flex gap={4}>
                 {editingAvatarFile &&
                   !editingAvatarFile.type.includes('svg') &&
@@ -213,8 +226,8 @@ export default function CropAvatar() {
                     <Button
                       color="white"
                       bgColor="var(--base1)"
-                      isDisabled={isSaving || isLoading}
-                      isLoading={isSaving || isLoading}
+                      isDisabled={isLoading}
+                      isLoading={isLoading}
                       loadingText={'Uploading...'}
                       onClick={handleSave}>
                       Crop & Upload
@@ -223,8 +236,8 @@ export default function CropAvatar() {
                 <Button
                   color="white"
                   bgColor="var(--base1)"
-                  isDisabled={isSaving || isLoading}
-                  isLoading={isSaving || isLoading}
+                  isDisabled={isLoading}
+                  isLoading={isLoading}
                   loadingText={isLoading ? 'Loading...' : 'Uploading...'}
                   onClick={handleSkip}>
                   Upload Orginal

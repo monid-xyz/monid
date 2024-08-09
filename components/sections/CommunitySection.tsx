@@ -83,7 +83,7 @@ export default function CommunitySection() {
                   fontSize={['4xl', '5xl', '6xl']}
                   fontWeight={'bold'}
                   textAlign={['center', 'center', 'center']}>
-                  {t('MONID Community')}
+                  {t('Monad ID Community')}
                 </Heading>
                 <Text
                   fontSize={['xl', '2xl', '3xl']}

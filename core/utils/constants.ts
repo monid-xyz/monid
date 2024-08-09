@@ -4,10 +4,11 @@ import { WINNERS_PUNKS_AVATAR_CHALLENGE, WINNERS_STAX_AVATAR_CHALLENGE } from '.
 export const MINT_OPEN = true;
 export const MINT_TOTAL_SUPPLY: number = 10000;
 export const TLD = 'mon';
-export const DOMAIN_REGISTER_FEE = 1;
+export const DOMAIN_REGISTER_FEE = 0.00001;
 export const MINT_DATE = 'Feb 03, 2024 18:00 UTC';
 export const MINT_MESSAGE = 'Final Phase of venom testnet minting will start on';
 export const SITE_URL = 'https://monid.xyz/';
+export const SITE_LOGO_URL = "https://monid.xyz/monidxyz.svg";
 export const SITE_OGS_URL = 'https://monid.xyz/ogs/';
 export const SITE_URL_SHORT = 'monid.xyz';
 export const VID_IMAGE_API = 'https://img.monid.xyz/api/';
@@ -18,9 +19,10 @@ export const SITE_FULL_DESCRIPTION =
   'Monad ID empowers you to build a personalized, decentralized page that showcases your links, content, and digital presence. Leveraging the power of the Monad Blockchain and .mon domains, monid offers a self-sovereign alternative to centralized link management tools.';
 export const NFT_IMAGE_URL = 'https://ipfs.io/ipfs/QmUvfedgHDXdiMsq5nfLPGLQrR4QAYXHzR5SETBZQ6RGyd';
 export const SITE_MANAGE_URL = 'https://monid.xyz/';
+export const METADATA_URL = 'https://metadata.monid.xyz/';
 export const SITE_PROFILE_URL = 'https://monid.xyz/';
 export const ZEALY_URL = 'https://zealy.io/c/monid_xyz/';
-export const AVATAR_API_URL = 'https://monid.xyz/api/avatar?name=';
+export const AVATAR_API_URL = 'https://metadata.monid.xyz/avatar/arbitrumSepolia/';
 export const VENOMSCAN_NFT = 'https://venomscan.com/accounts/';
 export const VENOMSCAN_TX = 'https://venomscan.com/transactions/';
 export const VENTORY_NFT = 'https://ventory.gg/nft/';
@@ -29,7 +31,7 @@ export const VENOMART_COLLECTION = 'https://venomart.io/collection/';
 export const OASIS_COLLECTION = 'https://oasis.gallery/collection/';
 export const OASIS_NFT = 'https://oasis.gallery/nft/';
 export const BTCSCAN_ADDRESS = 'https://blockchair.com/bitcoin/';
-export const ETHERSCAN_ADDRESS = 'https://etherscan.io/address/';
+export const ETHERSCAN_ADDRESS = 'https://sepolia.arbiscan.io/tx/';
 export const CONTRACT_ADDRESS =
   '0:5ecadfe4afcf90452bc448b5dabffeca63939bfce866f248d9493f57e748aff3';
 export const CONTRACT_ADDRESS_V1 =
@@ -122,7 +124,7 @@ export const MEDIUM_URL = 'https://medium.com/@monid_xyz';
 export const YLIDE_URL = '';
 export const YOUTUBE_URL = 'https://www.youtube.com/@monid_xyz';
 export const OPENSEA_URL = 'https://opensea.io/assets/';
-export const FAUCET_URL = 'https://monad.xyz/';
+export const FAUCET_URL = 'https://www.alchemy.com/faucets/arbitrum-sepolia';
 
 export const MARKETPLACE_URLS_COLLECTION: any = {
   venomtestnet: 'https://testnet.ventory.gg/collection/',
@@ -169,7 +171,7 @@ export const IPFS_URLS = [
 ];
 
 export const SIGN_MESSAGE =
-  'Welcome to MONID. By signing this message, you agree with our terms and conditions. timestamp=';
+  'Welcome to Monad ID. By signing this message, you agree with our terms and conditions. timestamp=';
 
 export const MAX_FILE_UPLOAD = 15728640;
 
@@ -678,23 +680,23 @@ export const WALLETS_VARIATIONS = [
 export const TOUR_STEPS = [
   {
     element: '.title',
-    intro: `Please provide a title for your MONID by entering your name or brand name, for example: John Doe.`,
+    intro: `Please provide a title for your Monad ID by entering your name or brand name, for example: John Doe.`,
   },
   {
     element: '.subtitle',
-    intro: `Please enter a subtitle for your MONID, for example: Content Manager.`,
+    intro: `Please enter a subtitle for your Monad ID, for example: Content Manager.`,
   },
   {
     element: '.avatar',
-    intro: `Upload an avatar image for your MONID or choose one from your NFTs.`,
+    intro: `Upload an avatar image for your Monad ID or choose one from your NFTs.`,
   },
   {
     element: '.bio',
-    intro: `Please enter a short description for your MONID Profile, for example: I love Blockchain and AI/ML technologies and currently am learning how to read and write smart contracts.`,
+    intro: `Please enter a short description for your Monad ID Profile, for example: I love Blockchain and AI/ML technologies and currently am learning how to read and write smart contracts.`,
   },
   {
     element: '.wallets',
-    intro: `Your Monad wallet address is added to your MONID, You can add your wallet addresses from another chains, for example: Ethereum, BTC, Solana and More`,
+    intro: `Your Monad wallet address is added to your Monad ID, You can add your wallet addresses from another chains, for example: Ethereum, BTC, Solana and More`,
   },
   {
     element: '.links',
@@ -702,7 +704,7 @@ export const TOUR_STEPS = [
   },
   {
     element: '.socials',
-    intro: `Add a social media link to your MONID, for example: Twitter, Instagram, LinkedIn, Github and More`,
+    intro: `Add a social media link to your Monad ID, for example: Twitter, Instagram, LinkedIn, Github and More`,
   },
   {
     element: '.add',
@@ -710,7 +712,7 @@ export const TOUR_STEPS = [
   },
   {
     element: '.design',
-    intro: `Design your MONID the way you like it! change the background color, customize the buttons style and font. change the layout and other settings`,
+    intro: `Design your Monad ID the way you like it! change the background color, customize the buttons style and font. change the layout and other settings`,
   },
   {
     element: '.save',
@@ -718,7 +720,7 @@ export const TOUR_STEPS = [
   },
   {
     element: '.share',
-    intro: `Share your MONID with the world`,
+    intro: `Share your Monad ID with the world`,
   },
 
   // ...

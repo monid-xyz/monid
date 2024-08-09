@@ -24,10 +24,9 @@ import { SortableItemProps, SortableConProps } from 'types';
 
 interface Props {
   json: any;
-  nftAddress: string;
 }
 
-export default function ManageWallets({ json, nftAddress }: Props) {
+export default function ManageWallets({ json }: Props) {
   const useLineIcons = useAtomValue(useLineIconsAtom);
   const [walletsArray, setWalletsArray] = useAtom(walletsArrayAtom);
   const [notMobile] = useMediaQuery('(min-width: 800px)');

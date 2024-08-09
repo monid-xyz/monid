@@ -5,8 +5,8 @@ import { Seo } from 'components/Layout/Seo';
 import LitepaperSection from 'components/sections/LitepaperSection';
 
 const Litepaper: NextPage = () => {
-  const title = "MONID Litepaper";
-  const des = "Everything about the MONID Project";
+  const title = "Monad ID Litepaper";
+  const des = "Everything about the Monad ID Project";
   return (
     <>
       <Seo title={title} description={des} />

@@ -21,10 +21,11 @@ import { useState } from 'react';
 import AddNFTAvatar from './AddNFTAvatar';
 
 interface Props {
-    onClick: () => void;
+    onClick?: () => void;
+    saveButton?: boolean;
 }
 
-export default function EditAvatar({ onClick } : Props) {
+export default function EditAvatar({ onClick, saveButton = false } : Props) {
   const [avatarUploading, setAvatarUploading] = useState(false);
   const { colorMode } = useColorMode();
   const name = useAtomValue(nameAtom);
@@ -33,25 +34,7 @@ export default function EditAvatar({ onClick } : Props) {
   const setEditingAvatar = useSetAtom(editingAvatarAtom);
   const setEditingAvatarFile = useSetAtom(editingAvatarFileAtom);
   const [notMobile] = useMediaQuery('(min-width: 992px)');
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  }
-    
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  }
+
 
   function buildFileSelector() {
     if (process.browser) {
@@ -71,7 +54,7 @@ export default function EditAvatar({ onClick } : Props) {
   const imageFileSelect = buildFileSelector();
 
   return (
-    <Flex gap={[3,4,6]} px={[6]} alignItems={['center']} className='avatar' backgroundColor={colorMode === 'dark' ? 'whiteAlpha.200' : 'gray.100'} rounded={'lg'} justify={'center'} w={'100%'}>
+    <Flex gap={[3,4,6]} px={[6]} alignItems={['center']} className='avatar' rounded={'lg'} justify={'center'} w={'100%'} minH={'140px'}>
       <Box w={['92px','104px']} key={avatar}>
         <Avatar maxH={'104'} url={avatar} shape={avatarShape} nodrag noanimate />
       </Box>
@@ -79,13 +62,14 @@ export default function EditAvatar({ onClick } : Props) {
             <AddNFTAvatar defaultType="avatar" />
             <Button
               isLoading={avatarUploading}
-              variant={'outline'}
+              rounded={'xl'}
+              variant={'border'}
               colorScheme={colorMode === 'light' ? 'dark' : 'light'}
               onClick={() => imageFileSelect !== undefined && imageFileSelect.click()}>
               Upload
             </Button>
       </Stack>
-      <Button onClick={onClick} bgGradient={useColorModeValue(
+      {saveButton && <Button onClick={onClick} bgGradient={useColorModeValue(
             'linear(to-r, var(--base1), var(--base2))',
             'linear(to-r, var(--base2), var(--bluevenom2))'
           )}
@@ -96,7 +80,7 @@ export default function EditAvatar({ onClick } : Props) {
               'linear(to-r, var(--base0), var(--bluevenom0))'
             ),
           }}
-          color={'white'} isDisabled={avatar === ''} display={['flex','flex']} variant={'outline'} flexDirection={'column'} gap={2} height={'88px'}><Text>Save</Text><Text>Avatar</Text></Button>
+          color={'white'} isDisabled={avatar === ''} display={['flex','flex']} variant={'outline'} flexDirection={'column'} gap={2} height={'88px'}><Text>Save</Text><Text>Avatar</Text></Button>}
     </Flex>
   );
 }

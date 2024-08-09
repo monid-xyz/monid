@@ -18,9 +18,10 @@ import {
   Stack,
   HStack,
   Tooltip,
-} from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
-import { useAtom, useAtomValue, useSetAtom } from 'jotai';
+  Image,
+} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import {
   addLinkContentAtom,
   addLinkImageAtom,
@@ -40,28 +41,28 @@ import {
   openAddNftAtom,
   socialsArrayAtom,
   editingAvatarFileAtom,
-} from 'core/atoms';
-import { capFirstLetter, getAvatarUrl, sleep, truncAddress } from 'core/utils';
-import { LinkIcon } from 'components/logos';
+} from "core/atoms";
+import { capFirstLetter, getAvatarUrl, sleep, truncAddress } from "core/utils";
+import { LinkIcon } from "components/logos";
 import {
   AVATAR_API_URL,
   OPENSEA_URL,
   VENOMART_NFT,
   VENTORY_NFT,
   ZERO_ADDRESS,
-} from 'core/utils/constants';
-import { Avatar } from 'components/Profile';
+} from "core/utils/constants";
+import { Avatar } from "components/Profile";
 import {
   RiCloseLine,
   RiGridFill,
   RiGridLine,
   RiLayoutGridLine,
   RiRestartLine,
-} from 'react-icons/ri';
-import axios from 'axios';
-import NetworkModal from './NetworkModal';
-import { ThirdwebNftMedia } from '@thirdweb-dev/react';
-import ReactPlayer from 'react-player';
+} from "react-icons/ri";
+import axios from "axios";
+import NetworkModal from "./NetworkModal";
+import ReactPlayer from "react-player";
+import { useActiveAccount } from "thirdweb/react";
 
 interface Props {
   defaultType: string;
@@ -70,7 +71,7 @@ interface Props {
 
 export default function AddNFTAvatar({ defaultType, key }: Props) {
   const { colorMode } = useColorMode();
-  const [notMobile] = useMediaQuery('(min-width: 800px)');
+  const [notMobile] = useMediaQuery("(min-width: 800px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [_open, _setOpen] = useAtom(openAddNftAtom);
   const [type, setType] = useAtom(nftTypeAtom);
@@ -93,7 +94,7 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
   const [avatarNft, setAvatarNft] = useAtom(avatarNftAtom);
   const avatarShape = useAtomValue(avatarShapeAtom);
 
-  const eth = useAtomValue(ethAtom);
+  const eth = useActiveAccount()?.address;
   const [avatar, setAvatar] = useAtom(avatarAtom);
 
   useEffect(() => {
@@ -111,7 +112,8 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
     let nft = nftjsons[index];
     if (!nft) return;
     let avatarURL = nft.files
-      ? !nft?.files[0]?.mimetype.includes('metadata') || !nft?.files[0]?.mimetype.includes('json')
+      ? !nft?.files[0]?.mimetype.includes("metadata") ||
+        !nft?.files[0]?.mimetype.includes("json")
         ? nft.files[0].source
         : nft.preview?.source
       : nft.preview?.source;
@@ -127,43 +129,49 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
     let nft = nftjsons[index];
     if (!nft) return;
     let avatarURL = nft.files
-      ? !nft?.files[0]?.mimetype.includes('metadata') || !nft?.files[0]?.mimetype.includes('json')
+      ? !nft?.files[0]?.mimetype.includes("metadata") ||
+        !nft?.files[0]?.mimetype.includes("json")
         ? nft.files[0].source
         : nft.preview?.source
       : nft.preview?.source;
 
     let _styleType;
 
-    _setType('nft link');
+    _setType("nft link");
     _setTitle(String(nft.name));
     _setImage(String(avatarURL));
-    if (nft.network?.includes('venom')) {
+    if (nft.network?.includes("venom")) {
       _setUrl(VENTORY_NFT + String(nft.address));
       _setContent(String(nft.address));
-      _styleType = 'normal';
+      _styleType = "normal";
     } else {
       _setUrl(
-        OPENSEA_URL + String(nft.network) + '/' + String(nft.address) + '/' + String(nft.tokenId)
+        OPENSEA_URL +
+          String(nft.network) +
+          "/" +
+          String(nft.address) +
+          "/" +
+          String(nft.tokenId)
       );
       _setContent(
         JSON.stringify({
-          address: String(nft.address) + '/' + String(nft.tokenId),
+          address: String(nft.address) + "/" + String(nft.tokenId),
           metadata: nft.metadata,
         })
       );
       if (
         (nft.metadata && nft.metadata?.animation_url) ||
-        String(nft.preview?.mimetype).includes('mp4') ||
-        String(nft.preview?.mimetype).includes('mp3')
+        String(nft.preview?.mimetype).includes("mp4") ||
+        String(nft.preview?.mimetype).includes("mp3")
       ) {
-        _styleType = 'complex';
+        _styleType = "complex";
       } else {
-        _styleType = 'normal';
+        _styleType = "normal";
       }
     }
 
     _setStyles({
-      size: 'md',
+      size: "md",
       network: nft.network,
       scanLink: false,
       type: _styleType,
@@ -176,154 +184,158 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
     try {
       // Take a salted code
       //// console.log('loading all nfts', account?.address);
-      
-        setNftJsons([]);
-        setIsLoading(true);
-        setListIsEmpty(false);
-        const options = { method: 'GET', headers: { accept: 'application/json' } };
-        await fetch(
-          'https://eth-mainnet.g.alchemy.com/nft/v3/k1sdbc-1ghcYlc8lhbbDu1e3j7kPMC74/getNFTsForOwner?owner=' +
-            eth +
-            '&withMetadata=true&pageSize=100',
-          options
-        )
-          .then((response) => response.json())
-          .then((response) => {
-            //// console.log(response);
-            response?.ownedNfts.map((nft: any) => {
-              let thumbnailUrl = nft.image.thumbnailUrl
-                ? nft.image.thumbnailUrl
-                : nft.image.cachedUrl;
-              const _nftJson = {
-                name: nft.name,
-                tokenId: nft.tokenId,
-                collectionName: nft.contract.name,
-                address: nft.contract.address,
-                network: 'ethereum',
-                metadata: nft.raw.metadata,
-                preview: {
-                  source: thumbnailUrl,
-                  mimetype: nft.image.contentType,
-                },
-                files: [
-                  {
-                    source: nft.image.cachedUrl,
-                    mimetype: nft.image.contentType,
-                  },
-                ],
-              };
-              nft.name !== null && setNftJsons((nfts) => [...(nfts ? nfts : []), _nftJson]);
-            });
-          })
-          .catch((err) => console.error(err));
 
-        await fetch(
-          'https://arb-mainnet.g.alchemy.com/nft/v3/k1sdbc-1ghcYlc8lhbbDu1e3j7kPMC74/getNFTsForOwner?owner=' +
-            eth +
-            '&withMetadata=true&pageSize=100',
-          options
-        )
-          .then((response) => response.json())
-          .then((response) => {
-            //// console.log(response);
-            response?.ownedNfts.map((nft: any) => {
-              let thumbnailUrl = nft.image.thumbnailUrl
-                ? nft.image.thumbnailUrl
-                : nft.image.cachedUrl;
-              const _nftJson = {
-                name: nft.name,
-                tokenId: nft.tokenId,
-                collectionName: nft.contract.name,
-                address: nft.contract.address,
-                network: 'arbitrum',
-                metadata: nft.raw.metadata,
-                preview: {
-                  source: thumbnailUrl,
+      setNftJsons([]);
+      setIsLoading(true);
+      setListIsEmpty(false);
+      const options = {
+        method: "GET",
+        headers: { accept: "application/json" },
+      };
+      await fetch(
+        "https://eth-mainnet.g.alchemy.com/nft/v3/k1sdbc-1ghcYlc8lhbbDu1e3j7kPMC74/getNFTsForOwner?owner=" +
+          eth +
+          "&withMetadata=true&pageSize=100",
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          //// console.log(response);
+          response?.ownedNfts.map((nft: any) => {
+            let thumbnailUrl = nft.image.thumbnailUrl
+              ? nft.image.thumbnailUrl
+              : nft.image.cachedUrl;
+            const _nftJson = {
+              name: nft.name,
+              tokenId: nft.tokenId,
+              collectionName: nft.contract.name,
+              address: nft.contract.address,
+              network: "ethereum",
+              metadata: nft.raw.metadata,
+              preview: {
+                source: thumbnailUrl,
+                mimetype: nft.image.contentType,
+              },
+              files: [
+                {
+                  source: nft.image.cachedUrl,
                   mimetype: nft.image.contentType,
                 },
-                files: [
-                  {
-                    source: nft.image.cachedUrl,
-                    mimetype: nft.image.contentType,
-                  },
-                ],
-              };
-              nft.name !== null && setNftJsons((nfts) => [...(nfts ? nfts : []), _nftJson]);
-            });
-          })
-          .catch((err) => console.error(err));
+              ],
+            };
+            nft.name !== null &&
+              setNftJsons((nfts) => [...(nfts ? nfts : []), _nftJson]);
+          });
+        })
+        .catch((err) => console.error(err));
 
-        await fetch(
-          'https://polygon-mainnet.g.alchemy.com/nft/v3/k1sdbc-1ghcYlc8lhbbDu1e3j7kPMC74/getNFTsForOwner?owner=' +
-            eth +
-            '&withMetadata=true&pageSize=100',
-          options
-        )
-          .then((response) => response.json())
-          .then((response) => {
-            response?.ownedNfts.map((nft: any) => {
-              let thumbnailUrl = nft.image.thumbnailUrl
-                ? nft.image.thumbnailUrl
-                : nft.image.cachedUrl;
-              const _nftJson = {
-                name: nft.name,
-                tokenId: nft.tokenId,
-                collectionName: nft.contract.name,
-                address: nft.contract.address,
-                network: 'polygon',
-                metadata: nft.raw.metadata,
-                preview: {
-                  source: thumbnailUrl,
-                  mimetype: nft.image.contentType,
+      await fetch(
+        "https://arb-sepolia.g.alchemy.com/v2/k1sdbc-1ghcYlc8lhbbDu1e3j7kPMC74/getNFTsForOwner?owner=" +
+          eth +
+          "&withMetadata=true&pageSize=100",
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          response?.ownedNfts.map((nft: any) => {
+            let thumbnailUrl = nft.media.length > 0 ? nft.media[0].thumbnail : nft.media[0].raw;
+            const _nftJson = {
+              name: nft.name,
+              tokenId: nft.tokenId,
+              collectionName: nft.contract.name,
+              address: nft.contract.address,
+              network: "arbitrum",
+              metadata: nft.metadata,
+              preview: {
+                source: thumbnailUrl,
+                mimetype: nft.media[0].format,
+              },
+              files: [
+                {
+                  source: nft.media[0].raw,
+                  mimetype:  nft.media[0].format,
                 },
-                files: [
-                  {
-                    source: nft.image.cachedUrl,
-                    mimetype: nft.image.contentType,
-                  },
-                ],
-              };
-              nft.name !== null && setNftJsons((nfts) => [...(nfts ? nfts : []), _nftJson]);
-            });
-          })
-          .catch((err) => console.error(err));
+              ],
+            };
+            nft.name !== null &&
+              setNftJsons((nfts) => [...(nfts ? nfts : []), _nftJson]);
+          });
+        })
+        .catch((err) => console.error(err));
 
-        await fetch(
-          'https://opt-mainnet.g.alchemy.com/nft/v3/k1sdbc-1ghcYlc8lhbbDu1e3j7kPMC74/getNFTsForOwner?owner=' +
-            eth +
-            '&withMetadata=true&pageSize=100',
-          options
-        )
-          .then((response) => response.json())
-          .then((response) => {
-            response?.ownedNfts.map((nft: any) => {
-              let thumbnailUrl = nft.image.thumbnailUrl
-                ? nft.image.thumbnailUrl
-                : nft.image.cachedUrl;
-              const _nftJson = {
-                name: nft.name,
-                tokenId: nft.tokenId,
-                collectionName: nft.contract.name,
-                address: nft.contract.address,
-                network: 'optimism',
-                metadata: nft.raw.metadata,
-                preview: {
-                  source: thumbnailUrl,
+      await fetch(
+        "https://polygon-mainnet.g.alchemy.com/nft/v3/k1sdbc-1ghcYlc8lhbbDu1e3j7kPMC74/getNFTsForOwner?owner=" +
+          eth +
+          "&withMetadata=true&pageSize=100",
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          response?.ownedNfts.map((nft: any) => {
+            let thumbnailUrl = nft.image.thumbnailUrl
+              ? nft.image.thumbnailUrl
+              : nft.image.cachedUrl;
+            const _nftJson = {
+              name: nft.name,
+              tokenId: nft.tokenId,
+              collectionName: nft.contract.name,
+              address: nft.contract.address,
+              network: "polygon",
+              metadata: nft.raw.metadata,
+              preview: {
+                source: thumbnailUrl,
+                mimetype: nft.image.contentType,
+              },
+              files: [
+                {
+                  source: nft.image.cachedUrl,
                   mimetype: nft.image.contentType,
                 },
-                files: [
-                  {
-                    source: nft.image.cachedUrl,
-                    mimetype: nft.image.contentType,
-                  },
-                ],
-              };
-              nft.name !== null && setNftJsons((nfts) => [...(nfts ? nfts : []), _nftJson]);
-            });
-          })
-          .catch((err) => console.error(err));
-        nftjsons?.length === 0 && setListIsEmpty(true);
-      
+              ],
+            };
+            nft.name !== null &&
+              setNftJsons((nfts) => [...(nfts ? nfts : []), _nftJson]);
+          });
+        })
+        .catch((err) => console.error(err));
+
+      await fetch(
+        "https://opt-mainnet.g.alchemy.com/nft/v3/k1sdbc-1ghcYlc8lhbbDu1e3j7kPMC74/getNFTsForOwner?owner=" +
+          eth +
+          "&withMetadata=true&pageSize=100",
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          response?.ownedNfts.map((nft: any) => {
+            let thumbnailUrl = nft.image.thumbnailUrl
+              ? nft.image.thumbnailUrl
+              : nft.image.cachedUrl;
+            const _nftJson = {
+              name: nft.name,
+              tokenId: nft.tokenId,
+              collectionName: nft.contract.name,
+              address: nft.contract.address,
+              network: "optimism",
+              metadata: nft.raw.metadata,
+              preview: {
+                source: thumbnailUrl,
+                mimetype: nft.image.contentType,
+              },
+              files: [
+                {
+                  source: nft.image.cachedUrl,
+                  mimetype: nft.image.contentType,
+                },
+              ],
+            };
+            nft.name !== null &&
+              setNftJsons((nfts) => [...(nfts ? nfts : []), _nftJson]);
+          });
+        })
+        .catch((err) => console.error(err));
+      nftjsons?.length === 0 && setListIsEmpty(true);
 
       setLoaded(true);
       setIsLoading(false);
@@ -335,7 +347,6 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
 
   useEffect(() => {
     async function getNfts() {
-     
       if (isOpen && !loaded) {
         loadNFTs();
       }
@@ -344,7 +355,6 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
         setCurrentNetwork(network);
         loadNFTs();
       }
-
     }
     if (isOpen) {
       getNfts();
@@ -355,110 +365,168 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
     <>
       <Button
         key={key}
-        colorScheme="green"
-        variant={'outline'}
+        colorScheme="purple"
+        variant={"border"}
+        rounded={"xl"}
         onClick={() => {
           _setAddLinkOpen(false);
           setType(defaultType);
           _setOpen(true);
           onOpen();
-        }}>
-        {defaultType === 'avatar' ? 'Pick Avatar' : 'Pick NFT'}
+        }}
+      >
+        {defaultType === "avatar" ? "Pick Avatar" : "Pick NFT"}
       </Button>
-      <Drawer key={key} onClose={onClose} isOpen={_open} size={'full'} placement="bottom">
+      <Drawer
+        key={key}
+        onClose={onClose}
+        isOpen={_open}
+        size={"full"}
+        placement="bottom"
+      >
         <DrawerOverlay />
-        <DrawerContent bg={colorMode === 'dark' ? 'var(--dark1)' : 'var(--white)'} py={4}>
-          <DrawerHeader gap={3} display={'flex'} flexDirection={notMobile ? 'row' : 'column'}>
+        <DrawerContent
+          bg={colorMode === "dark" ? "var(--dark1)" : "var(--white)"}
+          py={4}
+        >
+          <DrawerHeader
+            gap={3}
+            display={"flex"}
+            flexDirection={notMobile ? "row" : "column"}
+          >
             <HStack gap={2} flexGrow={1}>
-              <Text flexGrow={1}>Pick {type === 'avatar' ? 'Avatar' : 'NFT'}</Text>
-              
-              <Button aria-label="change-view" onClick={() => setListView(!listView)} gap={2}>
-                {notMobile ? (listView ? 'Bigger' : 'Smaller') : ''}{' '}
-                {listView ? <RiLayoutGridLine size={'24'} /> : <RiGridLine size={'24'} />}
+              <Text flexGrow={1}>
+                Pick {type === "avatar" ? "Avatar" : "NFT"}
+              </Text>
+
+              <Button
+                aria-label="change-view"
+                onClick={() => setListView(!listView)}
+                gap={2}
+                variant={"border"}
+                rounded={"xl"}
+              >
+                {notMobile ? (listView ? "Bigger" : "Smaller") : ""}{" "}
+                {listView ? (
+                  <RiLayoutGridLine size={"24"} />
+                ) : (
+                  <RiGridLine size={"24"} />
+                )}
               </Button>
-              <Button aria-label="reload-nfts" onClick={loadNFTs} gap={2}>
-                {notMobile ? 'Reload' : ''} <RiRestartLine size={'24'} />
+              <Button
+                aria-label="reload-nfts"
+                onClick={loadNFTs}
+                gap={2}
+                variant={"border"}
+                rounded={"xl"}
+              >
+                {notMobile ? "Reload" : ""} <RiRestartLine size={"24"} />
               </Button>
-              {notMobile && <NetworkModal />}
-              <Button aria-label="close-nfts-modal" onClick={onClose} gap={2}>
-                <RiCloseLine size={'24'} />
+              {/* {notMobile && <NetworkModal />} */}
+              <Button
+                aria-label="close-nfts-modal"
+                onClick={onClose}
+                gap={2}
+                variant={"border"}
+                rounded={"xl"}
+              >
+                <RiCloseLine size={"24"} />
               </Button>
             </HStack>
-            {!notMobile && <NetworkModal />}
+            {/* {!notMobile && <NetworkModal />} */}
           </DrawerHeader>
           <DrawerBody>
-            <SimpleGrid
-              columns={[
-                listView ? 2 : 1,
-                nftjsons && nftjsons?.length > 1 ? (listView ? 3 : 2) : 1,
-                nftjsons && nftjsons?.length > 1 ? (listView ? 4 : 3) : 1,
-                nftjsons && nftjsons?.length > 1 ? (listView ? 5 : 3) : 1,
-                nftjsons && nftjsons?.length > 1 ? (listView ? 6 : 3) : 1,
-              ]}
-              gap={4}
-              width={'100%'}>
+            <Box
+              w="100%"
+              maxW="1920px"
+              mx="auto"
+              sx={{
+                columnCount: [
+                  listView ? 2 : 1,
+                  nftjsons && nftjsons?.length > 1 ? (listView ? 3 : 2) : 1,
+                  nftjsons && nftjsons?.length > 1 ? (listView ? 4 : 3) : 1,
+                  nftjsons && nftjsons?.length > 1 ? (listView ? 5 : 3) : 1,
+                  nftjsons && nftjsons?.length > 1 ? (listView ? 6 : 3) : 1,
+                ],
+                columnGap: "16px",
+              }}
+            >
               {nftjsons?.map((nft, index) => (
                 <Button
-                  key={'nft-' + index}
-                  variant={'outline'}
-                  width={'100%'}
-                  borderColor={'gray'}
-                  height={300}
+                  onClick={() =>
+                    type === "avatar" ? setAsAvatar(index) : addAsLink(index)
+                  }
+                  key={"nft-" + index}
+                  borderRadius={12}
+                  width={"100%"}
                   p={0}
-                  onClick={() => (type === 'avatar' ? setAsAvatar(index) : addAsLink(index))}>
+                  h={"auto"}
+                  minH={"200px"}
+                  mb={4}
+                >
                   <Center
-                    width={'100%'}
-                    key={'nft-div-' + index}
-                    flexDirection={'column'}
+                    width={"100%"}
+                    key={"nft-div-" + index}
+                    flexDirection={"column"}
                     gap={2}
-                    background={colorMode === 'dark' ? 'blackAlpha.300' : 'blackAlpha.100'}
-                    height={300}
-                    borderRadius={12}>
-                    <Box position={'absolute'} left={4} top={4}>
+                    background={
+                      colorMode === "dark" ? "blackAlpha.300" : "blackAlpha.100"
+                    }
+                    borderRadius={12}
+                  >
+                    <Box
+                      position={"absolute"}
+                      right={3}
+                      top={3}
+                      opacity={0.5}
+                      zIndex={900}
+                    >
                       <LinkIcon type={String(nft.network)} line />
                     </Box>
-                    <Box position={'absolute'} right={4} top={4}>
-                      <LinkIcon type={String(nft.preview?.mimetype)} line />
-                    </Box>
                     <Flex
-                      key={nft.name + ' name' + index}
+                      key={nft.name + " name" + index}
                       gap={2}
-                      flexDirection={'column'}
-                      alignItems={'center'}
-                      justifyContent={'center'}>
-                      <Box width={listView ? 100 : 150} maxH={250}>
-                        {String(nft.preview?.mimetype).includes('mp4') &&
-                        !nft.network?.includes('venom') ? (
-                          <Center width={listView ? 100 : 150} height={180}>
-                            <ThirdwebNftMedia
-                              metadata={nft.metadata}
-                              width={listView ? '100px' : '150px'}
-                              controls={false}
-                              height="150px"
-                              style={{ borderRadius: 12 }}
+                      flexDirection={"column"}
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                    >
+                      <Box>
+                        {String(nft.preview?.mimetype).includes("mp4") ? (
+                          <Center>
+                            <ReactPlayer
+                              url={nft?.preview?.source}
+                              width={"100%"}
+                              loop
+                              muted
+                              playing
+                              height={230}
                             />
                           </Center>
-                        ) : String(nft.preview?.mimetype).includes('mp4') ? (
-                          <ReactPlayer
-                            url={nft?.preview?.source}
-                            width={'100%'}
-                            loop
-                            muted
-                            playing
-                            height={230}
-                          />
                         ) : (
-                          <Avatar
-                            noanimate
-                            maxH={230}
-                            nodrag
-                            shape={type === 'avatar' ? avatarShape : 'round'}
-                            shadow="none"
-                            url={String(nft.preview?.source)}
+                          <Image
+                            borderRadius={12}
+                            position={"relative"}
+                            width={"100%"}
+                            height={"auto"}
+                            transition={"ease"}
+                            transitionDuration={"1000"}
+                            alt={nft.name}
+                            textAlign={"center"}
+                            src={
+                              String(nft.name).slice(-4).toLowerCase() ===
+                              ".vid"
+                                ? AVATAR_API_URL +
+                                  String(nft.name).slice(0, -4).toLowerCase() +
+                                  "&var=" +
+                                  Math.round(Math.random() * 10000)
+                                : nft.files && nft.files[0]?.source !== ""
+                                ? String(nft.files[0]?.source)
+                                : String(nft.preview?.source)
+                            }
                           />
                         )}
                       </Box>
-                      <Text
+                      {/* <Text
                         fontWeight={'bold'}
                         fontSize={
                           listView
@@ -476,14 +544,14 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
                           : String(nft.name).length > 23
                           ? String(nft.name).slice(0, 23) + '...'
                           : String(nft.name)}
-                      </Text>
+                      </Text> */}
                     </Flex>
                   </Center>
                 </Button>
               ))}
-            </SimpleGrid>
+            </Box>
             {isLoading && (
-              <Center width={'100%'} height={200}>
+              <Center width={"100%"} height={200}>
                 <Spinner size="lg" />
               </Center>
             )}

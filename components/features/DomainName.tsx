@@ -29,7 +29,7 @@ import { LinkIcon } from 'components/logos';
             bgGradient={
               colorMode === 'light'
                 ? 'linear(to-r, var(--base2), var(--base00))'
-                : 'linear(to-r, var(--base0), var(--base00))'
+                : 'linear(to-r, var(--base000), var(--base00))'
             }
             bgClip="text">
               {name}

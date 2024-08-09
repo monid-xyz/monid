@@ -27,7 +27,7 @@ export default function LogoLink() {
                 : 'linear(to-r, var(--base0), var(--base00))'
             }
             bgClip="text">
-            MONID
+            Monad ID
           </Text>
         )}
       </Button>

@@ -97,6 +97,7 @@ export const openEmbedModalAtom = atom<boolean>(false);
 export const openAddWalletAtom = atom<boolean>(false);
 export const mobileViewAtom = atom<boolean>(true);
 export const ipfsGatewayAtom = atom<string>(IPFS_URLS[0]);
+export const secretAtom = atomWithStorage<`0x${string}`>('secret', '0x0');
 export const manageListViewAtom = atomWithStorage<boolean>('manageListView', true);
 export const nftSmallerViewAtom = atomWithStorage<boolean>('nftSmallerView', false);
 export const authAtom = atomWithStorage('user', initialAuthState);

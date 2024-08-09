@@ -93,8 +93,8 @@ export default function ContributionSection() {
     setSending(true);
     await sendEmail(
       role === 'Investment NFT'
-        ? 'Congrats! You have been added to the waitlist of the Investment NFT at MONID'
-        : `Application Received for ${role} at MONID`,
+        ? 'Congrats! You have been added to the waitlist of the Investment NFT at Monad ID'
+        : `Application Received for ${role} at Monad ID`,
       email,
       role === 'Investment NFT' ? waitlistEmailHtml : contributionEmailHtml
     )
@@ -204,7 +204,7 @@ export default function ContributionSection() {
                 w={'100%'}
                 fontSize={['lg', 'lg', 'lg', 'xl']}
                 my={10}>
-                <Text>There are several ways to become a major contributor at MONID</Text>
+                <Text>There are several ways to become a major contributor at Monad ID</Text>
 
                 <Flex gap={2} align={'center'}>
                   <Select
@@ -356,7 +356,7 @@ export default function ContributionSection() {
                 </Button>
               )}
               {/* <ShareButtons
-                text={`🌐 Contribution Opportunity%0a%0a🚀Join MONID as a ${role} Contributor!%0a%0aBe part of the team shaping the future of identity management.%0a%0aJoin us now! @monid_xyz%0a%0a`}
+                text={`🌐 Contribution Opportunity%0a%0a🚀Join Monad ID as a ${role} Contributor!%0a%0aBe part of the team shaping the future of identity management.%0a%0aJoin us now! @monid_xyz%0a%0a`}
                 hashtags={`${role.replaceAll(' ', '').replace('/', '')},role`}
                 url={SITE_URL + 'contribute'}
               /> */}

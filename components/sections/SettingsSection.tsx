@@ -91,7 +91,6 @@ function SettingsSection() {
         
         {!isConnected ? (
           <Center my={8} flexDirection="column">
-            <Text my={4}>{t('venomWalletConnect')}</Text>
             <ConnectWalletButton />
           </Center>
         ) : <Stack gap={10} width={'100%'} pb={12}>
@@ -130,7 +129,7 @@ function SettingsSection() {
               />
             ) : (
               <Box p={3} rounded={'full'} border={'1px #77777750 solid'}>
-                <LinkIcon type="RiUserLine" size={22} color="#27aa6b" />
+                <LinkIcon type="RiUserLine" size={22} color="#7951e9" />
               </Box>
             )}
             <Stack gap={0}>

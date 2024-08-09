@@ -7,7 +7,7 @@ import { Box, Container, Flex, Heading, Stack, Text, useColorModeValue } from '@
 
 const Privacy: NextPage = () => {
   const title = 'Privacy Policy';
-  const des = 'MONID Privacy Policy';
+  const des = 'Monad ID Privacy Policy';
   return (
     <>
       <Seo title={title} description={des} />
@@ -37,30 +37,30 @@ const Privacy: NextPage = () => {
                 Privacy Policy
               </Heading>
               <Text>
-                Information Collection: MONID does not collect any personal information from
-                users. When you register a domain on MONID and create a profile, your public
+                Information Collection: Monad ID does not collect any personal information from
+                users. When you register a domain on Monad ID and create a profile, your public
                 information will be stored on IPFS servers and made accessible to the public.
               </Text>
               <Text>
-                Use of Information: The information you choose to include in your MONID profile
+                Use of Information: The information you choose to include in your Monad ID profile
                 will be publicly available and visible to anyone who visits your profile page. This
                 includes your chosen domain name, profile picture, bio, and any virtual assets you
                 decide to showcase.
               </Text>
               <Text>
-                Cookies and Tracking Technologies: MONID may use cookies and similar tracking
+                Cookies and Tracking Technologies: Monad ID may use cookies and similar tracking
                 technologies to enhance your browsing experience and collect non-personal
                 information for statistical purposes. These technologies do not collect personally
                 identifiable information.
               </Text>
               <Text>
-                Data Security: While MONID takes reasonable measures to protect the information
+                Data Security: While Monad ID takes reasonable measures to protect the information
                 stored on IPFS servers, please be aware that information stored on the blockchain
-                and IPFS is inherently public and transparent. MONID cannot guarantee the
+                and IPFS is inherently public and transparent. Monad ID cannot guarantee the
                 security or confidentiality of any information shared on the platform.
               </Text>
               <Text>
-                Third-Party Links: The MONID website may contain links to third-party websites or
+                Third-Party Links: The Monad ID website may contain links to third-party websites or
                 services. We are not responsible for the privacy practices or content of these third
                 parties. We encourage you to review the privacy policies of any websites you visit.
               </Text>

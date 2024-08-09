@@ -328,7 +328,7 @@ export default function ProfileCompletion() {
                 fontSize="lg">
                 <Text fontSize={'4xl'}>🎉</Text>
                 <Text fontWeight={'bold'}>
-                  Congrats for completing your MONID profile. Keep adding your links!
+                  Congrats for completing your Monad ID profile. Keep adding your links!
                 </Text>
               </Flex>
               <Flex flexDir={'column'} justify={'center'} gap={4} align={'center'} p={4}>
@@ -337,7 +337,7 @@ export default function ProfileCompletion() {
                     size={250}
                   />
                   <Text>
-                  MONID GEEK OAT
+                  Monad ID GEEK OAT
                   </Text>
                   <Button
                     w={'100%'}

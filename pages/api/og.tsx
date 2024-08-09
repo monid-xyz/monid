@@ -8,9 +8,9 @@ export const config = {
 
 const OgImageHandler = async (req:NextRequest) => {
   const { searchParams } = new URL(req.url);
-  const title = searchParams.get('title') || 'MONID';
+  const title = searchParams.get('title') || 'Monad ID';
   const w = searchParams.get('w') || '36';
-  const image = searchParams.get('image') || 'MONID';
+  const image = searchParams.get('image') || 'Monad ID';
   const subtitle = searchParams.get('subtitle') || 'Empower Your Digital Presence with a Single Link';
   const fontData = await fetch(
     new URL('../../assets/fonts/PoppinsBold.ttf', import.meta.url),

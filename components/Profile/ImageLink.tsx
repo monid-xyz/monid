@@ -19,7 +19,7 @@ const ImageLink = ({ url, alt, loading }: Props) => {
           src={url}
           width={'100%'}
           my={2}
-          alt={alt ? alt : 'MONID Image Link'}
+          alt={alt ? alt : 'Monad ID Image Link'}
           textAlign={'center'}
         />
       ) : (

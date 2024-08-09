@@ -86,7 +86,7 @@ export default function EcosystemSection() {
                                         </Text>
                                         {app.integrated && <Tooltip
                                             borderRadius={4}
-                                            label={<Text p={2}>Supports MONID</Text>}
+                                            label={<Text p={2}>Supports Monad ID</Text>}
                                             hasArrow
                                             color="white"
                                             bgColor={'black'}><Button variant={'ghost'}><Logo /></Button></Tooltip>}</CardHeader>

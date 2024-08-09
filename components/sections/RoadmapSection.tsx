@@ -12,147 +12,211 @@ import {
   Stack,
   Flex,
   Progress,
-} from '@chakra-ui/react';
-import { useTranslate } from 'core/lib/hooks/use-translate';
-import Image from 'next/image';
+  LightMode,
+} from "@chakra-ui/react";
+import { LinkIcon } from "components/logos";
+import { useTranslate } from "core/lib/hooks/use-translate";
+import Image from "next/image";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
 export default function RoadmapSection() {
   const { t } = useTranslate();
   const { colorMode } = useColorMode();
-  const [notMobile] = useMediaQuery('(min-width: 769px)');
+  const lightMode = colorMode === 'light';
+  const [notMobile] = useMediaQuery("(min-width: 769px)");
   return (
-    <Box backgroundColor={colorMode === 'dark' ? 'whiteAlpha.50' : 'blackAlpha.50'} id="roadmap">
+    <Box id="roadmap">
       <Container
         as="main"
-        maxW="container.md"
-        width={'100%'}
+        maxW="100%"
+        width={"100%"}
         px={0}
-        display="grid"
-        placeContent="center"
-        placeItems="center"
-        minH="75vh"
-        py={10}>
-        <>
-          <Box gap={4} my={10} width={notMobile ? 'md' : 'xs'}>
+        minH="100vh"
+        py={10}
+      >
+        <Flex w={'100%'} direction={'column'} gap={8}>
+
+        <Box gap={4} my={10} width={'100%'}>
             <Box
               display="flex"
               flexDirection="column"
               justifyContent="center"
-              alignItems={'center'}>
-              <Heading fontWeight="bold" fontSize="5xl" textAlign={'center'}>
-                {t('roadmap')}
+              alignItems={"center"}
+            >
+              <Heading fontWeight="bold" fontSize="5xl" textAlign={"center"}>
+                {t("roadmap")}
               </Heading>
               <Text
                 fontWeight="bold"
-                fontSize={notMobile ? '3xl' : '2xl'}
+                fontSize={notMobile ? "3xl" : "2xl"}
                 my={6}
-                textAlign={'center'}>
-                {t('roadmapDescription')}
+                textAlign={"center"}
+              >
+                {t("roadmapDescription")}
               </Text>
-              <Flex
-                maxWidth={'container.xs'}
-                flexDirection={notMobile ? 'row' : 'column'}
-                justifyContent={'center'}
-                alignItems={'center'}
-                gap={10}>
-                <Flex
-                  flexDirection={'column'}
-                  width={['xs', 'sm', 'xs', 'md']}
-                  bg={colorMode === 'dark' ? 'blackAlpha.500' : 'var(--light)'}
-                  borderRadius={12}
-                  p={8}
-                  gap={4}
-                  pt={4}>
-                  <Text
-                    fontWeight="bold"
-                    fontSize={notMobile ? '3xl' : '2xl'}
-                    mb={4}
-                    textAlign={'center'}>
-                    {t('roadmapPhase1')}
-                  </Text>
-                  <Progress
-                    boxShadow={'base'}
-                    height={'2px'}
-                    value={65}
-                    sx={{
-                      '& > div:first-of-type': {
-                        transitionProperty: 'width',
-                        background: 'linear-gradient(to right, #007bff 10%, #5CABFF 90%)',
-                      },
-                    }}
-                    mx={-8}
-                    mb={8}
-                  />
-                  <Checkbox
-                    fontWeight="bold"
-                    size="lg"
-                    defaultChecked
-                    color={'var(--base1)'}
-                    colorScheme={'green'} isReadOnly>
-                    {t('roadmapPhase11')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" defaultChecked isReadOnly>
-                    {t('roadmapPhase12')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" defaultChecked isReadOnly>
-                    {t('roadmapPhase13')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" defaultChecked isReadOnly>
-                    {t('roadmapPhase14')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
-                    {t('roadmapPhase15')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
-                    {t('roadmapPhase16')}
-                  </Checkbox>
-                </Flex>
-                <Flex
-                  flexDirection={'column'}
-                  width={['xs', 'sm', 'xs', 'md']}
-                  bg={colorMode === 'dark' ? 'blackAlpha.500' : 'var(--light)'}
-                  borderRadius={12}
-                  gap={2}
-                  p={8}
-                  pt={4}>
-                  <Text
-                    fontWeight="bold"
-                    fontSize={notMobile ? '3xl' : '2xl'}
-                    mb={4}
-                    textAlign={'center'}>
-                    {t('roadmapPhase2')}
-                  </Text>
-                  <Progress
-                    boxShadow={'base'}
-                    height={'2px'}
-                    value={0}
-                    colorScheme={'green'}
-                    mx={-8}
-                    mb={8}
-                  />
-                  <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
-                    {t('roadmapPhase21')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
-                    {t('roadmapPhase22')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
-                    {t('roadmapPhase23')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
-                    {t('roadmapPhase24')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
-                    {t('roadmapPhase25')}
-                  </Checkbox>
-                  <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
-                    {t('roadmapPhase26')}
-                  </Checkbox>
-                </Flex>
-              </Flex>
             </Box>
           </Box>
+        <>
+          {/* @ts-ignore */}
+          <VerticalTimeline lineColor={lightMode ? 'var(--base)' : 'var(--base000)'}>
+            {/* @ts-ignore */}
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              contentStyle={{ background: lightMode ? "var(--base000)" : "var(--base0)", color: lightMode ? "#000" : "#fff" }}
+              contentArrowStyle={{
+                borderRight: `7px solid ${lightMode ? "var(--base000)" : "var(--base0)"})`,
+              }}
+              date="2024 - 3rd Q - present"
+              iconStyle={{ background: "var(--base)", color: "#fff" }}
+              icon={<LinkIcon type="RiNumber1" />}
+            >
+              <Flex flexDirection={"column"} width={"100%"} p={2} gap={4}>
+                <Text
+                  fontWeight="bold"
+                  fontSize={notMobile ? "3xl" : "2xl"}
+                  mb={4}
+                  textAlign={"center"}
+                >
+                  {t("roadmapPhase1")}
+                </Text>
+                <Progress
+                  boxShadow={"base"}
+                  height={"2px"}
+                  value={65}
+                  max={100}
+                  sx={{
+                    "& > div:first-of-type": {
+                      transitionProperty: "width",
+                      background:
+                        "linear-gradient(to right, #503aa1 10%, #503aa1 90%)",
+                    },
+                  }}
+                  mx={-8}
+                  mb={8}
+                />
+                <Checkbox
+                  fontWeight="bold"
+                  size="lg"
+                  defaultChecked
+                  colorScheme={"purple"}
+                  isReadOnly
+                >
+                  {t("roadmapPhase11")}
+                </Checkbox>
+                <Checkbox
+                  fontWeight="bold"
+                  colorScheme={"purple"}
+                  mt={1}
+                  size="lg"
+                  defaultChecked
+                  isReadOnly
+                >
+                  {t("roadmapPhase12")}
+                </Checkbox>
+                <Checkbox
+                  fontWeight="bold"
+                  colorScheme={"purple"}
+                  mt={1}
+                  size="lg"
+                  defaultChecked
+                  isReadOnly
+                >
+                  {t("roadmapPhase13")}
+                </Checkbox>
+                <Checkbox
+                  fontWeight="bold"
+                  mt={1}
+                  colorScheme={"purple"}
+                  size="lg"
+                  defaultChecked
+                  isReadOnly
+                >
+                  {t("roadmapPhase14")}
+                </Checkbox>
+                <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
+                  {t("roadmapPhase15")}
+                </Checkbox>
+                <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
+                  {t("roadmapPhase16")}
+                </Checkbox>
+                <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
+                  {t("roadmapPhase17")}
+                </Checkbox>
+              </Flex>
+            </VerticalTimelineElement>
+            {/* @ts-ignore */}
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              date="2024 - 4th Q"
+              iconStyle={{ background: "var(--base)", color: "#fff" }}
+              icon={<LinkIcon type="RiNumber2" />}
+            >
+              <LightMode>
+              <Flex direction={"column"} w={"100%"} gap={2} p={2} color={'#111'}>
+                <Text
+                  fontWeight="bold"
+                  fontSize={notMobile ? "3xl" : "2xl"}
+                  mb={4}
+                  textAlign={"center"}
+                >
+                  {t("roadmapPhase2")}
+                </Text>
+                <Progress
+                  boxShadow={"base"}
+                  height={"2px"}
+                  value={0}
+                  colorScheme={"green"}
+                  mx={-8}
+                  mb={8}
+                />
+                <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
+                  {t("roadmapPhase21")}
+                </Checkbox>
+                <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
+                  {t("roadmapPhase22")}
+                </Checkbox>
+                <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
+                  {t("roadmapPhase23")}
+                </Checkbox>
+                <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
+                  {t("roadmapPhase24")}
+                </Checkbox>
+                <Checkbox fontWeight="bold" mt={1} size="lg" isReadOnly>
+                  {t("roadmapPhase25")}
+                </Checkbox>
+                
+              </Flex></LightMode>
+            </VerticalTimelineElement>
+            {/* @ts-ignore */}
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              contentStyle={{ background: lightMode ? "var(--base000)" : "var(--base0)", color: lightMode ? "#000" : "#fff" }}
+              contentArrowStyle={{
+                borderRight: `7px solid ${lightMode ? "var(--base000)" : "var(--base0)"})`,
+              }}
+              date="2025"
+              iconStyle={{ background: "var(--base)", color: "#fff" }}
+              icon={<LinkIcon type="RiNumber1" />}
+            >
+              <Flex flexDirection={"column"} width={"100%"} p={2} gap={4}>
+                <Text
+                  fontWeight="bold"
+                  fontSize={notMobile ? "3xl" : "2xl"}
+                  mb={4}
+                  textAlign={"center"}
+                >
+                  {t("roadmapPhase26")}
+                </Text>
+                </Flex>
+                </VerticalTimelineElement>
+          </VerticalTimeline>
         </>
+
+        </Flex>
       </Container>
     </Box>
   );

@@ -106,7 +106,7 @@ export default function EarlyAdopters() {
       name: name,
       description:
         name +
-        ' OAT (On-Chain Achievement Token) is a badge to record your on-chain and off-chain activities from the MONID Early Adopter Program Collection',
+        ' OAT (On-Chain Achievement Token) is a badge to record your on-chain and off-chain activities from the Monad ID Early Adopter Program Collection',
       preview: {
         source: image,
         mimetype: imageType,
@@ -288,12 +288,12 @@ export default function EarlyAdopters() {
     }
 
     if (zealyVerified || ownVids > 1) {
-      if (mintedStrings?.includes('MONID Pioneer')) {
+      if (mintedStrings?.includes('Monad ID Pioneer')) {
         console.log('Pioneer already minted');
       } else {
         _unMinteds.push(
           getJson(
-            'MONID Pioneer',
+            'Monad ID Pioneer',
             EARLY_ADOPTER_IMAGES['pioneer'].src,
             EARLY_ADOPTER_IMAGES['pioneer'].type
           )
@@ -302,12 +302,12 @@ export default function EarlyAdopters() {
     }
 
     if (ownVidVen) {
-      if (mintedStrings?.includes('MONID Identorian')) {
+      if (mintedStrings?.includes('Monad ID Identorian')) {
         console.log('Identorian already minted');
       } else {
         _unMinteds.push(
           getJson(
-            'MONID Identorian',
+            'Monad ID Identorian',
             EARLY_ADOPTER_IMAGES['identorian'].src,
             EARLY_ADOPTER_IMAGES['identorian'].type
           )
@@ -316,12 +316,12 @@ export default function EarlyAdopters() {
     }
 
     if (ownVids > 0) {
-      if (mintedStrings?.includes('MONID Family')) {
+      if (mintedStrings?.includes('Monad ID Family')) {
         console.log('Family already minted');
       } else {
         _unMinteds.push(
           getJson(
-            'MONID Family',
+            'Monad ID Family',
             EARLY_ADOPTER_IMAGES['family'].src,
             EARLY_ADOPTER_IMAGES['family'].type
           )
@@ -333,12 +333,12 @@ export default function EarlyAdopters() {
       (ownVids > 2 && zealyVerified) ||
       (zealyVerified && zealyUser.xp > 500 && zealyUser.rank < 201)
     ) {
-      if (mintedStrings?.includes('MONID Maverick')) {
+      if (mintedStrings?.includes('Monad ID Maverick')) {
         console.log('Maverick already minted');
       } else {
         _unMinteds.push(
           getJson(
-            'MONID Maverick',
+            'Monad ID Maverick',
             EARLY_ADOPTER_IMAGES['maverick'].src,
             EARLY_ADOPTER_IMAGES['maverick'].type
           )
@@ -353,12 +353,12 @@ export default function EarlyAdopters() {
       zealyUser.xp > 1000 &&
       zealyUser.rank < 50
     ) {
-      if (mintedStrings?.includes('MONID Champion')) {
+      if (mintedStrings?.includes('Monad ID Champion')) {
         console.log('Champion already minted');
       } else {
         _unMinteds.push(
           getJson(
-            'MONID Champion',
+            'Monad ID Champion',
             EARLY_ADOPTER_IMAGES['champion'].src,
             EARLY_ADOPTER_IMAGES['champion'].type
           )
@@ -630,7 +630,7 @@ export default function EarlyAdopters() {
                   type="https://ipfs.io/ipfs/Qmejr9qRtG3YYxqRCEVmjD1bW17mgQio8W1TjXjNSJn3DL"
                   size="md"
                 />
-                <Text>Own MONID NFT</Text>
+                <Text>Own Monad ID NFT</Text>
               </HStack>
               <Button
                 size="lg"
@@ -675,7 +675,7 @@ export default function EarlyAdopters() {
                   size="md"
                 />
                 <Box>
-                  Own MONID x Ventory NFT
+                  Own Monad ID x Ventory NFT
                   <Text color={colorMode === 'light' ? 'var(--blue3)' : 'var(--blue0)'}>
                     <a
                       href={MARKETPLACE_URLS_COLLECTION['venom'] + VENTORY_NFT_V2_ADDRESS}
@@ -812,9 +812,9 @@ export default function EarlyAdopters() {
                   )}
                   {(zealyVerified || ownVids > 1) && (
                     <Flex flexDir={'column'} justify={'center'} gap={4} align={'center'} p={4}>
-                      {mintedStrings?.includes('MONID Pioneer') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
+                      {mintedStrings?.includes('Monad ID Pioneer') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
                       <ImageBox srcUrl={EARLY_ADOPTER_IMAGES['pioneer'].src} size={250} />
-                      <Text>MONID Pioneer OAT</Text>
+                      <Text>Monad ID Pioneer OAT</Text>
                       <Button
                         w={'100%'}
                         color={'white'}
@@ -828,14 +828,14 @@ export default function EarlyAdopters() {
                             : 'Loading ...'
                         }
                         onClick={() =>
-                          mintedStrings?.includes('MONID Pioneer')
+                          mintedStrings?.includes('Monad ID Pioneer')
                             ? openWindow(
                                 ETHERSCAN_URLS['venom'] +
-                                  minteds?.filter((m) => m.name === 'MONID Pioneer')[0].address,
+                                  minteds?.filter((m) => m.name === 'Monad ID Pioneer')[0].address,
                                 null
                               )
                             : mintBadge(
-                                'MONID Pioneer',
+                                'Monad ID Pioneer',
                                 EARLY_ADOPTER_IMAGES['pioneer'].src,
                                 EARLY_ADOPTER_IMAGES['pioneer'].type
                               )
@@ -846,7 +846,7 @@ export default function EarlyAdopters() {
                             ? 'linear(to-r, var(--base1), var(--base2))'
                             : 'linear(to-r, var(--base2), var(--bluevenom2))'
                         }>
-                        {mintedStrings?.includes('MONID Pioneer')
+                        {mintedStrings?.includes('Monad ID Pioneer')
                           ? 'Minted. View on explorer'
                           : 'Mint'}
                       </Button>
@@ -855,9 +855,9 @@ export default function EarlyAdopters() {
 
                   {ownVidVen && (
                     <Flex flexDir={'column'} justify={'center'} gap={4} align={'center'} p={4}>
-                      {mintedStrings?.includes('MONID Identorian') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
+                      {mintedStrings?.includes('Monad ID Identorian') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
                       <ImageBox srcUrl={EARLY_ADOPTER_IMAGES['identorian'].src} size={250} />
-                      <Text>MONID Identorian OAT</Text>
+                      <Text>Monad ID Identorian OAT</Text>
                       <Button
                         w={'100%'}
                         color={'white'}
@@ -871,15 +871,15 @@ export default function EarlyAdopters() {
                             : 'Loading ...'
                         }
                         onClick={() =>
-                          mintedStrings?.includes('MONID Identorian')
+                          mintedStrings?.includes('Monad ID Identorian')
                             ? openWindow(
                                 ETHERSCAN_URLS['venom'] +
-                                  minteds?.filter((m) => m.name === 'MONID Identorian')[0]
+                                  minteds?.filter((m) => m.name === 'Monad ID Identorian')[0]
                                     .address,
                                 null
                               )
                             : mintBadge(
-                                'MONID Identorian',
+                                'Monad ID Identorian',
                                 EARLY_ADOPTER_IMAGES['identorian'].src,
                                 EARLY_ADOPTER_IMAGES['identorian'].type
                               )
@@ -890,7 +890,7 @@ export default function EarlyAdopters() {
                             ? 'linear(to-r, var(--base1), var(--base2))'
                             : 'linear(to-r, var(--base2), var(--bluevenom2))'
                         }>
-                        {mintedStrings?.includes('MONID Identorian')
+                        {mintedStrings?.includes('Monad ID Identorian')
                           ? 'Minted. View on explorer'
                           : 'Mint'}
                       </Button>
@@ -899,9 +899,9 @@ export default function EarlyAdopters() {
 
                   {ownVids > 0 && (
                     <Flex flexDir={'column'} justify={'center'} gap={4} align={'center'} p={4}>
-                      {mintedStrings?.includes('MONID Family') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
+                      {mintedStrings?.includes('Monad ID Family') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
                       <ImageBox srcUrl={EARLY_ADOPTER_IMAGES['family'].src} size={250} />
-                      <Text>MONID Family OAT</Text>
+                      <Text>Monad ID Family OAT</Text>
                       <Button
                         w={'100%'}
                         color={'white'}
@@ -915,14 +915,14 @@ export default function EarlyAdopters() {
                             : 'Loading ...'
                         }
                         onClick={() =>
-                          mintedStrings?.includes('MONID Family')
+                          mintedStrings?.includes('Monad ID Family')
                             ? openWindow(
                                 ETHERSCAN_URLS['venom'] +
-                                  minteds?.filter((m) => m.name === 'MONID Family')[0].address,
+                                  minteds?.filter((m) => m.name === 'Monad ID Family')[0].address,
                                 null
                               )
                             : mintBadge(
-                                'MONID Family',
+                                'Monad ID Family',
                                 EARLY_ADOPTER_IMAGES['family'].src,
                                 EARLY_ADOPTER_IMAGES['family'].type
                               )
@@ -933,7 +933,7 @@ export default function EarlyAdopters() {
                             ? 'linear(to-r, var(--base1), var(--base2))'
                             : 'linear(to-r, var(--base2), var(--bluevenom2))'
                         }>
-                        {mintedStrings?.includes('MONID Family')
+                        {mintedStrings?.includes('Monad ID Family')
                           ? 'Minted. View on explorer'
                           : 'Mint'}
                       </Button>
@@ -943,9 +943,9 @@ export default function EarlyAdopters() {
                   {((ownVids > 2 && zealyVerified) ||
                     (zealyVerified && zealyUser.xp >= 500 && zealyUser.rank < 201)) && (
                       <Flex flexDir={'column'} justify={'center'} gap={4} align={'center'} p={4}>
-                      {mintedStrings?.includes('MONID Maverick') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
+                      {mintedStrings?.includes('Monad ID Maverick') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
                         <ImageBox srcUrl={EARLY_ADOPTER_IMAGES['maverick'].src} size={250} />
-                        <Text>MONID Maverick OAT</Text>
+                        <Text>Monad ID Maverick OAT</Text>
                         <Button
                           w={'100%'}
                           color={'white'}
@@ -959,15 +959,15 @@ export default function EarlyAdopters() {
                               : 'Loading ...'
                           }
                           onClick={() =>
-                            mintedStrings?.includes('MONID Maverick')
+                            mintedStrings?.includes('Monad ID Maverick')
                               ? openWindow(
                                   ETHERSCAN_URLS['venom'] +
-                                    minteds?.filter((m) => m.name === 'MONID Maverick')[0]
+                                    minteds?.filter((m) => m.name === 'Monad ID Maverick')[0]
                                       .address,
                                   null
                                 )
                               : mintBadge(
-                                  'MONID Maverick',
+                                  'Monad ID Maverick',
                                   EARLY_ADOPTER_IMAGES['maverick'].src,
                                   EARLY_ADOPTER_IMAGES['maverick'].type
                                 )
@@ -978,7 +978,7 @@ export default function EarlyAdopters() {
                               ? 'linear(to-r, var(--base1), var(--base2))'
                               : 'linear(to-r, var(--base2), var(--bluevenom2))'
                           }>
-                          {mintedStrings?.includes('MONID Maverick')
+                          {mintedStrings?.includes('Monad ID Maverick')
                             ? 'Minted. View on explorer'
                             : 'Mint'}
                         </Button>
@@ -986,9 +986,9 @@ export default function EarlyAdopters() {
                     )}
                   {twitterVerified && ownVids > 1 && zealyUser.xp > 1500 && zealyUser.rank < 50 && (
                     <Flex flexDir={'column'} justify={'center'} gap={4} align={'center'} p={4}>
-                      {mintedStrings?.includes('MONID Champion') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
+                      {mintedStrings?.includes('Monad ID Champion') && <Badge position={'absolute'} colorScheme='green' zIndex={1000} mt={'-320px'} ml={'-200px'} rounded={'lg'} display={'flex'} gap={2} p={2} justifyContent={'center'} alignItems={'center'}><LinkIcon type="RiVerifiedBadgeFill" size={'24'} />Minted</Badge>}
                       <ImageBox srcUrl={EARLY_ADOPTER_IMAGES['champion'].src} size={250} />
-                      <Text>MONID Champion OAT</Text>
+                      <Text>Monad ID Champion OAT</Text>
                       <Button
                         w={'100%'}
                         color={'white'}
@@ -1002,14 +1002,14 @@ export default function EarlyAdopters() {
                             : 'Loading ...'
                         }
                         onClick={() =>
-                          mintedStrings?.includes('MONID Champion')
+                          mintedStrings?.includes('Monad ID Champion')
                             ? openWindow(
                                 ETHERSCAN_URLS['venom'] +
-                                  minteds?.filter((m) => m.name === 'MONID Champion')[0].address,
+                                  minteds?.filter((m) => m.name === 'Monad ID Champion')[0].address,
                                 null
                               )
                             : mintBadge(
-                                'MONID Champion',
+                                'Monad ID Champion',
                                 EARLY_ADOPTER_IMAGES['champion'].src,
                                 EARLY_ADOPTER_IMAGES['champion'].type
                               )
@@ -1020,7 +1020,7 @@ export default function EarlyAdopters() {
                             ? 'linear(to-r, var(--base1), var(--base2))'
                             : 'linear(to-r, var(--base2), var(--bluevenom2))'
                         }>
-                        {mintedStrings?.includes('MONID Champion')
+                        {mintedStrings?.includes('Monad ID Champion')
                           ? 'Minted. View on explorer'
                           : 'Mint'}
                       </Button>

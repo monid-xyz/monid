@@ -61,19 +61,8 @@ import { LinkIcon, Logo, LogoIcon } from 'components/logos';
 import Link from 'next/link';
 import RegisterModal from 'components/claiming/RegisterModal';
 import AnimateOpacity from 'components/animate/AnimateOpacity';
-import {
-  useAnimationFrame,
-  useMotionValue,
-  useScroll,
-  useSpring,
-  useTransform,
-  useVelocity,
-  wrap,
-  motion,
-} from 'framer-motion';
-import DomainName from 'components/features/DomainName';
-import AnimateScale from 'components/animate/AnimateScale';
-import getRootConfigs from 'core/utils/getRootConfigs';
+import { ETHRegistrarController } from 'core/utils/contracts';
+import { available } from 'contracts/421614/0x89c108a78ef261a9f9e977e566b310cb3518e714';
 
 interface Message {
   type: any;
@@ -137,38 +126,28 @@ const ClaimSection = () => {
     }
 
     if (
-      provider &&
-      provider?.isInitialized && 
-      connected &&
-      rootContract &&
-      rootContract.methods !== undefined
+      ETHRegistrarController &&
+      path.length > MIN_NAME_LENGTH 
     ) {
       try {
         setFeeIsLoading(true);
         setTyping(false);
         toast.closeAll();
         //@ts-ignore: Unreachable code error
-        const certificateAddr = await rootContract.methods
-          .resolve({ path: `${path}.${TLD}`, answerId: 0 })
-          .call({ responsible: true });
-        console.log(certificateAddr);
-
-        const domainContract = new provider.Contract(DomainAbi, certificateAddr.certificate);
-        console.log(domainContract);
+        console.log('fetching')
         try {
           // @ts-ignore: Unreachable code error
-          let result: { status: string | number } = await domainContract.methods
-            .getStatus({ answerId: 0 })
-            .call();
-          if (result && result?.status) {
-            setNameStatus(Number(result?.status));
-            console.log(result);
-          }
-          setNameExists(result ? true : false);
-        } catch (e) {
-          setNameExists(false);
-          setNameStatus(7);
+          const result = await available({
+            contract: ETHRegistrarController,
+            name : path
+          });
+          console.log(result);
+          setNameExists(!result);
           setName(path);
+        } catch (e) {
+          console.log(e);
+          setNameExists(false);
+          setName('');
         }
 
         //setFee(_fee);
@@ -179,7 +158,7 @@ const ClaimSection = () => {
         console.log(er);
         return;
       }
-    } else if (rootContract?.methods === undefined) {
+    } else if (ETHRegistrarController === undefined) {
       toast({
         status: 'warning',
         title: t('contractConnection'),
@@ -191,19 +170,7 @@ const ClaimSection = () => {
   }
 
   useEffect(() => {
-    if (!connected && path.length > MIN_NAME_LENGTH) {
-      toast.closeAll();
-      toast({
-        status: 'info',
-        colorScheme: colorMode === 'dark' ? 'light' : 'dark',
-        title: t('connectWallet'),
-        description: t('venomWalletConnect'),
-        duration: 3000,
-        isClosable: true,
-      });
-      return;
-    }
-
+    
     window.clearTimeout(timer);
     clearTimeout(timer);
     setTyping(true);
@@ -219,18 +186,18 @@ const ClaimSection = () => {
   useEffect(() => {
     async function checkActive() {
       
-      setTotalSupply(null);
+      // setTotalSupply(null);
       
       
-        const configs = await getRootConfigs(connectedAccount);
-        if(configs.status === 200){
-          let _total = configs.data.total.count;
-          console.log(configs.data);
-          setTotalSupply(_total);
-        } else {
-          console.log('error fetching total registered')
-          console.log(configs);
-        }
+      //   const configs = await getRootConfigs(connectedAccount);
+      //   if(configs.status === 200){
+      //     let _total = configs.data.total.count;
+      //     console.log(configs.data);
+      //     setTotalSupply(_total);
+      //   } else {
+      //     console.log('error fetching total registered')
+      //     console.log(configs);
+      //   }
       
     }
 
@@ -272,7 +239,7 @@ const ClaimSection = () => {
                     bgGradient={
                       lightMode
                         ? 'linear(to-r, var(--base1), var(--base2))'
-                        : 'linear(to-r, var(--base1), var(--base2))'
+                        : 'linear(to-r, var(--base000), var(--base0))'
                     }
                     bgClip="text">
                     {t('description')}
@@ -342,7 +309,7 @@ const ClaimSection = () => {
             </Center>
           )} */}
 
-          {path.length > MIN_NAME_LENGTH && rootContract?.methods && (
+          {path.length > MIN_NAME_LENGTH && ETHRegistrarController && (
             <AnimateOpacity delay={0}>
               <Flex
                 minWidth={['100%', 'md', 'xl', 'container.md', 'container.lg']}
@@ -381,43 +348,33 @@ const ClaimSection = () => {
                         align={'center'}>
                         <Flex gap={2} align={'center'} w={'100%'}>
                           <LinkIcon
-                            type={nameExists ? 'RiCloseCircleFill' : 'RiCheckboxCircleFill'}
-                            color={nameExists ? 'var(--red)' : 'var(--base1)'}
+                            type={nameExists ? 'RiCloseCircleLine' : 'RiCheckboxCircleLine'}
+                            color={nameExists ? 'var(--red)' : 'var(--venom1)'}
                             size={64}
                           />
                           <Stack gap={0}>
                             <Text
                               fontSize={['xl', '2xl']}
-                              fontWeight={colorMode === 'light' ? 'bold' : 'normal'}>
+                              fontWeight={'bold'}>
                               {path + '.' + TLD}
                             </Text>
                             <Text
                               fontSize={'xl'}
                               textAlign={'left'}
-                              fontWeight={colorMode === 'light' ? 'bold' : 'normal'}
-                              color={nameExists ? 'var(--red1)' : 'var(--base2)'}>
+                              fontWeight={'bold'}
+                              color={nameExists ? 'var(--red1)' : 'var(--venom1)'}>
                               {nameExists ? t('taken') : t('available')}
                             </Text>
                           </Stack>
                         </Flex>
                         <Button
                           minWidth={['100%', '100%', 'fit-content']}
-                          colorScheme="green"
+                          colorScheme="venom"
                           size="lg"
                           gap={2}
                           fontSize={'xl'}
                           rounded={'full'}
-                          bgGradient={
-                            colorMode === 'light'
-                              ? 'linear(to-r, var(--base1), var(--base2))'
-                              : 'linear(to-r, var(--base2), var(--bluevenom2))'
-                          }
-                          _hover={{
-                            bgGradient:
-                              colorMode === 'light'
-                                ? 'linear(to-r, var(--base0), var(--bluevenom0))'
-                                : 'linear(to-r, var(--base0), var(--bluevenom0))',
-                          }}
+                          variant={'border'}
                           height={['66px']}
                           isDisabled={
                             !isValidUsername(path) || nameExists || typing //|| mintedOnTestnet === 0
@@ -467,7 +424,7 @@ const ClaimSection = () => {
             </AnimateOpacity>
           )}
 
-          <Flex gap={[4,4,2,6]} justify={'center'} direction={['column','column','row']} pt={[8,8,24]}>
+          {/* <Flex gap={[4,4,2,6]} justify={'center'} direction={['column','column','row']} pt={[8,8,24]}>
             <AnimateScale delay={1}>
               <Button p={4} rounded={'2xl'} h={'100px'} display={'flex'} flexDir={'column'} gap={2} w={['100%','100%','auto']} onClick={()=> setReload((r)=> !r)}>
                 <Text>Registered Domains</Text>
@@ -484,7 +441,7 @@ const ClaimSection = () => {
                 <Flex gap={4} align={'center'}><LinkIcon type={'https://ipfs.io/ipfs/QmNXPY57PSu72UZwoDyXsmHJT7UQ4M9EfPcyZwpi3xqMQV/oasisgallery.svg.svg'} size={'lg'}/><Stack gap={0}><Text textAlign={'left'}>Collection On</Text><Text fontSize={['2xl','2xl','2xl']} fontWeight={'light'}>Oasis Gallery</Text></Stack></Flex>
               </Button>
             </AnimateScale>
-          </Flex>
+          </Flex> */}
 
           <RegisterModal />
           {/* <Text fontWeight="light" fontSize={'xl'} py={6}>

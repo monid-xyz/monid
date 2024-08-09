@@ -41,7 +41,7 @@ export const ContributionsMail = ({
   return (
     <Html>
       <Head />
-      <Preview>We have received your application for the {String(position)} at MONID</Preview>
+      <Preview>We have received your application for the {String(position)} at Monad ID</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={logo}>
@@ -60,8 +60,8 @@ export const ContributionsMail = ({
             </Text>
             <Text style={paragraph}>
               We have received your application for the <strong>{position}</strong> at{' '}
-              <strong>MONID</strong> on <strong>{formattedDate}</strong>.
-              <br /> Thank you for considering contribution to MONID.
+              <strong>Monad ID</strong> on <strong>{formattedDate}</strong>.
+              <br /> Thank you for considering contribution to Monad ID.
               <br />
               we will get in touch with you soon.
             </Text>
@@ -103,13 +103,13 @@ export const ContributionsMail = ({
             <Text style={paragraph}>
               Have questions? Please contact{' '}
               <Link href={TELEGRAM_URL} style={link}>
-                MONID Support
+                Monad ID Support
               </Link>
             </Text>
             <Text style={paragraph}>
               Thanks,
               <br />
-              MONID Support Team
+              Monad ID Support Team
             </Text>
           </Section>
         </Container>
@@ -128,7 +128,7 @@ export const ContributionsMail = ({
             </Column>
           </Row>
           <Text style={{ textAlign: 'center', color: '#706a7b' }}>
-            © 2023 MONID, All Rights Reserved
+            © 2023 Monad ID, All Rights Reserved
           </Text>
         </Section>
       </Body>
