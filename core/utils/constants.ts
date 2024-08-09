@@ -113,7 +113,7 @@ export const IPFS_IO_URL = 'https://ipfs.io/ipfs/';
 
 export const SOCIAL_TWITTER = 'monid_xyz';
 export const TWITTER_URL = 'https://twitter.com/';
-export const DISCORD_URL = 'https://discord.monid.xyz/';
+export const DISCORD_URL = 'https://discord.gg/eRD8PBVFaB';
 export const GITHUB_URL = 'https://github.com/monid-xyz';
 export const TELEGRAM_URL = 'https://t.me/monid_xyz';
 export const DOCS_URL = 'https://docs.monid.xyz/developer-docs/overview';
