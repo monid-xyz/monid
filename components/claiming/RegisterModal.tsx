@@ -876,6 +876,9 @@ export default function RegisterModal() {
                       _setOpen(false);
                       setStep(1);
                       break;
+                    case 3:
+                      setStep((s) => s - 2);
+                        break;
 
                     default:
                       setStep((s) => s - 1);
@@ -903,7 +906,7 @@ export default function RegisterModal() {
                   //     ? t('confirming')
                   //     : ''
                   // }
-                  onClick={() => setStep(2)}
+                  onClick={() => setStep(3)}
                 >
                   Confirm
                 </Button>

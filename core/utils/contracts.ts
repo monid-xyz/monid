@@ -152,6 +152,27 @@ export const ReverseRegistrar = getContract({
   client: client,
   address: "0xd05661277665E9FB85d5AcB5CBb30de2D6076988",
   chain: arbitrumSepolia,
+  abi : [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "setName",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+  ]
 });
 
 export const addresses = {

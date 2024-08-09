@@ -92,7 +92,7 @@ export default function Header() {
                     <ImageBox srcUrl="/screens/contribute.png" size={'46px'} />
                     Community
                   </Button></NextLink> */}
-        Monad Testnet is Coming ...
+        Now Live On Arbitrum Sepolia Testnet!
       </Center>
 
       <Box
@@ -134,7 +134,7 @@ export default function Header() {
                   <Button
                     onClick={onClose}
                     variant="ghost"
-                    colorScheme={pathname === "/litepaper" ? "venom" : "gray"}
+                    colorScheme={pathname === "/roadmap" ? "venom" : "gray"}
                     width="100%"
                     justifyContent="left"
                   >

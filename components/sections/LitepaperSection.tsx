@@ -257,10 +257,10 @@ export default function LitepaperSection() {
               <Text fontWeight={'bold'} fontSize={'3xl'} my={4}>
                 {t('RoadMap')}
               </Text>
-              <Text fontWeight={'bold'} fontSize={'2xl'} mt={4} color={lightMode ? 'var(--base)' : 'var(--base00)'}>
+              <Text fontWeight={'bold'} fontSize={'2xl'} mt={4} >
                 {t('RoadMap01')}
               </Text>
-              <Text fontWeight="normal" fontSize={'lg'} color={lightMode ? 'var(--base)' : 'var(--base00)'}>
+              <Text fontWeight="normal" fontSize={'lg'}>
                 {t('RoadMap11')}
               </Text>
               <Text fontWeight="normal" fontSize={'lg'} id="RoadMap02">

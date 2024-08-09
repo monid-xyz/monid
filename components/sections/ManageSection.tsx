@@ -62,9 +62,13 @@ import { createWeb3Name } from "@web3-name-sdk/core";
 import { useRouter } from "next/router";
 import { LinkIcon } from "components/logos";
 import { formatDateDifference } from "core/utils/stringUtils";
-import { ConnectWalletButton, viemClient } from "components/venomConnect";
-import { useActiveAccount } from "thirdweb/react";
+import { client, ConnectWalletButton, viemClient } from "components/venomConnect";
+import { TransactionButton, useActiveAccount } from "thirdweb/react";
 import { getNamesForAddress } from "@ensdomains/ensjs/subgraph";
+import { setName } from "contracts/421614/0xd05661277665e9fb85d5acb5cbb30de2d6076988";
+import { getContract, prepareContractCall } from "thirdweb";
+import { arbitrumSepolia } from "thirdweb/chains";
+import { ReverseRegistrar } from "core/utils/contracts";
 
 function ManageSection() {
   const connectedAccount = useAtomValue(connectedAccountAtom);
@@ -87,7 +91,7 @@ function ManageSection() {
   const [pageNum, setPageNum] = useState(1);
   const { pathname } = useRouter();
   const [page, setPage] = useState<string | undefined>();
-
+  
   const loadEthNFTs = async () => {
     try {
       // Take a salted code
@@ -195,13 +199,8 @@ function ManageSection() {
                   fontSize={notMobile ? "4xl" : "2xl"}
                   my={notMobile ? 10 : 4}
                 >
-                  {network === "venom"
-                    ? pathname.includes("old")
-                      ? t("yourOldVids")
-                      : t("yourVids")
-                    : t("yourSids")}
+                  My Names
                 </Text>
-              
 
                 <Button
                   aria-label="reload-nfts"
@@ -214,11 +213,8 @@ function ManageSection() {
                   {notMobile ? "Reload" : ""} <RiRestartLine size={"24"} />
                 </Button>
                 <NextLink href={"/app"} passHref>
-                  <Button
-                  size={'lg'}
-                  rounded={'full'} >
+                  <Button size={"lg"} rounded={"full"}>
                     <LinkIcon type="RiAddLine" />
-                    
                   </Button>
                 </NextLink>
               </Flex>
@@ -236,7 +232,7 @@ function ManageSection() {
             background={colorMode === "dark" ? "blackAlpha.300" : "white"}
             rounded={"2xl"}
           >
-            {nftjsons?.map((nft:any, i:number) => (
+            {nftjsons?.map((nft: any, i: number) => (
               <Flex
                 key={nft.name + "-manage-item"}
                 flexDirection={"row"}
@@ -285,6 +281,23 @@ function ManageSection() {
                 </Flex>
 
                 <Flex gap={2} align={"center"}>
+                  {primaryName.name === nft.name && (
+                    <Tooltip
+                      borderRadius={4}
+                      label={<Text p={2}>Primary Name</Text>}
+                      color="white"
+                      bgColor={"black"}
+                      hasArrow
+                    >
+                      <IconButton
+                        variant={"ghost"}
+                        aria-label={`copy-nft-address-icon`}
+                      >
+                        <LinkIcon type="RiUserStarLine" size={"24px"} />
+                      </IconButton>
+                    </Tooltip>
+                  )}
+
                   {!nft.manageUrl?.includes("old") && (
                     <Menu>
                       <IconButton
@@ -297,64 +310,74 @@ function ManageSection() {
                       >
                         <RiMoreFill size={32} />
                       </IconButton>
+                      
                       <MenuList
                         p={0}
                         bgColor={
                           colorMode === "light" ? "white" : "var(--dark)"
                         }
                       >
-                        {/* {nft.network === 'venom' && <Button
-                          as={MenuItem}
-                          colorScheme="green"
-                          isLoading={isSaving || isConfirming}
-                          onClick={() =>
-                            nft?.name !== undefined &&
-                            primaryName.name !== nft?.name &&
-                            setAsPrimary(String(nft?.address), String(nft?.name))
-                          }
-                          isDisabled={
-                            true
-                            // isSaving ||
-                            // isConfirming ||
-                            // (nft?.name !== undefined && primaryName.name === nft?.name.slice(0, -4))
-                          }
-                          variant={
-                            nft?.name !== undefined && primaryName.name === nft?.name
-                              ? 'outline'
-                              : 'solid'
-                          }>
-                          {nft?.name !== undefined && primaryName.name === nft?.name
-                            ? 'Primary VID'
-                            : 'Set Primary'}
-                        </Button>} */}
-
                         <MenuItem
-                          height={"48px"}
-                          bgColor={
-                            colorMode === "light"
-                              ? "whiteAlpha.400"
-                              : "blackAlpha.400"
-                          }
-                          sx={{
+                        height={"48px"}
+                        bgColor={
+                          colorMode === "light"
+                            ? "whiteAlpha.400"
+                            : "blackAlpha.400"
+                        }
+                        sx={{
+                          textDecoration: "none",
+                          _hover: {
                             textDecoration: "none",
-                            _hover: {
-                              textDecoration: "none",
-                              bgColor:
-                                colorMode === "light"
-                                  ? "blackAlpha.200"
-                                  : "whiteAlpha.300",
-                            },
+                            bgColor:
+                              colorMode === "light"
+                                ? "blackAlpha.200"
+                                : "whiteAlpha.300",
+                          },
+                        }}
+                        as={Link}
+                        target="_blank"
+                        href={String(nft.manageUrl)}
+                        gap={2}
+                        isDisabled
+                        borderBottomRadius={0}
+                      >
+                        <LinkIcon type="RiSettings4Line" size={24} /> Customize
+                      </MenuItem>
+                        {primaryName.name !== nft.name && (
+                          <TransactionButton
+                          style={{ borderRadius: "0px", height:'48px' , width: '100%', justifyContent : 'start', display: 'flex', padding: 12}}
+                          transaction={() => {
+                            const tx = prepareContractCall({
+                              contract: ReverseRegistrar,
+                              method: "setName",
+                              params: [nft.name],
+                            });
+                            return tx;
                           }}
-                          as={Link}
-                          target="_blank"
-                          href={String(nft.manageUrl)}
-                          gap={2}
-                          isDisabled
-                          borderBottomRadius={0}
-                        >
-                          <LinkIcon type="RiSettings4Line" size={24} />{" "}
-                          Customize
-                        </MenuItem>
+                          onTransactionSent={(result) => {
+                            console.log(
+                              "Transaction submitted",
+                              result.transactionHash
+                            );
+                            console.log(result);
+                          }}
+                          onTransactionConfirmed={(receipt) => {
+                            console.log(
+                              "Transaction confirmed",
+                              receipt.transactionHash
+                            );
+                            setPrimaryName({name : nft.name});
+                            reload();
+                            
+                          }}
+                          onError={(error) => {
+                            console.error("Transaction error", error);
+                          }}
+                          onClick={() => console.log('setting ', nft.name , ' as primary')}
+                        ><Flex gap={2} align={'center'}><LinkIcon type="RiUserStarLine" size={'24px'}/><Text>
+                          Set As Primary</Text></Flex>
+                        </TransactionButton>
+                        )}
 
                         <MenuItem
                           size={"lg"}
@@ -376,6 +399,7 @@ function ManageSection() {
                             },
                           }}
                           href={nft.external_url}
+                          isDisabled
                           target="_blank"
                           icon={<MdOutlineVisibility size={24} />}
                         >

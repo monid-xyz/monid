@@ -289,7 +289,7 @@ const terms: Terms = {
     fa: 'برنامه آینده ما چیست؟',
   },
   roadmapPhase1: {
-    en: `Phase 1`,
+    en: `Phase 1 : Beta Development and Testing`,
     fa: 'فاز اول',
   },
   roadmapPhase11: {
@@ -321,31 +321,67 @@ const terms: Terms = {
     fa: 'انتشار لایت پیپر',
   },
   roadmapPhase2: {
-    en: `Phase 2`,
+    en: `Phase 2: Platform Launch and Iteration`,
     fa: 'فاز دوم',
   },
   roadmapPhase21: {
-    en: `Gather Feedback`,
+    en: `Explore partnerships`,
     fa: 'قابلیت اعتبارسنجی منابع',
   },
   roadmapPhase22: {
-    en: `Early Adopters NFT (Testnet)`,
+    en: `Build Community`,
     fa: 'ان اف تی ونوم پاسپورت',
   },
-  roadmapPhase25: {
-    en: `Monad ID DAO`,
+  roadmapPhase23: {
+    en: `Conduct extensive testing and Gather user feedback`,
     fa: 'لانچ ونوم آی دی دات سایت',
   },
   roadmapPhase24: {
-    en: `Launch Community Bot`,
+    en: `Continuously iterate and improve the platform`,
     fa: 'سازمان غیر متمرکز اتوماتیک یا DAO',
   },
-  roadmapPhase23: {
-    en: `Monad ID on Monad Testnet`,
+  roadmapPhase25: {
+    en: `Platform Launch`,
     fa: 'ونوم آی دی در آربیتروم',
   },
-  roadmapPhase26: {
+  roadmapPhase3: {
+    en: `Phase 3: Scalability and Enhanced User Experience`,
+    fa: 'فاز دوم',
+  },
+  roadmapPhase31: {
+    en: `Deploy Off-chain Resolver`,
+    fa: 'قابلیت اعتبارسنجی منابع',
+  },
+  roadmapPhase32: {
+    en: `Monad ID SDK & Documents`,
+    fa: 'ان اف تی ونوم پاسپورت',
+  },
+  roadmapPhase33: {
+    en: `Monad ID Early Adopters NFT`,
+    fa: 'ونوم آی دی در آربیتروم',
+  },
+  roadmapPhase4: {
+    en: `Phase 4: Community Engagement`,
+    fa: 'فاز دوم',
+  },
+  roadmapPhase41: {
+    en: `XP/Leaderboard system For the Community`,
+    fa: 'به زودی ...',
+  },
+  roadmapPhase42: {
+    en: `Telegram Bot for Scaling the Community`,
+    fa: 'به زودی ...',
+  },
+  roadmapPhase43: {
+    en: `Developing a SocialFi Ecosystem`,
+    fa: 'به زودی ...',
+  },
+  roadmapPhase44: {
     en: `More TBA`,
+    fa: 'به زودی ...',
+  },
+  roadmapNote: {
+    en: `Additional details and information will be included in the near future.`,
     fa: 'به زودی ...',
   },
   about: {
