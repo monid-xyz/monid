@@ -30,7 +30,6 @@ import {
   RiSendPlane2Line,
 } from 'react-icons/ri';
 import { useEffect, useState } from 'react';
-import { isValidVenomAddress } from 'core/utils';
 import { useAtomValue } from 'jotai';
 import { rootContractAtom, venomContractAddressAtom } from 'core/atoms';
 //import {  } from 'vid-sdk';
@@ -202,7 +201,7 @@ export default function NSSection() {
                 maxW={'100%'}
                 w={'100%'}
                 isLoading={isLoading}
-                isDisabled={isLoading || !isValidVenomAddress(address)}
+                isDisabled={isLoading}
                 gap={2}
                 size={'lg'}
                 colorScheme="green"

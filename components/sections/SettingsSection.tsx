@@ -114,7 +114,7 @@ function SettingsSection() {
           background={colorMode === 'dark' ? 'blackAlpha.300' : 'white'}
           rounded={'2xl'} p={2}>
           <Flex gap={2} align={'center'} p={2}>
-            {primaryName?.name !== '' ? (
+            {primaryName !== '' ? (
               <Avatar
                 color="white"
                 bgGradient={
@@ -124,7 +124,7 @@ function SettingsSection() {
                 }
                 icon={<LinkIcon type="RiUserLine" size={22} color="#ffffff" />}
                 rounded={'full'}
-                src={AVATAR_API_URL + primaryName?.name}
+                src={AVATAR_API_URL + primaryName}
                 size={['md']}
               />
             ) : (
@@ -144,8 +144,8 @@ function SettingsSection() {
               }
               bgClip="text"
               my={'0 !important'}>
-              {primaryName?.name && primaryName?.name !== ''
-                ? primaryName.name
+              {primaryName && primaryName !== ''
+                ? primaryName
                 : truncAddress(String(connectedAccount))}
             </Text>
             <Text>Primary Name</Text>

@@ -90,7 +90,6 @@ export default function AddLinkButton() {
   const _url = useAtomValue(addLinkUrlAtom);
   const _content = useAtomValue(addLinkContentAtom);
   const _styles = useAtomValue(addLinkStylesAtom);
-  const venomAddress = useAtomValue(addressAtom);
   const ethAddress = useAtomValue(ethAtom);
   const btcAddress = useAtomValue(btcAtom);
   const { colorMode } = useColorMode();
@@ -134,6 +133,8 @@ export default function AddLinkButton() {
       ...linksArray,
     ];
 
+    console.log(_newLinksArray);
+
     setLinksArray(_newLinksArray);
     //// console.log(_newLinksArray);
     setType("");
@@ -161,7 +162,6 @@ export default function AddLinkButton() {
         case "pay":
           setStyles({
             size: "md",
-            venom: venomAddress,
             eth: ethAddress,
             btc: btcAddress,
           });

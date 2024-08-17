@@ -150,7 +150,8 @@ export default function ConnectWalletButton() {
       });
 
       console.log("primary", _name);
-      setPrimary({ name: _name });
+      setPrimary(_name);
+      console.log(AVATAR_API_URL + _name)
     } catch {
       (e: any) => {
         console.log("error in eth primary", e);
@@ -164,7 +165,7 @@ export default function ConnectWalletButton() {
     wallet && disconnect(wallet);
     setConnectedAccount("");
     setIsConnected(false);
-    setPrimary({ name: "" });
+    setPrimary('');
   };
 
   const switchNetwork = async (_network: string) => {
@@ -179,6 +180,9 @@ export default function ConnectWalletButton() {
           onConnect={(wallet) => {
             setIsConnected(true);
             setConnectedAccount(String(wallet.getAccount()?.address));
+            if(wallet.getChain() !== arbitrumSepolia){
+              wallet.switchChain(arbitrumSepolia);
+            }
             getEthPrimary();
           }}
           appMetadata={{
@@ -201,8 +205,8 @@ export default function ConnectWalletButton() {
                 bgColor={lightMode ? "whiteAlpha.900" : "var(--dark)"}
                 variant={lightMode ? "solid" : "outline"}
               >
-                <Flex gap={2} align={"center"}>
-                  {primaryName?.name !== "" ? (
+                <Flex gap={2} align={"center"} key={primaryName ? `primary-avatar-box-${primaryName}` : 'wallet-avatar-box'}>
+                  {primaryName !== "" ? (
                     <Avatar
                       color={!lightMode ? "var(--base)" : "var(--base)"}
                       icon={
@@ -210,7 +214,7 @@ export default function ConnectWalletButton() {
                       }
                       bgColor={!lightMode ? "var(--base0)" : "var(--base0)"}
                       rounded={"full"}
-                      src={AVATAR_API_URL + primaryName?.name}
+                      src={AVATAR_API_URL + primaryName}
                       size={["md"]}
                     />
                   ) : (
@@ -241,10 +245,10 @@ export default function ConnectWalletButton() {
                     bgClip="text"
                     my={"0 !important"}
                   >
-                    {primaryName?.name && primaryName?.name !== ""
-                      ? primaryName.name.length > (!small ? 8 : 10)
-                        ? primaryName.name?.slice(0, !small ? 8 : 10) + "..."
-                        : primaryName.name
+                    {primaryName && primaryName !== ""
+                      ? primaryName.length > (!small ? 8 : 10)
+                        ? primaryName?.slice(0, !small ? 8 : 10) + "..."
+                        : primaryName
                       : truncAddress(connectedAccount)}
                   </Text>
                   {/* </Stack> */}
@@ -261,8 +265,8 @@ export default function ConnectWalletButton() {
                 rounded={"2xl"}
                 bg={lightMode ? "var(--white)" : "var(--dark0)"}
               >
-                <Flex p={5} alignItems="center" gap={2}>
-                {primaryName?.name !== "" ? (
+                <Flex p={5} alignItems="center" gap={2} key={primaryName ? `primary-name-box-${primaryName}` : 'wallet-name-box'}>
+                  {primaryName !== "" ? (
                     <Avatar
                       color={!lightMode ? "var(--base)" : "var(--base)"}
                       icon={
@@ -270,7 +274,7 @@ export default function ConnectWalletButton() {
                       }
                       bgColor={!lightMode ? "var(--base0)" : "var(--base0)"}
                       rounded={"full"}
-                      src={AVATAR_API_URL + primaryName?.name}
+                      src={AVATAR_API_URL + primaryName}
                       size={["md"]}
                     />
                   ) : (
@@ -286,8 +290,8 @@ export default function ConnectWalletButton() {
                       fontSize="14px"
                       my={"0 !important"}
                     >
-                      {primaryName?.name !== ""
-                        ? String(primaryName.name)
+                      {primaryName !== ""
+                        ? String(primaryName)
                         : truncAddress(connectedAccount)}
                     </Text>
                     <Text
@@ -342,12 +346,10 @@ export default function ConnectWalletButton() {
                   </Tooltip>
                 </Flex>
                 <Stack gap={2} my={4} justify={"center"}>
-                  {primaryName &&
-                    primaryName?.nftAddress &&
-                    primaryName?.nftAddress?.toString().length > 60 && (
+                  {primaryName && (
                       <LinkBox px={5}>
                         <Link
-                          href={"manage/" + primaryName?.nftAddress?.toString()}
+                          href={"manage/" + primaryName}
                           passHref
                         >
                           <Button

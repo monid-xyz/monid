@@ -32,7 +32,10 @@ export default function Links({ json, color }: Props) {
         });
       });
     }
-    setLinksArray(_links);
+
+    if(_links.length > 0){
+      setLinksArray(_links);
+    }
   }, []);
 
   return (

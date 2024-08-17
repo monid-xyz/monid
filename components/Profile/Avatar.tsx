@@ -15,6 +15,7 @@ interface Props {
   maxH?: number | string;
   shadow?: string;
   className?: string;
+  onError?: any;
 }
 const Avatar = ({
   url,
@@ -26,7 +27,8 @@ const Avatar = ({
   shadow,
   nft,
   maxH,
-  className
+  className,
+  onError
 }: Props) => {
 
   const [avatarUrl, setAvatarUrl] = useState<string>(url);
@@ -67,7 +69,7 @@ const Avatar = ({
           : {}
       }
 
-      
+      onError={onError}
       drag={!nodrag}
       dragDirectionLock={!nodrag}
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}

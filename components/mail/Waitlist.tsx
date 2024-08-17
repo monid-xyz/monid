@@ -19,7 +19,6 @@ import {
     comment?: string;
     telegram?: string;
     wallet?: string;
-    venomWallet?: string;
     updatedDate?: Date;
   }
   
@@ -28,7 +27,6 @@ import {
     comment,
     telegram,
     wallet,
-    venomWallet,
     updatedDate = new Date(),
   }: ContributionsEmailProps) => {
     const formattedDate = new Intl.DateTimeFormat('en', {
@@ -81,12 +79,7 @@ import {
               )}
               {wallet && (
                 <Text style={paragraph}>
-                  Ethereum Wallet Address : <strong>{wallet}</strong>
-                </Text>
-              )}
-              {venomWallet && (
-                <Text style={paragraph}>
-                  Venom Wallet Address : <strong>{venomWallet}</strong>
+                  Wallet Address : <strong>{wallet}</strong>
                 </Text>
               )}
               <br />
@@ -108,7 +101,7 @@ import {
           <Section style={footer}>
             <Row>
               <Column align="right" style={{ width: '50%', paddingRight: '8px' }}>
-                <Link href="https://twitter.com/Venomid_network" style={link}>
+                <Link href="https://twitter.com/monid_xyz" style={link}>
                   Follow us on twitter
                 </Link>
               </Column>

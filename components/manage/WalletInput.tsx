@@ -14,8 +14,7 @@ import { RiFileCopy2Line } from 'react-icons/ri';
 import { useAddress, useConnect as useThirdWebConnect, metamaskWallet } from '@thirdweb-dev/react';
 import { useAtomValue } from 'jotai';
 import { addressAtom, connectedAccountAtom } from 'core/atoms';
-
-const metamaskConfig = metamaskWallet();
+import { useActiveAccount } from 'thirdweb/react';
 
 interface Props {
   title: string;
@@ -25,19 +24,10 @@ interface Props {
 }
 
 export default function WalletInput({ title, value, setValue, hideTitle = false }: Props) {
-  const [autoEth, setAutoEth] = useState(false);
-  const venomAddress = useAtomValue(connectedAccountAtom);
-  const ethAddressFromWallet = useAddress();
-  const connectWithThirdweb = useThirdWebConnect();
+  const connectedAccount = useAtomValue(connectedAccountAtom);
+  const ethAddressFromWallet = useActiveAccount()?.address;
 
-  useEffect(() => {
-    if (autoEth && ethAddressFromWallet) {
-    console.log('this')
-
-      setValue(String(ethAddressFromWallet));
-      setAutoEth(false);
-    }
-  }, [autoEth, ethAddressFromWallet]);
+ 
 
   return (
     <InputGroup size="lg" borderColor="gray" w={'100%'}>
@@ -58,26 +48,12 @@ export default function WalletInput({ title, value, setValue, hideTitle = false 
         //onChange={(e) => setUrl(title.toLowerCase(),e.currentTarget.value)}
       />
       <InputRightElement gap={1} width={'-moz-fit-content'}>
-        {title.includes('Venom') && (
-          <Tooltip
-            borderRadius={4}
-            label={<Text p={2}>Use Connected Venom Address</Text>}
-            hasArrow
-            color="white"
-            bgColor={'black'}>
-            <IconButton
-              aria-label="use monad wallet address"
-              onClick={async () => setValue(venomAddress)}>
-              <LinkIcon type='venom' color='var(--base)'/>
-            </IconButton>
-          </Tooltip>
-        )}
         {title.includes('Eth') && (
           <Tooltip
             borderRadius={4}
             label={
               <Text p={2}>
-                {ethAddressFromWallet ? 'Use Connected ETH Address' : 'Connect ETH Wallet'}
+                {ethAddressFromWallet ? 'Use Connected Address' : 'Connect Wallet'}
               </Text>
             }
             hasArrow
@@ -86,12 +62,7 @@ export default function WalletInput({ title, value, setValue, hideTitle = false 
             <IconButton
               aria-label="connect eth wallet"
               onClick={async () => {
-                if (ethAddressFromWallet) {
                   setValue(ethAddressFromWallet);
-                } else {
-                  await connectWithThirdweb(metamaskConfig);
-                  setAutoEth(true);
-                }
               }}>
               <Metamask />
             </IconButton>

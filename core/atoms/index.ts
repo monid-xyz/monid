@@ -22,7 +22,7 @@ import {
 } from 'types';
 
 export const accountAtom = atom<any>({});
-export const primaryNameAtom = atom<PrimaryName>({ name: '' });
+export const primaryNameAtom = atom<string>('');
 export const ethPrimaryNameAtom = atom<PrimaryName>({ name: '' });
 export const venomProviderAtom = atom<any>(undefined);
 export const jsonAtom = atom<any>(undefined);

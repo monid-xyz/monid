@@ -7,6 +7,7 @@ import SocialLink from './SocialLink';
 import { capFirstLetter, getIconColor, withHttps } from 'core/utils';
 import { ObjectItem } from 'types';
 import AnimateScale from 'components/animate/AnimateScale';
+import { getSocialTitle } from 'core/utils/constants';
 
 interface Props {
   json: any;
@@ -41,7 +42,7 @@ export default function Socials({ json, color, onlyIcons, title }: Props) {
               <AnimateScale delay={(ind * 0.2) + 1}>
               <SocialLink
                 key={`item-${item.key}-${title}`}
-                title={capFirstLetter(item.key)}
+                title={String(getSocialTitle(item.key))}
                 onlyIcon={_onlyIcons}
                 color={color ? color : undefined}
                 url={String(item.value)}

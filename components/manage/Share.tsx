@@ -15,8 +15,8 @@ export default function ShareButton({
   isDisabled?: boolean;
 }) {
   const shareProfile = async () => {
-    let hashtags = 'VenomID,Venom';
-    let text = `🚀 Just claimed my personalized venom domain with Monad ID!!%0a%0a✅ check it out : ${name} %0a%0a🔥 Secure your unique venom domain and join the decentralized web revolution via @monid_xyz!%0a%0a`;
+    let hashtags = 'MonadID,Monad';
+    let text = `🚀 Just claimed my personalized .mon domain with Monad ID on Testnet!!%0a%0a✅ check it out : ${name} %0a%0a🔥 Secure your unique monad domain and join the decentralized web revolution via @monid_xyz!%0a%0a`;
     let href = `https://twitter.com/intent/tweet?original_referer=${SITE_URL}&text=${text}&hashtags=${hashtags}&url=${url}`;
     window.open(href);
   };

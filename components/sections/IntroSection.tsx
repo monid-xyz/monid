@@ -298,7 +298,7 @@ export default function IntroSection() {
               width: "100%",
               gap: 12,
             }}
-            key={`venomid-templates-${current}`}
+            key={`monadid-templates-${current}`}
             transition={{ duration: 0.5, ease: "linear" }}
             initial={{ y: 20, scale: 0.9, opacity: 0.5, filter: "blur(20px)" }}
             animate={{ y: 0, scale: 1, opacity: 1, filter: "blur(0px)" }}
@@ -489,7 +489,7 @@ export default function IntroSection() {
                   name={vid.vid}
                   avatar={vid.avatar}
                   size={["md", "lg", "xl"]}
-                  key={`VenomID-${vid.vid}`}
+                  key={`monadid-${vid.vid}`}
                 />
               ))}
             </Flex>
@@ -497,7 +497,7 @@ export default function IntroSection() {
           {/* <Parallax baseVelocity={+2}>
            
           <Flex gap={[4,6,8]}>
-            {VARIATIONS_VIDS.map((vid)=> <DomainName name={vid.vid} avatar={vid.avatar} size={['md','lg','xl']} key={`VenomID-${vid.vid}`}/>)}
+            {VARIATIONS_VIDS.map((vid)=> <DomainName name={vid.vid} avatar={vid.avatar} size={['md','lg','xl']} key={`monadid-${vid.vid}`}/>)}
           </Flex>
 
           

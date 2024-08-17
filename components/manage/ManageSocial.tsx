@@ -22,7 +22,7 @@ import { SortableHandle } from 'react-sortable-hoc';
 import { MdOutlineDragIndicator } from 'react-icons/md';
 import { RiFileCopy2Line } from 'react-icons/ri';
 import React, { useEffect, useState } from 'react';
-import { EXAMPLE_SOCIAL_URLS } from 'core/utils/constants';
+import { EXAMPLE_SOCIAL_URLS, getSocialUrlScheme } from 'core/utils/constants';
 import { capFirstLetter } from 'core/utils';
 
 const DragHandle = SortableHandle(() => (
@@ -107,7 +107,7 @@ export default function ManageSocial({ title, icon, url, setUrl, removeUrl, ind 
                   color="white"
                   bgColor="var(--base1)"
                   isDisabled={txt === url}
-                  onClick={() => setUrl(title.toLowerCase(), txt)}>
+                  onClick={() => setUrl(getSocialUrlScheme(title), txt)}>
                   Save
                 </Button>
                 <Button onClick={() => removeUrl(ind)}>Remove</Button>

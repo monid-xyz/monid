@@ -2,7 +2,7 @@ import ConnectWalletButton from './ConnectButton';
 import { createThirdwebClient } from "thirdweb";
 import { FleekSdk, ApplicationAccessTokenService } from '@fleek-platform/sdk';
 import { createPublicClient, http } from "viem";
-import { addEnsContracts } from "@monadid/monjs";
+import { addEnsContracts, createEnsPublicClient } from "@monadid/monjs";
 import { arbitrumSepolia } from "viem/chains";
 
 const client = createThirdwebClient({
@@ -17,7 +17,7 @@ const fleekSdk = new FleekSdk({
   accessTokenService: applicationService
 });
 
-const viemClient = createPublicClient({
+const viemClient = createEnsPublicClient({
   chain: addEnsContracts(arbitrumSepolia),
   transport: http(),
 });

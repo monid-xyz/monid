@@ -114,7 +114,7 @@ export default function ManageUpload({
           status: "warning",
           title: "Error in uploading to IPFS",
           description:
-            "Please check your network and Try Again, If the problem presists, please send a message to venomidapp@gmail.com",
+            "Please check your network and Try Again, If the problem presists, please send a message to monadidapp@gmail.com",
           isClosable: true,
         });
         setIsLoading(false);

@@ -24,13 +24,13 @@ import { arrayMoveImmutable } from 'array-move';
 import AddSocialButton from './AddSocialButton';
 import { capFirstLetter, arrayRemove } from 'core/utils';
 import { SortableItemProps, SortableConProps } from 'types';
+import { getSocialTitle } from 'core/utils/constants';
 
 interface Props {
   json: any;
-  nftAddress: string;
 }
 
-export default function ManageSocials({ json, nftAddress }: Props) {
+export default function ManageSocials({ json }: Props) {
   const useLineIcons = useAtomValue(useLineIconsAtom);
   const [socialsArray, setSocialsArray] = useAtom(socialsArrayAtom);
   const [notMobile] = useMediaQuery('(min-width: 800px)');
@@ -78,7 +78,7 @@ export default function ManageSocials({ json, nftAddress }: Props) {
 
   return (
     <>
-      <Accordion
+      {socialsArray.length > 0 && <Accordion
         allowToggle
         allowMultiple={false}
         borderRadius={10}
@@ -112,8 +112,8 @@ export default function ManageSocials({ json, nftAddress }: Props) {
                       <SortableItem key={`item-${item.key}`} index={index}>
                         <>
                         <ManageSocial
-                          icon={<LinkIcon line={useLineIcons} type={item.key} />}
-                          title={capFirstLetter(item.key)}
+                          icon={<LinkIcon line={useLineIcons} type={String(getSocialTitle(item.key)).toLowerCase()} />}
+                          title={String(getSocialTitle(item.key))}
                           url={String(item.value)}
                           setUrl={setUrl}
                           ind={index}
@@ -128,7 +128,7 @@ export default function ManageSocials({ json, nftAddress }: Props) {
             </Stack>
           </AccordionPanel>
         </AccordionItem>
-      </Accordion>
+      </Accordion>}
     </>
   );
 }

@@ -30,69 +30,64 @@ export default function TitleInput() {
   const { colorMode } = useColorMode();
 
   return (
-    <Accordion
-      allowToggle
-      allowMultiple={false}
-      defaultIndex={[0]}
-      className="titlee"
-      borderRadius={10}
-      width={'100%'}
-      size="lg"
-      backgroundColor={colorMode === 'dark' ? 'whiteAlpha.100' : 'blackAlpha.100'}
-      display={'flex'}>
-      <AccordionItem border={0} borderRadius={10} width={'100%'}>
-        <AccordionButton
-          minWidth={'100%'}
-          as={Button}
-          size="lg"
-          _expanded={{ bgColor: 'blackAlpha.50' }}>
-          <Flex gap={2} alignItems={'center'} textAlign="left" width={'100%'}>
-            <Text fontWeight={'bold'} display={'flex'} flex={1}>
-              Title & Subtitle
-            </Text>
-            <AccordionIcon />
-          </Flex>
-        </AccordionButton>
+    // <Accordion
+    //   allowToggle
+    //   allowMultiple={false}
+    //   defaultIndex={[0]}
+    //   className="titlee"
+    //   borderRadius={10}
+    //   width={'100%'}
+    //   size="lg"
+    //   backgroundColor={colorMode === 'dark' ? 'whiteAlpha.100' : 'blackAlpha.100'}
+    //   display={'flex'}>
+    //   <AccordionItem border={0} borderRadius={10} width={'100%'}>
+    //     <AccordionButton
+    //       minWidth={'100%'}
+    //       as={Button}
+    //       size="lg"
+    //       _expanded={{ bgColor: 'blackAlpha.50' }}>
+    //       <Flex gap={2} alignItems={'center'} textAlign="left" width={'100%'}>
+    //         <Text fontWeight={'bold'} display={'flex'} flex={1}>
+    //           Title & Subtitle
+    //         </Text>
+    //         <AccordionIcon />
+    //       </Flex>
+    //     </AccordionButton>
 
-        <AccordionPanel py={4} minWidth="100%">
+    //     <AccordionPanel py={4} minWidth="100%">
           <Stack gap={4}>
             <InputGroup size="lg" minWidth="xs" borderColor="gray" className="title">
               <InputLeftElement
-                fontFamily={'montserrat'}
                 fontWeight={'bold'}
-                fontSize={'20px'}
-                w={'104px'}
-                letterSpacing={4}>
-                TITLE
+                letterSpacing={1}
+                w={'104px'}>
+                display
               </InputLeftElement>
               <Input
                 pl={'96px'}
                 variant={'filled'}
-                placeholder={'Enter Nickname'}
+                placeholder={'Enter Display Name'}
                 value={title}
                 onChange={(e) => setTitle(e.currentTarget.value)}
               />
             </InputGroup>
             <InputGroup size="lg" minWidth="xs" borderColor="gray" className="subtitle">
               <InputLeftElement
-                fontFamily={'montserrat'}
                 fontWeight={'bold'}
-                fontSize={'16px'}
-                w={'104px'}
-                letterSpacing={1}>
-                Subtitle
+                w={'104px'}>
+                location
               </InputLeftElement>
               <Input
                 variant={'filled'}
                 pl={'96px'}
-                placeholder={'Enter Subtitle'}
+                placeholder={'Enter Location'}
                 value={subtitle}
                 onChange={(e) => setSubtitle(e.currentTarget.value)}
               />
             </InputGroup>
           </Stack>
-        </AccordionPanel>
-      </AccordionItem>
-    </Accordion>
+    //     </AccordionPanel>
+    //   </AccordionItem>
+    // </Accordion>
   );
 }

@@ -102,7 +102,7 @@ function VIDImage({name} : Props) {
           alignmentBaseline="middle"
           textAnchor="middle"
         >
-          {`venomid.link/${name}`}
+          {`monid.xyz/${name}`}
         </text>
       </g>
       <defs xmlns="http://www.w3.org/2000/svg">

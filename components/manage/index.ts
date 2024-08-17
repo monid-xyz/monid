@@ -8,7 +8,6 @@ import ManageLinks from './ManageLinks';
 import ManageSettings from './ManageSettings';
 import ManageSocial from './ManageSocial';
 import ManageSocials from './ManageSocials';
-import VenomAddressButton from './VenomAddressButton';
 import BioTextInput from './BioTextInput';
 import TitleInput from './TitleInput';
 import ManageWallet from './ManageWallet';
@@ -30,7 +29,6 @@ export {
   ManageSettings,
   ManageSocial,
   ManageSocials,
-  VenomAddressButton,
   TitleInput,
   ManageWallet,
   ManageWallets,

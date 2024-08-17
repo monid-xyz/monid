@@ -25,10 +25,9 @@ import { IPFS_IMAGE_URI } from 'core/utils/constants';
 
 interface Props {
   json: any;
-  nftAddress: string;
 }
 
-export default function ManageLinks({ json, nftAddress }: Props) {
+export default function ManageLinks({ json }: Props) {
   const useLineIcons = useAtomValue(useLineIconsAtom);
   const [linksArray, setLinksArray] = useAtom(linksArrayAtom);
   const [notMobile] = useMediaQuery('(min-width: 800px)');
@@ -93,8 +92,11 @@ export default function ManageLinks({ json, nftAddress }: Props) {
         });
       });
     }
+
+    if(_links.length > 0){
     // @ts-ignore: Unreachable code error
     setLinksArray(_links);
+    }
   }, [json.links]);
 
   // @ts-ignore: Unreachable code error
@@ -104,7 +106,7 @@ export default function ManageLinks({ json, nftAddress }: Props) {
 
   return (
     <>
-      <Accordion
+      {linksArray.length > 0 && <Accordion
         allowToggle
         allowMultiple={false}
         borderRadius={10}
@@ -164,7 +166,7 @@ export default function ManageLinks({ json, nftAddress }: Props) {
             </Stack>
           </AccordionPanel>
         </AccordionItem>
-      </Accordion>
+      </Accordion>}
     </>
   );
 }

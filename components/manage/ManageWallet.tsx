@@ -65,7 +65,7 @@ import { capFirstLetter } from 'core/utils';
                 <DragHandle />
                 {icon}
                 <Text fontWeight={'bold'} display={'flex'} flex={1}>
-                  {title}
+                  {title.replace(/[0-9]/g, '')}
                 </Text>
                 <AccordionIcon />
               </Flex>
@@ -99,7 +99,7 @@ import { capFirstLetter } from 'core/utils';
                   </InputRightElement>
                 </InputGroup>
                 <Box pt={2}>
-                  <Text>Example {capFirstLetter(title)} Address</Text>
+                  <Text>Example {capFirstLetter(title.replace(/[0-9]/g, ''))} Address</Text>
                   <Text color={'gray'}>
                     {EXAMPLE_WALLETS[title.toLowerCase().replace(' ', '')]}
                   </Text>

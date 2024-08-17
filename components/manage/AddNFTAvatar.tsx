@@ -140,11 +140,7 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
     _setType("nft link");
     _setTitle(String(nft.name));
     _setImage(String(avatarURL));
-    if (nft.network?.includes("venom")) {
-      _setUrl(VENTORY_NFT + String(nft.address));
-      _setContent(String(nft.address));
-      _styleType = "normal";
-    } else {
+    
       _setUrl(
         OPENSEA_URL +
           String(nft.network) +
@@ -168,7 +164,7 @@ export default function AddNFTAvatar({ defaultType, key }: Props) {
       } else {
         _styleType = "normal";
       }
-    }
+    
 
     _setStyles({
       size: "md",

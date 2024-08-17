@@ -29,6 +29,7 @@ import {
   Box,
   SimpleGrid,
   useDisclosure,
+  InputLeftElement,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { RiAddFill, RiArrowLeftLine, RiFileCopy2Line } from "react-icons/ri";
@@ -42,6 +43,7 @@ import {
 import { EXAMPLE_WALLETS, WALLETS } from "core/utils/constants";
 import { capFirstLetter } from "core/utils";
 import { LinkIcon } from "components/logos";
+import { allCoins } from "core/utils/coins";
 
 export default function AddWalletButton() {
   const { colorMode } = useColorMode();
@@ -53,6 +55,8 @@ export default function AddWalletButton() {
   const [availableWallets, setAvailableWallets] = useState<string[]>([]);
   const [selectedWallet, setSelectedWallet] = useState("");
   const [selectedWalletUrl, setSelectedWalletUrl] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [searchedWallets, setSearchedWallets] = useState<string[]>([]);
   const [walletsArray, setWalletsArray] = useAtom(walletsArrayAtom);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -60,16 +64,18 @@ export default function AddWalletButton() {
     if (_open) {
       setSelectedWalletUrl("");
       setSelectedWallet("");
+      setSearchText("");
       onOpen();
     }
   }, [_open]);
 
   const addWallet = () => {
     let _newWalletsArray = [
-      { key: selectedWallet.toLowerCase(), value: selectedWalletUrl },
+      { key: selectedWallet[1][0].toUpperCase(), value: selectedWalletUrl },
       ...walletsArray,
     ];
     setWalletsArray(_newWalletsArray);
+    console.log(_newWalletsArray);
     setSelectedWalletUrl("");
     setSelectedWallet("");
     _setOpen(false);
@@ -81,12 +87,20 @@ export default function AddWalletButton() {
   }, [isOpen]);
 
   useEffect(() => {
-    let _wallets = [...WALLETS.sort()];
-    walletsArray.map((item) => {
-      _wallets.splice(_wallets.indexOf(capFirstLetter(item.key)), 1);
-    });
-    setAvailableWallets(_wallets);
+    let _wallets = [...allCoins];
+    
   }, [walletsArray]);
+
+  useEffect(() => {
+    //console.log(allCoins);
+    searchText.length > 0
+      ? setSearchedWallets(
+          allCoins.filter((item : any) =>
+            String(item[1][1]).toLowerCase().includes(searchText.toLowerCase())
+          )
+        )
+      : setSearchedWallets([]);
+  }, [searchText]);
 
   return (
     <>
@@ -103,7 +117,7 @@ export default function AddWalletButton() {
       >
         Add Wallet Address
         <Flex gap={2} alignItems={"center"}>
-          <LinkIcon type="venom" line={useLineIcons} />
+          <LinkIcon type="monad" line={useLineIcons} color="dark" />
           <LinkIcon type="ethereum" line={useLineIcons} />
           <LinkIcon type="bitcoin" line={useLineIcons} />
           <LinkIcon type="solana" line={useLineIcons} color={"dark"} />
@@ -125,22 +139,39 @@ export default function AddWalletButton() {
         <ModalContent
           bg={colorMode === "dark" ? "var(--dark1)" : "var(--white)"}
         >
-          <ModalHeader display="flex" gap={2} alignItems={"center"}>
-            <IconButton
-              variant={"ghost"}
-              aria-label="back-to-add-modal"
-              onClick={() => {
-                if (!selectedWallet) {
-                  _setBack(true);
-                  onClose();
-                } else {
-                  setSelectedWallet("");
-                }
-              }}
-            >
-              <RiArrowLeftLine size={"28"} />
-            </IconButton>{" "}
-            Add {selectedWallet ? capFirstLetter(selectedWallet) : ""} Address
+          <ModalHeader display="flex" gap={2} flexDir={"column"}>
+            <Flex align={"center"} gap={2}>
+              <IconButton
+                variant={"ghost"}
+                aria-label="back-to-add-modal"
+                onClick={() => {
+                  if (!selectedWallet) {
+                    _setBack(true);
+                    onClose();
+                  } else {
+                    setSelectedWallet("");
+                  }
+                }}
+              >
+                <RiArrowLeftLine size={"28"} />
+              </IconButton>{" "}
+              Add {selectedWallet ? capFirstLetter(selectedWallet[1][1].replace(/[0-9]/g, '')) : ""} Address
+            </Flex>
+            {!selectedWallet && (
+              <Flex justify={"center"}>
+                <InputGroup size={"lg"}>
+                  <InputLeftElement p={2}>
+                    <LinkIcon type="RiSearchLine" size={24} />
+                  </InputLeftElement>
+                  <Input
+                    rounded={"lg"}
+                    value={searchText}
+                    onChange={(e) => setSearchText(e.currentTarget.value)}
+                    placeholder="Search"
+                  />
+                </InputGroup>
+              </Flex>
+            )}
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -148,12 +179,15 @@ export default function AddWalletButton() {
               <Stack>
                 <InputGroup size="lg" minWidth="xs" borderColor="gray">
                   <InputLeftAddon>
-                    <LinkIcon type={selectedWallet.toLowerCase()} />
+                  <LinkIcon
+                      type={`https://raw.githubusercontent.com/ensdomains/ens-app-v3/ed4af2c6821d13eae5a83873daa9f4ecaca066f2/src/assets/address/${capFirstLetter(selectedWallet[1][0].replace(/[0-9]/g, ''))}Icon.svg`}
+                      size={'sm'}
+                    />
                   </InputLeftAddon>
                   <Input
                     isDisabled={selectedWallet === ""}
                     value={selectedWalletUrl}
-                    placeholder={`Enter your ${selectedWallet} Address`}
+                    placeholder={`Enter your ${selectedWallet[1][1]} Address`}
                     onChange={(e) =>
                       setSelectedWalletUrl(e.currentTarget.value)
                     }
@@ -180,11 +214,11 @@ export default function AddWalletButton() {
                   </InputRightElement>
                 </InputGroup>
                 <Box pt={2}>
-                  <Text>Example {capFirstLetter(selectedWallet)} Address</Text>
+                  <Text>Example {capFirstLetter(selectedWallet[1][1].replace(/[0-9]/g, ''))} Address</Text>
                   <Text color={"gray"}>
                     {
                       EXAMPLE_WALLETS[
-                        selectedWallet.toLowerCase().replace(" ", "")
+                        selectedWallet[1][1].toLowerCase().replace(" ", "")
                       ]
                     }
                   </Text>
@@ -192,28 +226,29 @@ export default function AddWalletButton() {
               </Stack>
             ) : (
               <SimpleGrid columns={1} gap={2} py={2} pb={6}>
-                {availableWallets.map(
-                  (item) =>
-                    item !== undefined && (
-                      <Button
-                        gap={4}
-                        fontWeight={"bold"}
-                        size={"lg"}
-                        justifyContent={"left"}
-                        fontSize={"xl"}
-                        height={"64px"}
-                        key={item}
-                        onClick={() => item && setSelectedWallet(item)}
-                      >
-                        <LinkIcon
-                          type={item.toLowerCase()}
-                          line={useLineIcons}
-                          color={lightMode ? "dark" : "white"}
-                        />
-                        {capFirstLetter(item)}
-                      </Button>
-                    )
-                )}
+                {(searchText.length > 0
+                  ? searchedWallets
+                  : allCoins
+                ).map((item) => (
+                  <Button
+                    gap={4}
+                    fontWeight={"bold"}
+                    size={"lg"}
+                    justifyContent={"left"}
+                    fontSize={"xl"}
+                    height={"64px"}
+                    key={item[0] + item[1][1]}
+                    onClick={() => item && setSelectedWallet(item)}
+                  >
+                    <LinkIcon
+                      type={`https://raw.githubusercontent.com/ensdomains/ens-app-v3/ed4af2c6821d13eae5a83873daa9f4ecaca066f2/src/assets/address/${capFirstLetter(item[1][0].replace(/[0-9]/g, ''))}Icon.svg`}
+                      line={useLineIcons}
+                      size={'sm'}
+                      color={lightMode ? "dark" : "white"}
+                    />
+                    {capFirstLetter(item[1][1])}
+                  </Button>
+                ))}
               </SimpleGrid>
             )}
           </ModalBody>

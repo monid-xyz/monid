@@ -41,6 +41,8 @@ import {
 } from "core/atoms";
 import { useAtom, useAtomValue } from "jotai";
 import {
+  AVATAR_API_URL,
+  AVATAR_PREVIEW_URL,
   ETHERSCAN_ADDRESS,
   METADATA_URL,
   OASIS_NFT,
@@ -56,7 +58,6 @@ import { RiMoreFill, RiRestartLine } from "react-icons/ri";
 import { MdOutlinePreview, MdOutlineVisibility } from "react-icons/md";
 import axios from "axios";
 import VIDImage from "components/claiming/VIDImage";
-import getNftsByAddress from "core/utils/getNftsByAddress";
 import { useAddress } from "@thirdweb-dev/react";
 import { createWeb3Name } from "@web3-name-sdk/core";
 import { useRouter } from "next/router";
@@ -100,7 +101,8 @@ function ManageSection() {
       setNftJsons([]);
       setIsLoading(true);
       setListIsEmpty(false);
-
+      
+      // @ts-ignore: Unreachable code error
       const nfts = await getNamesForAddress(viemClient, {
         address: address! as `0x${string}`,
       });
@@ -110,7 +112,7 @@ function ManageSection() {
         nfts.map(async (nft: any) => {
           try {
             //let r = await web3Name.getDomainRecord({name: nft});
-            let _avatar = `${METADATA_URL}preview/${nft.labelName}.${nft.parentName}`;
+            let _avatar = `${AVATAR_API_URL}${nft.labelName}.${nft.parentName}`;
             const options = { year: "numeric", month: "short", day: "numeric" };
             let _nftJson: any = {
               name: nft.labelName + "." + nft.parentName,
@@ -122,7 +124,7 @@ function ManageSection() {
                 options as Intl.DateTimeFormatOptions
               ),
             };
-            //_nftJson.ipfsData = _venomid;
+            //_nftJson.ipfsData = _monadid;
             _nftJson.external_url = SITE_PROFILE_URL + "name/" + _nftJson.name;
             _nftJson.manageUrl = "/manage/" + _nftJson.name;
             console.log(_nftJson);
@@ -130,7 +132,7 @@ function ManageSection() {
             console.log(_nftJson);
           } catch (e: any) {
             return {};
-            console.log("error getting venomid nft ", e);
+            console.log("error getting monadid nft ", e);
           }
         })
       );
@@ -254,6 +256,10 @@ function ManageSection() {
                     <Avatar
                       my={"0px"}
                       noanimate
+                      onError={({ currentTarget } : any) => {
+                        currentTarget.onerror = null; // prevents looping
+                        currentTarget.src=AVATAR_PREVIEW_URL + nft.name;
+                      }}
                       nodrag
                       alt={nft.name}
                       shadow="none"
@@ -281,7 +287,7 @@ function ManageSection() {
                 </Flex>
 
                 <Flex gap={2} align={"center"}>
-                  {primaryName.name === nft.name && (
+                  {primaryName === nft.name && (
                     <Tooltip
                       borderRadius={4}
                       label={<Text p={2}>Primary Name</Text>}
@@ -338,12 +344,11 @@ function ManageSection() {
                         target="_blank"
                         href={String(nft.manageUrl)}
                         gap={2}
-                        isDisabled
                         borderBottomRadius={0}
                       >
                         <LinkIcon type="RiSettings4Line" size={24} /> Customize
                       </MenuItem>
-                        {primaryName.name !== nft.name && (
+                        {primaryName !== nft.name && (
                           <TransactionButton
                           style={{ borderRadius: "0px", height:'48px' , width: '100%', justifyContent : 'start', display: 'flex', padding: 12}}
                           transaction={() => {
@@ -366,7 +371,7 @@ function ManageSection() {
                               "Transaction confirmed",
                               receipt.transactionHash
                             );
-                            setPrimaryName({name : nft.name});
+                            setPrimaryName(nft.name);
                             reload();
                             
                           }}

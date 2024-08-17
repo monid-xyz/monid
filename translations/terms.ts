@@ -96,7 +96,7 @@ const terms: Terms = {
     fa: 'ونوم آی دی چیست ؟',
   },
   watis: {
-    en:"Monad ID is a domain naming system for Monad Blockchain which provide users the ability to assign human-readable names to Monad addresses and other resources",
+    en:"Monad ID is a domain naming system for Monad Blockchain which provides users and dapps the ability to assign human-readable names to Monad addresses",
     //en: 'vid(s) are domain names within the Base network empowering you to organize and exhibit your assets and links in a personalized landing page.',
     fa: 'یک پلتفرم غیرمتمرکز برای مدیریت و نمایش تمام لینک ها ، شبکه های اجتماعی و کیف پول های شما',
   },

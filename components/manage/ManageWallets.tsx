@@ -31,7 +31,6 @@ export default function ManageWallets({ json }: Props) {
   const [walletsArray, setWalletsArray] = useAtom(walletsArrayAtom);
   const [notMobile] = useMediaQuery('(min-width: 800px)');
   const { colorMode } = useColorMode();
-  const venom = useAtomValue(addressAtom);
 
   // @ts-ignore: Unreachable code error
   const setUrl = (name, value) => {
@@ -65,10 +64,6 @@ export default function ManageWallets({ json }: Props) {
     for (const key in json.wallets) {
       json.wallets[key] && _wallets.push({ key: key, value: json.wallets[key] });
     }
-
-    if (_wallets.length === 0) {
-      _wallets.push({ key: 'venom', value: venom });
-    }
     // console.log(_wallets);
     setWalletsArray(_wallets);
   }, []);
@@ -81,7 +76,7 @@ export default function ManageWallets({ json }: Props) {
 
   return (
     <>
-      <Accordion
+      {walletsArray.length > 0 && <Accordion
         allowToggle
         allowMultiple={false}
         borderRadius={10}
@@ -102,7 +97,7 @@ export default function ManageWallets({ json }: Props) {
               textAlign="left"
               width={notMobile ? '100%' : '100%'}>
               <Text fontWeight={'bold'} display={'flex'} flex={1}>
-                Wallets
+                Wallet Addresses
               </Text>
               <AccordionIcon />
             </Flex>
@@ -120,7 +115,10 @@ export default function ManageWallets({ json }: Props) {
                         <SortableItem key={`item-${item.key}`} index={index}>
                           <>
                             <ManageWallet
-                              icon={<LinkIcon line={useLineIcons} type={item.key.toLowerCase()} />}
+                              icon={<LinkIcon
+                                type={`https://raw.githubusercontent.com/ensdomains/ens-app-v3/ed4af2c6821d13eae5a83873daa9f4ecaca066f2/src/assets/address/${capFirstLetter(item.key.toLowerCase().replace(/[0-9]/g, ''))}Icon.svg`}
+                                size={'sm'}
+                              />}
                               title={capFirstLetter(item.key)}
                               url={String(item.value)}
                               setUrl={setUrl}
@@ -136,7 +134,7 @@ export default function ManageWallets({ json }: Props) {
             </Stack>
           </AccordionPanel>
         </AccordionItem>
-      </Accordion>
+      </Accordion>}
     </>
   );
 }

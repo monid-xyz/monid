@@ -336,7 +336,7 @@ export default function WinnersSection({ challenge }: WinnersProps) {
                     <LinkIcon type={challenge.prize_img} size={'md'} /> {challenge.sent} of {challenge.prizes[0]} Airdropped
                   </Center>
                   <Center gap={2} borderTop={'1px solid #77777777'} w={'100%'} p={4}>
-                    <LinkIcon type="venomid" size={22} /> {domains} of {challenge.prizes[1]} Sent
+                    <LinkIcon type="monadid" size={22} /> {domains} of {challenge.prizes[1]} Sent
                   </Center>
                 </Stack>
 

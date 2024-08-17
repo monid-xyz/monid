@@ -99,7 +99,7 @@ import Ylide from './Ylide';
 import * as Icons from 'react-icons/ri';
 import { Avatar, Icon } from '@chakra-ui/react';
 import EmojiIcon from 'components/Profile/Emoji';
-import { IPFS_IMAGE_URI } from 'core/utils/constants';
+import { IMAGE_URI, IPFS_IMAGE_URI } from 'core/utils/constants';
 import Base from './Base';
 import Monad from './Monad';
 
@@ -349,9 +349,9 @@ const LinkIcon = ({ type, line, color, size = '28px', rounded}: LinkIconProps) =
       return <Base color={color ? color : undefined} size={size}/>;
     case 'monad':
         return <Monad color={color ? color : undefined} size={size}/>;
-    case 'venomid':
+    case 'monid':
       return <Logo />;
-    case 'venomidicon':
+    case 'monidicon':
       return <LogoIcon />;
     case 'donate':
     case 'donate button':
@@ -415,7 +415,8 @@ const LinkIcon = ({ type, line, color, size = '28px', rounded}: LinkIconProps) =
       if (type.indexOf('Ri') === 0) {
         const SelectedIcon = Icons[type as keyof typeof Icons];
         return <SelectedIcon size={size} color={color ? color : undefined} />;
-      } else if (type.indexOf(IPFS_IMAGE_URI) === 0) {
+      } else if (type.indexOf(IPFS_IMAGE_URI) === 0 || type.indexOf(IMAGE_URI) === 0) {
+       
         return <Avatar src={type} size={size} borderRadius={rounded ? rounded : '8px'} color='white' bg={'transparent'} icon={<LinkIcon type={'nft'} color='#fff'/>}/>;
       } else {
         return <EmojiIcon size={parseInt(size)} native={type} />;

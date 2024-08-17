@@ -63,6 +63,8 @@ import RegisterModal from 'components/claiming/RegisterModal';
 import AnimateOpacity from 'components/animate/AnimateOpacity';
 import { ETHRegistrarController } from 'core/utils/contracts';
 import { available } from 'contracts/421614/0x89c108a78ef261a9f9e977e566b310cb3518e714';
+import { bytesToString, namehash, stringToBytes } from 'viem';
+import { BytesLike, formatBytes32String, parseBytes32String } from 'ethers/lib/utils';
 
 interface Message {
   type: any;
@@ -168,6 +170,7 @@ const ClaimSection = () => {
       return;
     }
   }
+  
 
   useEffect(() => {
     

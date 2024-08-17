@@ -30,10 +30,6 @@ export default function Wallets({ json, color, onlyIcons }: Props) {
       json.wallets[key] && _wallets.push({ key: key, value: json.wallets[key] });
     }
 
-    if (_wallets.length === 0 && _walletButtons) {
-      _wallets.push({ key: 'monad', value: monad });
-    }
-
     if (_wallets.length !== walletsArray.length) {
       // console.log(_wallets);
       setWalletsArray(_wallets);

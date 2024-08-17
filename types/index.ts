@@ -36,7 +36,6 @@ export interface Styles {
   network?: string;
   type?: string;
   note?: string;
-  venom?: string;
   eth?: string;
   btc?: string;
 }

@@ -117,7 +117,7 @@ export const ContributionsMail = ({
         <Section style={footer}>
           <Row>
             <Column align="right" style={{ width: '50%', paddingRight: '8px' }}>
-              <Link href="https://twitter.com/Venomid_network" style={link}>
+              <Link href="https://twitter.com/monid_xyz" style={link}>
                 Follow us on twitter
               </Link>
             </Column>

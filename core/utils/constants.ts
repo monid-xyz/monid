@@ -1,5 +1,6 @@
 import { BgColorItem, LinkType, BgImageItem } from 'types';
 import { WINNERS_PUNKS_AVATAR_CHALLENGE, WINNERS_STAX_AVATAR_CHALLENGE } from './challenges';
+import { capFirstLetter } from '.';
 
 export const MINT_OPEN = true;
 export const MINT_TOTAL_SUPPLY: number = 10000;
@@ -22,7 +23,8 @@ export const SITE_MANAGE_URL = 'https://monid.xyz/';
 export const METADATA_URL = 'https://metadata.monid.xyz/';
 export const SITE_PROFILE_URL = 'https://monid.xyz/';
 export const ZEALY_URL = 'https://zealy.io/c/monid_xyz/';
-export const AVATAR_API_URL = 'https://metadata.monid.xyz/avatar/arbitrumSepolia/';
+export const AVATAR_API_URL = 'https://metadata.monid.xyz/arbitrumSepolia/avatar/';
+export const AVATAR_PREVIEW_URL = 'https://metadata.monid.xyz/preview/';
 export const VENOMSCAN_NFT = 'https://venomscan.com/accounts/';
 export const VENOMSCAN_TX = 'https://venomscan.com/transactions/';
 export const VENTORY_NFT = 'https://ventory.gg/nft/';
@@ -123,7 +125,7 @@ export const GRINDING_URL = '';
 export const MEDIUM_URL = 'https://medium.com/@monid_xyz';
 export const YLIDE_URL = '';
 export const YOUTUBE_URL = 'https://www.youtube.com/@monid_xyz';
-export const OPENSEA_URL = 'https://opensea.io/assets/';
+export const OPENSEA_URL = 'https://testnets.opensea.io/assets/arbitrum-sepolia/0x955357e06046c91186cf4571f4dd729157bfbcfb/';
 export const FAUCET_URL = 'https://www.alchemy.com/faucets/arbitrum-sepolia';
 
 export const MARKETPLACE_URLS_COLLECTION: any = {
@@ -145,20 +147,19 @@ export const MARKETPLACE_URLS: any = {
 };
 
 export const ETHERSCAN_URLS: any = {
-  venomtestnet: 'https://venomscan.com/accounts/',
-  venom: 'https://venomscan.com/accounts/',
-  bitcoin: 'https://blockchair.com/bitcoin/address/',
-  tron: 'https://tronscan.org/#/address/',
-  avalanche: 'https://snowtrace.io/address/',
-  ethereum: 'https://etherscan.io/address/',
-  polygon: 'https://polygonscan.com/address/',
-  binance: 'https://bscscan.com/address/',
-  solana: 'https://solscan.io/account/',
-  arbitrum: 'https://arbiscan.io/address/',
-  optimism: 'https://optimistic.etherscan.io/address/',
+  btc: 'https://blockchair.com/bitcoin/address/',
+  trx: 'https://tronscan.org/#/address/',
+  avax: 'https://snowtrace.io/address/',
+  eth: 'https://etherscan.io/address/',
+  matic: 'https://polygonscan.com/address/',
+  bnb: 'https://bscscan.com/address/',
+  sol: 'https://solscan.io/account/',
+  arb1: 'https://arbiscan.io/address/',
+  op: 'https://optimistic.etherscan.io/address/',
 };
 
-export const IPFS_IMAGE_URI = 'https://ipfs';
+export const IPFS_IMAGE_URI = 'ipfs';
+export const IMAGE_URI = 'http';
 
 export const IPFS_URLS = [
   `https://${process.env.NEXT_PUBLIC_THIRDWEB_ID}.ipfscdn.io/ipfs/`,
@@ -254,7 +255,7 @@ export const EXAMPLE_LINK_URLS: any = {
 };
 
 export const EXAMPLE_WALLETS: any = {
-  venom: '0:4bc69a8c3889adee39f6f1e3b2353c86f960c9b835e93397a2015a62a4823765',
+  monad: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
   ethereum: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
   bitcoin: 'bc1qpvsvcfzvz59h02hcuvc8y8jj385r2mlhnkt654',
   polygon: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
@@ -277,41 +278,57 @@ export const TARGET_OP_RECORD_ID = 7;
 export const TARGET_SOL_RECORD_ID = 8;
 export const TARGET_TRX_RECORD_ID = 9;
 
-export const SOCIALS: string[] = [
-  'Twitter',
-  'Linkedin',
-  'Github',
-  'Medium',
-  'Youtube',
-  'Instagram',
-  'TikTok',
-  'Twitch',
-  'Snapchat',
-  'Facebook',
-  'Dribbble',
-  'Pinterest',
-  'Soundcloud',
-  'Spotify',
-  'Patreon',
-  'Substack',
-  'Galxe',
-  'Opensea',
-  'Zealy',
-  'Ylide',
-  'Amazon',
-  'Play Store',
-  'App Store',
-  'Apple Music',
-  'Clubhouse',
-  'Etsy',
-  'Discord',
-  'Skype',
-  'Slack',
-  'Telegram',
-  'Whatsapp',
-  'Phone',
-  'Email',
+export const SOCIALS = [
+  { key: 'Twitter', value: 'com.twitter' },
+  { key: 'Linkedin', value: 'com.linkedin' },
+  { key: 'Github', value: 'com.github' },
+  { key: 'Medium', value: 'com.medium' },
+  { key: 'Youtube', value: 'com.google.youtube' },
+  { key: 'Instagram', value: 'com.instagram' },
+  { key: 'TikTok', value: 'com.tiktok' },
+  { key: 'Twitch', value: 'tv.twitch' },
+  { key: 'Snapchat', value: 'com.snapchat' },
+  { key: 'Facebook', value: 'com.facebook' },
+  { key: 'Dribbble', value: 'com.dribbble' },
+  { key: 'Pinterest', value: 'com.pinterest' },
+  { key: 'Soundcloud', value: 'com.soundcloud' },
+  { key: 'Spotify', value: 'com.spotify' },
+  { key: 'Patreon', value: 'com.patreon' },
+  { key: 'Substack', value: 'com.substack' },
+  { key: 'Galxe', value: 'com.galxe' },
+  { key: 'Opensea', value: 'com.opensea' },
+  { key: 'Zealy', value: 'com.zealy' },
+  { key: 'Ylide', value: 'com.ylide' },
+  { key: 'Amazon', value: 'com.amazon' },
+  { key: 'Play Store', value: 'com.google.play' },
+  { key: 'App Store', value: 'com.apple.appstore' },
+  { key: 'Apple Music', value: 'com.apple.music' },
+  { key: 'Clubhouse', value: 'com.clubhouse' },
+  { key: 'Etsy', value: 'com.etsy' },
+  { key: 'Discord', value: 'com.discord' },
+  { key: 'Skype', value: 'com.skype' },
+  { key: 'Slack', value: 'com.slack' },
+  { key: 'Reddit', value: 'org.reddit' },
+  { key: 'Telegram', value: 'org.telegram' },
+  { key: 'Whatsapp', value: 'com.whatsapp' },
+  { key: 'Phone', value: 'phone' },
+  { key: 'Email', value: 'email' },
 ];
+
+export function getSocialUrlScheme(platform: string): string {
+  const socialItem = SOCIALS.find((item) => item.key.toLowerCase() === platform.toLowerCase());
+  return socialItem ? socialItem.value : `com.${platform.toLowerCase()}`;
+}
+
+export function getSocialTitle(value: string): string | undefined {
+  const socialItem = SOCIALS.find((item) => item.value.toLowerCase() === value.toLowerCase());
+  return socialItem ? socialItem.key : undefined;
+}
+
+// export function getWalletName(platform: string): string | undefined {
+//   const socialItem = SOCIALS.find((item) => item.key.toLowerCase() === platform.toLowerCase());
+//   return socialItem?.value;
+// }
 
 export const WALLETS = [
   'Monad',
@@ -378,6 +395,11 @@ export const AVAILABLE_LINKS: LinkType[] = [
   { type: 'contact form', av: false, reg: '' },
   { type: 'contact info', av: false, reg: '' },
 ];
+
+export function isLink(value: string): boolean {
+  const _isLink = AVAILABLE_LINKS.filter((item) => value.toLowerCase().includes(item.type.toLowerCase().replace(' ','.')));
+  return _isLink.length > 0;
+}
 
 export const BUTTON_BG_COLORS = [
   'dark',
@@ -736,11 +758,11 @@ export const EARLY_ADOPTER_IMAGES: any = {
     type: 'image/svg+xml',
   },
   family: {
-    src: 'https://ipfs.io/ipfs/QmSoTZi3B6FXLRVBXhsTCwfYPnWMCUHpBc6HiVrGpuBU6o/venomid-family.gif',
+    src: 'https://ipfs.io/ipfs/QmSoTZi3B6FXLRVBXhsTCwfYPnWMCUHpBc6HiVrGpuBU6o/monadid-family.gif',
     type: 'image/gif',
   },
   geek: {
-    src: 'https://ipfs.io/ipfs/QmPgY5KJ25cBmG4H4HkF6DTgxQ4gaUtzfChS8wS8EXScgH/venomid-geek.gif',
+    src: 'https://ipfs.io/ipfs/QmPgY5KJ25cBmG4H4HkF6DTgxQ4gaUtzfChS8wS8EXScgH/monadid-geek.gif',
     type: 'image/gif',
   },
   identorian: {
@@ -748,11 +770,11 @@ export const EARLY_ADOPTER_IMAGES: any = {
     type: 'image/svg+xml',
   },
   maverick: {
-    src: 'https://ipfs.io/ipfs/QmQt3CTiZEwDdrAW7ebSM7QX7ZLYts6nWfjfh36xB4iWM7/venomid-maverick.gif',
+    src: 'https://ipfs.io/ipfs/QmQt3CTiZEwDdrAW7ebSM7QX7ZLYts6nWfjfh36xB4iWM7/monadid-maverick.gif',
     type: 'image/gif',
   },
   champion: {
-    src: 'https://ipfs.io/ipfs/QmSdjoBfigMQu2yGpMj5Fhd1xFQFYoTUVTLjUZjGcpnmee/venomid-champions.gif',
+    src: 'https://ipfs.io/ipfs/QmSdjoBfigMQu2yGpMj5Fhd1xFQFYoTUVTLjUZjGcpnmee/monadid-champions.gif',
     type: 'image/gif',
   },
   earlier: {
@@ -760,11 +782,11 @@ export const EARLY_ADOPTER_IMAGES: any = {
     type: 'image/svg+xml',
   },
   catalyst: {
-    src: 'https://ipfs.io/ipfs/QmUYe2xS43JB9d7qNB4KyU9ptGCJ9KG5bJcPj7rkdmfqxg/venomid-countdown-catalyst_nft.jpg',
+    src: 'https://ipfs.io/ipfs/QmUYe2xS43JB9d7qNB4KyU9ptGCJ9KG5bJcPj7rkdmfqxg/monadid-countdown-catalyst_nft.jpg',
     type: 'image/jpeg',
   },
   spring: {
-    src: 'https://ipfs.io/ipfs/QmNt4zMpdSUtZ8p9ZQPWZy3U4anh9Pb6BxvUZzpFwkEWyk/venomid-springburst-nft.jpg',
+    src: 'https://ipfs.io/ipfs/QmNt4zMpdSUtZ8p9ZQPWZy3U4anh9Pb6BxvUZzpFwkEWyk/monadid-springburst-nft.jpg',
     type: 'image/jpeg',
   },
 };

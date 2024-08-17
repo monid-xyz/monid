@@ -72,21 +72,6 @@ const isValidEmail = (email: string) => {
     );
 };
 
-function isValidVenomAddress(address: string | undefined) {
-  if (!address) return false;
-  if (!address.startsWith('0:') || address.length !== 66) {
-    return false;
-  }
-
-  const hexChars = '0123456789abcdef';
-  for (let i = 2; i < address.length; i++) {
-    if (!hexChars.includes(address[i])) {
-      return false;
-    }
-  }
-
-  return true;
-}
 
 function isValidSignHash(signature: string, date: number) {
   // const verifier = crypto.createVerify('sha256');
@@ -403,7 +388,6 @@ export {
   getIconInButtonColor,
   getAvatarUrl,
   getRandomNumber,
-  isValidVenomAddress,
   isValidSignHash,
   openWindow,
   sumUint128

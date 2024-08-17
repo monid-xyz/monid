@@ -30,6 +30,7 @@ import {
   claimingNameAtom,
   connectedAccountAtom,
   isConnectedAtom,
+  linksArrayAtom,
   openRegisterAtom,
   pathAtom,
   primaryNameAtom,
@@ -38,12 +39,17 @@ import {
   signDateAtom,
   signHashAtom,
   signMessageAtom,
+  socialsArrayAtom,
+  subtitleAtom,
+  titleAtom,
   venomProviderAtom,
+  walletsArrayAtom,
 } from "core/atoms";
 import {
   DOMAIN_REGISTER_FEE,
   ETHERSCAN_ADDRESS,
   METADATA_URL,
+  OPENSEA_URL,
   SIGN_MESSAGE,
   SITE_PROFILE_URL,
   TLD,
@@ -51,7 +57,6 @@ import {
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import React, { useEffect, useState } from "react";
 import { Message } from "types";
-import ClaimModal from "./ClaimModal";
 import { useTranslate } from "core/lib/hooks/use-translate";
 import { getCurrentDateUnix, isValidSignHash, sumUint128 } from "core/utils";
 import {
@@ -73,7 +78,13 @@ import {
 } from "contracts/421614/0x89c108a78ef261a9f9e977e566b310cb3518e714";
 import { toEther } from "thirdweb/utils";
 import { latestAnswer } from "contracts/421614/0xd30e2101a97dcbAeBCBC04F14C3f624E67A35165";
-import { EditAvatar, ManageWallets, TitleInput } from "components/manage";
+import {
+  EditAvatar,
+  ManageLinks,
+  ManageSocials,
+  ManageWallets,
+  TitleInput,
+} from "components/manage";
 import CropAvatar from "components/manage/CropAvatar";
 import AddModal from "components/manage/AddModal";
 import TextIcon from "components/features/TextIcon";
@@ -125,6 +136,11 @@ export default function RegisterModal() {
   const minFee: number = 2000000000;
   const address = useActiveAccount()?.address;
   const [secret, setSecret] = useAtom(secretAtom);
+  const walletsArray = useAtomValue(walletsArrayAtom);
+  const socialsArray = useAtomValue(socialsArrayAtom);
+  const linksArray = useAtomValue(linksArrayAtom);
+  const display = useAtomValue(titleAtom);
+  const location = useAtomValue(subtitleAtom);
 
   async function prepare() {
     const _secret = getRandomBytes32();
@@ -133,14 +149,43 @@ export default function RegisterModal() {
     console.log(BigNumber.from(new Uint8Array(8).fill(255)).toString());
     setSecret(_secret);
 
-    let _texts = [];
-    let _coins = [];
+    let _texts: { key: string; value: string }[] = [];
+    let _coins: { coin: string; value: string }[] = [];
     if (avatar) {
       _texts.push({ key: "avatar", value: avatar });
     }
 
-    if (isPrimary) {
-      _coins.push({ coin: "ETH", value: address! });
+    if(display) {
+      _texts.push({ key: "display", value: display })
+    }
+
+    if(location) {
+      _texts.push({ key: "location", value: location })
+    }
+
+    if (walletsArray.length > 0) {
+      walletsArray.map((item) =>
+        _coins.push({ coin: item.key as string, value: item.value as string })
+      );
+    }
+
+    if (socialsArray.length > 0) {
+      socialsArray.map((item) =>
+        _texts.push({ key: item.key as string, value: item.value as string })
+      );
+    }
+
+    const typeCounter: { [key: string]: number } = {};
+
+    if (linksArray.length > 0) {
+      linksArray.map((item,index) => {
+        typeCounter[item.type] = (typeCounter[item.type] || 0) + 1;
+        // return {
+        //   ...item,
+        //   typeCount: typeCounter[item.type],
+        // };
+        _texts.push({ key: `${item.type.replace(' ','.')}.${typeCounter[item.type]}`, value: JSON.stringify(item)});
+      });
     }
 
     const options = {
@@ -151,17 +196,22 @@ export default function RegisterModal() {
 
     console.log(options);
 
-    const hash = namehash(name);
+    const hash = namehash(name + "." + TLD);
     console.log(hash);
 
-    const data =
-      _texts.length > 0
-        ? generateRecordCallArray({ namehash: hash, ...options })
-        : [];
+    let data: any;
 
-    console.log(data);
+    const callArray = generateRecordCallArray({
+      namehash: namehash(`${name}.mon`),
+      ...options,
+    });
+
+    if (callArray.length === 0) data = [];
+
+    data = callArray;
 
     setRecordsData(data);
+    console.log(data);
 
     const commitmentHash: any = await makeCommitment({
       contract: ETHRegistrarController,
@@ -232,173 +282,19 @@ export default function RegisterModal() {
       getFee();
       prepare();
     }
-  }, [year, rootContract, connected, isOpen]);
-
-  async function claimVid() {
-    // setIsMinting(true);
-    // if (!isValidSignHash(signHash, signDate)) {
-    //   setSignMessage(
-    //     primaryName && primaryName?.name !== ''
-    //       ? `Hey there ${primaryName.name}, ${SIGN_MESSAGE} ${getCurrentDateUnix()}`
-    //       : `${SIGN_MESSAGE} ${getCurrentDateUnix()}`
-    //   );
-    //   // console.log('need to sign');
-    //   setIsMinting(false);
-    //   return;
-    // }
-    // setMessage({ type: '', title: '', msg: '' });
-    // const certificateAddr = await rootContract.methods
-    //   .resolve({ path: `${name}.${TLD}`, answerId: 0 })
-    //   .call({ responsible: true });
-    // console.log(certificateAddr);
-    // const domainContract = new provider.Contract(DomainAbi, certificateAddr.certificate);
-    // console.log(domainContract);
-    // try {
-    //   // @ts-ignore: Unreachable code error
-    //   let result: { status: string | number } = await domainContract.methods
-    //     .getStatus({ answerId: 0 })
-    //     .call();
-    //   setNameExists(result ? true : false);
-    //   toast.closeAll();
-    //   toast({
-    //     status: 'error',
-    //     title: 'Already Registered',
-    //     colorScheme: colorMode === 'dark' ? 'light' : 'dark',
-    //     description: `Unfortunately ${name}.${TLD} is already registered! Please try another name`,
-    //     duration: null,
-    //     isClosable: true
-    //   });
-    //   setIsMinting(false);
-    //   _setOpen(false);
-    //   return;
-    // } catch (e) {
-    //   setNameExists(false);
-    // }
-    // if (
-    //   provider &&
-    //   provider?.isInitialized &&
-    //   rootContract &&
-    //   rootContract.methods !== undefined &&
-    //   !nameExists &&
-    //   connectedAccount.length > 60
-    // ) {
-    //   toast.closeAll();
-    //   // toast({
-    //   //   status: 'loading',
-    //   //   colorScheme: colorMode === 'dark' ? 'light' : 'dark',
-    //   //   title: t('minting'),
-    //   //   description: t('confirmInWallet'),
-    //   //   duration: null,
-    //   // });
-    //   // const activate = await rootContract.methods.activate()
-    //   //   .send({
-    //   //     from: new Address(connectedAccount),
-    //   //     amount: String((2e9)),
-    //   //     bounce: true,
-    //   //   })
-    //   //   console.log(activate);
-    //   //   return;
-    //   // if(!fee) return;
-    //   const { payload } = await rootContract.methods
-    //     .buildRegisterPayload({
-    //       name: `${name}`,
-    //       answerId: 22,
-    //     })
-    //     .call({ responsible: true });
-    //   console.log(payload);
-    //   // @ts-ignore: Unreachable code error
-    //   const mintTx = await rootContract.methods
-    //     .register({
-    //       payload: payload,
-    //     })
-    //     .send({
-    //       from: new Address(connectedAccount),
-    //       amount: String(totalFee),
-    //       bounce: true,
-    //     })
-    //     .catch((e: any) => {
-    //       if (e.code === 3) {
-    //         // rejected by a user
-    //         setIsMinting(false);
-    //         toast.closeAll();
-    //         return Promise.resolve(null);
-    //       } else {
-    //         setIsMinting(false);
-    //         // console.log(e);
-    //         toast.closeAll();
-    //         return Promise.reject(e);
-    //       }
-    //     });
-    //   if (mintTx) {
-    //     toast.closeAll();
-    //     toast({
-    //       status: 'loading',
-    //       title: t('confirming'),
-    //       colorScheme: colorMode === 'dark' ? 'light' : 'dark',
-    //       description: t('confirmingTx'),
-    //       duration: null,
-    //     });
-    //     //// console.log('mint tx : ', mintTx);
-    //     setIsConfirming(true);
-    //     let receiptTx: Transaction | undefined;
-    //     const subscriber = provider && new provider.Subscriber();
-    //     if (subscriber)
-    //       await subscriber
-    //         .trace(mintTx)
-    //         .tap((tx_in_tree: any) => {
-    //           //console.log('tx_in_tree : ', tx_in_tree);
-    //           if (tx_in_tree.account.equals(rootContract.address)) {
-    //             receiptTx = tx_in_tree;
-    //           }
-    //         })
-    //         .finished();
-    //     let events = await rootContract.decodeTransactionEvents({
-    //       transaction: receiptTx as Transaction,
-    //     });
-    //     console.log(events);
-    //     if (events.length !== 1 || events[0].event !== 'NftCreated') {
-    //       toast.closeAll();
-    //       toast({
-    //         status: 'error',
-    //         title: t('error'),
-    //         description: t('commonErrorMsg'),
-    //         isClosable: true,
-    //       });
-    //     } else {
-    //       // @ts-ignore: Unreachable code error
-    //       const nftAddress = String(events[0].data?.nft && events[0].data?.nft?._address);
-    //       setClaimedName(name);
-    //       toast.closeAll();
-    //       setMessage({
-    //         type: 'success',
-    //         title: t('mintSuccess'),
-    //         msg: t('mintSuccessMsg'),
-    //         link: nftAddress,
-    //       });
-    //       setPath('');
-    //       if (primaryName?.name === '') {
-    //         setPrimaryName({ name: `${name}.${TLD}`, nftAddress: nftAddress });
-    //       }
-    //     }
-    //     setIsMinting(false);
-    //     setIsConfirming(false);
-    //     _setOpen(false);
-    //   } else {
-    //     toast.closeAll();
-    //     toast({
-    //       status: 'error',
-    //       title: t('error'),
-    //       description: t('commonErrorMsg'),
-    //       isClosable: true,
-    //     });
-    //     setIsMinting(false);
-    //     setIsConfirming(false);
-    //   }
-    // } else {
-    //   toast.closeAll();
-    //   setIsMinting(false);
-    // }
-  }
+  }, [
+    year,
+    address,
+    connected,
+    isOpen,
+    avatar,
+    isPrimary,
+    walletsArray,
+    linksArray,
+    socialsArray,
+    display,
+    location
+  ]);
 
   return (
     <>
@@ -509,7 +405,7 @@ export default function RegisterModal() {
                   </Flex>
                   <Flex justify={"space-between"} w={"100%"}>
                     <Text>Est. network fee</Text>
-                    <Text>{`${gas} ETH`}</Text>
+                    <Text>{gas ? `${gas} ETH` : 'Loading'}</Text>
                   </Flex>
 
                   <Flex
@@ -521,10 +417,10 @@ export default function RegisterModal() {
                     <Text>Estimated Total fee</Text>
                     <Stack>
                       <Text textAlign={"right"}>
-                        {totalFee?.toFixed(5)} ETH
+                        {totalFee ? `${totalFee?.toFixed(5)} ETH` : 'Loading'}
                       </Text>
                       <Text textAlign={"right"} fontSize={"md"}>
-                        {fee ? ` $${usdFee?.toFixed(0)} USD ` : ``}
+                        {usdFee ? ` $${usdFee?.toFixed(0)} USD ` : ``}
                       </Text>
                     </Stack>
                   </Flex>
@@ -563,19 +459,25 @@ export default function RegisterModal() {
             )}
             {step === 2 && (
               <Flex gap={10} direction={"column"} justify={"center"}>
-                <Flex
+                <Text
                   fontWeight={"light"}
+                  w={"100%"}
+                  textAlign={"center"}
                   fontSize={["xl", "2xl"]}
-                  gap={1}
-                  justify={"center"}
                 >
-                  <Text>Create Your Profile</Text>
-                </Flex>
+                  Create Your Profile
+                </Text>
 
+                
+                <Flex gap={4} direction={"column"} justify={"center"}>
                 <EditAvatar onClick={saveAvatar} />
                 <CropAvatar />
-                <AddModal type="full" />
-                {/* <ManageWallets json={{}} /> */}
+                <TitleInput />
+                  <AddModal type="full" />
+                  <ManageWallets json={{}} />
+                  <ManageLinks json={{}} />
+                  <ManageSocials json={{}} />
+                </Flex>
               </Flex>
             )}
             {step === 3 && (
@@ -836,11 +738,11 @@ export default function RegisterModal() {
                         <Button
                           w={["100%", "xs"]}
                           as={Link}
-                          href={SITE_PROFILE_URL + name + ".mon"}
+                          href={OPENSEA_URL + BigInt(namehash(name + ".mon"))}
                           target="_blank"
                           size={"lg"}
                         >
-                          View Profile!
+                          View On Opensea!
                         </Button>
                         <Button
                           w={["100%", "xs"]}
@@ -850,6 +752,16 @@ export default function RegisterModal() {
                           size={"lg"}
                         >
                           View TX On Arbiscan!
+                        </Button>
+                        <Button
+                          w={["100%", "xs"]}
+                          as={Link}
+                          isDisabled
+                          href={SITE_PROFILE_URL + name + ".mon"}
+                          target="_blank"
+                          size={"lg"}
+                        >
+                          View Profile
                         </Button>
                       </Center>
                     </>
@@ -876,9 +788,9 @@ export default function RegisterModal() {
                       _setOpen(false);
                       setStep(1);
                       break;
-                    case 3:
-                      setStep((s) => s - 2);
-                        break;
+                    // case 3:
+                    //   setStep((s) => s - 2);
+                    //     break;
 
                     default:
                       setStep((s) => s - 1);
@@ -906,7 +818,7 @@ export default function RegisterModal() {
                   //     ? t('confirming')
                   //     : ''
                   // }
-                  onClick={() => setStep(3)}
+                  onClick={() => setStep(2)}
                 >
                   Confirm
                 </Button>
@@ -930,7 +842,7 @@ export default function RegisterModal() {
                   // }
                   onClick={() => setStep(3)}
                 >
-                  {avatar ? "Next" : "Skip Profile"}
+                  {recordsData && recordsData.length > 0  ? "Next" : "Skip Profile"}
                 </Button>
               )}
               {step === 3 && (
@@ -990,7 +902,9 @@ export default function RegisterModal() {
                     console.error("Transaction error", error);
                     setIsMinting(false);
                   }}
-                  onClick={() => setIsMinting(true)}
+                  onClick={() => {
+                    setIsMinting(true);
+                  }}
                 >
                   Open Wallet
                 </TransactionButton>
@@ -1054,7 +968,6 @@ export default function RegisterModal() {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <ClaimModal claimedName={claimedName} message={message} />
     </>
   );
 }

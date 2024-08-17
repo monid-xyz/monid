@@ -28,7 +28,6 @@ export default function NetworkModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [network, setNetwork] = useAtom(nftsNetworkAtom);
   const eth = useActiveAccount()?.address;
-  const venom = useAtomValue(addressAtom);
 
   return (
     <>
@@ -50,20 +49,7 @@ export default function NetworkModal() {
           <ModalCloseButton />
           <ModalBody>
             <Stack gap={2}>
-              <Button
-                colorScheme={network.includes('venom') ? 'green' : 'gray'}
-                gap={2}
-                height={'80px'}
-                size={'lg'}
-                onClick={() => setNetwork('venom')}
-                rightIcon={network.includes('venom') ? <RiCheckLine /> : undefined}
-                variant={network.includes('venom') ? 'outline' : 'solid'}>
-                <Base />
-                <Stack textAlign={'left'} gap={0}>
-                  <Text> Venom</Text>
-                  <Text fontSize={'sm'} color={'gray'}>{`NFTs of ${truncAddress(venom)}`}</Text>
-                </Stack>
-              </Button>
+              
               {!eth && (
                 <Stack my={2}>
                   <Text>Connect your Ethereum address to pick from NFTs</Text>

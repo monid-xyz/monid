@@ -30,11 +30,6 @@ export default function ManageDonate({
     <>
       <>
         <WalletInput
-          title="Venom"
-          value={styles?.venom ?? ''}
-          setValue={(e: any) => setStyles({ ...styles, venom: e })}
-        />
-        <WalletInput
           title="Ethereum"
           value={styles?.eth ?? ''}
           setValue={(e: any) => setStyles({ ...styles, eth: e })}
@@ -63,7 +58,7 @@ export default function ManageDonate({
       </>
       {preview && (
         <>
-          {(styles.btc || styles.eth || styles.venom) && type.includes('donate') && (
+          {(styles.btc || styles.eth) && type.includes('donate') && (
             <Donate
               title={title ? title : 'Donate'}
               content={content}
@@ -72,7 +67,7 @@ export default function ManageDonate({
             />
           )}
 
-          {(styles.btc || styles.eth || styles.venom) && type.includes('pay') && (
+          {(styles.btc || styles.eth) && type.includes('pay') && (
             <Pay
               title={title ? title : 'Pay'}
               content={content}

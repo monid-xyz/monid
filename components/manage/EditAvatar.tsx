@@ -4,11 +4,11 @@ import {
   Flex,
   Box,
   useMediaQuery,
-  Menu,
-  MenuList,
-  MenuButton,
-  ButtonGroup,
-  Heading,
+  Accordion,
+  AccordionButton,
+  AccordionItem,
+  AccordionPanel,
+  AccordionIcon,
   useColorMode,
   Text,
   Badge,
@@ -54,6 +54,35 @@ export default function EditAvatar({ onClick, saveButton = false } : Props) {
   const imageFileSelect = buildFileSelector();
 
   return (
+    <Accordion
+        allowToggle
+        allowMultiple={false}
+        defaultIndex={[0]}
+        borderRadius={10}
+        minWidth={'100%'}
+        size="lg"
+        className="avatar"
+        backgroundColor={colorMode === 'dark' ? 'whiteAlpha.100' : 'blackAlpha.100'}
+        display={'flex'}>
+        <AccordionItem border={0} borderRadius={10} width={'100%'}>
+          <AccordionButton
+            minWidth={'100%'}
+            as={Button}
+            size="lg"
+            _expanded={{ bgColor: 'blackAlpha.50' }}>
+            <Flex
+              gap={2}
+              alignItems={'center'}
+              textAlign="left"
+              width={notMobile ? '100%' : '100%'}>
+              <Text fontWeight={'bold'} display={'flex'} flex={1}>
+                Avatar Image
+              </Text>
+              <AccordionIcon />
+            </Flex>
+          </AccordionButton>
+
+          <AccordionPanel py={4} minWidth="100%">
     <Flex gap={[3,4,6]} px={[6]} alignItems={['center']} className='avatar' rounded={'lg'} justify={'center'} w={'100%'} minH={'140px'}>
       <Box w={['92px','104px']} key={avatar}>
         <Avatar maxH={'104'} url={avatar} shape={avatarShape} nodrag noanimate />
@@ -82,5 +111,6 @@ export default function EditAvatar({ onClick, saveButton = false } : Props) {
           }}
           color={'white'} isDisabled={avatar === ''} display={['flex','flex']} variant={'outline'} flexDirection={'column'} gap={2} height={'88px'}><Text>Save</Text><Text>Avatar</Text></Button>}
     </Flex>
+    </AccordionPanel></AccordionItem></Accordion>
   );
 }

@@ -102,10 +102,12 @@ const Preview = ({ json, onSave }: Props) => {
     <>
       <DeviceFrameset
         // @ts-ignore: Unreachable code error
-        device={String(mobileView ? 'iPhone X' : 'iPad Mini')}
-        color={colorMode === 'light' ? 'black' : 'silver'}
+        device={'iPhone 5s'}
+        color={colorMode === 'dark' ? 'black' : 'silver'}
         // @ts-ignore: Unreachable code error
-        height={mobileView ? '90vh' : '76vh'}>
+        width={mobileView ? '400px' : '540px'}
+        // @ts-ignore: Unreachable code error
+        height={'84vh'}>
         <Center
           rounded={'2xl'}
           w={'100%'}
@@ -113,21 +115,21 @@ const Preview = ({ json, onSave }: Props) => {
           px={4}
           py={2}
           gap={3}
-          h={mobileView ? '92px' : '60px'}
+          h={'60px'}
           transition={'"all 1s ease"'}
           alignItems={'center'}
-          pt={mobileView ? 9 : 2}
+          pt={2}
           bgColor={useColorModeValue('light.600', 'dark.600')}>
           
 
-          <Button as={Link} href={`https://venomid.link/${pathname.includes('old') ? `o/` : ''}${name}`} target='_blank' variant={'outline'} gap={2} display={'flex'}>
-          <RiExternalLinkLine /> venomid.link/{pathname.includes('old') ? `o/` : ''}{name}
+          <Button as={Link} href={`https://monid.xyz/${pathname.includes('old') ? `o/` : ''}${name}`} target='_blank' variant={'outline'} gap={2} display={'flex'}>
+          <RiExternalLinkLine /> monid.xyz/{pathname.includes('old') ? `o/` : ''}{name}
           </Button>
         </Center>
 
         <Flex
           bg={bgColor}
-          key={`preview-venomid-desktop-${lightMode}`}
+          key={`preview-monadid-desktop-${lightMode}`}
           bgSize={'cover'}
           bgRepeat={'no-repeat'}
           bgPosition={'center'}
@@ -139,7 +141,7 @@ const Preview = ({ json, onSave }: Props) => {
             <>
               <Container
                 width={mobileView ? '380px' : 'lg'}
-                key={`venomid-preview-main-${lightMode}`}
+                key={`monadid-preview-main-${lightMode}`}
                 display="flex"
                 flexDir={'column'}
                 gap={4}
@@ -148,7 +150,7 @@ const Preview = ({ json, onSave }: Props) => {
                   <Flex direction="column" justify={'center'} align={'center'} gap={4} width="100%">
                     <Box
                       as={lightMode ? LightMode : DarkMode}
-                      key={`preview-venomid-desktop-mode-${lightMode}`}>
+                      key={`preview-monadid-desktop-mode-${lightMode}`}>
                       <Flex
                         gap={notMobile && !mobileView ? 8 : 0}
                         my={4}

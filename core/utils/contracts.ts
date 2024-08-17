@@ -146,6 +146,27 @@ export const Resolver = getContract({
   client: client,
   address: "0x7016f6BAfD4Ae35a30DD264Ce8EEcA16AB417fAD",
   chain: arbitrumSepolia,
+  abi: [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "data",
+          "type": "bytes[]"
+        }
+      ],
+      "name": "multicall",
+      "outputs": [
+        {
+          "internalType": "bytes[]",
+          "name": "results",
+          "type": "bytes[]"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+  ]
 });
 
 export const ReverseRegistrar = getContract({

@@ -12,7 +12,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
     
-     {!pathname.includes('nftAddress') && !pathname.includes('auth') && <Header />}
+     {!pathname.includes('domainName') && !pathname.includes('auth') && <Header />}
       {children}
      {/* {!pathname.includes('nftAddress') && !pathname.includes('auth') && <Footer />} */}
 

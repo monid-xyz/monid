@@ -47,7 +47,8 @@ import {
 } from "core/atoms";
 import { capFirstLetter } from "core/utils";
 import { LinkIcon } from "components/logos";
-import { EXAMPLE_SOCIAL_URLS, SOCIALS } from "core/utils/constants";
+import { EXAMPLE_SOCIAL_URLS, getSocialUrlScheme, SOCIALS } from "core/utils/constants";
+import { ObjectItem } from "types";
 
 export default function AddSocialButton() {
   const { colorMode } = useColorMode();
@@ -55,10 +56,10 @@ export default function AddSocialButton() {
   const [_open, _setOpen] = useAtom(openAddSocialAtom);
   const [_back, _setBack] = useAtom(openAddAtom);
   const [notMobile] = useMediaQuery("(min-width: 800px)");
-  const [availableSocials, setAvailableSocials] = useState<string[]>([]);
-  const [searchedSocials, setSearchedSocials] = useState<string[]>([]);
-  const [selectedSocial, setSelectedSocial] = useState("");
+  const [availableSocials, setAvailableSocials] = useState<ObjectItem[]>([]);
+  const [selectedSocial, setSelectedSocial] = useState<ObjectItem | undefined>();
   const [searchText, setSearchText] = useState("");
+  const [searchedSocials, setSearchedSocials] = useState<ObjectItem[]>([]);
   const [selectedSocialUrl, setSelectedSocialUrl] = useState("");
   const [socialsArray, setSocialsArray] = useAtom(socialsArrayAtom);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -66,7 +67,7 @@ export default function AddSocialButton() {
   useEffect(() => {
     if (_open) {
       setSelectedSocialUrl("");
-      setSelectedSocial("");
+      setSelectedSocial(undefined);
       setSearchText("");
       onOpen();
     }
@@ -74,12 +75,13 @@ export default function AddSocialButton() {
 
   const addToSocial = () => {
     let _newSocialsArray = [
-      { key: selectedSocial.toLowerCase(), value: selectedSocialUrl },
+      { key: String(selectedSocial?.value).toLowerCase(), value: selectedSocialUrl },
       ...socialsArray,
     ];
     setSocialsArray(_newSocialsArray);
+    console.log(_newSocialsArray)
     setSelectedSocialUrl("");
-    setSelectedSocial("");
+    setSelectedSocial(undefined);
     _setOpen(false);
     onClose();
   };
@@ -89,10 +91,10 @@ export default function AddSocialButton() {
   }, [isOpen]);
 
   useEffect(() => {
-    let _socials: string[] = [...SOCIALS.sort()];
+    let _socials: ObjectItem[] = [...SOCIALS.sort()];
 
     socialsArray.map((item) => {
-      _socials.splice(_socials.indexOf(capFirstLetter(item.key)), 1);
+      _socials.splice(_socials.indexOf({key: capFirstLetter(item.key), value: getSocialUrlScheme(item.key)}), 1);
     });
 
     setAvailableSocials(_socials);
@@ -102,7 +104,7 @@ export default function AddSocialButton() {
     searchText.length > 0
       ? setSearchedSocials(
           SOCIALS.filter((item) =>
-            item.toLowerCase().includes(searchText.toLowerCase())
+            item.key.toLowerCase().includes(searchText.toLowerCase())
           )
         )
       : setSearchedSocials([]);
@@ -112,7 +114,7 @@ export default function AddSocialButton() {
     <>
       <Button
         onClick={() => {
-          setSelectedSocial("");
+          setSelectedSocial(undefined);
           onOpen();
         }}
         flexDir={"column"}
@@ -155,7 +157,7 @@ export default function AddSocialButton() {
                     _setBack(true);
                     onClose();
                   } else {
-                    setSelectedSocial("");
+                    setSelectedSocial(undefined);
                   }
                 }}
               >
@@ -163,7 +165,7 @@ export default function AddSocialButton() {
               </IconButton>{" "}
               Add{" "}
               {selectedSocial
-                ? `${capFirstLetter(selectedSocial)} Link`
+                ? `${capFirstLetter(selectedSocial.key)} Link`
                 : "New"}
             </Flex>
             {!selectedSocial && (
@@ -190,12 +192,12 @@ export default function AddSocialButton() {
                   <>
                     <InputGroup size="lg" minWidth="xs" borderColor="gray">
                       <InputLeftAddon>
-                        <LinkIcon type={selectedSocial.toLowerCase()} />
+                        <LinkIcon type={selectedSocial.key.toLowerCase()} />
                       </InputLeftAddon>
                       <Input
-                        isDisabled={selectedSocial === ""}
+                        isDisabled={selectedSocial.key === ""}
                         value={selectedSocialUrl}
-                        placeholder={`Enter your ${selectedSocial} URL`}
+                        placeholder={`Enter your ${selectedSocial.key} URL`}
                         onChange={(e) =>
                           setSelectedSocialUrl(e.currentTarget.value)
                         }
@@ -222,11 +224,11 @@ export default function AddSocialButton() {
                       </InputRightElement>
                     </InputGroup>
                     <Box pt={2}>
-                      <Text>Example {capFirstLetter(selectedSocial)} Link</Text>
+                      <Text>Example {capFirstLetter(selectedSocial.key)} Link</Text>
                       <Text color={"gray"}>
                         {
                           EXAMPLE_SOCIAL_URLS[
-                            selectedSocial.toLowerCase().replace(" ", "")
+                            selectedSocial.key.toLowerCase().replace(" ", "")
                           ]
                         }
                       </Text>
@@ -247,11 +249,11 @@ export default function AddSocialButton() {
                     fontSize={"xl"}
                     justifyContent={"left"}
                     height={"64px"}
-                    key={item}
+                    key={item.value}
                     onClick={() => item && setSelectedSocial(item)}
                   >
-                    <LinkIcon type={item.toLowerCase()} line={useLineIcons} />
-                    {capFirstLetter(item)}
+                    <LinkIcon type={item.key.toLowerCase()} line={useLineIcons} />
+                    {capFirstLetter(item.key)}
                   </Button>
                 ))}
               </SimpleGrid>

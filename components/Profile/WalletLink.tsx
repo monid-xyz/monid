@@ -12,6 +12,7 @@ import {
 import { LinkIcon } from 'components/logos';
 import { buttonBgColorAtom, fontAtom, lightModeAtom, roundAtom, variantAtom } from 'core/atoms';
 import { capFirstLetter, getColor, getIconInButtonColor } from 'core/utils';
+import { getAbbreviationByCoinName, getCoinNameByAbbreviation } from 'core/utils/coins';
 import { ETHERSCAN_URLS } from 'core/utils/constants';
 import { useAtomValue } from 'jotai';
 import { useState } from 'react';
@@ -87,7 +88,7 @@ export default function WalletLink({ title, url, onlyIcon, color }: Props) {
                 ? getColor('pop', buttonBg, lightMode)
                 : getColor(variant, buttonBg, lightMode)
             }>
-            {capFirstLetter(title)} Address
+            {title.replace(/[0-9]/g, '').toUpperCase()} Address
           </Text>
           <Flex>
             <Tooltip
@@ -114,19 +115,23 @@ export default function WalletLink({ title, url, onlyIcon, color }: Props) {
                     : 'outline'
                 }
                 aria-label={`view-${title}-on-blockchain-explorer`}>
-                <LinkIcon
+                  <LinkIcon
+                      type={`https://raw.githubusercontent.com/ensdomains/ens-app-v3/ed4af2c6821d13eae5a83873daa9f4ecaca066f2/src/assets/address/${capFirstLetter(getAbbreviationByCoinName(title.toLowerCase().replace(/[0-9]/g, '')))}Icon.svg`}
+                      size={'sm'}
+                    />
+                {/* <LinkIcon
                   color={
                     variant === 'fill' && hover
                       ? getIconInButtonColor('pop', buttonBg, lightMode)
                       : getIconInButtonColor(variant, buttonBg, lightMode)
                   }
                   type={title.toLowerCase()}
-                />
+                /> */}
               </IconButton>
             </Tooltip>
             <Tooltip
               borderRadius={4}
-              label={<Text p={2}>Copy {title} Address</Text>}
+              label={<Text p={2}>Copy {getCoinNameByAbbreviation(title)} Address</Text>}
               color="white"
               bgColor={'black'}
               fontFamily={font}
