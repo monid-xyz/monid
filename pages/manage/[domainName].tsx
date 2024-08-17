@@ -382,13 +382,13 @@ const ManagePage: NextPage = () => {
       }
     } catch (e) {
       toast.closeAll();
-        toast({
-          status: "error",
-          title: t("failed"),
-          description: t("commonErrorMsg"),
-          duration: null,
-          isClosable: true,
-        });
+      toast({
+        status: "error",
+        title: t("failed"),
+        description: t("commonErrorMsg"),
+        duration: null,
+        isClosable: true,
+      });
     }
 
     setIsSaving(false);
@@ -428,10 +428,18 @@ const ManagePage: NextPage = () => {
           let _subtitle: string = "";
           let _bio: string = "";
           let _avatar: string = "";
-          let _avatarShape: string = "";
-          let _font: string = "";
-          let _bg: string = "";
-          let _styles: any = {};
+          let _avatarShape: string = avatarShape;
+          let _font: string = font;
+          let _bg: string = bgColor;
+          let _styles: any = {
+            lineIcons: lineIcons,
+            lightMode: lightMode,
+            bgColor: bgColor,
+            buttonBgColor: buttonBgColor,
+            round: round,
+            variant: variant,
+            font: font,
+          };
 
           const coinRecords = await Promise.all(
             subgraphRecords.coins.map(async (coinKey: string) => {
@@ -514,8 +522,10 @@ const ManagePage: NextPage = () => {
           };
 
           if (
-            String(nftJson.info.owner).toLowerCase() !== connectedAccount.toLowerCase() ||
-            String(nftJson.info.manager).toLowerCase() !== connectedAccount.toLowerCase()
+            String(nftJson.info.owner).toLowerCase() !==
+              connectedAccount.toLowerCase() ||
+            String(nftJson.info.manager).toLowerCase() !==
+              connectedAccount.toLowerCase()
           ) {
             setError(
               `You (${truncAddress(
@@ -548,7 +558,7 @@ const ManagePage: NextPage = () => {
             WalletButtons: _styles.walletButtons,
             socialButtons: _styles.socialButtons,
             bgColor: _bg,
-            styles: _styles
+            styles: _styles,
           });
           setName(domainName);
           setTitle(_title);
@@ -565,9 +575,7 @@ const ManagePage: NextPage = () => {
           setBgColor(_bg ?? BG_IMAGES[5].bg);
           setLineIcons(_styles.lineIcons ?? false);
           setLightMode(_styles.lightMode ?? BG_IMAGES[5].lightMode);
-          setButtonBgColor(
-            _styles.buttonBgColor ?? BUTTON_BG_COLORS[1]
-          );
+          setButtonBgColor(_styles.buttonBgColor ?? BUTTON_BG_COLORS[1]);
           setRound(_styles.round ?? BUTTON_ROUNDS[1]);
           setVariant(_styles.variant ?? BUTTON_VARIANTS[3]);
           setFont(_font ?? FONTS[0]);

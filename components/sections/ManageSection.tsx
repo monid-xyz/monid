@@ -128,11 +128,11 @@ function ManageSection() {
             _nftJson.external_url = SITE_PROFILE_URL + "name/" + _nftJson.name;
             _nftJson.manageUrl = "/manage/" + _nftJson.name;
             console.log(_nftJson);
+            if(nft.wrappedOwner !== connectedAccount) return {};
             return _nftJson;
-            console.log(_nftJson);
           } catch (e: any) {
-            return {};
             console.log("error getting monadid nft ", e);
+            return {};
           }
         })
       );

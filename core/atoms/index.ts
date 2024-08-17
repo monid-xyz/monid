@@ -2,6 +2,7 @@ import { atom, useAtom } from 'jotai';
 import { atomFamily, atomWithStorage } from 'jotai/utils';
 import { initialAuthState } from './initialState';
 import {
+  BG_IMAGES,
   CONTRACT_ADDRESS,
   IPFS_URLS,
   LINK_VALIDATION_REGEX,
@@ -50,7 +51,7 @@ export const jsonHashAtom = atom('');
 export const lightModeAtom = atom<boolean>(false);
 export const isStyledAtom = atom<boolean>(false);
 export const balanceAtom = atom('0');
-export const bgColorAtom = atom('var(--bg8Gradient)');
+export const bgColorAtom = atom(BG_IMAGES[5].bg);
 export const buttonBgColorAtom = atom('light');
 export const roundAtom = atom('lg');
 export const variantAtom = atom('solid');
