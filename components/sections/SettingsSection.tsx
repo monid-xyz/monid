@@ -51,7 +51,7 @@ import {
 } from 'core/utils/constants';
 import { MdOutlinePreview, MdOutlineVisibility } from 'react-icons/md';
 import axios from 'axios';
-import getNftsByAddress from 'core/utils/getNftsByAddress';
+//import getNftsByAddress from 'core/utils/getNftsByAddress';
 import { useAddress } from '@thirdweb-dev/react';
 import { createWeb3Name } from '@web3-name-sdk/core';
 import { useRouter } from 'next/router';

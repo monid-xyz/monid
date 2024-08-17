@@ -74,8 +74,7 @@ export default function ContributionSection() {
       email={email}
       telegram={telegram}
       comment={comment}
-      wallet={wallet}
-      venomWallet={connectedAccount}
+      wallet={connectedAccount}
     />
   );
 

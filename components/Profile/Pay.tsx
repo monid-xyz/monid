@@ -52,7 +52,6 @@ export default function Pay({ title, content, style }: Props) {
   const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const lightMode = useAtomValue(lightModeAtom);
-  const venom = style?.venom;
   const eth = style?.eth;
   const btc = style?.btc;
   const success = content;

@@ -51,7 +51,6 @@ import {
     VENTORY_NFT_V2_ADDRESS,
     ZEALY_URL,
   } from 'core/utils/constants';
-  import getNftsByAddress from 'core/utils/getNftsByAddress';
   import { getTwitterAuthUrl, refreshAccessToken } from 'core/utils/twitterUtils';
   import { getZealyByTwitterId } from 'core/utils/zealyUtils';
   import { useAtom, useAtomValue } from 'jotai';

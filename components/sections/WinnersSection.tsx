@@ -90,7 +90,6 @@ import RRRItem from 'components/features/RRRItem';
 import ImageBox from 'components/claiming/ImageBox';
 import { invalidUsernameMessage, isValidUsername, sleep, truncAddress } from 'core/utils';
 import { ConnectWalletButton } from 'components/venomConnect';
-import MintSuccessModal from 'components/claiming/MintSuccessModal';
 import Winner from 'components/raffle/Winner';
 import { isValidName } from 'ethers/lib/utils';
 import { checkPrize, reqPrize } from 'core/utils/prize';
