@@ -14,7 +14,6 @@ interface Props {
   color?: string;
 }
 
-
 export default function Links({ json, color }: Props) {
   const [linksArray, setLinksArray] = useAtom(linksArrayAtom);
 

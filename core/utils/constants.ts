@@ -571,8 +571,25 @@ export const VARIATIONS_VIDS = [
 
 export const LINK_VARIATIONS = [
   [
+    {
+      type: 'tweet',
+      title: 'tweet',
+      styles: {
+        size: 'sm',
+      },
+      url: 'https://x.com/monad_xyz/status/1819352362198118522',
+    },
   ],
   [
+    {
+        type: 'donate button',
+        title: 'buy me a coffee',
+        styles: {
+          size: 'sm',
+          eth: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84'
+        },
+        url: 'https://soundcloud.com/sam-walters-715497925/sets/trippy',
+      },
   ],
   [
     {
@@ -623,79 +640,78 @@ export const LINK_VARIATIONS = [
     },
   ],
   [
-    // {
-    //   type: 'soundcloud track',
-    //   title: 'music',
-    //   styles: {
-    //     size: 'sm',
-    //   },
-    //   url: 'https://soundcloud.com/sam-walters-715497925/sets/trippy',
-    // },
+    {
+      type: 'soundcloud track',
+      title: 'music',
+      styles: {
+        size: 'sm',
+      },
+      url: 'https://soundcloud.com/sam-walters-715497925/sets/trippy',
+    },
   ],
 ];
 
 export const SOCIALS_VARIATIONS = [
   {
-    discord: '#',
-    email: '#',
-    twitter: '#',
-    telegram: '#',
-    whatsapp: '#',
+    'com.discord': '#',
+    'email': '#',
+    'com.twitter': '#',
+    'org.telegram': '#',
+    'com.whatsapp': '#',
   },
   {
-    twitter: 'https://twitter.com/monid_xyz',
-    ylide: '',
-    medium: 'https://medium.com/@monid_xyz',
-    zealy: 'https://zealy.io/c/#',
-    telegram: 'https://t.me/monid_xyz',
+    'com.twitter': 'https://twitter.com/monid_xyz',
+    'com.ylide': '',
+    'com.medium': 'https://medium.com/@monid_xyz',
+    'com.zealy': 'https://zealy.io/c/#',
+    'org.telegram': 'https://t.me/monid_xyz',
   },
   {
-    soundcloud: '#',
-    opensea: '#',
-    patreon: '#',
-    twitter: '#',
-    spotify: '#',
+    'com.soundcloud': '#',
+    'com.opensea': '#',
+    'com.patreon': '#',
+    'com.twitter': '#',
+    'com.spotify': '#',
   },
   {
-    telegram: 'https://t.me/monid_xyz',
-    zealy: 'https://zealy.io/c/#',
-    github: 'https://github.com/sam-shariat/monid_xyz',
-    youtube: '#',
+    'org.telegram': 'https://t.me/monid_xyz',
+    'com.zealy': 'https://zealy.io/c/#',
+    'com.github': 'https://github.com/sam-shariat/monid_xyz',
+    'com.google.youtube': '#',
   },
   {
-    facebook: '#',
-    twitch: '#',
-    snapchat: '#',
-    tiktok: '#',
+    'com.facebook': '#',
+    'tv.twitch': '#',
+    'com.snapchat': '#',
+    'com.tiktok': '#',
   },
   {
-    pinterest: '#',
-    slack: '#',
-    skype: '#',
-    dribbble: '#',
-    twitter: '#',
+    'com.pinterest': '#',
+    'com.slack': '#',
+    'com.skype': '#',
+    'com.dribbble': '#',
+    'com.twitter': '#',
   },
 ];
 
 export const WALLETS_VARIATIONS = [
   {
-    monad: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
-    bitcoin: 'tb1qshvfpzfa0p46gztp00jwccf0c4kdfac72lmuz7',
+    btc: 'tb1qshvfpzfa0p46gztp00jwccf0c4kdfac72lmuz7',
   },
   {
-    ethereum: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
+    eth: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
   },
   {
-    solana: 'BfiZDeHXzuz8pz5EGM6eUv1B1hLsGJQPRoxqYsBRKW3i',
+    sol: 'BfiZDeHXzuz8pz5EGM6eUv1B1hLsGJQPRoxqYsBRKW3i',
   },
   {
-    monad: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
+    arb1: '0x424c939664F9e007aaF30180fD2f1824a44334D7',
   },
   {
-    tron: 'TR22H7PLMm1BUaGfhmfnPY7VLEhG2U6y3t',
+    trx: 'TR22H7PLMm1BUaGfhmfnPY7VLEhG2U6y3t',
   },
   {
-    binance: '0xBFd210db795A9Ac48D0C3be2a74232BE44144E84',
+    bnb: '0xCDbab7630551d069DBdF0050E4a53D8C5ED2482b',
   },
 ];
 

@@ -67,6 +67,7 @@ import DomainName from "components/features/DomainName";
 import AccountAddress from "components/features/AccountAddress";
 import { wrap } from "@motionone/utils";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { getRandomBytes32 } from "core/utils/stringUtils";
 
 export default function IntroSection() {
   let changeTimer: any;
@@ -298,7 +299,7 @@ export default function IntroSection() {
               width: "100%",
               gap: 12,
             }}
-            key={`monadid-templates-${current}`}
+            key={`monadid-templates-${title}-${current}-${avatar}`}
             transition={{ duration: 0.5, ease: "linear" }}
             initial={{ y: 20, scale: 0.9, opacity: 0.5, filter: "blur(20px)" }}
             animate={{ y: 0, scale: 1, opacity: 1, filter: "blur(0px)" }}
@@ -369,14 +370,14 @@ export default function IntroSection() {
               )}
               {walletButtons && (
                 <Wallets
-                  key={`wallets-${current}-${colorMode}`}
+                  key={`wallets-${title}-${current}-${avatar}`}
                   json={{
                     wallets: wallets,
                   }}
                 />
               )}
               <Links
-                key={`links-${current}-${colorMode}`}
+                key={`links-${title}-${current}-${avatar}`}
                 json={{
                   links: links,
                 }}

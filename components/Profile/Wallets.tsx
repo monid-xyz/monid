@@ -8,7 +8,7 @@ import {
   walletsArrayAtom,
 } from 'core/atoms';
 import WalletLink from './WalletLink';
-import { capFirstLetter } from 'core/utils';
+import { arraysEqual, capFirstLetter } from 'core/utils';
 import { ObjectItem } from 'types';
 import AnimateOpacity from 'components/animate/AnimateOpacity';
 
@@ -30,7 +30,7 @@ export default function Wallets({ json, color, onlyIcons }: Props) {
       json.wallets[key] && _wallets.push({ key: key, value: json.wallets[key] });
     }
 
-    if (_wallets.length !== walletsArray.length) {
+    if (!arraysEqual(_wallets,walletsArray)) {
       // console.log(_wallets);
       setWalletsArray(_wallets);
     }
