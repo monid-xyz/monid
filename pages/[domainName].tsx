@@ -147,7 +147,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     })
   );
 
-  console.log(textRecords);
+  //console.log(textRecords);
 
   const _wallets: { [key: string]: string } = {};
   const _socials: { [key: string]: string } = {};
@@ -300,13 +300,6 @@ const DomainPage: NextPage<LinkPageProps> = ({
   const [bio, setBio] = useAtom(bioAtom);
   const [target, setTarget] = useAtom(targetAtom);
   const [lightMode, setLightMode] = useAtom(lightModeAtom);
-  const [isStyled, setIsStyled] = useAtom(isStyledAtom);
-  const [ipfsGateway, setIpfsGateway] = useAtom(ipfsGatewayAtom);
-  const [retries, setRetries] = useState<number>(0);
-  const isConnected = useAtomValue(isConnectedAtom);
-  const tourStep = useAtomValue(tourStepAtom);
-  const network = useAtomValue(networkAtom);
-  const connectedAccount = useAtomValue(connectedAccountAtom);
   const links = useAtomValue(linksArrayAtom);
   const socials = useAtomValue(socialsArrayAtom);
   const wallets = useAtomValue(walletsArrayAtom);
@@ -367,49 +360,6 @@ const DomainPage: NextPage<LinkPageProps> = ({
     socialIcons,
     lineIcons,
   ]);
-
-  const getJson = () => {
-    let socialsObj: any = {};
-    socials.map((social) => {
-      socialsObj[social["key"]] = social["value"];
-    });
-
-    let walletsObj: any = {};
-    wallets.map((wallet) => {
-      walletsObj[wallet["key"]] = wallet["value"];
-    });
-
-    let styles: any = {
-      lineIcons: lineIcons,
-      lightMode: lightMode,
-      bgColor: bgColor,
-      buttonBgColor: buttonBgColor,
-      round: round,
-      variant: variant,
-      font: font,
-    };
-
-    const data = {
-      name: name,
-      title: title,
-      subtitle: subtitle,
-      avatar: avatar,
-      avatarShape: avatarShape,
-      bio: bio,
-      links: links,
-      wallets: walletsObj,
-      socials: socialsObj,
-      lineIcons: lineIcons,
-      lightMode: lightMode,
-      socialIcons: socialIcons,
-      WalletButtons: walletButtons,
-      socialButtons: socialButtons,
-      bgColor: bgColor,
-      styles: styles,
-    };
-
-    return data;
-  };
 
   useEffect(() => {
     async function initUI() {
