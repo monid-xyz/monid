@@ -514,8 +514,8 @@ const ManagePage: NextPage = () => {
           };
 
           if (
-            String(nftJson.info.owner) !== connectedAccount ||
-            String(nftJson.info.manager) !== connectedAccount
+            String(nftJson.info.owner).toLowerCase() !== connectedAccount.toLowerCase() ||
+            String(nftJson.info.manager).toLowerCase() !== connectedAccount.toLowerCase()
           ) {
             setError(
               `You (${truncAddress(
