@@ -157,7 +157,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   let _description: string = "";
   let _bio: string = "";
   let _avatar: string = "";
-  let _avatarShape: string = "none";
+  let _avatarShape: string = "round";
   let _font: string = FONTS[0];
   let _bg: string = BG_IMAGES[5].bg;
   let _styles: any = {
