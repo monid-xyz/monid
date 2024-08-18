@@ -135,7 +135,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const subgraphRecords: any = await viemClient.getSubgraphRecords({
     name: name,
   });
-  console.log(subgraphRecords);
+  //console.log(subgraphRecords);
   // console.log('getting nft');
   const textRecords = await Promise.all(
     subgraphRecords.texts.map(async (textKey: string) => {
@@ -337,7 +337,7 @@ const DomainPage: NextPage<LinkPageProps> = ({
   const [nameDontExist, setNameDontExist] = useState(false);
   const account = useActiveAccount();
   //const [horizontalWallet, setHorizontalWallet] = useAtom(horizontalWalletsAtom);
-
+  console.log(`https://monid.xyz/api/pog?title=${title}&name=${domainName}&subtitle=${subtitle}&lightmode=${nftJson.styles.lightMode}${avatar.length > 0 ? '&avatar=1' : ''}`)
   useEffect(() => {
     //setLastChange(Date.now());
     //console.log(Date.now());
@@ -426,7 +426,7 @@ const DomainPage: NextPage<LinkPageProps> = ({
         <meta name="og:description" content={description} />
         <meta
           property="og:image"
-          content={`https://venomid.link/api/og?name=${name}`}
+          content={`https://monid.xyz/api/pog?title=${title}&name=${domainName}&subtitle=${subtitle}&lightmode=${nftJson.styles.lightMode}${avatar.length > 0 ? '&avatar=1' : ''}`}
         />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -435,7 +435,8 @@ const DomainPage: NextPage<LinkPageProps> = ({
 
         <meta
           property="twitter:image"
-          content={`https://venomid.link/api/og?name=${name}`}
+          content={`https://monid.xyz/api/pog?title=${title}&name=${domainName}&subtitle=${subtitle}&lightmode=${nftJson.styles.lightMode}${avatar.length > 0 ? '&avatar=1' : ''}`}
+
         />
         {/* <link rel="icon" type="image/png" href="/logos/vidicon.png" /> */}
         <link
