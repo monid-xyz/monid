@@ -77,7 +77,7 @@ export default function Header() {
     <>
       <Center
         px={[4, 4, 0]}
-        fontSize={"lg"}
+        fontSize={["md","lg"]}
         py={2}
         bgGradient={"linear(to-r, var(--base), var(--base0))"}
         color={"white"}
@@ -92,7 +92,7 @@ export default function Header() {
                     <ImageBox srcUrl="/screens/contribute.png" size={'46px'} />
                     Community
                   </Button></NextLink> */}
-        Now Live On Arbitrum Sepolia Testnet!
+        Now Live On Arbitrum Sepolia!
       </Center>
 
       <Box
