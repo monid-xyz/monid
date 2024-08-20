@@ -43,6 +43,7 @@ import EarlyAdopters from 'components/early/EarlyAdopters';
 import ContributionSection from 'components/contribution/ContributionSection';
 import MintNft from 'components/early/MintNft';
 import NextLink from 'next/link';
+import Footer from 'components/Layout/Footer';
 
 export default function CommunitySection() {
   const { colorMode } = useColorMode();
@@ -88,7 +89,7 @@ export default function CommunitySection() {
                 <Text
                   fontSize={['xl', '2xl', '3xl']}
                   textAlign={['center', 'center', 'center']}>
-                  synergize. progress. and earn
+                  Synergize. Progress. Earn
                 </Text>
               </Stack>
               
@@ -203,7 +204,7 @@ export default function CommunitySection() {
               </Button>
 
               {/* <ContributionSection /> */}
-
+              <Footer />
             </Flex>
           </Box>
         </Container>

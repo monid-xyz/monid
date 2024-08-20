@@ -51,6 +51,7 @@ import {
   METADATA_URL,
   OPENSEA_URL,
   SIGN_MESSAGE,
+  SITE_MANAGE_URL,
   SITE_PROFILE_URL,
   TLD,
 } from "core/utils/constants";
@@ -761,7 +762,17 @@ export default function RegisterModal() {
                           target="_blank"
                           size={"lg"}
                         >
-                          View Profile
+                          View Name
+                        </Button>
+                        <Button
+                          w={["100%", "xs"]}
+                          as={Link}
+                          isDisabled
+                          href={SITE_MANAGE_URL + name + ".mon"}
+                          target="_blank"
+                          size={"lg"}
+                        >
+                          Manage Name
                         </Button>
                       </Center>
                     </>

@@ -231,7 +231,7 @@ export default function EarlyAdopters() {
         toast({
           status: 'info',
           title: t('connectWallet'),
-          description: t('venomWalletConnect'),
+          description: t('walletConnectMsg'),
           duration: 3000,
           isClosable: true,
         });

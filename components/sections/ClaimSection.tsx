@@ -42,6 +42,12 @@ import {
   venomProviderAtom,
   connectedAccountAtom,
   openRegisterAtom,
+  walletsArrayAtom,
+  socialsArrayAtom,
+  linksArrayAtom,
+  avatarAtom,
+  titleAtom,
+  subtitleAtom,
 } from 'core/atoms';
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { useTranslate } from 'core/lib/hooks/use-translate';
@@ -97,6 +103,12 @@ const ClaimSection = () => {
   const [totalSupply, setTotalSupply] = useState<number | null>(null);
   const VenomContractAddress = useAtomValue(venomContractAddressAtom);
   const [mintOpen, setMintOpen] = useAtom(mintOpenAtom);
+  const setWallets = useSetAtom(walletsArrayAtom);
+  const setSocials = useSetAtom(socialsArrayAtom);
+  const setLinks = useSetAtom(linksArrayAtom);
+  const setTitle = useSetAtom(titleAtom);
+  const setSubtitle = useSetAtom(subtitleAtom);
+  const setAvatar = useSetAtom(avatarAtom);
   //const [venomContract, setVenomContract] = useState<any>(undefined);
 
   const [name, setName] = useAtom(claimingNameAtom);
@@ -204,9 +216,35 @@ const ClaimSection = () => {
       
     }
 
+    clear();
     checkActive();
     
   }, [connectedAccount, reload]);
+
+  const registerClicked = async ()=> {
+    if(connected){
+      setOpenRegister(true)
+    } else {
+      toast.closeAll();
+        toast({
+          status: 'info',
+          title: t('connectWallet'),
+          description: t('walletConnectMsg'),
+          duration: 5000,
+          isClosable: true,
+        });
+        return;
+    }
+  }
+
+  const clear = ()=> {
+    setAvatar('');
+    setLinks([]);
+    setWallets([]);
+    setSocials([]);
+    setTitle('');
+    setSubtitle('');
+  }
 
   const [notMobile] = useMediaQuery('(min-width: 992px)');
 
@@ -307,7 +345,7 @@ const ClaimSection = () => {
             <Center width={'100%'} gap={8} height={160} bg={colorMode === 'light' ? 'var(--base1)':'var(--base)'} rounded={'xl'}>
               
               {isConnected ? <><Spinner size="lg" />
-              <Text fontSize={'xl'}>Loading Contracts Data</Text></> : <Text fontSize={'xl'}>{t('venomWalletConnect')}</Text>}
+              <Text fontSize={'xl'}>Loading Contracts Data</Text></> : <Text fontSize={'xl'}>{t('walletConnectMsg')}</Text>}
 
             </Center>
           )} */}
@@ -383,7 +421,7 @@ const ClaimSection = () => {
                             !isValidUsername(path) || nameExists || typing //|| mintedOnTestnet === 0
                           }
                           //onClick={(e) => claimVid(e.currentTarget.value)}>
-                          onClick={(e) => setOpenRegister(true)}>
+                          onClick={registerClicked}>
                           {!typing && nameStatus !== -1 ? (
                             'Register'
                           ) : (

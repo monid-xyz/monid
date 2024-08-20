@@ -97,7 +97,7 @@ export default function Link({ type, icon, title, url, image, content, styles, c
             color={getColor(variant, buttonBg, lightMode)}
             placeContent={'center'}
             placeItems={'center'}
-            px={2}
+            px={3}
             width={'100%'}>
             {icon}
             <Text px={2} w={'100%'} textAlign={'center'}>{title}</Text>

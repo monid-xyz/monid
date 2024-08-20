@@ -19,7 +19,7 @@ export const SITE_DESCRIPTION =
 export const SITE_FULL_DESCRIPTION =
   'Monad ID empowers you to build a personalized, decentralized page that showcases your links, content, and digital presence. Leveraging the power of the Monad Blockchain and .mon domains, monid offers a self-sovereign alternative to centralized link management tools.';
 export const NFT_IMAGE_URL = 'https://ipfs.io/ipfs/QmUvfedgHDXdiMsq5nfLPGLQrR4QAYXHzR5SETBZQ6RGyd';
-export const SITE_MANAGE_URL = 'https://monid.xyz/';
+export const SITE_MANAGE_URL = 'https://monid.xyz/manage/';
 export const METADATA_URL = 'https://metadata.monid.xyz/';
 export const SITE_PROFILE_URL = 'https://monid.xyz/';
 export const ZEALY_URL = 'https://zealy.io/c/monid_xyz/';

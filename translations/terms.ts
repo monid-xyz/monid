@@ -5,7 +5,7 @@ type Terms = {
 const terms: Terms = {
   title: {
     en: 'Monad ID',
-    fa: 'ونوم آی دی',
+    fa: 'موناد آی دی',
   },
   wnw: {
     en: 'w & w',
@@ -17,7 +17,7 @@ const terms: Terms = {
   },
   features: {
     en: 'why Monad ID?',
-    fa: 'چرا ونوم آی دی ؟',
+    fa: 'چرا موناد آی دی ؟',
   },
   feature1: {
     en: 'Decentralized',
@@ -57,7 +57,7 @@ const terms: Terms = {
   },
   feature5d: {
     en: 'Establish a secure and verifiable digital identity on the Monad Blockchain.',
-    fa: 'هویت دیجیتال امن و قابل تأیید خود را بر روی بلاکچین ونوم برپا کنید.',
+    fa: 'هویت دیجیتال امن و قابل تأیید خود را بر روی بلاکچین موناد برپا کنید.',
   },
   feature6: {
     en: 'Tradeable Asset',
@@ -65,7 +65,7 @@ const terms: Terms = {
   },
   feature6d: {
     en: 'Unlock the potential value of your Monad ID as a tradable digital asset.',
-    fa: 'ارزش پتانسیلی ونوم آی دی خود را به عنوان دارایی دیجیتال قابل معامله مشخص کنید.',
+    fa: 'ارزش پتانسیلی موناد آی دی خود را به عنوان دارایی دیجیتال قابل معامله مشخص کنید.',
   },
   feature7: {
     en: 'Enhanced Visibility',
@@ -93,7 +93,7 @@ const terms: Terms = {
   },
   wat: {
     en: 'what is Monad ID',
-    fa: 'ونوم آی دی چیست ؟',
+    fa: 'موناد آی دی چیست ؟',
   },
   watis: {
     en:"Monad ID is a domain naming system for Monad Blockchain which provides users and dapps the ability to assign human-readable names to Monad addresses",
@@ -102,7 +102,7 @@ const terms: Terms = {
   },
   wat2: {
     en: 'Monad ID Profile',
-    fa: 'پروفایل ونوم آی دی',
+    fa: 'پروفایل موناد آی دی',
   },
   watis2: {
     en: 'Create a personalized landing page with a unique web address, add your favorite links, nfts, assets & other resources and share it with the world!',
@@ -122,7 +122,7 @@ const terms: Terms = {
   },
   why: {
     en: 'why Monad ID ?',
-    fa: 'چرا ونوم آی دی ؟',
+    fa: 'چرا موناد آی دی ؟',
   },
   ns: {
     en: 'naming service',
@@ -130,7 +130,7 @@ const terms: Terms = {
   },
   nsDescription: {
     en: 'easily assign human-readable names to your Monad Blockchain address',
-    fa: ' به راحتی نام‌های قابل فهم برای آدرس  بلاکچین ونوم خود تعیین کنید',
+    fa: ' به راحتی نام‌های قابل فهم برای آدرس  بلاکچین موناد خود تعیین کنید',
   },
   manage: {
     en: 'manage',
@@ -142,7 +142,7 @@ const terms: Terms = {
   },
   yourOldVids: {
     en: 'Migrate Old MONIDs',
-    fa: 'ونوم آی دی های قدیمی',
+    fa: 'موناد آی دی های قدیمی',
   },
   yourSids: {
     en: 'Your Space IDs',
@@ -206,15 +206,15 @@ const terms: Terms = {
   },
   Baseidnetwork: {
     en: 'VID Network',
-    fa: 'شبکه ونوم آی دی',
+    fa: 'شبکه موناد آی دی',
   },
   Baseidtools: {
     en: 'VID Management',
-    fa: 'مدیریت ونوم آی دی',
+    fa: 'مدیریت موناد آی دی',
   },
   Baseidlink: {
     en: 'VID Profile Link',
-    fa: 'لینک پروفایل ونوم آی دی',
+    fa: 'لینک پروفایل موناد آی دی',
   },
   easyManagement: {
     en: 'easy management',
@@ -230,7 +230,7 @@ const terms: Terms = {
   },
   claimDescription: {
     en: 'Unleash your unified digital identity and Curate your presence in your own style',
-    fa: 'هویت مجازی شما در بلاکچین به وسیله یک لینک ساده با ونوم آیدی',
+    fa: 'هویت مجازی شما در بلاکچین به وسیله یک لینک ساده با موناد آیدی',
   },
   claimButton: {
     en: 'Register Domain',
@@ -242,7 +242,7 @@ const terms: Terms = {
   },
   dappDescription: {
     en: 'manage all your online identities and enjoy the benefits of a secure and decentralized platform based on Monad Blockchain technology.',
-    fa: 'تمام هویت های آنلاین خود را مدیریت کنید و از مزایای یک پلتفرم امن و غیرمتمرکز مبتنی بر فناوری بلاک چین ونوم لذت ببرید.',
+    fa: 'تمام هویت های آنلاین خود را مدیریت کنید و از مزایای یک پلتفرم امن و غیرمتمرکز مبتنی بر فناوری بلاک چین موناد لذت ببرید.',
   },
   manageWebsiteButton: {
     en: 'VID Management',
@@ -254,7 +254,7 @@ const terms: Terms = {
   },
   apiDescription: {
     en: 'The initial step in supporting Monad ID in your application is enabling your application to understand MON names and accept them wherever a Monad address is required.',
-    fa: 'گام اولیه در پشتیبانی از ونوم آی دی در برنامه شما این است که برنامه شما را قادر می سازد تا نام های MON را بفهمد و آنها را در هر جایی که نیاز به آدرس است بپذیرد.',
+    fa: 'گام اولیه در پشتیبانی از موناد آی دی در برنامه شما این است که برنامه شما را قادر می سازد تا نام های MON را بفهمد و آنها را در هر جایی که نیاز به آدرس است بپذیرد.',
   },
   profileLink: {
     en: 'Baseid.link',
@@ -266,19 +266,19 @@ const terms: Terms = {
   },
   linkDescription: {
     en: 'Experience the convenience of having all of your web2 and web3 social media accounts seamlessly linked together in one place.',
-    fa: 'پروفایل سفارشی شما در بلاکچین ونوم',
+    fa: 'پروفایل سفارشی شما در بلاکچین موناد',
   },
   linkWebsiteButton: {
     en: 'Monad ID profile',
-    fa: 'پروفایل ونوم',
+    fa: 'پروفایل موناد',
   },
   linkDemoWebsiteButton: {
     en: 'Monad ID Demo link',
-    fa: 'پروفایل ونوم دمو',
+    fa: 'پروفایل موناد دمو',
   },
   linkNotFound: {
     en: `You Don't own a Monad ID `,
-    fa: 'شما ونوم آی دی ندارید',
+    fa: 'شما موناد آی دی ندارید',
   },
   roadmap: {
     en: `roadmap`,
@@ -330,11 +330,11 @@ const terms: Terms = {
   },
   roadmapPhase22: {
     en: `Build Community`,
-    fa: 'ان اف تی ونوم پاسپورت',
+    fa: 'ان اف تی موناد پاسپورت',
   },
   roadmapPhase23: {
     en: `Conduct extensive testing and Gather user feedback`,
-    fa: 'لانچ ونوم آی دی دات سایت',
+    fa: 'لانچ موناد آی دی دات سایت',
   },
   roadmapPhase24: {
     en: `Continuously iterate and improve the platform`,
@@ -342,7 +342,7 @@ const terms: Terms = {
   },
   roadmapPhase25: {
     en: `Platform Launch`,
-    fa: 'ونوم آی دی در آربیتروم',
+    fa: 'موناد آی دی در آربیتروم',
   },
   roadmapPhase3: {
     en: `Phase 3: Scalability and Enhanced User Experience`,
@@ -354,11 +354,11 @@ const terms: Terms = {
   },
   roadmapPhase32: {
     en: `Monad ID SDK & Documents`,
-    fa: 'ان اف تی ونوم پاسپورت',
+    fa: 'ان اف تی موناد پاسپورت',
   },
   roadmapPhase33: {
     en: `Monad ID Early Adopters NFT`,
-    fa: 'ونوم آی دی در آربیتروم',
+    fa: 'موناد آی دی در آربیتروم',
   },
   roadmapPhase4: {
     en: `Phase 4: Community Engagement`,
@@ -390,7 +390,7 @@ const terms: Terms = {
   },
   aboutDescription: {
     en: `MONIDs (VID) are user-friendly solution for your virtual identity management`,
-    fa: ' ونوم آی دی راه حلی کاربرپسند برای مدیریت هویت مجازی شما در بلاک چین است ',
+    fa: ' موناد آی دی راه حلی کاربرپسند برای مدیریت هویت مجازی شما در بلاک چین است ',
   },
   aboutButton: {
     en: `our contact info`,
@@ -448,9 +448,9 @@ const terms: Terms = {
     en: 'Calculating',
     fa: 'در حال محاسبه فی',
   },
-  BaseWalletConnect: {
-    en: 'Please Connect Your Base Wallet To Continue',
-    fa: 'لطفا برای ادامه کیف پول ونوم خود را وصل کنید',
+  walletConnectMsg: {
+    en: 'Please Connect Your Wallet To Continue',
+    fa: 'لطفا برای ادامه کیف پول موناد خود را وصل کنید',
   },
   connectWallet: {
     en: 'Wallet Connection',
@@ -514,7 +514,7 @@ const terms: Terms = {
   },
   mintSuccessMsg: {
     en: 'Monad ID Registered Successfully',
-    fa: 'ونوم آی دی با موفقیت مینت شد',
+    fa: 'موناد آی دی با موفقیت مینت شد',
   },
   onlyLinks: {
     en: 'Official Links',
@@ -530,7 +530,7 @@ const terms: Terms = {
   },
   testnetNotice: {
     en: 'Monad ID is live on Base Testnet !',
-    fa: 'ونوم آی دی در شبکه تست نت ونوم در حال اجرا است',
+    fa: 'موناد آی دی در شبکه تست نت موناد در حال اجرا است',
   },
   zealyCommunity: {
     en: 'Zealy Community',

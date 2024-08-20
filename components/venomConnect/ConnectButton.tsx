@@ -68,8 +68,6 @@ import {
   addr,
   name,
 } from "contracts/421614/0x7016f6bafd4ae35a30dd264ce8eeca16ab417fad";
-import { Resolver, ReverseRegistrar } from "core/utils/contracts";
-import { useAddress } from "@thirdweb-dev/react";
 import { node } from "contracts/421614/0xd05661277665e9fb85d5acb5cbb30de2d6076988";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { getContract } from "thirdweb";
@@ -159,7 +157,11 @@ export default function ConnectWalletButton() {
     }
   }
 
-  const switchAccount = async () => {};
+  const switchAccount = async () => {
+    await logout();
+    await handleConnect();
+    
+  };
 
   const logout = async () => {
     wallet && disconnect(wallet);
@@ -382,7 +384,6 @@ export default function ConnectWalletButton() {
                     </LinkBox>
                   )} */}
 
-                  {/* <MenuDivider />
                 <Box px={5}>
                   <Button
                     onClick={switchAccount}
@@ -390,10 +391,10 @@ export default function ConnectWalletButton() {
                     gap={2}
                     variant="outline"
                     width={'100%'}>
-                    <RiShuffleLine size={22} />
+                    <LinkIcon type="RiShuffleLine" size={22} />
                     Switch Account
                   </Button>
-                </Box> */}
+                </Box>
 
                   <LinkBox px={5}>
                     <LinkOverlay href={FAUCET_URL} target="_blank">
