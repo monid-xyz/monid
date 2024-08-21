@@ -275,7 +275,7 @@ const ClaimSection = () => {
                     h={'2'}
                     textAlign={['center', 'center']}
                     fontWeight="bold"
-                    fontSize={['4xl']}
+                    fontSize={['2xl','3xl','4xl']}
                     height={[98, 98, 54]}
                     bgGradient={
                       lightMode
@@ -302,11 +302,11 @@ const ClaimSection = () => {
                 <Flex direction={'column'} w={'100%'} align={'center'}>
                   <InputGroup size="lg">
                     <Input
-                      height={['80px']}
+                      height={['60px','70px','80px']}
                       placeholder="Enter Domain Name"
                       variant={'filled'}
                       value={path}
-                      fontSize={['2xl']}
+                      fontSize={['xl','2xl']}
                       borderWidth="1px"
                       borderColor={'whiteAlpha.500'}
                       rounded={'full'}

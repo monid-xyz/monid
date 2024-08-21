@@ -92,7 +92,7 @@ const terms: Terms = {
     fa: ' توان مندی کاربران برای داشتن کنترل و استقلال در حضور آنلاین خود.',
   },
   wat: {
-    en: 'what is Monad ID',
+    en: 'What is Monad ID',
     fa: 'موناد آی دی چیست ؟',
   },
   watis: {

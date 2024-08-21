@@ -98,7 +98,7 @@ export default function Header() {
       <Box
         as="nav"
         position={app ? "absolute" : "relative"}
-        top={app ? ["40px"] : 0}
+        top={app ? ["43px"] : 0}
         zIndex={1000}
         px={0}
         m={0}
@@ -216,9 +216,10 @@ export default function Header() {
                       px={6}
                     >
                       <Flex gap={3}>
-                        <Monad />
+                        {/* <Monad /> */}
+                        <LinkIcon type="arbitrum" />
                         <Text fontWeight={"bold"} cursor={"default"}>
-                          Monad Mainnet
+                          Arbitrum Sepolia
                         </Text>
                       </Flex>
                       <IconButton
@@ -259,14 +260,14 @@ export default function Header() {
                             {t("Litepaper")}
                           </Button>
                         </NextLink>
-                        {/* <NextLink href={'/what'} passHref>
+                        <NextLink href={'/roadmap'} passHref>
                           <Button
                             variant="ghost"
-                            colorScheme={pathname === '/what' ? 'venom' : 'gray'}
+                            colorScheme={pathname === '/roadmap' ? 'venom' : 'gray'}
                             onClick={onClose}
                             width="100%"
                             justifyContent="left">
-                            {t('What & Why')}
+                            {t('Roadmap')}
                           </Button>
                         </NextLink>
                         <NextLink href={'/usecase'} passHref>
@@ -279,7 +280,7 @@ export default function Header() {
                             {t('Use Case')}
                           </Button>
                         </NextLink>
-                        
+                        {/* 
 
                         <NextLink href={'/ecosystem'} passHref>
                         

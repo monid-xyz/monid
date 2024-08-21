@@ -24,6 +24,8 @@ import {
   MenuList,
   MenuItem,
   Badge,
+  Input,
+  Select,
 } from "@chakra-ui/react";
 import { useTranslate } from "core/lib/hooks/use-translate";
 import Logo from "components/logos/Logo";
@@ -92,6 +94,9 @@ function ManageSection() {
   const [pageNum, setPageNum] = useState(1);
   const { pathname } = useRouter();
   const [page, setPage] = useState<string | undefined>();
+  const [searchText, setSearchText] = useState<string>('');
+  const [order, setOrder] = useState<string>('expiryDate');
+  const [orderDir, setOrderDir] = useState<'desc' | 'asc'>('desc');
   
   const loadEthNFTs = async () => {
     try {
@@ -105,6 +110,8 @@ function ManageSection() {
       // @ts-ignore: Unreachable code error
       const nfts = await getNamesForAddress(viemClient, {
         address: address! as `0x${string}`,
+        filter : { searchType : 'labelName', searchString : searchText },
+        pageSize: 50, orderBy : order, orderDirection : orderDir
       });
       console.log(nfts);
 
@@ -125,7 +132,7 @@ function ManageSection() {
               ),
             };
             //_nftJson.ipfsData = _monadid;
-            _nftJson.external_url = SITE_PROFILE_URL + "name/" + _nftJson.name;
+            _nftJson.external_url = SITE_PROFILE_URL + _nftJson.name;
             _nftJson.manageUrl = "/manage/" + _nftJson.name;
             console.log(_nftJson);
             if(nft.wrappedOwner !== connectedAccount) return {};
@@ -172,6 +179,11 @@ function ManageSection() {
     getNfts();
   }, [isConnected, network, address, page]);
 
+
+  useEffect(()=> {
+    loadEthNFTs();
+  },[order,searchText,orderDir])
+
   const reload = async () => {
     await loadEthNFTs();
   };
@@ -186,16 +198,10 @@ function ManageSection() {
         minH={"90vh"}
         flexGrow={1}
       >
-        <Box py={6} gap={2} width={"100%"} pb={12}>
+        <Box py={6} gap={0} width={"100%"} pb={20}>
           {isConnected && (
-            <Stack gap={10} width={"100%"} my={4}>
-              <Flex
-                minWidth={["350px", "420px", "580px", "800px"]}
-                align={"center"}
-                height={"64px"}
-                gap={3}
-              >
-                <Text
+            <Stack gap={6} width={"100%"}>
+              <Text
                   flexGrow={1}
                   fontWeight="bold"
                   fontSize={notMobile ? "4xl" : "2xl"}
@@ -203,22 +209,58 @@ function ManageSection() {
                 >
                   My Names
                 </Text>
-
-                <Button
+              <Flex
+                minWidth={["350px", "420px", "580px", "800px"]}
+                align={"center"}
+                minH={'80px'}
+                p={3}
+                justifyContent={'space-between'}
+                borderTopRadius={'2xl'}
+                borderBottom={"1px solid #77777755"}
+                gap={3}
+                flexDir={['column','column','row']}
+                background={colorMode === "dark" ? "blackAlpha.500" : "white"}
+              >
+                 <Flex gap={3} w={['100%','xs']}>
+                 <Input
+                      placeholder="Search"
+                      value={searchText}
+                      fontSize={['md','lg']}
+                      rounded={'2xl'}
+                      variant={'solid'}
+                      w={['100%','xs']}
+                      px={4}
+                      size={'lg'}
+                      onChange={(e) => setSearchText(e.target.value.toLowerCase())}
+                      bg={colorMode === 'light' ? 'blackAlpha.300' : 'whiteAlpha.100'}
+                    />
+                    
+                 </Flex>
+                <Flex gap={3} w={['100%','xs','auto']}>
+                <Select value={order} onChange={(e) => setOrder(e.currentTarget.value)} size={'lg'} variant={'solid'} bg={colorMode === 'light' ? 'blackAlpha.300' : 'whiteAlpha.100'} rounded={'2xl'}>
+                      <option value={'expiryDate'}>Expiry Date</option>
+                      <option value={'name'}>Name</option>
+                      <option value={'createdAt'}>Creation Date</option>
+                    </Select>
+                    <IconButton size={'lg'} rounded={'2xl'} aria-label="order-direction-button" onClick={(e)=> setOrderDir(orderDir === "desc" ? "asc" : "desc")} key={`order-button-${orderDir}`}>
+                      {orderDir === "desc" ? <LinkIcon type="RiSortDesc" size={22} /> : <LinkIcon type="RiSortAsc" size={22}/> }
+                    </IconButton>
+                <IconButton
                   aria-label="reload-nfts"
                   key={`reload-${network}-nfts`}
-                  rounded={"full"}
+                  rounded={"2xl"}
                   size={"lg"}
                   onClick={reload}
                   gap={2}
                 >
-                  {notMobile ? "Reload" : ""} <RiRestartLine size={"24"} />
-                </Button>
+                  <RiRestartLine size={"24"} />
+                </IconButton>
                 <NextLink href={"/app"} passHref>
-                  <Button size={"lg"} rounded={"full"}>
+                  <IconButton size={"lg"} rounded={"2xl"} aria-label="add-new-domain-button">
                     <LinkIcon type="RiAddLine" />
-                  </Button>
+                  </IconButton>
                 </NextLink>
+                </Flex>
               </Flex>
               {isLoading && (
                 <Center width={"100%"} height={500}>
@@ -231,8 +273,8 @@ function ManageSection() {
           <Stack
             gap={2}
             width={"100%"}
-            background={colorMode === "dark" ? "blackAlpha.300" : "white"}
-            rounded={"2xl"}
+            background={colorMode === "dark" ? "blackAlpha.500" : "white"}
+            borderBottomRadius={'2xl'}
           >
             {nftjsons?.map((nft: any, i: number) => (
               <Flex
@@ -240,7 +282,7 @@ function ManageSection() {
                 flexDirection={"row"}
                 gap={2}
                 minWidth={["100%", "420px", "580px", "800px"]}
-                height={["72px", "68px", "80px"]}
+                height={["72px", "80px"]}
                 alignItems={"center"}
                 borderBottom={
                   i === nftjsons.length - 1 ? "none" : "1px solid #77777755"
@@ -350,7 +392,7 @@ function ManageSection() {
                       </MenuItem>
                         {primaryName !== nft.name && (
                           <TransactionButton
-                          style={{ borderRadius: "0px", height:'48px' , width: '100%', justifyContent : 'start', display: 'flex', padding: 12}}
+                          style={{ borderRadius: "0px", height:'48px' , width: '100%', justifyContent : 'start', display: 'flex', padding: 12 , backgroundColor: colorMode === 'dark' ? 'rgba(0, 0, 0, 0.24)' : 'rgba(255, 255, 255, 0.24)', color: colorMode === 'dark' ? 'white' : 'black'}}
                           transaction={() => {
                             const tx = prepareContractCall({
                               contract: ReverseRegistrar,
@@ -404,7 +446,6 @@ function ManageSection() {
                             },
                           }}
                           href={nft.external_url}
-                          isDisabled
                           target="_blank"
                           icon={<MdOutlineVisibility size={24} />}
                         >
@@ -569,7 +610,7 @@ function ManageSection() {
               </Flex>
             ))}
           </Stack>
-          {nftjsons && nftjsons?.length > 0 && (
+          {nftjsons && nftjsons?.length > 0 && page && page !== "" &&  (
             <Flex align={"center"} py={8} gap={4} justify={"end"}>
               <Text fontSize={["xl"]} textAlign={"center"}>
                 Page {pageNum}
@@ -603,7 +644,7 @@ function ManageSection() {
             </Flex>
           )}
           {listIsEmpty && !isLoading && (
-            <Center display="flex" flexDirection="column" gap={4} minH={"75%"}>
+            <Center display="flex" flexDirection="column" gap={4} minH={"200px"}>
               <Text fontSize="xl">
                 You don't own any {pathname.includes("old") ? " old " : ""}{" "}
                 Monad IDs
@@ -623,7 +664,7 @@ function ManageSection() {
           )}
         </Box>
         {!isConnected && (
-          <Center my={8} flexDirection="column" minH={"75vh"}>
+          <Center my={8} flexDirection="column" minH={"200px"}>
             <ConnectWalletButton />
           </Center>
         )}
