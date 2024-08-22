@@ -247,7 +247,7 @@ export default function Header() {
                             {t("Community")}
                           </Button>
                         </NextLink>
-                        <NextLink href={"/litepaper"} passHref>
+                        {/* <NextLink href={"/litepaper"} passHref>
                           <Button
                             onClick={onClose}
                             variant="ghost"
@@ -259,7 +259,7 @@ export default function Header() {
                           >
                             {t("Litepaper")}
                           </Button>
-                        </NextLink>
+                        </NextLink> */}
                         <NextLink href={'/roadmap'} passHref>
                           <Button
                             variant="ghost"
@@ -270,7 +270,7 @@ export default function Header() {
                             {t('Roadmap')}
                           </Button>
                         </NextLink>
-                        <NextLink href={'/usecase'} passHref>
+                        {/* <NextLink href={'/usecase'} passHref>
                           <Button
                             onClick={onClose}
                             variant="ghost"
@@ -280,7 +280,7 @@ export default function Header() {
                             {t('Use Case')}
                           </Button>
                         </NextLink>
-                        {/* 
+                        
 
                         <NextLink href={'/ecosystem'} passHref>
                         

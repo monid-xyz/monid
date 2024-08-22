@@ -177,8 +177,7 @@ export const SIGN_MESSAGE =
 export const MAX_FILE_UPLOAD = 15728640;
 
 export const DONATE_VALUES: any = {
-  venomtestnet: ['1 VENOM', '10 VENOM', '50 VENOM'],
-  ethereum: ['0.001 ETH', '0.01 ETH', '0.05 ETH'],
+  ethereum: ['0.001', '0.01', '0.1'],
   bitcoin: ['0.0001 BTC', '0.001 BTC', '0.005 BTC'],
   paypal: ['1 USD', '10 USD', '50 USD'],
 };

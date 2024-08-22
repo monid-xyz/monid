@@ -88,14 +88,20 @@ export default function AddWalletButton() {
 
   useEffect(() => {
     let _wallets = [...allCoins];
-    
+
+    walletsArray.map((item) => {
+      console.log(item.key)
+      _wallets.splice(_wallets.findIndex((sitem) => item.key.toLowerCase() === sitem[1][0]), 1);
+    });
+
+    setAvailableWallets(_wallets);
   }, [walletsArray]);
 
   useEffect(() => {
     //console.log(allCoins);
     searchText.length > 0
       ? setSearchedWallets(
-          allCoins.filter((item : any) =>
+        availableWallets.filter((item : any) =>
             String(item[1][1]).toLowerCase().includes(searchText.toLowerCase())
           )
         )
@@ -228,7 +234,7 @@ export default function AddWalletButton() {
               <SimpleGrid columns={1} gap={2} py={2} pb={6}>
                 {(searchText.length > 0
                   ? searchedWallets
-                  : allCoins
+                  : availableWallets
                 ).map((item) => (
                   <Button
                     gap={4}

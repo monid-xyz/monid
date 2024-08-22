@@ -106,6 +106,7 @@ import { sendTransaction, waitForReceipt } from "thirdweb";
 import { useActiveAccount } from "thirdweb/react";
 import { arbitrumSepolia } from "thirdweb/chains";
 import { setRecords } from "@monadid/monjs/wallet";
+import ManageSubnames from "components/manage/ManageSubnames";
 
 const ManagePage: NextPage = () => {
   const { t } = useTranslate();
@@ -731,6 +732,7 @@ const ManagePage: NextPage = () => {
                         <EthAddressInput /> */}
                             <TitleInput />
                             <BioTextInput />
+                            <ManageSubnames />
                             <ManageWallets json={json} />
                             <ManageLinks json={json} />
                             <ManageSocials json={json} />

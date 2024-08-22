@@ -47,7 +47,7 @@ import {
 } from "core/atoms";
 import { capFirstLetter } from "core/utils";
 import { LinkIcon } from "components/logos";
-import { EXAMPLE_SOCIAL_URLS, getSocialUrlScheme, SOCIALS } from "core/utils/constants";
+import { EXAMPLE_SOCIAL_URLS, getSocialTitle, getSocialUrlScheme, SOCIALS } from "core/utils/constants";
 import { ObjectItem } from "types";
 
 export default function AddSocialButton() {
@@ -94,7 +94,8 @@ export default function AddSocialButton() {
     let _socials: ObjectItem[] = [...SOCIALS.sort()];
 
     socialsArray.map((item) => {
-      _socials.splice(_socials.indexOf({key: capFirstLetter(item.key), value: getSocialUrlScheme(item.key)}), 1);
+      
+      _socials.splice(_socials.findIndex((sitem) => item.key === sitem.value), 1);
     });
 
     setAvailableSocials(_socials);
@@ -103,7 +104,7 @@ export default function AddSocialButton() {
   useEffect(() => {
     searchText.length > 0
       ? setSearchedSocials(
-          SOCIALS.filter((item) =>
+          availableSocials.filter((item) =>
             item.key.toLowerCase().includes(searchText.toLowerCase())
           )
         )
