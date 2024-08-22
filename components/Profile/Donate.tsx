@@ -39,8 +39,9 @@ import QRCode from "react-qr-code";
 import { DONATE_VALUES } from "core/utils/constants";
 import WalletLink from "./WalletLink";
 import { Styles } from "types";
-import { PayEmbed } from "thirdweb/react";
+import { PayEmbed, TransactionButton, useActiveAccount, useActiveWallet } from "thirdweb/react";
 import { client } from "components/venomConnect";
+import { getContract, prepareContractCall, toWei } from "thirdweb";
 
 interface Props {
   title: string;
@@ -52,6 +53,7 @@ export default function Donate({ title, content, style }: Props) {
   const eth = style?.eth;
   const btc = style?.btc;
   const success = content;
+  const wallet = useActiveWallet();
   const { colorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const lightMode = useAtomValue(lightModeAtom);
@@ -183,7 +185,7 @@ export default function Donate({ title, content, style }: Props) {
                 {eth && (
                   <TabPanel>
                     <Stack gap={4}>
-                      {/* <Stack gap={2}>
+                      <Stack gap={2}>
                         <Text>Select an amount</Text>
                         {DONATE_VALUES["ethereum"].map((val: string) => (
                           <Button
@@ -199,40 +201,59 @@ export default function Donate({ title, content, style }: Props) {
                             colorScheme={buttonBg}
                             color={getColor(variant, buttonBg, lightMode)}
                           >
-                            {val}
+                            {val} ETH
                           </Button>
                         ))}
-                      </Stack> */}
+                      </Stack>
 
-                      <PayEmbed
-                        client={client}
-                        theme={colorMode}
-                        style={{width : '100%'}}
-                        payOptions={{
-                          // @ts-ignores
-                          mode: "direct_payment",
-                          // @ts-ignore
-                          paymentInfo: {
-                            sellerAddress:
-                              eth,
-                          },
+                      <TransactionButton
+                        style={{ borderRadius: "54px" }}
+                        transaction={async () => {
+                          const tx = prepareContractCall({
+                              contract: getContract({
+                                client: client,
+                                address: eth,
+                                chain: wallet?.getChain()!}),
+                              method: "function transfer(address to, uint256 value)",
+                              params: [eth, toWei(value)],
+                              value: toWei(value)
+                             });
+                             console.log(toWei(value))
+                          return tx;
                         }}
-                      />
-
-                      {/* <Button
-                        isDisabled={!value.includes("ETH")}
-                        onClick={donate}
-                        colorScheme="green"
-                        rounded={round}
-                        variant={variant}
-                        size={"lg"}
-                        isLoading={isDonating}
+                        onTransactionSent={(result) => {
+                          
+                          console.log(
+                            "Transaction submitted",
+                            result.transactionHash
+                          );
+                          console.log(result);
+                        }}
+                        onTransactionConfirmed={(receipt) => {
+                          console.log(
+                            "Transaction confirmed",
+                            receipt.transactionHash
+                          );
+                          console.log(receipt);
+                          setIsDonating(false);
+                          setDonateSuccessful(true);
+                        }}
+                        onError={(error) => {
+                          console.error("Transaction error", error);
+                          setDonateSuccessful(false);
+                          setIsDonating(false);
+                        }}
+                        onClick={() => {
+                          setIsDonating(true);
+                        }}
                       >
                         {title}
-                      </Button>
+                      </TransactionButton>
+
+                      
                       {donateSuccessful && !isDonating && (
-                        <Text color="green">{success}</Text>
-                      )} */}
+                        <Text color="green">{success.length > 0 ? success : 'Done. Thanks!'}</Text>
+                      )}
                       {/* <Text>or scan the QR Code below</Text>
                       <Box p={2} bg="white">
                         <QRCode style={{ width: "100%" }} value={ethuri} />

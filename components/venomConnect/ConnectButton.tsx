@@ -115,6 +115,9 @@ export default function ConnectWalletButton() {
     console.log("connected to", wallet);
     setIsConnected(true);
     setConnectedAccount(wallet.getAccount()?.address!);
+    if(wallet.getChain() !== arbitrumSepolia){
+      wallet.switchChain(arbitrumSepolia);
+    }
     getEthPrimary();
   }
   //const ethAddress = useAtomValue(ethAtom);

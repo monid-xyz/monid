@@ -81,6 +81,7 @@ import {
   getSocialTitle,
   isLink,
   TLD,
+  SITE_URL,
 } from "core/utils/constants";
 import {
   client,
@@ -677,7 +678,10 @@ const ManagePage: NextPage = () => {
             h="100vh"
           >
             {error ? (
-              <Text my={20}>{error}</Text>
+              <Center my={20} gap={6} flexDirection={'column'} w={'100%'}>
+              <Text>{error}</Text>
+              <ConnectWalletButton />
+              </Center>
             ) : (
               <>
                 {!isLoading && json ? (
@@ -784,7 +788,7 @@ const ManagePage: NextPage = () => {
                             <ShareButton
                               name={name}
                               type={"blue"}
-                              url={_nftJson.external_url}
+                              url={SITE_URL+name}
                             />
                           </LightMode>
                         </Flex>
