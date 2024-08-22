@@ -757,7 +757,6 @@ export default function RegisterModal() {
                         <Button
                           w={["100%", "xs"]}
                           as={Link}
-                          isDisabled
                           href={SITE_PROFILE_URL + name + ".mon"}
                           target="_blank"
                           size={"lg"}
@@ -767,7 +766,6 @@ export default function RegisterModal() {
                         <Button
                           w={["100%", "xs"]}
                           as={Link}
-                          isDisabled
                           href={SITE_MANAGE_URL + name + ".mon"}
                           target="_blank"
                           size={"lg"}
