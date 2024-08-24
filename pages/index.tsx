@@ -8,6 +8,7 @@ import {
 } from 'core/utils/constants';
 import { Seo } from 'components/Layout/Seo';
 import IntroSection from 'components/sections/IntroSection';
+import HeroSection from 'components/sections/HeroSection';
 
 const Home: NextPage = () => {
   return (
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
 
       </Head>
       <Seo />
+      <HeroSection />
       <IntroSection />
 
       {/* <EarlyAdopterSection /> */}

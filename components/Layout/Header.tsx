@@ -344,7 +344,7 @@ export default function Header() {
                 <ConnectWalletButton />
               ) : (
                 <NextLink href={"/app"} passHref>
-                  <LightMode>
+                  
                   <Button
                   rounded={'full'}
                     onClick={onClose}
@@ -356,7 +356,7 @@ export default function Header() {
                   >
                     {t("Enter App")}
                   </Button>
-                  </LightMode>
+                 
                 </NextLink>
               )}
               {/* {notMobile && (

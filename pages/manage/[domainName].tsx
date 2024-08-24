@@ -105,7 +105,7 @@ import { multicallWithNodeCheck } from "contracts/421614/0x7016f6bafd4ae35a30dd2
 import { addresses, Resolver } from "core/utils/contracts";
 import { sendTransaction, waitForReceipt } from "thirdweb";
 import { useActiveAccount } from "thirdweb/react";
-import { arbitrumSepolia } from "thirdweb/chains";
+import { arbitrumSepolia, sepolia } from "thirdweb/chains";
 import { setRecords } from "@monadid/monjs/wallet";
 import ManageSubnames from "components/manage/ManageSubnames";
 
@@ -678,9 +678,9 @@ const ManagePage: NextPage = () => {
             h="100vh"
           >
             {error ? (
-              <Center my={20} gap={6} flexDirection={'column'} w={'100%'}>
-              <Text>{error}</Text>
-              <ConnectWalletButton />
+              <Center my={20} gap={6} flexDirection={"column"} w={"100%"}>
+                <Text>{error}</Text>
+                <ConnectWalletButton />
               </Center>
             ) : (
               <>
@@ -734,6 +734,18 @@ const ManagePage: NextPage = () => {
                             <CropAvatar />
                             {/* <BtcAddressInput />
                         <EthAddressInput /> */}
+                            {/* {account && json && <div>
+                              <ChatUIProvider theme={darkChatTheme}>
+                                <ChatView
+                                  chatId="0xBFd210db795A9Ac48D0C3be2a74232BE44144E84"
+                                  limit={10}
+                                  isConnected={true}
+                                  verificationFailModalPosition={
+                                    "RELATIVE"
+                                  }
+                                />
+                              </ChatUIProvider>
+                            </div>} */}
                             <TitleInput />
                             <BioTextInput />
                             <ManageSubnames />
@@ -788,7 +800,7 @@ const ManagePage: NextPage = () => {
                             <ShareButton
                               name={name}
                               type={"blue"}
-                              url={SITE_URL+name}
+                              url={SITE_URL + name}
                             />
                           </LightMode>
                         </Flex>

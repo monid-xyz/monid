@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Heading,
@@ -15,10 +15,10 @@ import {
   IconButton,
   Link,
   Button,
-} from '@chakra-ui/react';
-import { useTranslate } from 'core/lib/hooks/use-translate';
-import { Avatar, Socials, ProfileSkeleton } from 'components/Profile';
-import Links from 'components/Profile/Links';
+} from "@chakra-ui/react";
+import { useTranslate } from "core/lib/hooks/use-translate";
+import { Avatar, Socials, ProfileSkeleton } from "components/Profile";
+import Links from "components/Profile/Links";
 
 import {
   avatarAtom,
@@ -38,14 +38,16 @@ import {
   titleAtom,
   useLineIconsAtom,
   walletButtonsAtom,
-} from 'core/atoms';
-import { useAtom, useAtomValue, useSetAtom } from 'jotai';
-import Wallets from './Wallets';
-import { DeviceFrameset } from 'react-device-frameset';
-import 'react-device-frameset/styles/marvel-devices.min.css';
-import { RiExternalLinkLine, RiLinksLine } from 'react-icons/ri';
-import { FaCircle } from 'react-icons/fa';
-import { useRouter } from 'next/router';
+} from "core/atoms";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import Wallets from "./Wallets";
+import { DeviceFrameset } from "react-device-frameset";
+import "react-device-frameset/styles/marvel-devices.min.css";
+import { RiExternalLinkLine, RiLinksLine } from "react-icons/ri";
+import { FaCircle } from "react-icons/fa";
+import { useRouter } from "next/router";
+import { EmbedSDK } from "@pushprotocol/uiembed";
+import { useActiveAccount, useActiveWallet } from "thirdweb/react";
 
 interface Attribute {
   trait_type: string;
@@ -59,7 +61,7 @@ interface Props {
 
 const Preview = ({ json, onSave }: Props) => {
   const { t } = useTranslate();
-  const [notMobile] = useMediaQuery('(min-width: 800px)');
+  const [notMobile] = useMediaQuery("(min-width: 800px)");
   const { colorMode, toggleColorMode } = useColorMode();
   const [useLineIcons, setUseLineIcons] = useAtom(useLineIconsAtom);
   const [horizontalSocial, setHorizontalSocial] = useAtom(horizontalSocialAtom);
@@ -68,6 +70,7 @@ const Preview = ({ json, onSave }: Props) => {
   const [walletButtons, setWalletButtons] = useAtom(walletButtonsAtom);
   const bgColor = useAtomValue(bgColorAtom);
   const setIsStyled = useSetAtom(isStyledAtom);
+  const wallet = useActiveWallet();
   const avatarShape = useAtomValue(avatarShapeAtom);
   const socials = useAtomValue(socialsArrayAtom);
   const font = useAtomValue(fontAtom);
@@ -80,7 +83,7 @@ const Preview = ({ json, onSave }: Props) => {
   const [colorM, setColorM] = useAtom(colorModeAtom);
   const mobileView = useAtomValue(mobileViewAtom);
   const { pathname } = useRouter();
-  console.log(json)
+  console.log(json);
 
   // useEffect(() => {
   //   // console.log(json)
@@ -98,88 +101,127 @@ const Preview = ({ json, onSave }: Props) => {
   //   setIsStyled(true);
   // }, [lightMode]);
 
+  
+
   return (
     <>
       <DeviceFrameset
         // @ts-ignore: Unreachable code error
-        device={'iPhone 5s'}
-        color={colorMode === 'dark' ? 'black' : 'silver'}
+        device={"iPhone 5s"}
+        color={colorMode === "dark" ? "black" : "silver"}
         // @ts-ignore: Unreachable code error
-        width={mobileView ? '400px' : '540px'}
+        width={mobileView ? "400px" : "540px"}
         // @ts-ignore: Unreachable code error
-        height={'84vh'}>
+        height={"84vh"}
+      >
         <Center
-          rounded={'2xl'}
-          w={'100%'}
+          rounded={"2xl"}
+          w={"100%"}
           borderRadius={0}
           px={4}
           py={2}
           gap={3}
-          h={'60px'}
+          h={"60px"}
           transition={'"all 1s ease"'}
-          alignItems={'center'}
+          alignItems={"center"}
           pt={2}
-          bgColor={useColorModeValue('light.600', 'dark.600')}>
-          
-
-          <Button as={Link} href={`https://monid.xyz/${pathname.includes('old') ? `o/` : ''}${name}`} target='_blank' variant={'outline'} gap={2} display={'flex'}>
-          <RiExternalLinkLine /> monid.xyz/{pathname.includes('old') ? `o/` : ''}{name}
+          bgColor={useColorModeValue("light.600", "dark.600")}
+        >
+          <Button
+            as={Link}
+            href={`https://monid.xyz/${
+              pathname.includes("old") ? `o/` : ""
+            }${name}`}
+            target="_blank"
+            variant={"outline"}
+            gap={2}
+            display={"flex"}
+          >
+            <RiExternalLinkLine /> monid.xyz/
+            {pathname.includes("old") ? `o/` : ""}
+            {name}
           </Button>
         </Center>
 
         <Flex
           bg={bgColor}
           key={`preview-monadid-desktop-${lightMode}`}
-          bgSize={'cover'}
-          bgRepeat={'no-repeat'}
-          bgPosition={'center'}
-          justify={'center'}
-          minH={'100%'}
-          color={lightMode ? 'var(--dark1)' : 'white'}
+          bgSize={"cover"}
+          bgRepeat={"no-repeat"}
+          bgPosition={"center"}
+          justify={"center"}
+          minH={"100%"}
+          color={lightMode ? "var(--dark1)" : "white"}
         >
           <Flex my={10}>
             <>
               <Container
-                width={mobileView ? '380px' : 'lg'}
+                width={mobileView ? "380px" : "lg"}
                 key={`monadid-preview-main-${lightMode}`}
                 display="flex"
-                flexDir={'column'}
+                flexDir={"column"}
                 gap={4}
-                fontFamily={font}>
+                fontFamily={font}
+              >
                 {json && (
-                  <Flex direction="column" justify={'center'} align={'center'} gap={4} width="100%">
+                  <Flex
+                    direction="column"
+                    justify={"center"}
+                    align={"center"}
+                    gap={4}
+                    width="100%"
+                  >
                     <Box
                       as={lightMode ? LightMode : DarkMode}
-                      key={`preview-monadid-desktop-mode-${lightMode}`}>
+                      key={`preview-monadid-desktop-mode-${lightMode}`}
+                    >
                       <Flex
                         gap={notMobile && !mobileView ? 8 : 0}
                         my={4}
-                        alignItems={'center'}
-                        justifyContent={'center'}
-                        w={'100%'}
-                        flexDir={notMobile && !mobileView ? 'row' : 'column'}>
+                        alignItems={"center"}
+                        justifyContent={"center"}
+                        w={"100%"}
+                        flexDir={notMobile && !mobileView ? "row" : "column"}
+                      >
                         <Box
-                          maxW={notMobile && !mobileView ? '200px' : '180px'}
-                          key={'avatar-box-' + avatar}>
+                          maxW={notMobile && !mobileView ? "200px" : "180px"}
+                          key={"avatar-box-" + avatar}
+                        >
                           <Avatar
                             my={6}
-                            key={'avatar-' + avatar}
-                            maxH={notMobile && !mobileView ? '200' : '180'}
+                            key={"avatar-" + avatar}
+                            maxH={notMobile && !mobileView ? "200" : "180"}
                             url={avatar}
-                            alt={name + 'avatar image'}
+                            alt={name + "avatar image"}
                             shape={avatarShape}
                             shadow="none"
                           />
                         </Box>
 
-                        <Stack textAlign={notMobile && !mobileView ? 'left' : 'center'}>
-                          <Heading fontWeight="bold" fontSize="3xl" fontFamily={font}>
+                        <Stack
+                          textAlign={
+                            notMobile && !mobileView ? "left" : "center"
+                          }
+                        >
+                          <Heading
+                            fontWeight="bold"
+                            fontSize="3xl"
+                            fontFamily={font}
+                          >
                             {title}
                           </Heading>
-                          <Heading fontWeight="normal" fontSize="xl" fontFamily={font}>
+                          <Heading
+                            fontWeight="normal"
+                            fontSize="xl"
+                            fontFamily={font}
+                          >
                             {subtitle}
                           </Heading>
-                          <Heading fontWeight="bold" fontSize="xl" fontFamily={font}>
+                          <Heading
+                            fontWeight="bold"
+                            fontSize="xl"
+                            fontFamily={font}
+                          >
                             {name}
                           </Heading>
                           {/* <Button
@@ -192,40 +234,59 @@ const Preview = ({ json, onSave }: Props) => {
                         </Stack>
                       </Flex>
 
-                      {horizontalSocial && <Socials json={json} onlyIcons  key={`social-icons-${socials.length}`}/>}
+                      {horizontalSocial && (
+                        <Socials
+                          json={json}
+                          onlyIcons
+                          key={`social-icons-${socials.length}`}
+                        />
+                      )}
 
                       {walletButtons && (
                         <Wallets
                           json={json}
                           color={
                             !lightMode
-                              ? 'var(--chakra-colors-gray-100)'
-                              : 'var(--chakra-colors-gray-800)'
+                              ? "var(--chakra-colors-gray-100)"
+                              : "var(--chakra-colors-gray-800)"
                           }
                         />
                       )}
 
-                      <Stack width={'100%'} gap={2} pb={4}>
+                      <Stack width={"100%"} gap={2} pb={4}>
                         {bio && bio.length > 0 && (
                           <Text
                             fontWeight="normal"
-                            fontSize={notMobile ? 'xl' : 'lg'}
+                            fontSize={notMobile ? "xl" : "lg"}
                             my={4}
-                            textAlign={'center'}>
+                            textAlign={"center"}
+                          >
                             {bio}
                           </Text>
                         )}
+                        
+                        {/* <ChatUIProvider>
+                        <ChatWidget
+                          chatId={"0x862cD05C263Ff60a4Ea53db12eaa7548499E07E7"} //chatId or recipient's address
+                        />
+                        </ChatUIProvider> */}
+                        
 
                         <Links
                           json={json}
                           color={
                             !lightMode
-                              ? 'var(--chakra-colors-gray-100)'
-                              : 'var(--chakra-colors-gray-800)'
+                              ? "var(--chakra-colors-gray-100)"
+                              : "var(--chakra-colors-gray-800)"
                           }
                         />
 
-                        {socialButtons && <Socials json={json} key={`social-buttons-${socials.length}`}/>}
+                        {socialButtons && (
+                          <Socials
+                            json={json}
+                            key={`social-buttons-${socials.length}`}
+                          />
+                        )}
                       </Stack>
                     </Box>
                   </Flex>

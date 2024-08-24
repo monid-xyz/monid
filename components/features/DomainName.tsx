@@ -12,8 +12,9 @@ import { LinkIcon } from 'components/logos';
     avatar?: string;
     address?: string;
     size?: 'md' | 'lg' | 'xl' | string[];
+    fontSize?: 'md' | 'lg' | 'xl' | string[];
   }
-  export default function DomainName({ name, avatar , size = 'lg',address = undefined}: Props) {
+  export default function DomainName({ name, avatar , size = 'lg', fontSize= 'xl', address = undefined}: Props) {
     const { colorMode } = useColorMode();
     return (
         <Flex w={'100%'} gap={3} align={'center'} border='3px solid black' position='relative' boxShadow='1px 1px 0px 0px black, 2px 2px 0px 0px black, 3px 3px 0px 0px black' rounded={'full'} bg={colorMode === 'light' ? 'white' : 'blackAlpha.500'}>
@@ -25,7 +26,7 @@ import { LinkIcon } from 'components/logos';
             w={'100%'}
             cursor={'default'}
             pr={address ? 5 : 4}
-            fontSize={size}
+            fontSize={fontSize}
             bgGradient={
               colorMode === 'light'
                 ? 'linear(to-r, var(--base2), var(--base00))'

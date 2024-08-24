@@ -98,31 +98,6 @@ export default function IntroSection() {
   const [wallets, setWallets] = useState(WALLETS_VARIATIONS[0]);
   const [_open, _setOpen] = useAtom(openModalAtom);
 
-  const win = useRef(null);
-
-  const variants = {
-    full: {
-      width: "100%",
-    },
-    empty: {
-      width: "0%",
-    },
-  };
-
-  const { scrollYProgress } = useScroll();
-  const bg = useMotionValue("#dbdbdb00");
-  const bgcolor = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [
-      colorMode === "light" ? "#946eff00" : "#946eff00",
-      colorMode === "light" ? "#25173eff" : "#d3d0e5dd",
-    ]
-  );
-  useAnimationFrame((_t, delta) => {
-    bg.set(bgcolor.get());
-  });
-
   const change = async () => {
     let cur;
     setOpacity(0);
@@ -390,17 +365,16 @@ export default function IntroSection() {
   };
 
   return (
-    <motion.div style={{ backgroundColor: bg }} key={"whatnwhy"}>
+    <motion.div key={"whatnwhy"}>
       <Container
-        ref={win}
         maxW="container.md"
         display="grid"
         placeContent="center"
         placeItems="center"
-        minH="90vh"
-        py={16}
+        id="what"
+        minH="100vh"
       >
-        <SimpleGrid columns={[1, 1, 1]} gap={10}>
+        <SimpleGrid columns={[1, 1, 1]} gap={10} py={16}>
           <GridItem>
             <Stack px={[4, 4, 6, 10]} gap={12}>
               <Heading
@@ -433,6 +407,7 @@ export default function IntroSection() {
                   "https://ipfs.io/ipfs/QmcPjQqieVvNmKxQmWPkJ7HfJvY2GkrvtGEvzEzAuohMrD/sam.mon.svg"
                 }
                 size={["md", "lg"]}
+                fontSize={['md','lg','xl']}
               />
               <LinkIcon
                 type={!small ? "RiArrowUpDownLine" : "RiArrowLeftRightLine"}
@@ -458,14 +433,14 @@ export default function IntroSection() {
       </Container>
       <Container
         maxW="100%"
-        bg={lightMode ? "blackAlpha.400" : "blackAlpha.600"}
+        bgColor={colorMode === 'light' ? "blackAlpha.200" : "whiteAlpha.200"}
         px={0}
+        id="earlyadopters"
         display="grid"
         placeContent="center"
         gap={12}
         h={"100vh"}
         placeItems="center"
-        color={colorMode === "light" ? "white" : "white"}
         py={36}
       >
         <Heading textAlign={"center"} px={4}>
@@ -526,7 +501,6 @@ export default function IntroSection() {
         </NextLink>
       </Container>
       <Container
-        ref={win}
         maxW="container.xl"
         display="grid"
         placeContent="center"
@@ -549,7 +523,6 @@ export default function IntroSection() {
             <Stack
               px={[4, 4, 6, 10]}
               gap={12}
-              color={colorMode === "light" ? "white" : "var(--dark)"}
             >
               <Heading
                 as={"h3"}
