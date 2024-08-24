@@ -33,8 +33,8 @@ const Canvas3DText: React.FC<CanvasComponentProps> = ({
   bgColor = ["#6343bb", "#31225e"], // Default gradient colors for the light
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const lightRef = useRef<Light>({ x: 0, y: 500 });
-  const targetLightRef = useRef<Light>({ x: 0, y: 500 }); 
+  const lightRef = useRef<Light>({ x: 140, y: 270 });
+  const targetLightRef = useRef<Light>({ x: 140, y: 270 }); 
   const boxesRef = useRef<Box[]>([]); // Store the boxes in a ref
   const spacing = boxSize * 2;
   const wordSpacing = boxSize * 2;
@@ -624,7 +624,7 @@ const Canvas3DText: React.FC<CanvasComponentProps> = ({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    lightRef.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    lightRef.current = { x: window.innerWidth / 3 , y: window.innerHeight / 2.4 };
     targetLightRef.current = { ...lightRef.current }; // Initialize target light position
 
     const draw = () => {
@@ -652,6 +652,7 @@ const Canvas3DText: React.FC<CanvasComponentProps> = ({
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
+      console.log(e)
       targetLightRef.current.x = e.clientX - rect.left;
       targetLightRef.current.y = e.clientY - rect.top;
     };
@@ -659,6 +660,7 @@ const Canvas3DText: React.FC<CanvasComponentProps> = ({
     const handleTouchMove = (e: TouchEvent) => {
       const rect = canvas.getBoundingClientRect();
       const touch = e.touches[0];
+      console.log(touch)
       targetLightRef.current.x = touch.clientX - rect.left;
       targetLightRef.current.y = touch.clientY - rect.top;
     };

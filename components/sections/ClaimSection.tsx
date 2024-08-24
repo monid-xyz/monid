@@ -262,21 +262,21 @@ const ClaimSection = () => {
         <Box gap={4} width={'100%'}>
           <SimpleGrid
             columns={[1]}
-            spacing={['64px', '64px', '32px']}
-            gap={['64px', '64px', '32px']}
+            //spacing={['64px', '64px', '32px']}
+            gap={[6,6,12]}
             py={8}
             alignItems={'center'}
             minWidth={['100%', '100%', '100%', 'container.md', 'container.lg']}>
             <Flex flexDirection="column" gap={4}>
               <AnimateOpacity delay={0}>
-                <Center gap={4} alignItems={'flex-start'}>
+                <Center alignItems={'flex-start'}>
                   
                   <Heading
                     h={'2'}
                     textAlign={['center', 'center']}
                     fontWeight="bold"
                     fontSize={['2xl','3xl','4xl']}
-                    height={[98, 98, 54]}
+                    height={['60px']}
                     bgGradient={
                       lightMode
                         ? 'linear(to-r, var(--base1), var(--base2))'
@@ -297,7 +297,7 @@ const ClaimSection = () => {
 
           {/* {totalSupply ? ( */}
           <AnimateOpacity delay={0.6}>
-            <Stack py={[8]} w={'100%'} align={'center'} gap={4}>
+            <Stack py={[4,6,8]} w={'100%'} align={'center'} gap={4}>
               {mintOpen ? (
                 <Flex direction={'column'} w={'100%'} align={'center'}>
                   <InputGroup size="lg">

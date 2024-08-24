@@ -71,7 +71,7 @@ export default function HeroSection() {
           <Center
             flexDirection={"column"}
             p={[4, 6, 8, 16]}
-            py={24}
+            py={[8,8,12,16]}
             rounded={"2xl"}
             gap={8}
             w={"100%"}
@@ -85,7 +85,7 @@ export default function HeroSection() {
             >
               Your Web3 Profile
             </Heading>
-            <Text pointerEvents={"none"} fontSize={"2xl"} textAlign={"center"}>
+            <Text pointerEvents={"none"} fontSize={["lg","2xl"]} textAlign={"center"}>
               Unleash your unified digital identity and Curate your presence in
               your own style
             </Text>
