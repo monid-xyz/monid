@@ -685,13 +685,6 @@ const Canvas3DText: React.FC<CanvasComponentProps> = ({
       ref={canvasRef}
       id="canvas"
       style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100vh',
-        zIndex: -1, // Set behind other content
-        pointerEvents: 'auto',
         backgroundColor: bgColor[1],
         transition: 'all 0.3s ease-out',
         ...style

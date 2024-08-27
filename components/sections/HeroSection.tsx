@@ -66,6 +66,15 @@ export default function HeroSection() {
           shadowColor={lightMode ? "#c1aaff" : "#282354"}
           colors={lightMode ? "#6343bb" : "#c1aaff"}
           bgColor={lightMode ? ["#f9f7ff", "#d6d1e6"] : ["#6343bb", "#31225e"]}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100vh',
+            zIndex: -1, // Set behind other content
+            pointerEvents: 'auto',
+          }}
         />
         <Stack px={[0, 4, 6]} align={"center"}>
           <Center
